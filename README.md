@@ -124,6 +124,14 @@ chrome --headless=new --window-size=896,504 --force-device-scale-factor=1 \
   --screenshot=../Mod/About/Preview.png _tools/preview.html
 ```
 
+`About/ModIcon.png` is reduced from the same folder, cropped to the drawing's own bounding box
+first so it keeps as much of its 32 pixels in the mod list as it can:
+
+```bash
+ffmpeg -i Art/ModIcon-source.png -vf "crop=1100:1100:35:92,scale=128:128:flags=lanczos" \
+  -compression_level 100 -pred mixed Mod/About/ModIcon.png
+```
+
 ## What it deliberately does not do
 
 - **No thoughts, no mental states, no new jobs.** Nothing new to do — only reasons for what you

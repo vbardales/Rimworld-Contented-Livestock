@@ -19,6 +19,9 @@ First version. Not yet tested in a running game.
   straw inside the heater's pool of light, and the pail, the eggs and the fleece on the right.
   Engraved with the mod name and its summary line by `_tools/preview.html`, rendered at final
   size so the glyphs are never resampled; the full-resolution render stays in `Art/`.
+- `About/ModIcon.png`, the repository mascot among the animals she keeps, in a pen. Cropped to the
+  drawing's own bounding box before being reduced, so it holds as much of the 32 pixels the mod
+  list gives it as possible.
 
 ### How it hooks in
 
@@ -35,7 +38,5 @@ First version. Not yet tested in a running game.
 
 ### Known gaps
 
-- No ModIcon.png yet. RimWorld runs fine without one, and an off-style icon reads worse in the
-  mod list than none at all.
 - Not run in game. The patches resolve against 1.6.4871 rev590 by reflection, and the defs pass
   `Check-XmlFields`, `Check-DefRefs` and `Check-DefInjected`, but no save has been loaded with it.
