@@ -103,6 +103,30 @@ one, another faction's, or every animal at all when the need is switched off. Ab
 special case, it is the neutral value. That is what makes the mod safe to add to a running save
 and safe to remove from one.
 
+## Testing
+
+Two halves, because they answer different questions.
+
+```bash
+powershell -ExecutionPolicy Bypass -File _tools/Run-Functional-Tests.ps1
+```
+
+Sixteen tests, ten seconds, no game launched. They ask whether the vanilla classes this mod hangs
+itself off still do what it hangs itself off them for: that `CompTick` is declared once and
+overridden by no subclass, that it is still what stores into `fullness`, that `Thing.Ingested` is
+still the non-virtual funnel, that every `[HarmonyPatch]` still resolves, and that the patches can
+really touch the fields they wrap. Eleven of the sixteen have been seen to fail under a deliberate
+fault; the five that assert facts about the game's own assembly cannot be, and the file says which
+are which rather than glossing it.
+
+That last test is not decoration. It found, on its first run, that both production patches threw
+`FieldAccessException` at the first tick of every animal, which had gone unnoticed because the mod
+had never been run in a game. See `Source/AccessChecks.cs`.
+
+[`_tools/FUNCTIONAL-SCENARIOS.md`](_tools/FUNCTIONAL-SCENARIOS.md) is the other half: fifteen
+scenarios to play, one thing to watch in each, and what a failure looks like in `Player.log`. No
+amount of reflection can tell you whether a well-kept cow fills faster than a neglected one.
+
 ## Building
 
 ```bash

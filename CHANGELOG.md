@@ -36,6 +36,24 @@ First version. Not yet tested in a running game.
 - Postfix on `Thing.Ingested`, the one non-virtual funnel every meal passes through, grazing
   included.
 
+### Fixed
+
+- Both production patches threw `FieldAccessException` at the first tick of every animal, leaving
+  the whole scaling half of the mod dead while everything else looked healthy. `fullness` is
+  protected and `eggProgress` private in the real assembly; the reference assembly ships them
+  public, so the source compiled clean, and the waiver that makes the access legal at runtime was
+  never emitted because this project switches off the generated AssemblyInfo it rides on. Fixed by
+  declaring it outright in `Source/AccessChecks.cs`.
+
+### Testing
+
+- `_tools/Run-Functional-Tests.ps1`, sixteen tests in ten seconds with no game launched, asking
+  whether the vanilla members this mod patches still behave as it assumes. It is what found the
+  bug above. Eleven of the sixteen have been seen to fail under a deliberate fault; the file says
+  which five have not, and why they cannot be.
+- `_tools/FUNCTIONAL-SCENARIOS.md`, fifteen scenarios to play in a game, with what to watch and
+  what a failure looks like in `Player.log`.
+
 ### Known gaps
 
 - Not run in game. The patches resolve against 1.6.4871 rev590 by reflection, and the defs pass
