@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!--
+    minIntelligence is deliberately absent. Its default is Animal, which is how vanilla's Food and
+    Rest reach animals at all; the ceiling that keeps contentment off colonists is a postfix on
+    Pawn_NeedsTracker.ShouldHaveNeed, because no def field can express one.
+  -->
+  <NeedDef>
+    <defName>Nelim_Contentment</defName>
+    <needClass>ContentedLivestock.Need_Contentment</needClass>
+    <label>contentment</label>
+    <description>How settled this animal is. Contentment is built slowly out of what the animal eats, the pasture or room it lives in, the temperature it lives at, its health, and the company it keeps. A contented animal fills with milk, wool or eggs faster than usual; a miserable one fills slowly, and below the lowest mark on the bar it stops filling altogether. Nothing already accumulated is ever lost.</description>
+    <listPriority>650</listPriority>
+    <showOnNeedList>true</showOnNeedList>
+    <baseLevel>0.5</baseLevel>
+    <major>true</major>
+    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+  </NeedDef>
+
+</Defs>

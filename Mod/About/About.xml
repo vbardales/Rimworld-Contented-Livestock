@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Contented Livestock</name>
+  <author>Nelim</author>
+  <packageId>nelim.contentedlivestock</packageId>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <url>https://github.com/vbardales/Rimworld-Contented-Livestock-Renew</url>
+  <description>A cow in RimWorld gives the same fourteen milk whether it spends its life on good grass or in a concrete corridor. This mod makes how you keep an animal decide what it gives you.
+
+WHAT IT ADDS
+
+Every colony animal that produces something gets a contentment need, alongside food and rest. It is not a mood - animals have no thoughts and get none here. It is a slow state, built from five things:
+
+- What it last ate. Grazing a living plant is the best thing that can happen to a grazer; then raw produce and meat, then hay, then kibble, then carrion. The memory of a meal fades over two days.
+- Its pasture or its room. Roped animals are judged on whether their pen grows back faster than the herd eats it - the figure the pen marker already shows you. Everything else is judged on floor space per animal.
+- Its temperature, measured against its own comfortable range. A heated barn matters to a chicken and not to a husky.
+- Its health. Pain, bleeding and hunger all pull contentment down.
+- Its company. A bond with a colonist helps; a herd animal kept away from its own kind suffers.
+
+Contentment then decides how fast the animal fills with milk, wool or eggs. Content, it fills faster than vanilla. Neglected, slower. Below a floor you can set, it stops filling altogether - but never loses what it had already accumulated. A bad week costs you the week, not the progress.
+
+Nothing jumps. Contentment walks toward its target over about a day, so losing a pasture takes a day to show and a day to undo.
+
+WHY THE NEED, AND NOT A MOOD
+
+An animal in RimWorld carries exactly two needs: food and rest. Eight of the ten in the base game are barred from animals by a single line of their definition. That is not an oversight to be worked around - it is the reason a herd is cheap to run - so this adds one need and no thoughts, no mental states, and no new jobs. Everything it reads is something the game already tracks and you already build for.
+
+Production is scaled at the tick rather than at the yield. The obvious target is the amount an animal gives, but that is a property each kind of animal product overrides separately, so patching it would catch cows and miss sheep, and would miss every modded product entirely. The filling itself is written once. One patch covers milk, wool, eggs, and anything a mod hangs off the same machinery.
+
+WHAT IT DELIBERATELY DOES NOT DO
+
+It does not touch reproduction, taming, training, wildness, or how much an animal eats. Contentment changes the rate of one thing only.
+
+It does not give animals thoughts, mental breaks or moods, and it adds no new jobs for your colonists. There is nothing new to do - only reasons for what you already do.
+
+It does not put a need on wild animals or on other factions' animals. Only your own, and by default only the ones that actually produce something.
+
+It does not add an alert. An animal that has stopped producing says so in its own inspect pane, and that is where you were already looking.
+
+COMPATIBILITY
+
+Safe to add to an existing save. Safe to remove: an animal with no contentment need produces at exactly the vanilla rate, which is the same thing that happens the moment you uninstall.
+
+Works with modded animals and modded animal products without patches, as long as they use the game's own milkable, shearable or egg-laying machinery.
+
+Every setting is adjustable, and each of the five inputs can be switched off on its own. Set the fastest rate to 100% for a version that only ever penalises.
+
+IF I GO QUIET
+
+If I do not answer within a reasonable time after being contacted, anyone may freely update this or any other of my mods, including publishing a continuation of it. All credit must be preserved.
+
+AI-GENERATED
+
+This mod was written with Claude Code (Anthropic) under human direction, review and testing. Stated openly: working with these tools is my job.
+
+THANKS
+
+ConcernedApe, whose farm animals in Stardew Valley refuse to give anything at all when they are unhappy, and give their best when they have been let out on fresh grass. The idea is his; none of his work is here.</description>
+  <loadAfter>
+    <li>Ludeon.RimWorld</li>
+    <li>Ludeon.RimWorld.Royalty</li>
+    <li>Ludeon.RimWorld.Ideology</li>
+    <li>Ludeon.RimWorld.Biotech</li>
+    <li>Ludeon.RimWorld.Anomaly</li>
+    <li>Ludeon.RimWorld.Odyssey</li>
+  </loadAfter>
+</ModMetaData>

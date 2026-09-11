@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+  <!-- Need tooltip -->
+  <ContentedLivestock.Tip.Rate>Filling with milk, wool or eggs at {0} of the usual rate.</ContentedLivestock.Tip.Rate>
+  <ContentedLivestock.Tip.Halted>Too miserable to produce. Nothing is accumulating, and nothing already gathered is lost.</ContentedLivestock.Tip.Halted>
+  <ContentedLivestock.Tip.Feed>Last fed on</ContentedLivestock.Tip.Feed>
+  <ContentedLivestock.Tip.Space>Pasture and room</ContentedLivestock.Tip.Space>
+  <ContentedLivestock.Tip.Temperature>Temperature</ContentedLivestock.Tip.Temperature>
+  <ContentedLivestock.Tip.Health>Health</ContentedLivestock.Tip.Health>
+  <ContentedLivestock.Tip.Company>Company</ContentedLivestock.Tip.Company>
+
+  <!-- Settings -->
+  <ContentedLivestock.Settings.Intro>Colony animals keep a contentment need built from how they are kept. Contentment sets how fast they fill with milk, wool and eggs — and below a floor, whether they fill at all.</ContentedLivestock.Settings.Intro>
+
+  <ContentedLivestock.Settings.CurveHeader>What contentment is worth</ContentedLivestock.Settings.CurveHeader>
+  <ContentedLivestock.Settings.Floor>Production stops below: {0}%</ContentedLivestock.Settings.Floor>
+  <ContentedLivestock.Settings.FloorTip>An animal below this level stops filling entirely. It keeps whatever it had already accumulated. Set to 0% to never stop production.</ContentedLivestock.Settings.FloorTip>
+  <ContentedLivestock.Settings.Plateau>Normal rate reached at: {0}%</ContentedLivestock.Settings.Plateau>
+  <ContentedLivestock.Settings.PlateauTip>At this level the animal fills at exactly the vanilla rate. Below it the rate ramps down to the floor; above it, up to the maximum.</ContentedLivestock.Settings.PlateauTip>
+  <ContentedLivestock.Settings.MinRate>Slowest rate: {0}%</ContentedLivestock.Settings.MinRate>
+  <ContentedLivestock.Settings.MinRateTip>The rate just above the floor, as a share of the vanilla rate.</ContentedLivestock.Settings.MinRateTip>
+  <ContentedLivestock.Settings.MaxRate>Fastest rate: {0}%</ContentedLivestock.Settings.MaxRate>
+  <ContentedLivestock.Settings.MaxRateTip>The rate at full contentment. Set to 100% for a mod that only ever penalises.</ContentedLivestock.Settings.MaxRateTip>
+  <ContentedLivestock.Settings.Speed>Speed of change: {0}%</ContentedLivestock.Settings.Speed>
+  <ContentedLivestock.Settings.SpeedTip>How far contentment can travel in a day. At 100% an animal takes a full day to go from miserable to content, or the reverse.</ContentedLivestock.Settings.SpeedTip>
+
+  <ContentedLivestock.Settings.InputsHeader>What makes an animal content</ContentedLivestock.Settings.InputsHeader>
+  <ContentedLivestock.Settings.Feed>Feed</ContentedLivestock.Settings.Feed>
+  <ContentedLivestock.Settings.FeedTip>Grazing living plants is best, then raw produce and meat, then hay, then kibble. The memory of the last meal fades over two days.</ContentedLivestock.Settings.FeedTip>
+  <ContentedLivestock.Settings.Space>Pasture and room</ContentedLivestock.Settings.Space>
+  <ContentedLivestock.Settings.SpaceTip>Roped animals are judged on whether their pen grows back faster than the herd eats it — the figure the pen marker already shows. Everything else is judged on floor space per animal in its room.</ContentedLivestock.Settings.SpaceTip>
+  <ContentedLivestock.Settings.Temperature>Temperature</ContentedLivestock.Settings.Temperature>
+  <ContentedLivestock.Settings.TemperatureTip>Measured against each animal's own comfortable range, so a heated barn matters to a chicken and not to a husky.</ContentedLivestock.Settings.TemperatureTip>
+  <ContentedLivestock.Settings.Health>Health</ContentedLivestock.Settings.Health>
+  <ContentedLivestock.Settings.HealthTip>Pain, bleeding and hunger all pull contentment down.</ContentedLivestock.Settings.HealthTip>
+  <ContentedLivestock.Settings.Company>Company</ContentedLivestock.Settings.Company>
+  <ContentedLivestock.Settings.CompanyTip>A bond with a colonist helps. A herd animal kept away from its own kind suffers.</ContentedLivestock.Settings.CompanyTip>
+
+  <ContentedLivestock.Settings.ProducersOnly>Only animals that produce something</ContentedLivestock.Settings.ProducersOnly>
+  <ContentedLivestock.Settings.ProducersOnlyTip>On, only animals that give milk, wool or eggs keep a contentment need. Off, every colony animal does — including pets and pack animals, for whom it shows but changes nothing.</ContentedLivestock.Settings.ProducersOnlyTip>
+
+  <ContentedLivestock.Settings.Reset>Reset to defaults</ContentedLivestock.Settings.Reset>
+  <ContentedLivestock.Settings.ConfirmReset>Reset every Contented Livestock setting to its default?</ContentedLivestock.Settings.ConfirmReset>
+
+</LanguageData>

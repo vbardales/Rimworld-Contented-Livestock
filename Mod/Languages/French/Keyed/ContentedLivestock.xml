@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+  <!-- Infobulle du besoin -->
+  <ContentedLivestock.Tip.Rate>Se remplit de lait, de laine ou d'œufs à {0} du rythme habituel.</ContentedLivestock.Tip.Rate>
+  <ContentedLivestock.Tip.Halted>Trop mal en point pour produire. Rien ne s'accumule, et rien de ce qui l'était déjà n'est perdu.</ContentedLivestock.Tip.Halted>
+  <ContentedLivestock.Tip.Feed>Dernier repas</ContentedLivestock.Tip.Feed>
+  <ContentedLivestock.Tip.Space>Pâture et espace</ContentedLivestock.Tip.Space>
+  <ContentedLivestock.Tip.Temperature>Température</ContentedLivestock.Tip.Temperature>
+  <ContentedLivestock.Tip.Health>Santé</ContentedLivestock.Tip.Health>
+  <ContentedLivestock.Tip.Company>Compagnie</ContentedLivestock.Tip.Company>
+
+  <!-- Réglages -->
+  <ContentedLivestock.Settings.Intro>Les animaux de la colonie ont un besoin de bien-être, nourri par la façon dont on les garde. Ce bien-être décide à quelle vitesse ils se remplissent de lait, de laine et d'œufs — et, sous un certain seuil, s'ils se remplissent tout court.</ContentedLivestock.Settings.Intro>
+
+  <ContentedLivestock.Settings.CurveHeader>Ce que vaut le bien-être</ContentedLivestock.Settings.CurveHeader>
+  <ContentedLivestock.Settings.Floor>La production s'arrête en dessous de : {0} %</ContentedLivestock.Settings.Floor>
+  <ContentedLivestock.Settings.FloorTip>Sous ce niveau, l'animal cesse complètement de se remplir. Il garde ce qu'il avait déjà accumulé. À 0 %, la production ne s'arrête jamais.</ContentedLivestock.Settings.FloorTip>
+  <ContentedLivestock.Settings.Plateau>Rythme normal atteint à : {0} %</ContentedLivestock.Settings.Plateau>
+  <ContentedLivestock.Settings.PlateauTip>À ce niveau, l'animal se remplit exactement au rythme du jeu de base. En dessous, le rythme descend jusqu'au seuil d'arrêt ; au-dessus, il monte jusqu'au maximum.</ContentedLivestock.Settings.PlateauTip>
+  <ContentedLivestock.Settings.MinRate>Rythme le plus lent : {0} %</ContentedLivestock.Settings.MinRate>
+  <ContentedLivestock.Settings.MinRateTip>Le rythme juste au-dessus du seuil d'arrêt, en part du rythme du jeu de base.</ContentedLivestock.Settings.MinRateTip>
+  <ContentedLivestock.Settings.MaxRate>Rythme le plus rapide : {0} %</ContentedLivestock.Settings.MaxRate>
+  <ContentedLivestock.Settings.MaxRateTip>Le rythme au bien-être maximal. À 100 %, le mod ne fait plus que pénaliser, sans jamais récompenser.</ContentedLivestock.Settings.MaxRateTip>
+  <ContentedLivestock.Settings.Speed>Vitesse d'évolution : {0} %</ContentedLivestock.Settings.Speed>
+  <ContentedLivestock.Settings.SpeedTip>La distance que le bien-être peut parcourir en un jour. À 100 %, un animal met une journée entière pour passer du pire au meilleur, ou l'inverse.</ContentedLivestock.Settings.SpeedTip>
+
+  <ContentedLivestock.Settings.InputsHeader>Ce qui rend un animal content</ContentedLivestock.Settings.InputsHeader>
+  <ContentedLivestock.Settings.Feed>Nourriture</ContentedLivestock.Settings.Feed>
+  <ContentedLivestock.Settings.FeedTip>Brouter une plante vivante est ce qu'il y a de mieux, puis les produits crus et la viande, puis le foin, puis les croquettes. Le souvenir du dernier repas s'efface en deux jours.</ContentedLivestock.Settings.FeedTip>
+  <ContentedLivestock.Settings.Space>Pâture et espace</ContentedLivestock.Settings.Space>
+  <ContentedLivestock.Settings.SpaceTip>Les animaux à corde sont jugés sur leur enclos : la pâture repousse-t-elle plus vite que le troupeau ne la broute ? C'est le chiffre que la borne d'enclos affiche déjà. Les autres sont jugés sur l'espace au sol par animal dans leur pièce.</ContentedLivestock.Settings.SpaceTip>
+  <ContentedLivestock.Settings.Temperature>Température</ContentedLivestock.Settings.Temperature>
+  <ContentedLivestock.Settings.TemperatureTip>Mesurée contre la plage de confort propre à chaque animal : une étable chauffée compte pour une poule, pas pour un husky.</ContentedLivestock.Settings.TemperatureTip>
+  <ContentedLivestock.Settings.Health>Santé</ContentedLivestock.Settings.Health>
+  <ContentedLivestock.Settings.HealthTip>La douleur, les saignements et la faim tirent le bien-être vers le bas.</ContentedLivestock.Settings.HealthTip>
+  <ContentedLivestock.Settings.Company>Compagnie</ContentedLivestock.Settings.Company>
+  <ContentedLivestock.Settings.CompanyTip>Un lien avec un colon aide. Un animal grégaire tenu à l'écart des siens en souffre.</ContentedLivestock.Settings.CompanyTip>
+
+  <ContentedLivestock.Settings.ProducersOnly>Seulement les animaux qui produisent</ContentedLivestock.Settings.ProducersOnly>
+  <ContentedLivestock.Settings.ProducersOnlyTip>Activé, seuls les animaux qui donnent du lait, de la laine ou des œufs ont un besoin de bien-être. Désactivé, tous les animaux de la colonie l'ont — y compris les animaux de compagnie et de bât, chez qui il s'affiche sans rien changer.</ContentedLivestock.Settings.ProducersOnlyTip>
+
+  <ContentedLivestock.Settings.Reset>Rétablir les valeurs par défaut</ContentedLivestock.Settings.Reset>
+  <ContentedLivestock.Settings.ConfirmReset>Rétablir tous les réglages de Contented Livestock à leur valeur par défaut ?</ContentedLivestock.Settings.ConfirmReset>
+
+</LanguageData>
