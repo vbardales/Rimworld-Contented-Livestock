@@ -8,8 +8,8 @@
       game's code. This has to live in a Directory.Build.props: NuGet restore reads the property
       before the csproj.
     -->
-    <BaseIntermediateOutputPath>$(MSBuildThisFileDirectory)..\..\.build\obj\ContentedLivestock\</BaseIntermediateOutputPath>
-    <BaseOutputPath>$(MSBuildThisFileDirectory)..\..\.build\bin\ContentedLivestock\</BaseOutputPath>
+    <BaseIntermediateOutputPath>$(MSBuildThisFileDirectory)..\.build\obj\ContentedLivestock\</BaseIntermediateOutputPath>
+    <BaseOutputPath>$(MSBuildThisFileDirectory)..\.build\bin\ContentedLivestock\</BaseOutputPath>
   </PropertyGroup>
 
 </Project>

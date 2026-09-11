@@ -1,0 +1,14 @@
+# Build intermediates, kept out of Mod/: the Workshop uploader sends that folder as it is,
+# with no filtering, so a publicised Assembly-CSharp.dll left inside it would be redistributed.
+.build/
+Source/obj/
+Source/bin/
+
+# Claude Code session worktrees and local settings. A session creates its worktree in the
+# current directory, so sometimes inside this one; each is a full copy of the repository.
+# Until this mod was detached, only the machine-wide ignore rule covered this - a property of
+# the machine, not of the repository, which is why it is written here now.
+.claude/
+
+# Windows shortcuts dropped in the mod folder, never content.
+*.lnk
