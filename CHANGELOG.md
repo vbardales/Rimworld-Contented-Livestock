@@ -15,6 +15,10 @@ First version. Not yet tested in a running game.
 - Mod settings for every threshold and rate, the speed of change, and an on/off switch for each of
   the five inputs. `producersOnly` decides whether pets and pack animals carry the need at all.
 - English and French, keyed strings and the def's own label and description.
+- `About/Preview.png`, a lit shelter at night: fed pasture on the left, a cow and her calf on
+  straw inside the heater's pool of light, and the pail, the eggs and the fleece on the right.
+  Engraved with the mod name and its summary line by `_tools/preview.html`, rendered at final
+  size so the glyphs are never resampled; the full-resolution render stays in `Art/`.
 
 ### How it hooks in
 
@@ -31,6 +35,7 @@ First version. Not yet tested in a running game.
 
 ### Known gaps
 
-- No Preview.png or ModIcon.png yet.
+- No ModIcon.png yet. RimWorld runs fine without one, and an off-style icon reads worse in the
+  mod list than none at all.
 - Not run in game. The patches resolve against 1.6.4871 rev590 by reflection, and the defs pass
   `Check-XmlFields`, `Check-DefRefs` and `Check-DefInjected`, but no save has been loaded with it.

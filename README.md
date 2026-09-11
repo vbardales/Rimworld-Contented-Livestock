@@ -113,6 +113,17 @@ dotnet build
 Output goes to `Mod/Assemblies/`; intermediates go to `.build/`, outside the folder the Workshop
 uploader sends.
 
+## Showcase
+
+`Art/` holds the full-resolution renders; `Mod/About/` holds only what ships. The name and summary
+are engraved onto `About/Preview.png` by `_tools/preview.html`, rendered by Chrome headless at
+896x504 so the glyphs are composed at final size and never resampled:
+
+```bash
+chrome --headless=new --window-size=896,504 --force-device-scale-factor=1 \
+  --screenshot=../Mod/About/Preview.png _tools/preview.html
+```
+
 ## What it deliberately does not do
 
 - **No thoughts, no mental states, no new jobs.** Nothing new to do — only reasons for what you
