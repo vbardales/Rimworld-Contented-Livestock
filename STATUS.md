@@ -1,13 +1,14 @@
 ---
-mod:        Contented Livestock
-packageId:  nelim.contentedlivestock
-repo:       Rimworld-Contented-Livestock
-visibility: public
-detached:   yes
-stage:      done
-licence:    original
-licence_at: an original creation, MIT with no reservation. Nothing is reused from another mod - no code, no def, no texture, no sound - and the `LICENSE` is a bare MIT with no scope section, so the showcase images fall under it too. The mechanic is Stardew Valley's, credited in ATTRIBUTION.md and reused from none of its lines.
-showcase:   complete
+mod:          Contented Livestock
+packageId:    nelim.contentedlivestock
+repo:         Rimworld-Contented-Livestock
+visibility:   public
+detached:     yes
+stage:        done
+licence:      original
+licence_at:   an original creation, MIT with no reservation. Nothing is reused from another mod - no code, no def, no texture, no sound - and the `LICENSE` is a bare MIT with no scope section, so the showcase images fall under it too. The mechanic is Stardew Valley's, credited in ATTRIBUTION.md and reused from none of its lines.
+dependencies: none
+showcase:     complete
 tested_on:
 workshop:
 remaining:
@@ -19,8 +20,8 @@ remaining:
     the other fourteen prove nothing.
   - unverified: 5 of the 16 tests are about `Assembly-CSharp` itself and could not be seen to
     fail; the other 11 were, one mutation at a time. The file says which.
-session:    local_d801c303-9176-464c-a49a-66893a87ae7b
-updated:    2026-09-12, held by the mod's own session
+session:      local_d801c303-9176-464c-a49a-66893a87ae7b
+updated:      2026-09-12, held by the mod's own session
 ---
 
 # Contented Livestock — status
@@ -36,6 +37,13 @@ this mod. The three a sweep cannot read:
   not a build stage.
 - **`tested_on`** — empty. Never launched, by standing instruction: the session prepares, she
   plays.
+- **`dependencies`** — `none`. The mod needs nothing but RimWorld itself: no `modDependencies` at
+  all, a `loadAfter` holding the six `Ludeon.RimWorld*` packages and nothing else, and an assembly
+  that references only Assembly-CSharp, the Unity modules and HarmonyLib. The other values of the field are `declared` when every mod needed is named in the
+  About, and `to check` when a non-vanilla `loadAfter` hints at one that is not. An undeclared
+  dependency is not cosmetic: on 2026-09-11 Reequilibrage animaux took 47 vanilla animals down with
+  it, Muffalo included, because the class it injects belongs to a mod that was neither declared nor
+  loaded.
 - **`remaining`** — two lines, both true on 2026-09-12. A third one said the showcase was engraved
   in black, from before that day's rule on the coloured veil; it was re-engraved the same day and
   the line is gone. The veil is `#242838`, the frozen ground beyond the fence, and the worst

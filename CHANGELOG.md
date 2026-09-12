@@ -47,10 +47,12 @@ First version. Not yet tested in a running game.
 
 ### Testing
 
-- `_tools/Run-Functional-Tests.ps1`, sixteen tests in ten seconds with no game launched, asking
+- `_tools/Run-Functional-Tests.ps1`, seventeen tests in ten seconds with no game launched, asking
   whether the vanilla members this mod patches still behave as it assumes. It is what found the
-  bug above. Eleven of the sixteen have been seen to fail under a deliberate fault; the file says
-  which five have not, and why they cannot be.
+  bug above, and a widening of it later turned up a third non-public member on the same footing,
+  `Pawn_NeedsTracker.pawn`, read by the postfix that grants the need at all. Twelve of the
+  seventeen have been seen to fail under a deliberate fault; the file says which five have not,
+  and why they cannot be.
 - `_tools/FUNCTIONAL-SCENARIOS.md`, fifteen scenarios to play in a game, with what to watch and
   what a failure looks like in `Player.log`.
 

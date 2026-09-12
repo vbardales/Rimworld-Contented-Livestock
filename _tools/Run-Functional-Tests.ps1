@@ -25,7 +25,7 @@
     construction     the mod's own classes with no Unity state - the settings, the static rules
                      class - really are instantiated and called here.
 
-  Sixteen tests, in four groups:
+  Seventeen tests, in four groups:
 
     The hooks         why CompTick and Thing.Ingested were the only possible targets, and whether
                       that is still true of 1.6
@@ -36,7 +36,7 @@
 
   Exit code 0 when everything passes, 1 otherwise. About ten seconds.
 
-  ELEVEN OF THE SIXTEEN HAVE BEEN SEEN TO FAIL, one fault at a time in a copy of the mod in a
+  TWELVE OF THE SEVENTEEN HAVE BEEN SEEN TO FAIL, one fault at a time in a copy of the mod in a
   scratch directory, never in the real files. The other five assert facts about the game's own
   assembly and cannot be made to fail without rewriting it. Both lists are at the bottom of this
   file, and the distinction is kept rather than glossed: a test never seen red is a test that has
@@ -403,6 +403,75 @@ this kind throws on its first tick and the whole scaling half of the mod is dead
     if ($problems.Count -gt 0) { return ($problems -join "`n") }
 }
 
+# The test above performs the access, which is the strongest evidence there is, but it can only do
+# it where an instance can be built - two comps. This one asks the wider question by reading the
+# mod's whole IL: which members of the game does it touch that are not public, and is the waiver
+# that makes those legal actually declared?
+#
+# Written after the first version of this file hardcoded two fields and would have missed a third.
+# Pawn_NeedsTracker.pawn is private and is read by the ShouldHaveNeed postfix, which is the path
+# that grants the need at all - so the fault that shipped once was wider than it first looked.
+#
+# Four other non-public members come up and are deliberately NOT faults: Need.pawn,
+# Need.threshPercents, Need.IsFrozen and the ModSettings constructor are protected, and reached
+# from a class that derives from their own. That is legal C# with no waiver of any kind, so the
+# scan excludes an access whose own type is a subclass of the declaring one. Without that rule the
+# test would cry wolf on every well-formed Need subclass in existence.
+Test-Case 'Every non-public game member the mod touches is covered by the waiver' {
+    $fieldOps  = @{ 0x7B=1; 0x7C=1; 0x7D=1; 0x7E=1; 0x7F=1; 0x80=1 }
+    $methodOps = @{ 0x28=1; 0x6F=1; 0x73=1 }
+
+    $atRisk = @{}
+    foreach ($t in $modTypes) {
+        $members = @($t.GetMethods($DECL)) + @($t.GetConstructors($DECL))
+        foreach ($meth in $members) {
+            $body = $null
+            try { $body = $meth.GetMethodBody() } catch { }
+            if ($null -eq $body) { continue }
+            $il = $body.GetILAsByteArray()
+            if ($null -eq $il) { continue }
+
+            for ($i = 0; $i -lt $il.Length - 4; $i++) {
+                $op = [int]$il[$i]
+                $isField = $fieldOps.ContainsKey($op)
+                if (-not ($isField -or $methodOps.ContainsKey($op))) { continue }
+                $tok = [BitConverter]::ToInt32($il, $i + 1)
+
+                $member = $null
+                try {
+                    if ($isField) { $member = $meth.Module.ResolveField($tok) }
+                    else { $member = $meth.Module.ResolveMethod($tok) }
+                } catch { continue }
+                if ($null -eq $member -or $null -eq $member.DeclaringType) { continue }
+                if ($member.DeclaringType.Assembly.GetName().Name -ne 'Assembly-CSharp') { continue }
+                if ($member.IsPublic) { continue }
+
+                # protected, reached from a subclass through `this`: legal, no waiver involved
+                if ($member.DeclaringType.IsAssignableFrom($t)) { continue }
+
+                $atRisk['{0}.{1}' -f $member.DeclaringType.FullName, $member.Name] = $t.Name
+            }
+        }
+    }
+
+    if ($atRisk.Count -eq 0) { return }
+
+    $waived = $false
+    foreach ($a in [System.Reflection.CustomAttributeData]::GetCustomAttributes($modAsm)) {
+        if ($a.AttributeType.Name -notlike 'IgnoresAccessChecksTo*') { continue }
+        foreach ($arg in $a.ConstructorArguments) {
+            if ([string]$arg.Value -eq 'Assembly-CSharp') { $waived = $true }
+        }
+    }
+
+    if (-not $waived) {
+        $lines = foreach ($k in ($atRisk.Keys | Sort-Object)) { "  $k  (from $($atRisk[$k]))" }
+        return ("the mod touches these non-public members of the game:`n" + ($lines -join "`n") + "`n
+and its assembly declares no IgnoresAccessChecksTo(`"Assembly-CSharp`"). Each of them throws
+FieldAccessException or MethodAccessException the first time it is reached.")
+    }
+}
+
 # The reason the need cannot be restricted by its def alone, stated as a fact about NeedDef rather
 # than as a claim in a comment. If a ceiling ever appears, the ShouldHaveNeed postfix becomes
 # removable, and the mod gets smaller.
@@ -684,10 +753,11 @@ if ($script:failed -eq 0) {
 <#
   SEEN TO FAIL
 
-  Eleven tests, each woken by one fault applied on its own to a copy of the mod in a scratch
+  Twelve tests, each woken by one fault applied on its own to a copy of the mod in a scratch
   directory, never to the real files. The test named is the one that went red.
 
     the access waiver removed             The patches can really touch the fields they wrap
+                                          Every non-public game member ... covered by the waiver
     a patched method misspelt             Every [HarmonyPatch] ... names a method the game still has
     __state typed double in a prefix      Injected parameters agree ...
     __result typed int                    Injected parameters agree ...
@@ -725,4 +795,11 @@ if ($script:failed -eq 0) {
     - A mutation has to be buildable. Renaming the DefOf field in two files left a third
       referring to the old name, and the copy simply failed to compile: the run reported a build
       failure rather than a sleeping test, which is the honest outcome but not a result.
+    - A guard written around the two members someone happened to think of is not a guard. The
+      access test names CompMilkable and CompEggLayer because those are the two that can be
+      instantiated here; scanning the whole assembly afterwards turned up a THIRD non-public
+      member with no instance to build - Pawn_NeedsTracker.pawn, private, read by the postfix
+      that grants the need at all. Hence the wider test beside it, which enumerates rather than
+      lists. It also has to exclude the four protected members reached from their own subclasses,
+      Need.pawn among them: those need no waiver and would otherwise be four false alarms.
 #>

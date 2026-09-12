@@ -111,17 +111,22 @@ Two halves, because they answer different questions.
 powershell -ExecutionPolicy Bypass -File _tools/Run-Functional-Tests.ps1
 ```
 
-Sixteen tests, ten seconds, no game launched. They ask whether the vanilla classes this mod hangs
+Seventeen tests, ten seconds, no game launched. They ask whether the vanilla classes this mod hangs
 itself off still do what it hangs itself off them for: that `CompTick` is declared once and
 overridden by no subclass, that it is still what stores into `fullness`, that `Thing.Ingested` is
 still the non-virtual funnel, that every `[HarmonyPatch]` still resolves, and that the patches can
-really touch the fields they wrap. Eleven of the sixteen have been seen to fail under a deliberate
-fault; the five that assert facts about the game's own assembly cannot be, and the file says which
-are which rather than glossing it.
+really touch the fields they wrap. Twelve of the seventeen have been seen to fail under a
+deliberate fault; the five that assert facts about the game's own assembly cannot be, and the file
+says which are which rather than glossing it.
 
 That last test is not decoration. It found, on its first run, that both production patches threw
 `FieldAccessException` at the first tick of every animal, which had gone unnoticed because the mod
 had never been run in a game. See `Source/AccessChecks.cs`.
+
+Its companion enumerates instead of listing: every non-public member of the game the mod's IL
+touches, minus those reached from a subclass of their own declaring type, which need no waiver.
+That is how a third one turned up — `Pawn_NeedsTracker.pawn`, private, read by the postfix that
+grants the need at all, and with no instance to build it could never have been caught by trying.
 
 [`_tools/FUNCTIONAL-SCENARIOS.md`](_tools/FUNCTIONAL-SCENARIOS.md) is the other half: fifteen
 scenarios to play, one thing to watch in each, and what a failure looks like in `Player.log`. No
