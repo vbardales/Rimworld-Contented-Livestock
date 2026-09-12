@@ -37,17 +37,34 @@
   /*
     Darkens the upper-left third so the text reads, and leaves the lit cow alone.
 
-    STYLE_RIMWORLD.md specifies a circle falling to nothing at 74%, which on this
-    picture also swallows the green pasture in the lower left - one of the two
-    things allowed to be vivid here, and the one that says what the animal is
-    being fed. The veil is flattened into an ellipse instead, wide enough to
-    cover the whole text block and short enough to release the pasture. Same
-    colour, same intent, different footprint.
+    The colour is #242838, sampled off the frozen ground beyond the fence in
+    Art/Preview-source.png - averaged over two patches that came back #212532 and
+    #272a38. The style guide asks for one notch of desaturation after sampling,
+    which is a no-op here: at S 0.22 the sample is already the least saturated
+    thing in the picture. It is also the right one to take. The veil colour
+    becomes the colour of this third of the showcase, and what belongs there is
+    the cold the shelter is keeping out, not the warmth of the heater pool -
+    which is one of the two things allowed to be vivid and would have spent that
+    budget on a flat.
+
+    Its relative luminance is 0.022, well under the 0.18 the guide sets, so the
+    ink is the light one and the drop shadows stay: they lift the glyphs off the
+    ground that shows through. The rule keeps its amber, which the guide only
+    gives up when the veil is itself amber or orange.
+
+    Footprint: the guide's dark form is a circle falling to nothing at 74%, which
+    on this picture also swallows the green pasture in the lower left - the other
+    of the two vivid things, and the one that says what the animal is being fed.
+    Flattened into an ellipse instead, wide enough to cover the whole text block
+    and short enough to release the pasture. The acceptance test is the same
+    either way, and it is measured on the rendered PNG: 4.5:1 at the worst of the
+    four corners of the text block. The worst of the four here is 7.8:1, behind the end of the summary
+    where the lean-to roof lifts the ground out from under it.
   */
   .veil {
     position: absolute; inset: 0;
     background: radial-gradient(ellipse 900px 430px at top left,
-                rgba(6, 5, 4, .88) 0%, rgba(6, 5, 4, 0) 100%);
+                rgba(36, 40, 56, .88) 0%, rgba(36, 40, 56, 0) 100%);
   }
 
   .plate {
@@ -57,7 +74,7 @@
 
   .name {
     margin: 0; font-size: 52px; font-weight: 700; line-height: 1;
-    color: #FBF7EF; letter-spacing: -1px;
+    color: #F2ECE1; letter-spacing: -1px;
     text-shadow: 0 2px 18px rgba(0, 0, 0, .55);
   }
 
@@ -68,7 +85,7 @@
   .line {
     margin: 13px 0 0; width: 430px;
     font-size: 21px; line-height: 29px; font-weight: 400;
-    color: rgba(251, 247, 239, .88);
+    color: #D8CFC0;
     text-shadow: 0 1px 12px rgba(0, 0, 0, .6);
   }
 </style>
