@@ -24,7 +24,7 @@ namespace ContentedLivestock
             HarmonyInstance.PatchAll();
         }
 
-        public override string SettingsCategory() => "Contented Livestock";
+        public override string SettingsCategory() => "ContentedLivestock.Settings.Category".Translate();
 
         public override void DoSettingsWindowContents(Rect inRect)
         {

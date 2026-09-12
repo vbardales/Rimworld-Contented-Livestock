@@ -190,5 +190,16 @@ and the out-of-game suite checks the same property on the same code path.
 
 ## What to send back
 
+### Language pass — run in both English and French
+
+Open the mod settings and check the category, section headings, sliders and their tooltips,
+all checkboxes, and the reset confirmation (including its game-provided buttons).
+Inspect an animal's contentment label, description, production-rate tooltip and halted state.
+Exercise all five nonzero factor lines, including positive and negative percentages.
+Check for raw keys, unintended English fallback in French, broken parameters, accents,
+punctuation and clipping. The proper name "Contented Livestock" stays identical in both languages.
+Record the game version, language, screens checked and any failures in STATUS.md;
+until both passes have been performed, runtime translation validation is unverified.
+
 The `Player.log` of the session, and for scenario 9 the two fullness figures a day apart. Those
 two numbers are the only quantitative result in the list; everything else is read off the tip.

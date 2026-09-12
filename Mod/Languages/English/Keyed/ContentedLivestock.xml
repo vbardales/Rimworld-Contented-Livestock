@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
 
+  <ContentedLivestock.Settings.Category>Contented Livestock</ContentedLivestock.Settings.Category>
+
   <!-- Need tooltip -->
   <ContentedLivestock.Tip.Rate>Filling with milk, wool or eggs at {0} of the usual rate.</ContentedLivestock.Tip.Rate>
   <ContentedLivestock.Tip.Halted>Too miserable to produce. Nothing is accumulating, and nothing already gathered is lost.</ContentedLivestock.Tip.Halted>
-  <ContentedLivestock.Tip.Feed>Last fed on</ContentedLivestock.Tip.Feed>
-  <ContentedLivestock.Tip.Space>Pasture and room</ContentedLivestock.Tip.Space>
-  <ContentedLivestock.Tip.Temperature>Temperature</ContentedLivestock.Tip.Temperature>
-  <ContentedLivestock.Tip.Health>Health</ContentedLivestock.Tip.Health>
-  <ContentedLivestock.Tip.Company>Company</ContentedLivestock.Tip.Company>
+  <ContentedLivestock.Tip.Feed>Last fed on: {0}</ContentedLivestock.Tip.Feed>
+  <ContentedLivestock.Tip.Space>Pasture and room: {0}</ContentedLivestock.Tip.Space>
+  <ContentedLivestock.Tip.Temperature>Temperature: {0}</ContentedLivestock.Tip.Temperature>
+  <ContentedLivestock.Tip.Health>Health: {0}</ContentedLivestock.Tip.Health>
+  <ContentedLivestock.Tip.Company>Company: {0}</ContentedLivestock.Tip.Company>
 
   <!-- Settings -->
   <ContentedLivestock.Settings.Intro>Colony animals keep a contentment need built from how they are kept. Contentment sets how fast they fill with milk, wool and eggs — and below a floor, whether they fill at all.</ContentedLivestock.Settings.Intro>

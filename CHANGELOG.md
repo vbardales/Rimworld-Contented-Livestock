@@ -4,6 +4,13 @@
 
 First version. Not yet tested in a running game.
 
+### Translation audit — 2026-09-13
+
+- Make the settings category translatable while preserving the mod's proper name in English
+  and French. Move each factor tooltip's punctuation and value placeholder into its translation.
+- Verify all 35 owned keys in English and French and the need's label and description.
+  Rebuild the shipped DLL; all 21 functional tests pass. In-game language checks remain pending.
+
 ### Added
 
 - **Contentment** (`Nelim_Contentment`), a `NeedDef` carried by colony animals that produce milk,

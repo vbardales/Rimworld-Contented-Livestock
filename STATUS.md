@@ -1,4 +1,7 @@
 ---
+localization: complete
+translation_en: complete
+translation_fr: complete
 mod:          Contented Livestock
 packageId:    nelim.contentedlivestock
 repo:         Rimworld-Contented-Livestock
@@ -12,9 +15,10 @@ dependencies: none
 showcase:     complete
 tested_on:
 workshop:
-automated_tests: 21 passed (2026-09-12)
+automated_tests: 21 passed (2026-09-13)
 manual_scenarios: 15 documented, 0 executed
 remaining:
+  - "unverified: Vérifier en jeu l'affichage English et French : réglages, confirmation, besoin, production active/arrêtée et cinq facteurs ; rechercher clés brutes, repli anglais, erreurs de format et texte tronqué."
   - "Exécuter en jeu les scénarios 0 à 14 de _tools/FUNCTIONAL-SCENARIOS.md, en commençant par le chargement et les patches."
   - "Renseigner tested_on avec la version du jeu et les résultats après validation manuelle."
   - "Limite des tests : 5 contrats du jeu et 4 nouveaux contrôles XML/métadonnées non soumis à mutations ; 12 mutations historiques documentées, non rejouées pendant cet audit."
@@ -32,8 +36,8 @@ hors de `Mod/`, et n'est pas livré au Workshop.
 - **Développement : terminé** (`stage: done`), validation en jeu encore attendue.
 - **Visibilité : public ; licence : original ; licence juridique : MIT.**
   Provenance et justification détaillées ci-dessous.
-- **Tests automatisés : 21/21 réussis**, XML compris, lors de l'audit du 2026-09-12.
-  Aucun nouveau lancement de tests pour cette actualisation documentaire.
+- **Tests automatisés : 21/21 réussis**, XML compris, sur la DLL recompilée le 2026-09-13.
+- **Traductions : inventaire et ressources EN/FR complets** ; affichage en jeu non vérifié.
 - **Tests manuels : 15 scénarios prêts, aucun résultat en jeu enregistré.**
   `tested_on` reste vide ; le scénario 0 est le premier contrôle à effectuer.
 - **Preview : terminée et vérifiée**, accent vert pâture, version 1.6.
@@ -46,6 +50,47 @@ hors de `Mod/`, et n'est pas livré au Workshop.
 
 `licence: original` classe la provenance de ce mod ; `license_spdx: MIT` nomme
 sa licence juridique. La validation automatisée ne remplace pas les essais en jeu.
+## Translation audit — 2026-09-13
+
+Applied the translation gate from the shared `../PUBLISHING.md` and `../TRANSLATIONS.md`.
+Audited working-tree changes based on `54ab232`: all C# under `Source/`, the shipped DLL,
+`Mod/Defs/NeedDefs/Needs_Contentment.xml`, both Keyed files and the French NeedDef injection.
+The published tree has no LoadFolders, version folders, optional integrations, XML patches,
+grammar resources or other generated player-facing text.
+
+- Inventory: 28 settings keys (category, introduction, headings, five slider labels and
+  tooltips, five factor toggles and tooltips, producer toggle and tooltip, reset button and
+  confirmation); seven need-tooltip keys (rate, halted state, five factor lines); two Def
+  fields (`Nelim_Contentment.label` and `.description`). Traced `PercentRow`, `AppendLine`
+  and `GetTipString`, including conditional display. Other runtime code and Harmony patches
+  add no text. English Def values supply the native fallback; French injects both fields.
+- Fixed the hardcoded settings category with `ContentedLivestock.Settings.Category`.
+  Both languages deliberately retain the proper name "Contented Livestock". Each factor
+  line now owns its punctuation and `{0}` value in the language resource, resolved as a
+  complete line rather than concatenated with a translated label.
+- PowerShell source/resource comparison: 35 distinct source keys, 35 nonempty entries per
+  language, no duplicate, missing or unused keys; matching parameter indices and successful
+  `String.Format` checks. Reviewed all English/French text for meaning, terminology, XML,
+  accents and formatting. No custom rich-text tags or grammar tokens are present.
+- `dotnet build Source/ContentedLivestock.csproj --no-restore`: succeeded with zero warnings
+  and errors; shipped `Mod/Assemblies/ContentedLivestock.dll` rebuilt.
+- `powershell -NoProfile -ExecutionPolicy Bypass -File _tools/Run-Functional-Tests.ps1`:
+  21/21 passed against the rebuilt DLL and installed game, including compiled key inventory,
+  XML and DefInjected checks.
+- `powershell -NoProfile -ExecutionPolicy Bypass -File ../scripts/Check-DefInjected.ps1
+  -TransMod ./Mod`: 11,587 Defs indexed, two injection keys checked, zero errors and no
+  unverified targets reported.
+- No explicit game/dependency translation keys are reused. The base need tooltip and
+  standard confirmation buttons are rendered by the game's own UI; they are included in
+  the pending language pass. Internal identifiers, serialization keys, numeric signs and
+  format strings are data; About metadata, licences and repository documentation are outside
+  the in-game gate. No engine limitation prevents translating owned text.
+- All three fields are `complete` for readiness for `preTest`; historical `stage: done`
+  is preserved. Neither language has been tested in game. The language pass is documented
+  in `_tools/FUNCTIONAL-SCENARIOS.md` and tracked as `unverified` in `remaining`.
+  Reset affected translation fields to `unchecked` after relevant source/resource changes
+  until this audit is repeated.
+
 ## What this mod taught the repository, and it outlives the mod
 
 Two things, kept here because they serve whoever comes next:

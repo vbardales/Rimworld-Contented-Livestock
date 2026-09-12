@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
 
+  <ContentedLivestock.Settings.Category>Contented Livestock</ContentedLivestock.Settings.Category>
+
   <!-- Infobulle du besoin -->
   <ContentedLivestock.Tip.Rate>Se remplit de lait, de laine ou d'œufs à {0} du rythme habituel.</ContentedLivestock.Tip.Rate>
   <ContentedLivestock.Tip.Halted>Trop mal en point pour produire. Rien ne s'accumule, et rien de ce qui l'était déjà n'est perdu.</ContentedLivestock.Tip.Halted>
-  <ContentedLivestock.Tip.Feed>Dernier repas</ContentedLivestock.Tip.Feed>
-  <ContentedLivestock.Tip.Space>Pâture et espace</ContentedLivestock.Tip.Space>
-  <ContentedLivestock.Tip.Temperature>Température</ContentedLivestock.Tip.Temperature>
-  <ContentedLivestock.Tip.Health>Santé</ContentedLivestock.Tip.Health>
-  <ContentedLivestock.Tip.Company>Compagnie</ContentedLivestock.Tip.Company>
+  <ContentedLivestock.Tip.Feed>Dernier repas : {0}</ContentedLivestock.Tip.Feed>
+  <ContentedLivestock.Tip.Space>Pâture et espace : {0}</ContentedLivestock.Tip.Space>
+  <ContentedLivestock.Tip.Temperature>Température : {0}</ContentedLivestock.Tip.Temperature>
+  <ContentedLivestock.Tip.Health>Santé : {0}</ContentedLivestock.Tip.Health>
+  <ContentedLivestock.Tip.Company>Compagnie : {0}</ContentedLivestock.Tip.Company>
 
   <!-- Réglages -->
   <ContentedLivestock.Settings.Intro>Les animaux de la colonie ont un besoin de bien-être, nourri par la façon dont on les garde. Ce bien-être décide à quelle vitesse ils se remplissent de lait, de laine et d'œufs — et, sous un certain seuil, s'ils se remplissent tout court.</ContentedLivestock.Settings.Intro>

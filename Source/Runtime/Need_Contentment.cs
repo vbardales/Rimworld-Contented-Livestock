@@ -279,7 +279,7 @@ namespace ContentedLivestock
         {
             if (Mathf.Abs(offset) < 0.005f) return;
             string sign = offset > 0f ? "+" : "";
-            text.AppendLine(key.Translate() + ": " + sign + offset.ToStringPercent("F0"));
+            text.AppendLine(key.Translate(sign + offset.ToStringPercent("F0")));
         }
     }
 }
