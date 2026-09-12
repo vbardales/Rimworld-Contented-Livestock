@@ -10,9 +10,8 @@
   wrap goes on running and scales a delta that is always zero. Neither shows up as a crash, and
   neither shows up in a save.
 
-  So the question here is not "are the defs well formed" - Check-XmlFields, Check-DefRefs and
-  Check-DefInjected in the monorepo answer that - but "do the classes this mod leans on still do
-  what it leans on them for".
+  This standalone repository checks its own shipped XML as well as the runtime contracts.
+  No monorepo scripts are required.
 
   Nothing is simulated. RimWorld cannot be run outside itself: most of its types touch Unity and
   throw on construction, its XML loader among them. Three things do work, and they are enough:
@@ -25,7 +24,7 @@
     construction     the mod's own classes with no Unity state - the settings, the static rules
                      class - really are instantiated and called here.
 
-  Seventeen tests, in four groups:
+  Twenty-one tests, in four groups:
 
     The hooks         why CompTick and Thing.Ingested were the only possible targets, and whether
                       that is still true of 1.6
@@ -737,6 +736,58 @@ Test-Case 'Every key the code asks to translate exists in English and in French'
 }
 
 # ---------------------------------------------------------------- verdict
+
+Test-Case 'All shipped XML parses and translation keys are unique' {
+    foreach ($file in Get-ChildItem (Join-Path $ModPath 'Mod') -Recurse -Filter '*.xml') {
+        [xml]$doc = Get-Content $file.FullName -Raw
+        if ($doc.DocumentElement.Name -eq 'LanguageData') {
+            $duplicates = $doc.DocumentElement.ChildNodes | Where-Object NodeType -eq 'Element' |
+                Group-Object Name | Where-Object Count -gt 1
+            if ($duplicates) { return "Duplicate translation keys in $($file.FullName): $($duplicates.Name -join ', ')" }
+        }
+    }
+}
+
+Test-Case 'NeedDef XML fields exist in the actual game and scalar values have valid types' {
+    [xml]$doc = Get-Content $needDefFile -Raw
+    $type = Get-GameType 'RimWorld.NeedDef'
+    foreach ($node in $doc.SelectSingleNode('//NeedDef').ChildNodes) {
+        if ($node.NodeType -ne 'Element') { continue }
+        $field = $type.GetField($node.Name, $ALL)
+        if ($null -eq $field) { return "Unknown NeedDef field: $($node.Name)" }
+        $ft = $field.FieldType
+        if ($ft.IsEnum) { $null = [Enum]::Parse($ft, $node.InnerText, $false) }
+        elseif ($ft.IsPrimitive) {
+            $null = [Convert]::ChangeType($node.InnerText, $ft, [Globalization.CultureInfo]::InvariantCulture)
+        }
+    }
+}
+
+Test-Case 'DefInjected translations target a declared need and a translatable field' {
+    [xml]$doc = Get-Content $needDefFile -Raw
+    $names = @($doc.SelectNodes('//NeedDef/defName') | ForEach-Object InnerText)
+    foreach ($file in Get-ChildItem (Join-Path $ModPath 'Mod/Languages') -Recurse -Filter '*.xml' |
+        Where-Object { $_.FullName -match '[\\/]DefInjected[\\/]' }) {
+        if ($file.Directory.Name -ne 'NeedDef') { return "Unexpected DefInjected type: $($file.Directory.Name)" }
+        [xml]$translation = Get-Content $file.FullName -Raw
+        foreach ($node in $translation.DocumentElement.ChildNodes) {
+            if ($node.NodeType -ne 'Element') { continue }
+            $parts = $node.Name.Split('.')
+            if ($parts.Count -ne 2 -or $names -notcontains $parts[0] -or
+                @('label', 'description') -notcontains $parts[1]) {
+                return "Invalid DefInjected target: $($node.Name)"
+            }
+        }
+    }
+}
+
+Test-Case 'About metadata identifies this repository and includes GitHub in its description' {
+    [xml]$about = Get-Content (Join-Path $ModPath 'Mod/About/About.xml') -Raw
+    $url = 'https://github.com/vbardales/Rimworld-Contented-Livestock'
+    if ($about.ModMetaData.packageId -ne 'nelim.contentedlivestock') { return 'Wrong packageId' }
+    if ($about.ModMetaData.url -ne $url) { return 'Wrong source URL' }
+    if (-not $about.ModMetaData.description.Contains($url)) { return 'Description has no GitHub link' }
+}
 
 [System.AppDomain]::CurrentDomain.remove_AssemblyResolve($script:asmResolver)
 
