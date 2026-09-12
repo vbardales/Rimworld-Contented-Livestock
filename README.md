@@ -144,15 +144,14 @@ uploader sends.
 
 ## Showcase
 
-`Art/` holds the full-resolution renders; `Mod/About/` holds only what ships. The name and summary
-are engraved onto `About/Preview.png` by `_tools/preview.html`, rendered by Chrome headless at
-896x504 so the glyphs are composed at final size and never resampled:
+`Art/Preview.png` holds the illustration without text; `Art/Preview-source.png` preserves
+its original. `Art/preview.html` composes the overlay at 896x504 using the single palette
+in `Art/preview-palette.json`. The version badge reads the shipped About.xml.
 
-```bash
-chrome --headless=new --window-size=896,504 --force-device-scale-factor=1 \
-  --screenshot=../Mod/About/Preview.png _tools/preview.html
-```
-
+Run `node Art/render-preview.cjs` with `NODE_PATH` pointing to installed `playwright` and
+`sharp` packages. Chrome defaults to its standard Windows installation; `CHROME_PATH`
+can override it. The renderer waits for fonts, checks the actual font faces and contrast,
+and writes `Mod/About/Preview.png`, a 268px thumbnail and QA evidence under `Art/`.
 `About/ModIcon.png` is reduced from the same folder, cropped to the drawing's own bounding box
 first so it keeps as much of its 32 pixels in the mod list as it can:
 

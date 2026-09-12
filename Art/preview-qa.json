@@ -1,0 +1,80 @@
+{
+  "size": [
+    896,
+    504
+  ],
+  "thumbnailWidth": 268,
+  "bytes": 681815,
+  "version": "1.6",
+  "fonts": {
+    ".name": [
+      {
+        "familyName": "Segoe UI Semibold",
+        "postScriptName": "SegoeUI-Semibold",
+        "isCustomFont": false,
+        "glyphCount": 18
+      }
+    ],
+    ".summary": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 48
+      }
+    ],
+    ".version": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI-Bold",
+        "isCustomFont": false,
+        "glyphCount": 3
+      }
+    ]
+  },
+  "boxes": {
+    ".name": {
+      "x": 50,
+      "y": 54,
+      "width": 430,
+      "height": 101.1875
+    },
+    ".summary": {
+      "x": 50,
+      "y": 194.1875,
+      "width": 430,
+      "height": 60.875
+    },
+    ".version": {
+      "x": 846.7371826171875,
+      "y": 4.737185001373291,
+      "width": 44.525634765625,
+      "height": 44.52562713623047
+    }
+  },
+  "contrasts": {
+    ".name": {
+      "minimum": 11.725439271833658,
+      "point": [
+        467,
+        125
+      ],
+      "method": "Every pixel of bounding rectangle on rendered background without text"
+    },
+    ".summary": {
+      "minimum": 5.450636438021036,
+      "point": [
+        479,
+        253
+      ],
+      "method": "Every pixel of bounding rectangle on rendered background without text"
+    },
+    "badge": {
+      "minimum": 9.175145744338389
+    },
+    "tag": {
+      "applicable": false,
+      "reason": "Public original mod; no tag"
+    }
+  }
+}

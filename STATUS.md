@@ -47,8 +47,8 @@ this mod. The four a sweep cannot read:
   loaded.
 - **`remaining`** — two lines, both true on 2026-09-12. A third one said the showcase was engraved
   in black, from before that day's rule on the coloured veil; it was re-engraved the same day and
-  the line is gone. The veil is `#242838`, the frozen ground beyond the fence, and the worst
-  contrast behind the text measures 7.8:1 against a 4.5:1 floor.
+  the line is gone. The earlier veil used the frozen ground beyond the fence, and the historical worst
+  contrast was 7.8:1. The current recomposition and measurements are recorded below.
 
 `licence` vocabulary: `open` an explicit licence, `silent` no licence and a dead source,
 `alive` no licence but a living source, `forbidden` a written refusal, `original` owing nothing
@@ -127,3 +127,57 @@ Cette justification repose sur la provenance documentée dans le dépôt.
 - **Validation en jeu toujours en attente** : aucun scénario manuel exécuté ici.
   Le chargeur XML du jeu, l'interface, les facteurs en situation et la production
   réelle doivent encore être validés. `tested_on` reste vide à cette fin.
+
+## Surcouche Preview recomposée — 2026-09-12
+
+- Illustration conservée, sans génération ni remplacement : `Art/Preview-source.png`
+  reste l'original et sa copie identique `Art/Preview.png` est la source canonique
+  sans texte. Aucune ancienne source n'a été écrasée.
+- Image livrée : `Mod/About/Preview.png`, 896 × 504, 681 815 octets (< 900 Ko).
+- Composition HTML/CSS et paramètres : `Art/preview.html` ; couleurs uniquement
+  dans `Art/preview-palette.json`. `_tools/preview.html` redirige vers cette composition.
+- Reproduction : `Art/render-preview.cjs`, avec Node, Playwright, Sharp et Chrome.
+  Le script sert localement le dépôt, attend `document.fonts.ready` et le chargement
+  de l'image, capture à la taille finale, puis mesure le fond sans les textes.
+- Palette : voile issu du sol ardoise froid au-delà de la clôture ; accent vif
+  vert issu de la pâture, dont la saturation et la clarté sont renforcées. Cette zone
+  significative représente l'alimentation des animaux et se distingue de l'ambiance
+  chaude dominante, contrairement au précédent accent orangé. Encre secondaire ocre dorée éclaircie, issue de la famille
+  chaude dominante du sol, du bois et de la paille, et non d'une moyenne des pixels.
+  Elle reste définie mais inutilisée : aucun tag pour ce mod public et original.
+- Titre et résumé strictement conservés, même encre principale. Titre 46 px/600,
+  deux lignes ; résumé 21 px/400, largeur 430 px. Bloc à (50, 54), filet 58 × 3,
+  espacements 20 et 16 px. Ombres conformes au voile sombre de la charte.
+- Voile elliptique localisé (900 × 430), opacité .90 au départ, .75 à 75 %, puis
+  nulle à 100 % : maintien du contraste sans assombrir toute la scène.
+- Badge triangulaire 80 × 80 ; centre des chiffres (869, 27), rotation 45°,
+  26 px/700. Version 1.6 extraite des supportedVersions de l'About.xml livré.
+- Police réellement employée vérifiée via Chrome DevTools : Segoe UI Semibold
+  pour le titre, Segoe UI Regular pour le résumé, Segoe UI Bold pour la version.
+  Aucun repli ; attente effective de document.fonts.ready avant capture.
+- Contrastes sur le rendu sans texte : minimum sur TOUS les pixels des rectangles
+  du titre et du résumé, donc contrôle plus large que les quatre coins ou glyphes.
+  Titre 11,73:1 ; résumé 5,45:1 ; chiffres du badge 9,18:1 sur son fond opaque.
+  Tag non applicable. Rapport reproductible : `Art/preview-qa.json` ; fond mesuré :
+  `Art/preview-background.png`.
+- Inspection visuelle effectuée à 896 × 504 et sur `Art/preview-268.png` : titre et
+  version identifiables, filet visible, aucun chevauchement ni texte coupé.
+- Travail local uniquement : aucune publication ni push pour cette recomposition.
+
+### Ajustement selon la charte révisée — 2026-09-12
+
+L'accent du filet et du badge est désormais le vert vif de la pâture, distinct de
+l'encre secondaire ocre dorée et de la famille dominante terre/bois/paille.
+La secondaire conserve cette famille chaude ; elle n'est pas affichée puisque le
+nom ne comporte aucun préfixe/suffixe et que le mod n'appelle aucun tag de statut.
+Les deux mots « Contented Livestock » sont essentiels : ils restent à 100 %,
+46 px/600, en encre principale identique au résumé, sans réduction artificielle.
+Les HEX définitifs restent uniquement dans `Art/preview-palette.json`.
+
+Nouvelle capture via `Art/render-preview.cjs`, après document.fonts.ready ; Segoe UI
+confirmée sans repli, version 1.6 relue dans About.xml. Inspection des deux rendus
+896 × 504 et 268 px : filet et badge verts identifiables, titre intact, aucun
+chevauchement ni découpe. L'accent vert se sépare nettement de la famille ocre.
+Contrastes : titre 11,73:1, résumé 5,45:1, badge 9,18:1 ; tag non applicable.
+Rapport `Art/preview-qa.json` actualisé ; PNG livré de 681 815 octets.
+Illustration sans texte conservée à l'identique. Aucune publication.

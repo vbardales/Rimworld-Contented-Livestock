@@ -1,0 +1,36 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Contented Livestock — Preview</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 896px; height: 504px; overflow: hidden; }
+body { position: relative; font-family: "Segoe UI", system-ui, sans-serif; }
+.scene, .veil { position: absolute; inset: 0; }
+.scene { background: url('Preview.png') top center / cover no-repeat; }
+.veil { background: radial-gradient(ellipse 900px 430px at top left, rgb(var(--veil-rgb) / .90) 0%, rgb(var(--veil-rgb) / .75) 75%, rgb(var(--veil-rgb) / 0) 100%); }
+.plate { position: absolute; left: 50px; top: 54px; color: var(--inkPrimary); text-shadow: 0 3px 10px rgba(0,0,0,.75); }
+.name { font-size: 46px; font-weight: 600; line-height: 1.1; letter-spacing: 0; }
+.tag { font-size: 24px; font-weight: 400; line-height: 1.1; letter-spacing: .2px; margin-top: 8px; color: var(--inkSecondary); }
+.rule { width: 58px; height: 3px; background: var(--accent); margin: 20px 0 16px; }
+.summary { width: 430px; font-size: 21px; font-weight: 400; line-height: 1.45; letter-spacing: 0; }
+.badge { position: absolute; right: 0; top: 0; width: 80px; height: 80px; background: var(--accent); clip-path: polygon(0 0,100% 0,100% 100%); }
+.version { position: absolute; left: 869px; top: 27px; transform: translate(-50%,-50%) rotate(45deg); font-size: 26px; font-weight: 700; line-height: 1; color: var(--badgeInk); }
+</style></head><body>
+<div class="scene"></div><div class="veil"></div>
+<div class="plate"><h1 class="name">Contented<br>Livestock</h1><div class="rule"></div><p class="summary">How you keep an animal decides what it gives you.</p></div>
+<div class="badge"></div><span class="version"></span>
+<script>
+window.previewReady = (async () => {
+ const palette = await (await fetch('preview-palette.json')).json();
+ for (const [key,value] of Object.entries(palette)) document.documentElement.style.setProperty('--'+key,value);
+ document.documentElement.style.setProperty('--veil-rgb', palette.veil.match(/[a-f\d]{2}/gi).map(x=>parseInt(x,16)).join(' '));
+ const xml = new DOMParser().parseFromString(await (await fetch('../Mod/About/About.xml')).text(),'text/xml');
+ const versions = [...xml.querySelectorAll('supportedVersions > li')].map(n=>n.textContent.trim()).filter(v=>/^\d+\.\d+(\.\d+)?$/.test(v));
+ versions.sort((a,b)=>{const x=a.split('.').map(Number),y=b.split('.').map(Number);for(let i=0;i<Math.max(x.length,y.length);i++){if((x[i]||0)!==(y[i]||0))return (x[i]||0)-(y[i]||0);}return 0;});
+ if (!versions.length) throw new Error('No stable supported version');
+ document.querySelector('.version').textContent=versions.at(-1);
+ await document.fonts.ready;
+ await Promise.all([...document.images].map(i=>i.decode()));
+ const bg=new Image(); bg.src='Preview.png'; await bg.decode();
+ return {palette,version:versions.at(-1)};
+})();
+</script></body></html>
