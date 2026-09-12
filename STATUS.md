@@ -50,7 +50,8 @@ this mod. The three a sweep cannot read:
   contrast behind the text measures 7.8:1 against a 4.5:1 floor.
 
 `licence` vocabulary: `open` an explicit licence, `silent` no licence and a dead source,
-`alive` no licence but a living source, `forbidden` a written refusal, `original` nothing reused.
+`alive` no licence but a living source, `forbidden` a written refusal, `original` owing nothing
+to anyone — not a name, not an idea traceable to one mod, not a value derived from its assets.
 
 ## What this mod taught the repository, and it outlives the mod
 
