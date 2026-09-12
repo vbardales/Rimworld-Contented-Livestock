@@ -30,7 +30,7 @@ Read by a sweep across every mod, rather than by asking each thread in turn. It 
 root, never inside `Mod/`, so Steam never receives it.
 
 The fields above were read off the disk on 2026-09-12, then taken over by the session that holds
-this mod. The three a sweep cannot read:
+this mod. The four a sweep cannot read:
 
 - **`stage`** — `done`. The mod is complete, detached, its showcase is made and its tests are
   written. What is missing is a run in a game, which `tested_on` and `remaining` say, and which is
