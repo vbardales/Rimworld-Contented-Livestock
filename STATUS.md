@@ -12,48 +12,40 @@ dependencies: none
 showcase:     complete
 tested_on:
 workshop:
+automated_tests: 21 passed (2026-09-12)
+manual_scenarios: 15 documented, 0 executed
 remaining:
-  - unverified: never seen running in game. Cut down a great deal on 2026-09-11 by
-    `_tools/Run-Functional-Tests.ps1`, originally 17 out-of-game tests (21 after this audit), which found and had fixed a
-    `FieldAccessException` thrown on every animal's first tick — the whole production half
-    was inert behind a clean startup. What remains is the 15 scenarios of
-    `_tools/FUNCTIONAL-SCENARIOS.md`, none played, starting with the zeroth: until it passes,
-    the other fourteen prove nothing.
-  - unverified: 5 of the original 17 tests are about `Assembly-CSharp` itself and could not be seen to
-    fail; the other 12 were, one mutation at a time. The file says which.
+  - "Exécuter en jeu les scénarios 0 à 14 de _tools/FUNCTIONAL-SCENARIOS.md, en commençant par le chargement et les patches."
+  - "Renseigner tested_on avec la version du jeu et les résultats après validation manuelle."
+  - "Limite des tests : 5 contrats du jeu et 4 nouveaux contrôles XML/métadonnées non soumis à mutations ; 12 mutations historiques documentées, non rejouées pendant cet audit."
 session:      01a09726-7616-7ad2-bc3c-d94a8e24da95
-updated:      2026-09-12, maintained by Codex in this standalone repository
+updated:      2026-09-13, maintained by Codex in this standalone repository
 ---
 
 # Contented Livestock — status
 
-Read by a sweep across every mod, rather than by asking each thread in turn. It lives at the
-root, never inside `Mod/`, so Steam never receives it.
+## État actuel — 2026-09-13
 
-The fields above were read off the disk on 2026-09-12, then taken over by the session that holds
-this mod. The four a sweep cannot read:
+Maintenu par Codex pour ce dépôt local autonome. Ce fichier reste à la racine,
+hors de `Mod/`, et n'est pas livré au Workshop.
 
-- **`stage`** — `done`. The mod is complete, detached, its showcase is made and its tests are
-  written. What is missing is a run in a game, which `tested_on` and `remaining` say, and which is
-  not a build stage.
-- **`tested_on`** — empty. Never launched, by standing instruction: the session prepares, she
-  plays.
-- **`dependencies`** — `none`. The mod needs nothing but RimWorld itself: no `modDependencies` at
-  all, a `loadAfter` holding the six `Ludeon.RimWorld*` packages and nothing else, and an assembly
-  that references only Assembly-CSharp, the Unity modules and HarmonyLib. The other values of the field are `declared` when every mod needed is named in the
-  About, and `to check` when a non-vanilla `loadAfter` hints at one that is not. An undeclared
-  dependency is not cosmetic: on 2026-09-11 Reequilibrage animaux took 47 vanilla animals down with
-  it, Muffalo included, because the class it injects belongs to a mod that was neither declared nor
-  loaded.
-- **`remaining`** — two lines, both true on 2026-09-12. A third one said the showcase was engraved
-  in black, from before that day's rule on the coloured veil; it was re-engraved the same day and
-  the line is gone. The earlier veil used the frozen ground beyond the fence, and the historical worst
-  contrast was 7.8:1. The current recomposition and measurements are recorded below.
+- **Développement : terminé** (`stage: done`), validation en jeu encore attendue.
+- **Visibilité : public ; licence : original ; licence juridique : MIT.**
+  Provenance et justification détaillées ci-dessous.
+- **Tests automatisés : 21/21 réussis**, XML compris, lors de l'audit du 2026-09-12.
+  Aucun nouveau lancement de tests pour cette actualisation documentaire.
+- **Tests manuels : 15 scénarios prêts, aucun résultat en jeu enregistré.**
+  `tested_on` reste vide ; le scénario 0 est le premier contrôle à effectuer.
+- **Preview : terminée et vérifiée**, accent vert pâture, version 1.6.
+  Composition, palette et preuves de vérification conservées dans `Art/`.
+- **GitHub : audit poussé dans `e986f22`, Preview poussée dans `c147b65` sur main.**
+- **Workshop : aucune publication effectuée dans cette session**, aucun identifiant
+  renseigné dans ce statut.
+- **Dépendances déclarées : aucune** dans About.xml ; `loadAfter` ne contient que
+  les packages Ludeon. Les références de compilation sont détaillées dans le projet.
 
-`licence` vocabulary: `open` an explicit licence, `silent` no licence and a dead source,
-`alive` no licence but a living source, `forbidden` a written refusal, `original` owing nothing
-to anyone — not a name, not an idea traceable to one mod, not a value derived from its assets.
-
+`licence: original` classe la provenance de ce mod ; `license_spdx: MIT` nomme
+sa licence juridique. La validation automatisée ne remplace pas les essais en jeu.
 ## What this mod taught the repository, and it outlives the mod
 
 Two things, kept here because they serve whoever comes next:
@@ -162,22 +154,10 @@ Cette justification repose sur la provenance documentée dans le dépôt.
   `Art/preview-background.png`.
 - Inspection visuelle effectuée à 896 × 504 et sur `Art/preview-268.png` : titre et
   version identifiables, filet visible, aucun chevauchement ni texte coupé.
-- Travail local uniquement : aucune publication ni push pour cette recomposition.
+- Recomposition commitée et poussée sur origin/main à la demande de l'utilisateur :
+  `c147b65`. Aucune publication Workshop effectuée.
 
-### Ajustement selon la charte révisée — 2026-09-12
-
-L'accent du filet et du badge est désormais le vert vif de la pâture, distinct de
-l'encre secondaire ocre dorée et de la famille dominante terre/bois/paille.
-La secondaire conserve cette famille chaude ; elle n'est pas affichée puisque le
-nom ne comporte aucun préfixe/suffixe et que le mod n'appelle aucun tag de statut.
-Les deux mots « Contented Livestock » sont essentiels : ils restent à 100 %,
-46 px/600, en encre principale identique au résumé, sans réduction artificielle.
-Les HEX définitifs restent uniquement dans `Art/preview-palette.json`.
-
-Nouvelle capture via `Art/render-preview.cjs`, après document.fonts.ready ; Segoe UI
-confirmée sans repli, version 1.6 relue dans About.xml. Inspection des deux rendus
-896 × 504 et 268 px : filet et badge verts identifiables, titre intact, aucun
-chevauchement ni découpe. L'accent vert se sépare nettement de la famille ocre.
-Contrastes : titre 11,73:1, résumé 5,45:1, badge 9,18:1 ; tag non applicable.
-Rapport `Art/preview-qa.json` actualisé ; PNG livré de 681 815 octets.
-Illustration sans texte conservée à l'identique. Aucune publication.
+Le titre ne comporte ni préfixe/suffixe ni mot de liaison à réduire : les deux mots
+« Contented Livestock » restent à 100 %, en encre principale identique au résumé.
+La séparation du vert de l'accent et de l'ocre secondaire a été vérifiée visuellement
+aux deux tailles de rendu. Les paramètres définitifs sont ceux des fichiers cités.
