@@ -1,5 +1,4 @@
 using RimWorld;
-using UnityEngine;
 using Verse;
 
 namespace ContentedLivestock
@@ -64,15 +63,7 @@ namespace ContentedLivestock
             var need = NeedOf(pawn);
             if (need == null) return 1f;
 
-            float level = need.CurLevel;
-            float floor = settings.floorLevel;
-            float plateau = Mathf.Max(settings.plateauLevel, floor + 0.01f);
-
-            if (level < floor) return 0f;
-            if (level < plateau)
-                return Mathf.Lerp(settings.minRateFactor, 1f, (level - floor) / (plateau - floor));
-            if (plateau >= 1f) return settings.maxRateFactor;
-            return Mathf.Lerp(1f, settings.maxRateFactor, (level - plateau) / (1f - plateau));
+            return settings.RateAt(need.CurLevel);
         }
     }
 }

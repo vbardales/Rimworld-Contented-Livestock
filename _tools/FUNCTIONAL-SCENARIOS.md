@@ -19,7 +19,8 @@ nothing below happens in seconds. Where a scenario says *a day*, that is a game 
 
 ## 0. It loads, and the patches take
 
-**Do.** Start the game with the mod active. Load any save. Let one game hour pass with a milkable
+**Do.** Start the game with Harmony before this mod and without a customization mod.
+Load any save. Let one game hour pass with a milkable
 animal alive.
 
 **Expect.** No red text at startup, and none at that first hour.
@@ -62,9 +63,11 @@ the sold one.
 
 ## 3. The producers-only switch
 
-**Do.** In the mod settings, turn `producersOnly` off. Look at the husky.
+**Do.** In the mod settings, turn `producersOnly` off, close the window and resume play.
+Look at the husky, including one previously in a caravan after returning to the map.
 
-**Expect.** The husky now carries contentment. Turn the setting back on and it goes.
+**Expect.** The husky now carries contentment. Turn the setting back on and close the
+window: it goes. A cow/hen retains its existing level through both changes.
 
 ---
 
@@ -86,6 +89,9 @@ type flags: hay and standing grass share the same flag. If hay reads as grazing,
 has broken.
 
 ## 5. Temperature is measured against the animal's own range
+
+**Precondition.** Turn producers-only off and close settings so the husky has a
+contentment need too. Restore the setting after this scenario.
 
 **Do.** Put a husky and a hen in the same unheated room in winter. Read both Temperature lines.
 Then heat the room to the middle of the hen's comfortable band.
@@ -188,12 +194,67 @@ and the out-of-game suite checks the same property on the same code path.
 
 ---
 
+## 15. Primary settings, defaults, boundaries and reset
+
+**Preconditions.** A separate test profile with no existing Contented Livestock settings,
+Harmony enabled, no RIMMSQOL/customization tool, and a new colony using the shared setup.
+Repeat on an existing save. Keep the player's normal settings/saves intact.
+
+**Do.** Open Options -> Mod options -> Contented Livestock, scroll to every control.
+Check the five slider defaults (25, 60, 40, 140, 100%) and all six enabled toggles.
+Move each slider to both ends: floor 0–50, plateau 30–90, minimum 0–100,
+maximum 100–200, speed 25–400%. Set floor 50 then try plateau 30.
+Set distinctive nondefault values, close/reopen, then quit/relaunch and reload.
+Open the reset confirmation, cancel once, then confirm on the second attempt.
+
+**Expect.** Every control is accessible. Plateau stays at least five percentage
+points above floor. Cancel preserves edits; confirm restores all eleven defaults.
+Both kinds of reopening preserve saved values. Settings are global across test saves.
+No editable numeric text field is present, so empty/invalid text entry is inapplicable.
+No red errors or repeated exceptions in Player.log during any action.
+
+## 16. Each setting has its effect when play resumes
+
+**Preconditions.** Animals with nonzero feed, space, temperature, health and company
+contributions; note their contentment and production progress before each experiment.
+
+**Do.** Disable each factor independently, close settings, resume and wait one need
+interval; inspect the tooltip and direction of contentment. Restore it and repeat.
+Repeat scenarios 9–10 with floor/plateau/minimum/maximum at distinctive legal values.
+Compare equal initial/target conditions with speed 25, 100 and 400%.
+
+**Expect.** A disabled factor contributes zero, disappears from the tooltip and returns
+after restoration; pasture/company do not keep their old contribution after closing.
+Rates follow the selected floor/plateau and minimum/maximum. Speed changes convergence,
+not the current level instantly, with no overshoot. Current accumulated products are
+retained. Repeat producers-only using scenario 3; it must update without reloading.
+
+## 17. Optional MainButtons shortcut and shared settings
+
+**Preconditions.** First run without a customization tool; then enable the installed
+RimWorld 1.6 RIMMSQOL build and record its DLL version/hash. Use a clean RIMMSQOL
+visibility configuration. Repeat the full scenario in English and French.
+
+**Do.** Check the main bar before any customization. In RIMMSQOL, locate Main Buttons
+-> Contented Livestock (`Nelim_ContentedLivestockSettings`) and enable Visible.
+Open it, change a slider and toggle, close, and inspect the same settings via Options.
+Edit through Options and reopen via the shortcut. Hide the shortcut in RIMMSQOL;
+restart and reload. Reveal it again and use it from the world view without a map.
+
+**Expect.** Initially there is neither a visible nor greyed-out button. RIMMSQOL can
+find, reveal and hide the definition. Both routes open the same page and share values,
+reset, saving and the application behavior from scenarios 15–16. RIMMSQOL's visibility
+choice survives restart without this mod overwriting it. Removing RIMMSQOL leaves
+primary settings usable. Logs remain clean. Test other customization tools only if
+claiming their compatibility, and identify each tool/version separately.
+
 ## What to send back
 
 ### Language pass — run in both English and French
 
 Open the mod settings and check the category, section headings, sliders and their tooltips,
-all checkboxes, and the reset confirmation (including its game-provided buttons).
+all checkboxes, scope/application guidance, and the reset confirmation (including its
+game-provided buttons). Run scenario 17 for the shortcut label, tooltip and same settings UI.
 Inspect an animal's contentment label, description, production-rate tooltip and halted state.
 Exercise all five nonzero factor lines, including positive and negative percentages.
 Check for raw keys, unintended English fallback in French, broken parameters, accents,

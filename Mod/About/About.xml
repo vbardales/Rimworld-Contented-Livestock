@@ -6,6 +6,14 @@
   <supportedVersions>
     <li>1.6</li>
   </supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+      <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+    </li>
+  </modDependencies>
   <url>https://github.com/vbardales/Rimworld-Contented-Livestock</url>
   <description>A cow in RimWorld gives the same fourteen milk whether it spends its life on good grass or in a concrete corridor. This mod makes how you keep an animal decide what it gives you.
 
@@ -41,6 +49,9 @@ It does not add an alert. An animal that has stopped producing says so in its ow
 
 COMPATIBILITY
 
+Requires Harmony, loaded before this mod (built and checked with Harmony 2.4.2.0).
+RIMMSQOL is optional: mod settings are always available through Mod options.
+
 Safe to add to an existing save. Safe to remove: an animal with no contentment need produces at exactly the vanilla rate, which is the same thing that happens the moment you uninstall.
 
 Works with modded animals and modded animal products without patches, as long as they use the game's own milkable, shearable or egg-laying machinery.
@@ -63,6 +74,7 @@ THANKS
 
 ConcernedApe, whose farm animals in Stardew Valley refuse to give anything at all when they are unhappy, and give their best when they have been let out on fresh grass. The idea is his; none of his work is here.</description>
   <loadAfter>
+    <li>brrainz.harmony</li>
     <li>Ludeon.RimWorld</li>
     <li>Ludeon.RimWorld.Royalty</li>
     <li>Ludeon.RimWorld.Ideology</li>

@@ -63,8 +63,7 @@ namespace ContentedLivestock
             var settings = ContentedLivestockMod.Settings;
             RefreshThresholdMarkers(settings);
 
-            float step = Mathf.Max(settings.adjustSpeed, 0.05f) * (150f / 60000f);
-            CurLevel = Mathf.MoveTowards(CurLevel, TargetLevel(), step);
+            CurLevel = settings.NextLevel(CurLevel, TargetLevel());
         }
 
         /// <summary>
@@ -86,13 +85,14 @@ namespace ContentedLivestock
         public float TargetLevel()
         {
             RefreshCachesIfDue();
-            return Mathf.Clamp01(0.5f
-                + FeedOffset()
-                + cachedSpaceOffset
-                + TemperatureOffset()
-                + HealthOffset()
-                + cachedCompanyOffset);
+            return ContentedLivestockMod.Settings.TargetFromContributions(
+                FeedOffset(), SpaceOffset(), TemperatureOffset(), HealthOffset(), CompanyOffset());
         }
+
+        public void InvalidateEnvironmentCache() => cachedAtTick = -999999;
+
+        private float SpaceOffset() => ContentedLivestockMod.Settings.penMatters ? cachedSpaceOffset : 0f;
+        private float CompanyOffset() => ContentedLivestockMod.Settings.companyMatters ? cachedCompanyOffset : 0f;
 
         // ---------------------------------------------------------------- contributions
 
@@ -267,10 +267,10 @@ namespace ContentedLivestock
             text.AppendLine();
 
             AppendLine(text, "ContentedLivestock.Tip.Feed", FeedOffset());
-            AppendLine(text, "ContentedLivestock.Tip.Space", cachedSpaceOffset);
+            AppendLine(text, "ContentedLivestock.Tip.Space", SpaceOffset());
             AppendLine(text, "ContentedLivestock.Tip.Temperature", TemperatureOffset());
             AppendLine(text, "ContentedLivestock.Tip.Health", HealthOffset());
-            AppendLine(text, "ContentedLivestock.Tip.Company", cachedCompanyOffset);
+            AppendLine(text, "ContentedLivestock.Tip.Company", CompanyOffset());
 
             return text.ToString().TrimEndNewlines();
         }

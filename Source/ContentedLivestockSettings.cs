@@ -1,3 +1,5 @@
+using System;
+using UnityEngine;
 using Verse;
 
 namespace ContentedLivestock
@@ -28,6 +30,45 @@ namespace ContentedLivestock
         public bool healthMatters = true;
         public bool companyMatters = true;
 
+        // Use the same constraints for stored settings and for the settings window.
+        public void Normalize()
+        {
+            floorLevel = Bounded(floorLevel, 0f, 0.5f, 0.25f);
+            plateauLevel = Bounded(plateauLevel, 0.3f, 0.9f, 0.60f);
+            plateauLevel = Math.Max(plateauLevel, floorLevel + 0.05f);
+            minRateFactor = Bounded(minRateFactor, 0f, 1f, 0.40f);
+            maxRateFactor = Bounded(maxRateFactor, 1f, 2f, 1.40f);
+            adjustSpeed = Bounded(adjustSpeed, 0.25f, 4f, 1f);
+        }
+
+        private static float Bounded(float value, float min, float max, float fallback)
+        {
+            if (float.IsNaN(value) || float.IsInfinity(value)) return fallback;
+            return Math.Min(max, Math.Max(min, value));
+        }
+
+        public float RateAt(float level)
+        {
+            if (level < floorLevel) return 0f;
+            if (level < plateauLevel)
+                return Mathf.Lerp(minRateFactor, 1f, (level - floorLevel) / (plateauLevel - floorLevel));
+            return Mathf.Lerp(1f, maxRateFactor, (level - plateauLevel) / (1f - plateauLevel));
+        }
+
+        public float TargetFromContributions(float feed, float space, float temperature,
+            float health, float company)
+        {
+            return Mathf.Clamp01(0.5f
+                + (feedMatters ? feed : 0f)
+                + (penMatters ? space : 0f)
+                + (temperatureMatters ? temperature : 0f)
+                + (healthMatters ? health : 0f)
+                + (companyMatters ? company : 0f));
+        }
+
+        public float NextLevel(float current, float target)
+            => Mathf.MoveTowards(current, target, adjustSpeed * (150f / 60000f));
+
         public void Reset()
         {
             floorLevel = 0.25f;
@@ -57,6 +98,7 @@ namespace ContentedLivestock
             Scribe_Values.Look(ref temperatureMatters, "temperatureMatters", true);
             Scribe_Values.Look(ref healthMatters, "healthMatters", true);
             Scribe_Values.Look(ref companyMatters, "companyMatters", true);
+            if (Scribe.mode == LoadSaveMode.LoadingVars) Normalize();
         }
     }
 }

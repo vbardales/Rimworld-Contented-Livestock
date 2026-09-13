@@ -1,4 +1,5 @@
 using HarmonyLib;
+using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -26,9 +27,25 @@ namespace ContentedLivestock
 
         public override string SettingsCategory() => "ContentedLivestock.Settings.Category".Translate();
 
+        public override void WriteSettings()
+        {
+            Settings.Normalize();
+            if (Current.Game != null)
+            {
+                foreach (var pawn in PawnsFinder.AllMapsWorldAndTemporary_Alive)
+                {
+                    if (pawn.RaceProps == null || !pawn.RaceProps.Animal || pawn.needs == null) continue;
+                    pawn.needs.AddOrRemoveNeedsAsAppropriate();
+                    Contentment.NeedOf(pawn)?.InvalidateEnvironmentCache();
+                }
+            }
+            base.WriteSettings();
+        }
+
         public override void DoSettingsWindowContents(Rect inRect)
         {
             var settings = Settings;
+            settings.Normalize();
             var viewRect = new Rect(0f, 0f, inRect.width - 20f, Mathf.Max(viewHeight, inRect.height));
 
             Widgets.BeginScrollView(inRect, ref scrollPosition, viewRect);
@@ -36,6 +53,7 @@ namespace ContentedLivestock
             listing.Begin(viewRect);
 
             listing.Label("ContentedLivestock.Settings.Intro".Translate());
+            listing.Label("ContentedLivestock.Settings.Scope".Translate());
             listing.GapLine();
 
             listing.Label("ContentedLivestock.Settings.CurveHeader".Translate());
@@ -88,6 +106,7 @@ namespace ContentedLivestock
             }
 
             viewHeight = listing.CurHeight + 12f;
+            settings.Normalize();
             listing.End();
             Widgets.EndScrollView();
         }

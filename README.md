@@ -9,6 +9,38 @@ wool and eggs off it.
 - Public, original work. Nothing is redistributed — see [ATTRIBUTION.md](ATTRIBUTION.md).
 - packageId `nelim.contentedlivestock`.
 
+## Requirements and settings
+
+Load **Harmony** (`brrainz.harmony`) before Contented Livestock. The installed provider
+used for technical validation is Harmony mod 2.4.2.0, whose runtime assembly reports
+2.4.1.0; the build reference reports 2.4.2.0. Required APIs and compiled attributes
+are checked against that installed runtime by the tests. No Harmony DLL is bundled.
+
+Open **Options -> Mod options -> Contented Livestock**. All eleven settings are global,
+saved when the window closes, and affect existing saves. The window pauses play;
+the current curve and speed take effect when play resumes, while contentment itself
+still moves gradually. Closing refreshes animal eligibility and invalidates cached
+pasture/company observations so their next need update uses the new settings.
+
+An optional `Nelim_ContentedLivestockSettings` main button opens the same native
+settings window and shares its values and persistence. It is hidden by default,
+including the greyed-out state. RIMMSQOL's **Main Buttons -> Contented Livestock ->
+Visible** can reveal it through the standard game field. No customization tool is
+needed for the primary access. Interactive RIMMSQOL validation is still pending.
+
+| Setting | Default | Range |
+| --- | --- | --- |
+| Production floor | 25% | 0–50% |
+| Normal-rate plateau | 60% | 30–90%, at least 5 points above the floor |
+| Minimum rate | 40% | 0–100% |
+| Maximum rate | 140% | 100–200% |
+| Adjustment speed | 100% | 25–400% |
+| Five husbandry factors; producers-only | All on | On/off |
+
+Reset restores all defaults. Missing older fields use those defaults; stored numbers
+outside the allowed ranges are clamped and nonfinite values revert to defaults.
+Numeric entry is through sliders, without manual XML editing.
+
 ## What it does
 
 Every colony animal that produces something carries a **contentment** need, next to food and
@@ -111,7 +143,7 @@ Two halves, because they answer different questions.
 powershell -ExecutionPolicy Bypass -File _tools/Run-Functional-Tests.ps1
 ```
 
-Twenty-one tests, no game launched. They ask whether the vanilla classes this mod hangs
+Thirty-five tests, no game launched. The original contract checks ask whether the vanilla classes this mod hangs
 itself off still do what it hangs itself off them for: that `CompTick` is declared once and
 overridden by no subclass, that it is still what stores into `fullness`, that `Thing.Ingested` is
 still the non-virtual funnel, that every `[HarmonyPatch]` still resolves, and that the patches can
@@ -119,7 +151,12 @@ really touch the fields they wrap. Twelve of the original seventeen have been se
 deliberate fault; the five that assert facts about the game's own assembly cannot be, and the file
 says which are which rather than glossing it. Four additional checks validate shipped XML, NeedDef fields and scalar types, DefInjected targets, and the GitHub metadata; these four have not been mutation-tested.
 
-That last test is not decoration. It found, on its first run, that both production patches threw
+The fourteen settings checks additionally execute production curves, input combinations,
+speed changes and scalar Scribe save/load, and verify shortcut/dependency contracts.
+Native windows, full load finalization and RIMMSQOL interactions still require the game;
+the technical suite does not claim those interactions have passed.
+
+The access check is not decoration. It found, on its first run, that both production patches threw
 `FieldAccessException` at the first tick of every animal, which had gone unnoticed because the mod
 had never been run in a game. See `Source/AccessChecks.cs`.
 
@@ -128,7 +165,7 @@ touches, minus those reached from a subclass of their own declaring type, which 
 That is how a third one turned up — `Pawn_NeedsTracker.pawn`, private, read by the postfix that
 grants the need at all, and with no instance to build it could never have been caught by trying.
 
-[`_tools/FUNCTIONAL-SCENARIOS.md`](_tools/FUNCTIONAL-SCENARIOS.md) is the other half: fifteen
+[`_tools/FUNCTIONAL-SCENARIOS.md`](_tools/FUNCTIONAL-SCENARIOS.md) is the other half: eighteen
 scenarios to play, one thing to watch in each, and what a failure looks like in `Player.log`. No
 amount of reflection can tell you whether a well-kept cow fills faster than a neglected one.
 

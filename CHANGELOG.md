@@ -4,6 +4,21 @@
 
 First version. Not yet tested in a running game.
 
+### Settings and dependency corrections — 2026-09-13
+
+- Add an optional MainButtons shortcut, hidden through the native visibility field,
+  opening the same standard mod settings dialog. Add its English/French text.
+- Declare Harmony as a required runtime dependency and load it first. Resolve the
+  installed Harmony runtime in the tests instead of silently using the NuGet cache.
+- Normalize loaded settings to the UI limits, including crossed thresholds and
+  nonfinite numbers. Explain global scope, persistence and application timing.
+- Refresh animal needs when settings close, so producers-only changes apply to
+  existing animals. Refresh pasture/company caches and suppress disabled factors
+  in both the target calculation and tooltip.
+- Exercise actual production curves, input combinations, adjustment speed, scalar
+  Scribe persistence, older settings and shortcut/dependency contracts. In-game
+  language, window, visibility and save regressions remain pending.
+
 ### Translation audit — 2026-09-13
 
 - Make the settings category translatable while preserving the mod's proper name in English

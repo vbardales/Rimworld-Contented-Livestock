@@ -1,0 +1,41 @@
+
+Contented Livestock - functional tests
+  game    C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed
+  mod     C:\Users\nelim\Documents\rimworld\ContentedLivestock\Mod\Assemblies\ContentedLivestock.dll
+    PASS  CompTick is declared once on the gatherable comp and overridden by no vanilla subclass
+    PASS  ResourceAmount is overridden by subclasses, which is why the tick was chosen instead
+    PASS  CompTick is what writes fullness, and CompEggLayer.CompTick what writes eggProgress
+    PASS  Thing.Ingested is the non-virtual funnel, and IngestedCalculateAmounts is not
+    PASS  Every [HarmonyPatch] in the assembly names a method the game still has
+    PASS  Injected parameters agree with the methods they are injected into
+    PASS  The patches can really touch the fields they wrap
+    PASS  Every non-public game member the mod touches is covered by the waiver
+    PASS  NeedDef still has a floor on intelligence and no ceiling
+    PASS  Food and Rest are still the only Core needs that leave minIntelligence at its default
+    PASS  An animal with no need is worth exactly the vanilla rate, and nothing throws
+    PASS  The documented curve is the shipped default, and it is monotonic
+    PASS  Reset restores every field of the settings, not just the ones someone remembered
+    PASS  Every setting is saved under its own name
+    PASS  The need def names this mod class, and leaves minIntelligence alone
+    PASS  Every DefOf field is a defName this mod actually declares
+    PASS  Every key the code asks to translate exists in English and in French
+    PASS  All shipped XML parses and translation keys are unique
+    PASS  NeedDef XML fields exist in the actual game and scalar values have valid types
+    PASS  DefInjected translations target declared Defs and translatable fields
+    PASS  About metadata identifies this repository and includes GitHub in its description
+    PASS  All eleven first-use defaults and normalization are stable
+    PASS  Numeric bounds, nonfinite values and crossed thresholds normalize safely
+    PASS  Actual production curve follows thresholds and remains monotonic at allowed extremes
+    PASS  All five input toggles affect the actual target in all 32 combinations and restore
+    PASS  Adjustment speed changes the real interval step without overshooting
+    PASS  Real Scribe saves and reloads all scalar settings and the omitted defaults
+    PASS  Older settings retain stored values and supply defaults for missing fields
+    PASS  Stored out-of-range and nonfinite numbers are normalized while loading
+    PASS  Shortcut XML is hidden and its worker preserves the native visibility contract
+    PASS  Shortcut opens the native settings dialog for the same Mod instance and uses native persistence
+    PASS  Production uses the tested settings logic and closing refreshes eligibility and caches
+    PASS  Harmony runtime is provided by the declared optional-tool-independent dependency
+    PASS  Producer detection recognizes milk, wool and eggs and eligibility reads producers-only
+    PASS  EN and FR cover every owned key and Def field with nonempty matching parameters
+
+  35 tests, all passing.

@@ -6,7 +6,14 @@
 sounds. It is original work written against RimWorld's own API, and the MIT licence in `LICENSE`
 covers the whole of the shipped content without a carve-out.
 
-The mod has no dependencies beyond RimWorld itself.
+The mod requires RimWorld 1.6 and **Harmony** (`brrainz.harmony`), by Andreas Pardeike,
+loaded before Contented Livestock. Harmony supplies the runtime patching library;
+its binaries and source are not redistributed here. The build uses Lib.Harmony from
+NuGet as a reference, with runtime assets excluded. See
+[Harmony for RimWorld](https://github.com/pardeike/HarmonyRimWorld).
+
+RIMMSQOL is an optional customization tool, not a dependency. Its source was consulted
+to verify the native `MainButtonDef.buttonVisible` integration; no code was copied.
 
 ## Where the idea comes from
 

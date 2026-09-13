@@ -2,6 +2,7 @@
 <LanguageData>
 
   <ContentedLivestock.Settings.Category>Contented Livestock</ContentedLivestock.Settings.Category>
+  <ContentedLivestock.Settings.Scope>Settings are global and saved when you close this window. Changes apply when play resumes; contentment then changes gradually. Closing also refreshes animal eligibility and pasture/company observations. RIMMSQOL and compatible tools can reveal an optional main-button shortcut to this same page; it is hidden by default.</ContentedLivestock.Settings.Scope>
 
   <!-- Need tooltip -->
   <ContentedLivestock.Tip.Rate>Filling with milk, wool or eggs at {0} of the usual rate.</ContentedLivestock.Tip.Rate>

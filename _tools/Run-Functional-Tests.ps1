@@ -24,7 +24,7 @@
     construction     the mod's own classes with no Unity state - the settings, the static rules
                      class - really are instantiated and called here.
 
-  Twenty-one tests, in four groups:
+  Thirty-five tests, including the settings gate added in Settings-Tests.ps1:
 
     The hooks         why CompTick and Thing.Ingested were the only possible targets, and whether
                       that is still true of 1.6
@@ -32,6 +32,7 @@
                       included, plus the access rights the publicised build needs at runtime
     The mod's code    the settings and the neutral-value rule, instantiated and called
     Defs and text     the need's def, its DefOf, and every translation key the code asks for
+    Settings          actual numeric logic, scalar Scribe round-trips, XML/IL access contracts
 
   Exit code 0 when everything passes, 1 otherwise. About ten seconds.
 
@@ -51,6 +52,10 @@
 .PARAMETER GameData
   RimWorld's Data folder. Point it at a doctored copy to see a data test fail.
 
+.PARAMETER HarmonyPath
+  Assemblies directory selected by the installed Harmony mod's LoadFolders for RimWorld 1.6.
+  No NuGet fallback is used: tests must resolve the actual runtime provider.
+
 .EXAMPLE
   powershell -ExecutionPolicy Bypass -File _tools\Run-Functional-Tests.ps1
 
@@ -60,7 +65,8 @@
 param(
     [string]$ModPath  = (Split-Path -Parent $PSScriptRoot),
     [string]$Managed  = 'C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed',
-    [string]$GameData = 'C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Data'
+    [string]$GameData = 'C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Data',
+    [string]$HarmonyPath = 'C:\Program Files (x86)\Steam\steamapps\workshop\content\294100\2009463077\Current\Assemblies'
 )
 
 $ErrorActionPreference = 'Stop'
@@ -69,18 +75,13 @@ $ErrorActionPreference = 'Stop'
 
 # Same handler as scripts/Check-XmlFields.ps1 in the monorepo, and it carries the same guard:
 # an unresolvable name asked for twice recurses to a stack overflow rather than to an error.
-# One probe directory is specific to this mod - the mod's assembly references HarmonyLib, which
-# is NOT in the game's Managed folder in 1.6; it comes from the Lib.Harmony NuGet package, and
-# without it the patch classes do not even load.
-$harmonyDirs = @()
-$nuget = Join-Path $env:USERPROFILE '.nuget\packages\lib.harmony'
-if (Test-Path $nuget) {
-    $harmonyDirs = Get-ChildItem $nuget -Recurse -Filter '0Harmony.dll' -ErrorAction SilentlyContinue |
-        Where-Object { $_.FullName -match '\\net4' } |
-        ForEach-Object { $_.DirectoryName }
+# One probe directory is specific to this mod: HarmonyLib is NOT in the game's Managed
+# folder in 1.6. Resolve the provider declared in About.xml, not the build's NuGet reference.
+# Use the real runtime provider. A NuGet fallback would hide a missing dependency.
+if (-not (Test-Path (Join-Path $HarmonyPath '0Harmony.dll'))) {
+    throw 'Install Harmony for RimWorld 1.6, or pass -HarmonyPath to its active Assemblies folder.'
 }
-
-$probeDirs = @($Managed) + $harmonyDirs | Select-Object -Unique
+$probeDirs = @($Managed, $HarmonyPath)
 $script:probed = @{}
 $script:asmResolver = [System.ResolveEventHandler]{
     param($sender, $e)
@@ -763,17 +764,21 @@ Test-Case 'NeedDef XML fields exist in the actual game and scalar values have va
     }
 }
 
-Test-Case 'DefInjected translations target a declared need and a translatable field' {
-    [xml]$doc = Get-Content $needDefFile -Raw
-    $names = @($doc.SelectNodes('//NeedDef/defName') | ForEach-Object InnerText)
+Test-Case 'DefInjected translations target declared Defs and translatable fields' {
+    $declared = @{}
+    foreach ($file in Get-ChildItem (Join-Path $ModPath 'Mod/Defs') -Recurse -Filter '*.xml') {
+        [xml]$doc = Get-Content $file.FullName -Raw
+        foreach ($def in $doc.Defs.ChildNodes | Where-Object NodeType -eq Element) {
+            $declared[$def.defName] = $def.Name
+        }
+    }
     foreach ($file in Get-ChildItem (Join-Path $ModPath 'Mod/Languages') -Recurse -Filter '*.xml' |
         Where-Object { $_.FullName -match '[\\/]DefInjected[\\/]' }) {
-        if ($file.Directory.Name -ne 'NeedDef') { return "Unexpected DefInjected type: $($file.Directory.Name)" }
         [xml]$translation = Get-Content $file.FullName -Raw
         foreach ($node in $translation.DocumentElement.ChildNodes) {
             if ($node.NodeType -ne 'Element') { continue }
             $parts = $node.Name.Split('.')
-            if ($parts.Count -ne 2 -or $names -notcontains $parts[0] -or
+            if ($parts.Count -ne 2 -or $declared[$parts[0]] -ne $file.Directory.Name -or
                 @('label', 'description') -notcontains $parts[1]) {
                 return "Invalid DefInjected target: $($node.Name)"
             }
@@ -788,6 +793,8 @@ Test-Case 'About metadata identifies this repository and includes GitHub in its 
     if ($about.ModMetaData.url -ne $url) { return 'Wrong source URL' }
     if (-not $about.ModMetaData.description.Contains($url)) { return 'Description has no GitHub link' }
 }
+
+. (Join-Path $PSScriptRoot 'Settings-Tests.ps1')
 
 [System.AppDomain]::CurrentDomain.remove_AssemblyResolve($script:asmResolver)
 

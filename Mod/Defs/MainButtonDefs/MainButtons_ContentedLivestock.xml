@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <MainButtonDef>
+    <defName>Nelim_ContentedLivestockSettings</defName>
+    <label>Contented Livestock</label>
+    <description>Open Contented Livestock settings.</description>
+    <workerClass>ContentedLivestock.MainButtonWorker_ContentedLivestock</workerClass>
+    <buttonVisible>false</buttonVisible>
+    <validWithoutMap>true</validWithoutMap>
+    <order>990</order>
+  </MainButtonDef>
+</Defs>

@@ -8,27 +8,289 @@ repo:         Rimworld-Contented-Livestock
 visibility:   public
 detached:     yes
 stage:        done
+settings_audit: complete
+dependencies_audit: complete
+audit_revision: 600129c878e335a9bbb2148b1e235d21eb442ce1
+audit_date: 2026-09-13
 licence:      original
 license_spdx: MIT
 licence_at:   an original creation, MIT with no reservation. Nothing is reused from another mod - no code, no def, no texture, no sound - and the `LICENSE` is a bare MIT with no scope section, so the showcase images fall under it too. The mechanic is Stardew Valley's, credited in ATTRIBUTION.md and reused from none of its lines.
-dependencies: none
+dependencies: "brrainz.harmony (required); RIMMSQOL optional, game integration unverified"
 showcase:     complete
 tested_on:
 workshop:
-automated_tests: 21 passed (2026-09-13)
-manual_scenarios: 15 documented, 0 executed
+automated_tests: 35 passed (2026-09-13)
+manual_scenarios: 18 documented, 0 executed
 remaining:
-  - "unverified: Vérifier en jeu l'affichage English et French : réglages, confirmation, besoin, production active/arrêtée et cinq facteurs ; rechercher clés brutes, repli anglais, erreurs de format et texte tronqué."
-  - "Exécuter en jeu les scénarios 0 à 14 de _tools/FUNCTIONAL-SCENARIOS.md, en commençant par le chargement et les patches."
-  - "Renseigner tested_on avec la version du jeu et les résultats après validation manuelle."
-  - "Limite des tests : 5 contrats du jeu et 4 nouveaux contrôles XML/métadonnées non soumis à mutations ; 12 mutations historiques documentées, non rejouées pendant cet audit."
+  - "unverified (done -> tested): Execute scenarios 0-17 in _tools/FUNCTIONAL-SCENARIOS.md; check Player.log, a new colony and an existing save."
+  - "unverified (done -> tested): Open/edit/reset/reopen settings in English and French; check clipping, raw keys, formatting, actual option effects and animal eligibility after closing."
+  - "unverified (done -> tested): Test game restart/save persistence and native settings-window close behavior. Scalar Scribe round-trips passed outside Unity; full game load finalization was not executed."
+  - "unverified (done -> tested): Confirm no visible or greyed-out shortcut initially; reveal/edit/hide with RIMMSQOL and check shared values and visibility persistence. No customization integration has been tested in game."
+  - "Record tested_on with the game/integration versions and results only after successful game validation."
 session:      01a09726-7616-7ad2-bc3c-d94a8e24da95
 updated:      2026-09-13, maintained by Codex in this standalone repository
 ---
 
 # Contented Livestock — status
 
-## État actuel — 2026-09-13
+## Current corrections and validation — 2026-09-13
+
+**`preOptions -> options -> l10n -> preTest -> done` passed under the supplied
+workflow; `tested` remains unverified.** Stage names are literal workflow names.
+The user authorized implementation after the audit. The earlier audit and historical
+results are preserved below; their missing-shortcut/dependency findings are now resolved.
+
+Base revision: `600129c878e335a9bbb2148b1e235d21eb442ce1`, plus the local implementation,
+metadata, EN/FR resources, tests and documentation changes listed by `git status`.
+No commit, push, Workshop publication, image generation or game-profile modification
+was performed. The DLL in `Mod/Assemblies` was rebuilt and is the tested artifact.
+
+**Evidence:** `_tools/results/2026-09-13-settings-tests.txt`,
+`_tools/results/2026-09-13-definjected.txt` and
+`_tools/results/2026-09-13-settings-manifest.json`. The manifest records the base
+revision and SHA256 values of the relevant sources, shipped files and test scripts.
+Shipped DLL SHA256:
+`E69349C34F01E7E3BFF556F1286649F90665B3B5D0F1C5CBE2D35C2551B309B8`.
+
+### Settings audit — complete for the technical gate
+
+- The same eleven useful settings remain available through native Mod options.
+  `Nelim_ContentedLivestockSettings` now provides a MainButtonDef with
+  `buttonVisible=false`, `validWithoutMap=true` and a custom worker that opens
+  `RimWorld.Dialog_ModSettings(ContentedLivestockMod.Instance)`. No extra settings
+  instance, alternative persistence system or compulsory customization mod exists.
+- The worker inherits native Visible, including the standard visibility field;
+  nothing resets that field at runtime. The actual Def and worker were instantiated,
+  the shared field was toggled, and the compiled inheritance/call contracts were
+  checked. The native Visible getter initializes ModsConfig and requires Unity,
+  so on-screen hidden/revealed behavior is explicitly deferred to scenario 17.
+- `Normalize()` enforces the existing slider ranges for loaded settings as well as
+  UI values: floor 0–50%, plateau 30–90% and at least five points above the floor,
+  minimum 0–100%, maximum 100–200%, speed 25–400%. Nonfinite values use defaults.
+  Default values, normalization idempotence, bounds and crossed thresholds passed.
+- Runtime rate/target/speed calculations now share the directly tested production
+  methods. Tests exercise canonical curve points and **81 parameter combinations**
+  sampled across 101 levels, all **32 input-toggle combinations**, target clamps,
+  rising/falling speeds and no overshoot. Existing reset tests cover all fields.
+- On native settings close, WriteSettings normalizes values, refreshes living
+  animals' needs and invalidates environmental caches, then calls native persistence.
+  This fixes producers-only previously waiting for a needs refresh. Disabled cached
+  factors are also suppressed in the tooltip and target. Compiled call paths were
+  checked; live animal changes are covered by scenarios 3 and 16, still unexecuted.
+- Real ScribeSaver/ScribeLoader and the shipped ExposeData passed **scalar** XML
+  save/load tests for all eleven nondefault values, omitted defaults, older partial
+  files and invalid numeric ranges/NaN/infinity. No fake Scribe implementation was
+  substituted. Unity's FinalizeLoading profiler cannot run in this .NET process;
+  these settings have no cross-references or post-load actions, so that phase is
+  excluded from the scalar test and retained in the game persistence scenario.
+- Real producer-comp detection passed for milk, wool and eggs. Full animal
+  eligibility calls require RaceProperties.Animal -> ModsConfig/DefOf initialization;
+  they are source/IL-reviewed here and assigned to the in-game eligibility scenario.
+  Minimal game-object fixtures do not claim to simulate a world or a map.
+- EN/FR guidance now explains global scope, saving on close, gradual contentment
+  and the optional shortcut. Invalid/empty **text** input is not applicable because
+  numeric controls are sliders. Game opening, logs, layout and restart checks are
+  reserved for `tested`, as explicitly allowed by the user's workflow override.
+
+### Dependencies and integrations
+
+- About.xml now declares `brrainz.harmony` as the sole required mod, including
+  installation links and loadAfter. Runtime binaries are not duplicated in Mod/.
+  README and both ATTRIBUTION copies identify the dependency and its author.
+- Verified installed Harmony package 2009463077: mod version **2.4.2.0**, LoadFolders
+  selects `Current` for RimWorld 1.6, actual 0Harmony assembly **2.4.1.0**. The NuGet
+  build reference is assembly **2.4.2.0**. That number difference alone is not a
+  failure: tests load the installed runtime, instantiate its Harmony class, resolve
+  PatchAll and compiled attributes, and pass the patch signature/access contracts.
+  No NuGet runtime fallback remains in the runner. Other Harmony versions and
+  in-game patch startup are not being claimed as tested.
+- RIMMSQOL source `SettingsInit.cs` was inspected: it enumerates MainButtonDefs and
+  reads/writes buttonVisible. Installed 1.6 DLL file version: **1.0.9591.34971**;
+  SHA256 `1152B0C198D34D4BB346FC74A4C4B72856F21ADA71FF376C5E4FF5F00FC81BD1`.
+  This is a source-contract review, **not** a successful interactive integration test.
+  Neither RIMMSQOL nor any other customization tool was exercised in game.
+- No LoadFolders, version folders or conditional patches were introduced. Existing
+  optional Ludeon loadAfter entries do not become compulsory DLC requirements.
+
+### Translation, build and final readiness
+
+- `dotnet build Source/ContentedLivestock.csproj --no-restore`: succeeded with
+  **zero warnings/errors**, writing the DLL identified above.
+- `powershell -NoProfile -ExecutionPolicy Bypass -File
+  _tools/Run-Functional-Tests.ps1`: **35/35 passed** on that DLL, including the
+  fourteen new settings/dependency/localization checks in `Settings-Tests.ps1`.
+- All **36 owned Keyed entries per language** are nonempty, unique, match the
+  compiled inventory and have compatible format parameters. Read the new scope
+  paragraph and shortcut label/description in both languages. NeedDef and
+  MainButtonDef English source fields provide native EN coverage; all four owned
+  Def fields are covered by French DefInjected resources.
+- `powershell -NoProfile -ExecutionPolicy Bypass -File
+  ../scripts/Check-DefInjected.ps1 -TransMod ./Mod`: **11,588 Defs indexed, four keys,
+  zero errors**, no unresolved target. Shipped XML parsing and MainButtonDef field
+  types/worker resolution also pass in the standalone suite.
+- `_tools/FUNCTIONAL-SCENARIOS.md` now documents **18 scenarios**, numbered 0–17,
+  with setup/actions/expected results, including clean configuration, boundaries,
+  each option's effect, shortcut reveal/hide/shared settings, EN/FR, new game and
+  existing save. No game scenario has been executed in this session.
+- Earlier image, naming, standalone repository and provenance checks remain valid;
+  the affected attribution copy was synchronized. No independent image validation
+  was invalidated by these changes. Historical mutation results were not replayed
+  and the new tests were not mutation-certified; neither is an additional gate.
+
+The strictly necessary next transition is **done -> tested**: execute the documented
+game scenarios and fix/retest any observed failure. This status does not certify game
+UI, RIMMSQOL interaction, final load initialization or a live production session.
+
+## Historical workflow audit — 2026-09-13 (superseded above)
+
+**Previous stage: `done`; justified cumulative stage: `preOptions`.** The stage uses
+the literal workflow name, not a letter code: Preview and its overlay are complete;
+the next transition is `preOptions -> options`. `done` means ready for final game
+validation and `tested` means that validation has passed. Neither is currently justified.
+
+This audit follows the supplied workflow and reads `../PUBLISHING.md`,
+`../STYLE_RIMWORLD.md`, `../MOD_SETTINGS.md` and `../TRANSLATIONS.md`.
+The supplied interpretation takes precedence: game interaction is required for
+`tested`, not for the initial settings gate. Historical results below remain history;
+their former stage and dependency conclusions do not override this audit.
+
+### Scope and revision
+
+- Standalone repository: `C:\Users\nelim\Documents\rimworld\ContentedLivestock`;
+  distributed content: its `Mod/` directory. `git rev-parse --show-toplevel
+  --git-common-dir` confirms this root and its own `.git` directory.
+- Audit started on `54ab23275a96602b74e69346e5c67c62509d571d`, with existing local
+  changes in `CHANGELOG.md`, `Mod/Assemblies/ContentedLivestock.dll`, both Keyed
+  files, `STATUS.md`, `Source/ContentedLivestockMod.cs`,
+  `Source/Runtime/Need_Contentment.cs` and `_tools/FUNCTIONAL-SCENARIOS.md`.
+  During the audit, HEAD advanced to
+  `600129c878e335a9bbb2148b1e235d21eb442ce1` (translation validation, 01:47:32 +02:00).
+  The working tree was then clean, before this status edit. This audit did not commit,
+  push, publish, generate images or implement changes; those pre-existing changes
+  were preserved. The final revision contains the audited source/resources.
+- Shipped DLL SHA256 before and after the successful build:
+  `41DEC02C2D4AF850E02669E831DFC7E990756636A212561904AA5050E78ED879`.
+  The independent checks apply to these bytes, including the existing translation edits.
+- Installed game used for reflection/XML checks: **1.6.4871 rev590**, from its
+  `Version.txt`; Managed assemblies under the installed Steam RimWorld directory.
+  No running-game session, save or Player.log was validated.
+
+### Ordered transition results
+
+| Transition | Result and evidence |
+| --- | --- |
+| dansMonoRepo -> horsMonoRepo | **Validated.** Independent Git repository and GitHub origin; `gh repo view ... --json name,visibility,url,defaultBranchRef` returned PUBLIC, the expected repository and main. `git ls-remote origin refs/heads/main` returned `54ab23275a96602b74e69346e5c67c62509d571d` at the time of the check, establishing pushed commits. No monorepo remote is required. English README, attribution, MIT licence and changelog exist. LICENSE and ATTRIBUTION copies in Mod/ are byte-identical to their root copies. Original provenance and public visibility are coherent with the recorded rights; no third-party licence was invented. packageId, display name, folder and repository name consistently identify this mod without needing literal equality. |
+| horsMonoRepo -> ModIcon générée | **Validated for this gate.** Existing implementation builds successfully and reproduces the shipped DLL. Installed ModIcon is a decoded PNG, 128 x 128, 31,809 bytes, directly inspected. Settings and dependency deficiencies are assessed at their explicit later gates, rather than retroactively treating those gates as part of this build/image checkpoint. |
+| ModIcon générée -> Preview générée | **Validated.** Installed PNG is 896 x 504, 681,815 bytes, below 1 MB; directly inspected at full size and with the existing 268 px thumbnail. High overhead camera, tiled ground, warm light pool, small back-facing colonist and readable composition; no concrete camera defect. No generation history or recorded game-screenshot comparison is required. |
+| Preview générée -> preOptions | **Validated.** English title, summary and About description. Public original naming requires no continuation/private/unofficial suffix; the two title words contain no conjunction requiring reduction. `Art/preview-palette.json` and its consuming `Art/preview.html` use a distinct green accent and warm ochre secondary. Title and version are identifiable, the rule is visible and text is neither clipped nor overlapping. The unused secondary/tag is justified by the public original status. |
+| preOptions -> options | **Defect and unverified checks.** Useful settings and primary access exist, but the mandatory optional MainButtons shortcut is absent. Existing technical tests pass but do not establish the whole settings contract; see Settings audit below. This is the first blocking transition. |
+| options -> l10n | **Independent resource validation retained.** All 35 owned keys and both Def fields are covered in EN/FR, with matching parameters and valid injections. Existing `complete` translation fields describe this checked current inventory, not passage past the blocked settings gate or in-game validation. Re-audit any future shortcut text. |
+| l10n -> preTest | **Defect.** Required runtime Harmony is neither bundled nor declared. The optional DLC loadAfter entries are not required dependencies; no LoadFolders, conditional XML patches or version-specific content complicate loading. No optional customization integration has been tested. |
+| preTest -> done | **Independent checks partially established.** Existing automated/XML suite: 21/21 passed on the delivered DLL. Fifteen manual scenarios have shared setup, actions and expected results, plus an EN/FR pass. They do not yet include the missing shortcut's reveal/open/hide/shared-persistence scenario or a complete settings-boundary/defaults matrix. These must accompany the settings correction. Cumulative done remains blocked by earlier gates. |
+| done -> tested | **Unverified.** Zero game scenarios executed by this audit; no EN/FR interface, game logs, new game, existing-save, interactive persistence or MainButtons integration result. No test failure in game is being inferred from this absence. |
+
+### Settings audit
+
+`settings_audit: partial`. Scope: all C# sources and shipped Defs, with special
+attention to `ContentedLivestockMod`, `ContentedLivestockSettings`, `Contentment`,
+`Need_Contentment`, the need-eligibility patches and the compiled test inventory.
+
+There are **11 useful settings**: five numeric sliders and six toggles. Production
+floor, plateau, minimum/maximum rate and adjustment speed control the production
+curve or convergence speed. Five toggles control the five husbandry inputs;
+producers-only controls which colony animals receive the need. They have gameplay
+uses; adding placeholder settings or declaring settings inapplicable would be wrong.
+
+- Primary access is implemented through `SettingsCategory()` and
+  `DoSettingsWindowContents(Rect)` in the game's Mod API. The category and all
+  controls are translated; there is scrolling and a confirmed reset action.
+  Manual XML editing is not required. Actual opening/layout remains an in-game check.
+- The UI exposes floor 0–50%, plateau 30–90%, minimum rate 0–100%, maximum rate
+  100–200%, and speed 25–400%. Slider results are rounded/clamped and the plateau
+  is kept at least five percentage points above the floor. Defaults in source are
+  25%, 60%, 40%, 140%, 100%, with all six toggles true. These are observed source
+  contracts, not claims that every boundary and combination was exercised.
+- Settings use the global `ModSettings`/`GetSettings` mechanism, with eleven
+  `Scribe_Values.Look` entries and reset defaults. Rate calculations read current
+  settings; need adjustment happens on NeedInterval, and space/company are cached
+  for roughly 2,500–2,699 ticks. The timing of producers-only application must be
+  verified against the needs tracker. The UI does not explain global scope and
+  these differing application times; document them as part of settings usability.
+- **Observed tests:** default curve numbers and their ordering passed; reset
+  restored every numeric/bool field; compiled Scribe string keys matched fields;
+  neutral-rate paths were called and passed. The test named “curve ... monotonic”
+  checks default numbers/order, not RateFactor across configured curves. The
+  save-key test reads IL literals, not an actual serialization round-trip.
+- **Unverified technical coverage:** all first-use/older-value defaults, actual
+  option effects, numeric boundaries and interactions, and settings serialization
+  round-trip. Run applicable tests or explicitly justify any engine-bound part
+  deferred to game validation. Invalid/empty text input is not applicable to these
+  sliders and checkboxes; no artificial text-input test is needed.
+- **Defect:** exhaustive source/Mod file inventory and searches for `MainButton`,
+  `MainTab`, `Dialog_ModSettings` and `WriteSettings` find no shortcut definition
+  or implementation. There is consequently no revealable entry or alternate route
+  to verify. Its absent definition is not a hidden-by-default implementation.
+- **Integration coverage:** none. RIMMSQOL and other customization tools were not
+  exercised. Their interactive reveal/open/edit/hide and visibility-persistence
+  checks belong to `done -> tested`, per the supplied override. They must remain
+  optional dependencies, with the primary route usable without them.
+
+### Executed checks and limitations
+
+- `dotnet build Source/ContentedLivestock.csproj --no-restore`: initial sandbox
+  attempt could not access the local Microsoft SDKs directory; retry with the
+  approved local access succeeded, zero warnings/errors. DLL hash unchanged.
+  This was an environment restriction, not a compilation defect.
+- `powershell -NoProfile -ExecutionPolicy Bypass -File
+  _tools/Run-Functional-Tests.ps1`: **21 tests, all passing**. XML parsing,
+  NeedDef field/type checks, DefOf references and injection checks are included.
+  The unchanged DLL hash ties the test run to the successfully built artifact.
+- Additional PowerShell source/resource checks: 35 distinct owned source keys,
+  exactly 35 nonempty keys in each language, no duplicate/missing/unused keys,
+  matching parameter indices and successful `String.Format` for every entry.
+  Read both complete resources and traced PercentRow, AppendLine and GetTipString.
+  The English NeedDef label/description provide native EN coverage; FR supplies
+  both `Nelim_Contentment` injection paths. No redundant EN injection is needed.
+- `powershell -NoProfile -ExecutionPolicy Bypass -File
+  ../scripts/Check-DefInjected.ps1 -TransMod ./Mod`: 11,587 Defs indexed, two
+  keys checked, zero errors, no unverified target reported. A later unrelated
+  `git -c core.excludesFile=NUL status` in the same shell batch failed because
+  Git cannot use NUL as an exclude file; that batch exit is not an XML test failure.
+- PNG decoding established actual dimensions, format and byte counts. Direct
+  visual inspection establishes the current Preview result. Existing font/contrast
+  evidence in `Art/preview-qa.json` is retained as historical evidence, not described
+  as a new renderer/contrast run; no images were rewritten.
+- **Dependency evidence:** the shipped assembly reference list includes
+  `0Harmony, Version=2.4.2.0`; constructor and patches use HarmonyLib directly.
+  `Source/ContentedLivestock.csproj` excludes Lib.Harmony runtime assets.
+  Neither `Mod/Assemblies` nor the game's Managed folder contains 0Harmony.dll.
+  About.xml has no modDependencies and its loadAfter contains only Ludeon IDs.
+  The test runner explicitly resolves Harmony from `.nuget/packages/lib.harmony`.
+  Passing those tests therefore does not validate standalone dependency loading.
+  Declare the supported Harmony runtime provider and ordering, and verify the
+  supported version contract; revise the inaccurate “no dependencies” attribution.
+- No tests were invented to fill gates. Historical mutation results were not
+  replayed; their absence is not an extra blocking requirement.
+
+### Next transition and secondary observations
+
+To pass **preOptions -> options**, implement the optional, initially invisible
+MainButtons shortcut to the same settings, clarify scope/application timing, and
+complete the applicable technical settings checks above. Rebuild and revalidate
+only affected tests/resources. No in-game result is required for that transition.
+
+Harmony metadata/runtime provision is a separate **mandatory later blocker** for
+`l10n -> preTest`; it is not the reason for choosing preOptions instead of options.
+
+Non-blocking observations for the supplied gate definitions: the icon is visually
+busy (mascot plus several animal faces and a pen), beyond the one-mascot/one-or-two
+objects style recommendation; simplifying it could help its 32 px rendering, which
+was not separately inspected. Its required PNG format and dimensions pass. The
+GitHub link in About.xml works and is present, but its wording and placement differ
+from PUBLISHING.md's recommended final “Source code on GitHub” line. Neither point
+is promoted into an additional blocking criterion for the supplied transitions.
+
+## Historical status snapshot — 2026-09-13 (superseded above)
 
 Maintenu par Codex pour ce dépôt local autonome. Ce fichier reste à la racine,
 hors de `Mod/`, et n'est pas livré au Workshop.
