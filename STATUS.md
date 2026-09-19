@@ -395,7 +395,7 @@ significatif, en distinguant les vérifications exécutées des validations rest
 
 ### Licence et justification
 
-**MIT**, texte identique dans `LICENSE` et `Mod/LICENSE` ; copyright 2026 nelim.
+**MIT**, texte identique dans `LICENSE` et `Mod/LICENSE` ; copyright 2026 Nelim.
 Le champ historique `licence: original` décrit la provenance, pas le nom de la licence.
 Selon ATTRIBUTION.md, aucun code, def, texture ou son d'un autre mod n'est repris.
 L'inspiration de Stardew Valley est créditée à ConcernedApe, sans reprise déclarée
