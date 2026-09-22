@@ -23,6 +23,7 @@ The longer animal-production matrix remains documented in `_tools/FUNCTIONAL-SCE
 | Animal gameplay | `04` with `wsl-deps.runtime-evidence.map` | live producer eligibility, producers-only refresh, faction changes, initial level and production factors |
 | RIMMSQOL restart chain | `05` then `06` then `07` with `wsl-deps.avec-rimmsqol.map` | reveal and hide choices survive separate processes; final launch forgets and cleans up |
 | Save/reload evidence | `08` with `wsl-deps.runtime-evidence.map` | contentment level and last-feed memory survive a real save/reload, with reviewed before/after media |
+| Settings restart chain | `09` then `10` with `wsl-deps.runtime-evidence.map` | all eleven distinctive settings survive a separate process and the test-profile file is restored afterward |
 
 There are no declared incompatibilities and no other optional gameplay integrations. Harmony is
 a hard dependency and is staged by the shared launcher. RIMMSQOL remains test-only and optional.
@@ -36,6 +37,7 @@ powershell.exe -ExecutionPolicy Bypass -File scripts/Run-PickleWsl.ps1 -Mod Cont
 powershell.exe -ExecutionPolicy Bypass -File scripts/Run-PickleWsl.ps1 -Mod ContentedLivestock -DepMap wsl-deps.runtime-evidence.map -Filter 04-animal-eligibility.feature -Language English
 & scripts/Run-PickleWsl.ps1 -Mod ContentedLivestock -DepMap wsl-deps.avec-rimmsqol.map -Filter 05-rimmsqol-restart-reveal.feature -Then @('06-rimmsqol-restart-hide.feature', '07-rimmsqol-restart-forget.feature') -Language English
 powershell.exe -ExecutionPolicy Bypass -File scripts/Run-PickleWsl.ps1 -Mod ContentedLivestock -DepMap wsl-deps.runtime-evidence.map -Filter 08-save-reload.feature -Language English
+& scripts/Run-PickleWsl.ps1 -Mod ContentedLivestock -DepMap wsl-deps.runtime-evidence.map -Filter 09-settings-restart-write.feature -Then 10-settings-restart-read.feature -Language English
 ```
 
 Do not switch language inside a scenario. Do not run the Windows game. Execution and review of

@@ -40,5 +40,19 @@ namespace ContentedLivestock.PickleSteps
             ctx.Assert(actual == expected, $"ContentedLivestockSettings.{name} reads '{actual}', expected '{expected}'");
         }
 
+        [When("Contented Livestock sets setting {string} to {string} and writes settings")]
+        public void SetSetting(PickleContext ctx, string name, string value)
+        {
+            var field = Field(ctx, name);
+            object parsed = field.FieldType == typeof(bool)
+                ? (object)bool.Parse(value)
+                : float.Parse(value, CultureInfo.InvariantCulture);
+            field.SetValue(Driver.Settings(ctx), parsed);
+            Driver.Mod(ctx).WriteSettings();
+        }
+
+        [When("Contented Livestock keeps its settings for the next launch")]
+        public void KeepForNextLaunch(PickleContext ctx) => SettingsSandbox.KeepForNextLaunch(ctx);
+
     }
 }

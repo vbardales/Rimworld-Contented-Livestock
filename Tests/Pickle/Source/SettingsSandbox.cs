@@ -12,6 +12,9 @@ namespace ContentedLivestock.PickleSteps
         private static Dictionary<string, object> snapshot;
         private static string settingsPath;
         private static string backupPath;
+        private static string chainMarkerPath;
+        private static bool keepForNextLaunch;
+        private static bool chainReader;
 
         private static FieldInfo[] Fields => typeof(ContentedLivestockSettings)
             .GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
@@ -26,6 +29,10 @@ namespace ContentedLivestock.PickleSteps
             var mod = Driver.Mod(ctx);
             settingsPath = LoadedModManager.GetSettingsFilename(mod.Content.FolderName, mod.GetType().Name);
             backupPath = settingsPath + ".contented-pickle-backup";
+            chainMarkerPath = settingsPath + ".contented-pickle-chain";
+            chainReader = File.Exists(chainMarkerPath);
+            keepForNextLaunch = false;
+            if (chainReader) return;
             if (File.Exists(backupPath))
             {
                 File.Copy(backupPath, settingsPath, true);
@@ -41,6 +48,19 @@ namespace ContentedLivestock.PickleSteps
         public void Restore(PickleContext ctx)
         {
             if (!Loaded) return;
+            if (keepForNextLaunch) return;
+            if (chainReader)
+            {
+                if (File.Exists(backupPath))
+                {
+                    File.Copy(backupPath, settingsPath, true);
+                    File.Delete(backupPath);
+                }
+                else if (File.Exists(settingsPath)) File.Delete(settingsPath);
+                if (File.Exists(chainMarkerPath)) File.Delete(chainMarkerPath);
+                chainReader = false;
+                return;
+            }
             if (snapshot != null)
             {
                 foreach (var field in Fields) field.SetValue(ContentedLivestockMod.Settings, snapshot[field.Name]);
@@ -53,6 +73,13 @@ namespace ContentedLivestock.PickleSteps
                 File.Delete(backupPath);
             }
             else if (File.Exists(settingsPath)) File.Delete(settingsPath);
+        }
+
+        public static void KeepForNextLaunch(PickleContext ctx)
+        {
+            ctx.Require(!string.IsNullOrEmpty(chainMarkerPath), "the settings sandbox has no chain marker path");
+            File.WriteAllText(chainMarkerPath, "Contented Livestock Pickle restart chain");
+            keepForNextLaunch = true;
         }
     }
 }
