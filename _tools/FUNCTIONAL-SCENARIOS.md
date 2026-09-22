@@ -15,6 +15,14 @@ that bar, which lists the five contributions separately and the current rate as 
 A note on the clock: contentment walks toward its target at one full swing per day by default, so
 nothing below happens in seconds. Where a scenario says *a day*, that is a game day.
 
+**Required visual evidence.** A manual scenario is not passed by notes or `Player.log` alone.
+Save at least one full-resolution screenshot for every stable state being asserted. Record a video
+when the assertion depends on time, motion, a transition, persistence across reload/restart, or a
+before/after comparison that one image cannot prove. Keep the unedited media under
+`Tests/Manual/evidence/<date>/scenario-XX/`, name files so the asserted state is identifiable, and
+link them from that run's evidence index. The final handoff must provide the captures or videos to
+the user; a written claim without its media remains `unverified`.
+
 ---
 
 ## 0. It loads, and the patches take
@@ -262,5 +270,6 @@ punctuation and clipping. The proper name "Contented Livestock" stays identical 
 Record the game version, language, screens checked and any failures in STATUS.md;
 until both passes have been performed, runtime translation validation is unverified.
 
-The `Player.log` of the session, and for scenario 9 the two fullness figures a day apart. Those
-two numbers are the only quantitative result in the list; everything else is read off the tip.
+Retain the `Player.log` of the session, the required screenshots/videos, and for scenario 9 the two
+fullness figures a day apart. Those two numbers are the only quantitative result in the list;
+everything else is read off the tip and must be visible in the associated media.

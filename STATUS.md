@@ -23,7 +23,7 @@ automated_tests: 35 passed (2026-09-22)
 pickle_scenarios: 22 passed across seven processes, 6 intended skips (2026-09-22)
 manual_scenarios: 18 documented, 0 executed
 remaining:
-  - "unverified (done -> tested): Execute scenarios 0-17 in _tools/FUNCTIONAL-SCENARIOS.md; check Player.log, a new colony and an existing save."
+  - "unverified (done -> tested): Execute scenarios 0-17 in _tools/FUNCTIONAL-SCENARIOS.md; retain Player.log plus screenshots for stable assertions and videos for timed, transitional or restart behavior, covering a new colony and an existing save."
   - "partially verified (done -> tested): Pickle passed live producer eligibility, producers-only refresh, faction changes, initial level and representative rate factors; the remaining option effects and production cases stay in scenarios 0-17."
   - "unverified (done -> tested): Test game restart/save persistence and native settings-window close behavior. Scalar Scribe round-trips passed outside Unity; full game load finalization was not executed."
   - "partially verified (done -> tested): Pickle passed initial hidden state plus RIMMSQOL reveal, open, hide, forget and visible/hidden persistence across separate processes; broader shared-value editing remains in the manual matrix."
