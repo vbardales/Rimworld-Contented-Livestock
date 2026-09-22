@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using System.Collections.Generic;
 using RimWorks.Pickle;
 using Verse;
 
@@ -22,6 +23,22 @@ namespace ContentedLivestock.PickleSteps
             Mod(ctx);
             ctx.Require(ContentedLivestockMod.Settings != null, "ContentedLivestockMod.Settings is null");
             return ContentedLivestockMod.Settings;
+        }
+
+        public static Map Map(PickleContext ctx)
+        {
+            ctx.Require(Current.Game != null && Find.CurrentMap != null,
+                "no current map: load the test-colony fixture before this step");
+            return Find.CurrentMap;
+        }
+
+        public static Pawn PawnNamed(PickleContext ctx, string name)
+        {
+            IReadOnlyList<Pawn> pawns = Map(ctx).mapPawns.AllPawnsSpawned;
+            var pawn = pawns.FirstOrDefault(p =>
+                (p.Name is NameSingle single && single.Name == name) || p.LabelShort == name);
+            ctx.Require(pawn != null, $"no spawned pawn named '{name}'");
+            return pawn;
         }
 
         public static RimWorld.Dialog_ModSettings SettingsDialog(PickleContext ctx)

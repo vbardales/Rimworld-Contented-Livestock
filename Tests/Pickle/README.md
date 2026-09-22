@@ -20,6 +20,8 @@ The longer animal-production matrix remains documented in `_tools/FUNCTIONAL-SCE
 | Minimal English | `01`, `02` with `wsl-deps.runtime-evidence.map` | standalone load, defaults, settings UI, shortcut, English capture |
 | Minimal French | `01`, `02` with the same map and `-Language French` | active French resources and French settings capture |
 | RIMMSQOL | `03` with `wsl-deps.avec-rimmsqol.map` | list, reveal, activate, hide and forget the optional shortcut |
+| Animal gameplay | `04` with `wsl-deps.runtime-evidence.map` | live producer eligibility, producers-only refresh, faction changes, initial level and production factors |
+| RIMMSQOL restart chain | `05` then `06` then `07` with `wsl-deps.avec-rimmsqol.map` | reveal and hide choices survive separate processes; final launch forgets and cleans up |
 
 There are no declared incompatibilities and no other optional gameplay integrations. Harmony is
 a hard dependency and is staged by the shared launcher. RIMMSQOL remains test-only and optional.
@@ -30,6 +32,8 @@ From the collection root, after confirming the shared machine is free, the futur
 powershell.exe -ExecutionPolicy Bypass -File scripts/Run-PickleWsl.ps1 -Mod ContentedLivestock -DepMap wsl-deps.runtime-evidence.map -Language English
 powershell.exe -ExecutionPolicy Bypass -File scripts/Run-PickleWsl.ps1 -Mod ContentedLivestock -DepMap wsl-deps.runtime-evidence.map -Language French
 powershell.exe -ExecutionPolicy Bypass -File scripts/Run-PickleWsl.ps1 -Mod ContentedLivestock -DepMap wsl-deps.avec-rimmsqol.map -Filter 03-rimmsqol.feature -Language English
+powershell.exe -ExecutionPolicy Bypass -File scripts/Run-PickleWsl.ps1 -Mod ContentedLivestock -DepMap wsl-deps.runtime-evidence.map -Filter 04-animal-eligibility.feature -Language English
+& scripts/Run-PickleWsl.ps1 -Mod ContentedLivestock -DepMap wsl-deps.avec-rimmsqol.map -Filter 05-rimmsqol-restart-reveal.feature -Then @('06-rimmsqol-restart-hide.feature', '07-rimmsqol-restart-forget.feature') -Language English
 ```
 
 Do not switch language inside a scenario. Do not run the Windows game. Execution and review of
