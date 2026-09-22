@@ -22,8 +22,9 @@ The two `*-contact-sheet.png` files were derived locally from the unchanged WebM
 their timelines. Both films include Pickle's fixture-loading frames before reaching the relevant
 map states. The original full-resolution PNGs and original WebMs are retained for delivery.
 
-These are evidence components, not completion of manual scenarios 1, 2, 3, 9 or 10: the wider
-multi-animal, trader, caravan, elapsed-day, fullness and recovery requirements remain unverified.
+These are evidence components, not completion of manual scenarios 2, 3, 9 or 10: the wider trader,
+caravan, elapsed-day, fullness and recovery requirements remain unverified. Scenario 1 is completed
+by the dedicated five-subject pass below.
 
 ## Scenario 0 first game hour
 
@@ -38,6 +39,18 @@ The before still has a black upper render-target region, but its lower game area
 the selected cow's Needs pane and initial 0.1% fullness. The after still visibly shows 3.3%; the
 six-frame `contact-sheet.png` review derivative shows uninterrupted fixture load, map entry and
 live-hour progression. Together the assertions and reviewed media complete documented scenario 0.
+
+## Scenario 1 eligibility
+
+The `scenario-01-eligibility/` report records 1 passed, 0 failed and `exitReason: passed` at
+revision `5533d99`. Live assertions found Contentment on a colony cow and hen, and found it absent
+from a colony husky under the default producers-only setting, an adult colonist and a wild squirrel.
+The preserved Player log contains none of the target patch/def failure signatures.
+
+All five full-resolution screenshots were reviewed. The cow and hen Needs panes visibly contain
+Contentment; the husky pane omits it, the colonist shows the ordinary human need set without it,
+and the wild squirrel has no Needs tab or Contentment display. These stable captures and matching
+in-game assertions complete documented scenario 1.
 
 ## Scenario 13 save/reload component
 
