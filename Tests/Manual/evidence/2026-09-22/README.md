@@ -25,6 +25,20 @@ map states. The original full-resolution PNGs and original WebMs are retained fo
 These are evidence components, not completion of manual scenarios 1, 2, 3, 9 or 10: the wider
 multi-animal, trader, caravan, elapsed-day, fullness and recovery requirements remain unverified.
 
+## Scenario 0 first game hour
+
+The `scenario-00-first-hour/` report records 1 passed, 0 failed and `exitReason: passed` at
+revision `7565df3`. A live milkable cow was recorded at 0.1% milk fullness, the game advanced
+2,500 live ticks at superfast speed, and the in-game assertion observed 3.3% afterward. The
+preserved Player log contains no `FieldAccessException`, `HarmonyException`, missing-method or
+unresolved `Nelim_Contentment` signature.
+
+Both full-resolution before/after screenshots and the original 31.385-second WebM were reviewed.
+The before still has a black upper render-target region, but its lower game area visibly preserves
+the selected cow's Needs pane and initial 0.1% fullness. The after still visibly shows 3.3%; the
+six-frame `contact-sheet.png` review derivative shows uninterrupted fixture load, map entry and
+live-hour progression. Together the assertions and reviewed media complete documented scenario 0.
+
 ## Scenario 13 save/reload component
 
 The `scenario-13-save-reload/` report records 1 passed, 0 failed and `exitReason: passed` at
