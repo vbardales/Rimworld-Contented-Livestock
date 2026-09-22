@@ -1,5 +1,6 @@
 using RimWorld;
 using RimWorks.Pickle;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 using Verse;
@@ -66,6 +67,15 @@ namespace ContentedLivestock.PickleSteps
 
         [When("Contented Livestock removes {string} from every faction")]
         public void LeavePlayer(PickleContext ctx, string name) => Driver.PawnNamed(ctx, name).SetFaction(null);
+
+        [When("Contented Livestock transfers {string} to a neutral trader faction")]
+        public void TransferToTrader(PickleContext ctx, string name)
+        {
+            var faction = Find.FactionManager.AllFactionsListForReading.FirstOrDefault(f =>
+                !f.IsPlayer && !f.def.hidden && f.def.humanlikeFaction && !f.HostileTo(Faction.OfPlayer));
+            ctx.Require(faction != null, "no neutral visible humanlike faction is available as trader owner");
+            Driver.PawnNamed(ctx, name).SetFaction(faction);
+        }
 
         [When("Contented Livestock selects animal {string} for visual evidence")]
         public void SelectForEvidence(PickleContext ctx, string name)
