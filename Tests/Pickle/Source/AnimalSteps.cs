@@ -57,6 +57,15 @@ namespace ContentedLivestock.PickleSteps
         [When("Contented Livestock removes {string} from every faction")]
         public void LeavePlayer(PickleContext ctx, string name) => Driver.PawnNamed(ctx, name).SetFaction(null);
 
+        [When("Contented Livestock selects animal {string} for visual evidence")]
+        public void SelectForEvidence(PickleContext ctx, string name)
+        {
+            var pawn = Driver.PawnNamed(ctx, name);
+            Find.Selector.ClearSelection();
+            Find.Selector.Select(pawn);
+            Find.CameraDriver.JumpToCurrentMapLoc(pawn.Position);
+        }
+
         [Then("Contented Livestock animal {string} has the contentment need")]
         public void HasNeed(PickleContext ctx, string name)
         {
