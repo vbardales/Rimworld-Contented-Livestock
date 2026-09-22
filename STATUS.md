@@ -15,19 +15,18 @@ audit_date: 2026-09-22
 licence:      original
 license_spdx: MIT
 licence_at:   an original creation, MIT with no reservation. Nothing is reused from another mod - no code, no def, no texture, no sound - and the `LICENSE` is a bare MIT with no scope section, so the showcase images fall under it too. The mechanic is Stardew Valley's, credited in ATTRIBUTION.md and reused from none of its lines.
-dependencies: "brrainz.harmony (required); RIMMSQOL optional, game integration unverified"
+dependencies: "brrainz.harmony (required); RIMMSQOL optional, Pickle integration and restart persistence passed"
 showcase:     complete
 tested_on:
 workshop:     "3806136625 (0.1.0; visibility and subscription test unverified)"
 automated_tests: 35 passed (2026-09-22)
-pickle_scenarios: 15 passed across three passes, 6 intended skips (2026-09-22)
+pickle_scenarios: 22 passed across seven processes, 6 intended skips (2026-09-22)
 manual_scenarios: 18 documented, 0 executed
 remaining:
-  - "unverified (done -> tested): Verify RIMMSQOL shortcut visibility persistence across separate process restarts; the passing integration run covered list/reveal/open/hide/forget in one process."
   - "unverified (done -> tested): Execute scenarios 0-17 in _tools/FUNCTIONAL-SCENARIOS.md; check Player.log, a new colony and an existing save."
-  - "unverified (done -> tested): Exercise actual option effects and animal eligibility after closing settings. English/French page rendering and active-language keys passed in Pickle."
+  - "partially verified (done -> tested): Pickle passed live producer eligibility, producers-only refresh, faction changes, initial level and representative rate factors; the remaining option effects and production cases stay in scenarios 0-17."
   - "unverified (done -> tested): Test game restart/save persistence and native settings-window close behavior. Scalar Scribe round-trips passed outside Unity; full game load finalization was not executed."
-  - "unverified (done -> tested): Confirm no visible or greyed-out shortcut initially; reveal/edit/hide with RIMMSQOL and check shared values and visibility persistence. No customization integration has been tested in game."
+  - "partially verified (done -> tested): Pickle passed initial hidden state plus RIMMSQOL reveal, open, hide, forget and visible/hidden persistence across separate processes; broader shared-value editing remains in the manual matrix."
   - "Record tested_on with the game/integration versions and results only after successful game validation."
 session:      01a09726-7616-7ad2-bc3c-d94a8e24da95
 updated:      2026-09-22, maintained by Codex in this standalone repository
@@ -50,21 +49,20 @@ passed **35/35** against that DLL, and `../scripts/Check-DefInjected.ps1 -TransM
 checked four keys with zero errors. The first sandboxed build could not read the local
 Microsoft SDK directory; that was an environment restriction, not a source failure.
 
-`Tests/Pickle/` now supplies a development-only companion with three features and nine
-scenarios. Its documented pass matrix covers a minimal English pass, a minimal French
-pass and the optional RIMMSQOL integration. The suite deliberately leaves calculations,
-normalization, scalar Scribe, XML and static localization to the existing 35-test harness;
-its in-game scope is startup, live loaded defaults, the real settings dialog, active-language
-resources, native MainButtons behavior and RIMMSQOL reveal/open/hide/forget behavior.
+`Tests/Pickle/` now supplies a development-only companion with seven features and sixteen
+scenarios. Its documented pass matrix covers minimal English and French passes, live animal
+eligibility/rate checks, optional RIMMSQOL integration and a three-process persistence chain.
+The suite deliberately leaves normalization, scalar Scribe, XML and static localization to
+the existing 35-test harness; its in-game scope includes startup, live loaded defaults, the
+real settings dialog, active-language resources, native MainButtons behavior, representative
+animal state/rate changes and RIMMSQOL reveal/open/hide/forget behavior.
 `_tools/FUNCTIONAL-SCENARIOS.md` retains the broader 18-scenario animal-production matrix.
 
 `dotnet build Tests/Pickle/Source/ContentedLivestock.PickleSteps.csproj -c Release`
-succeeded with zero warnings/errors. `Tests/Pickle/Check-Steps.ps1` compiled all nine local
+succeeded with zero warnings/errors. `Tests/Pickle/Check-Steps.ps1` compiled all nineteen local
 Cucumber expressions with Pickle's own engine, found no duplicate or unused local pattern,
-and inventoried 49 feature step lines. The delivered step DLL SHA256 is
-`264E62E4CFB85D718F07C7F43B94ECBAD967EA581F474B6356389C65E3D4E2AE`.
-No RimWorld process was started or controlled; execution and capture review remain the
-separate `done -> tested` gate.
+and inventoried 106 feature step lines. The delivered step DLL SHA256 is
+`5846FE0A416289B516AEA4EE11F0EC52107F662408D9FA9C25C4069157B27CD3`.
 
 The three documented WSL/Xvfb passes were subsequently executed through the shared launcher:
 minimal English **6 passed / 0 failed / 3 intended integration skips**, minimal French
@@ -72,10 +70,13 @@ minimal English **6 passed / 0 failed / 3 intended integration skips**, minimal 
 0 skipped**; every report ended with `exitReason: passed`. All three `@review` captures were
 opened. English and French settings pages show all controls without raw keys, fallback text,
 clipping or overlap; the RIMMSQOL-opened page is the same Contented Livestock dialog.
-Preserved evidence and the review record are under `Tests/Pickle/evidence/2026-09-22/`.
-These results validate the covered UI and integration paths but do not execute the 18 manual
-animal-production scenarios or RIMMSQOL persistence across a separate process restart, so the
-overall stage remains `done` rather than `tested`.
+The later gameplay pass completed **4 passed / 0 failed / 0 skipped**. A chained RIMMSQOL
+run then completed three separate processes at **1 passed / 0 failed / 0 skipped** each,
+proving that reveal and hide choices survive restart and that the final process removes the
+choice. Preserved complete summaries, JUnit reports and Player logs are under
+`Tests/Pickle/evidence/2026-09-22/`. These results validate the covered UI, animal and
+integration paths, but do not execute the full 18-scenario manual production/save matrix,
+so the overall stage remains `done` rather than `tested`.
 
 The remote URL and its configured upstream were inspected locally; live `git ls-remote`
 could not connect to GitHub from this environment, so current remote reachability and
@@ -83,9 +84,9 @@ visibility are unverified. `Mod/About/PublishedFileId.txt` records Workshop item
 `3806136625` for 0.1.0 and is tracked by commit `4531a66`; visibility and subscription
 testing remain unverified and therefore establish neither `prepublished` nor `published`.
 
-Strictly necessary next transition: execute the three passes in `Tests/Pickle/README.md`,
-require complete reports with the expected scenario counts, inspect every `@review` capture,
-then execute the applicable manual animal-production scenarios and record game/log results.
+Strictly necessary next transition: execute the remaining applicable cases in
+`_tools/FUNCTIONAL-SCENARIOS.md`, including new/existing-save production and full persistence,
+then record the game version and final results in `tested_on`.
 
 ## Current corrections and validation — 2026-09-13
 

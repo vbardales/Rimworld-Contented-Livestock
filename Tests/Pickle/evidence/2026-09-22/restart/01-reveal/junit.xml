@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+  <testsuite name="RIMMSQOL keeps the revealed shortcut for the next launch" tests="1" failures="0" skipped="0" flakes="0" time="10.119">
+    <testcase name="reveal and keep" classname="RIMMSQOL keeps the revealed shortcut for the next launch" time="10.119">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+  </testsuite>
+</testsuites>

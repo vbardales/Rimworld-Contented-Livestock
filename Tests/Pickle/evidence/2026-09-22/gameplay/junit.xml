@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+  <testsuite name="Contentment belongs to the right live animals" tests="4" failures="0" skipped="0" flakes="0" time="32.113">
+    <testcase name="a producing colony animal receives the need at the configured starting level" classname="Contentment belongs to the right live animals" time="10.203">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+    <testcase name="producers-only adds and removes the need from a non-producer when settings close" classname="Contentment belongs to the right live animals" time="7.074">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+    <testcase name="taming and leaving the colony update the need immediately" classname="Contentment belongs to the right live animals" time="7.064">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+    <testcase name="the live production factor stops below the floor and reaches the configured maximum" classname="Contentment belongs to the right live animals" time="7.772">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+  </testsuite>
+</testsuites>
