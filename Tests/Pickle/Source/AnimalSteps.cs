@@ -146,6 +146,50 @@ namespace ContentedLivestock.PickleSteps
             ctx.Assert(actual == expected, $"{name}'s feed offset is {actual} percent, expected {expected}");
         }
 
+        [When("Contented Livestock wounds {string} with a bleeding cut")]
+        public void WoundWithCut(PickleContext ctx, string name)
+        {
+            var pawn = Driver.PawnNamed(ctx, name);
+            pawn.TakeDamage(new DamageInfo(DamageDefOf.Cut, 10f));
+            ctx.Assert(pawn.health.hediffSet.PainTotal > 0f, $"{name} has no pain after the cut");
+            ctx.Assert(pawn.health.hediffSet.BleedRateTotal > 0f, $"{name} has no bleeding after the cut");
+        }
+
+        [When("Contented Livestock heals every injury on {string}")]
+        public void HealAll(PickleContext ctx, string name)
+        {
+            var pawn = Driver.PawnNamed(ctx, name);
+            foreach (var hediff in pawn.health.hediffSet.hediffs.ToList())
+                pawn.health.RemoveHediff(hediff);
+        }
+
+        [Then("Contented Livestock health offset for {string} is negative but capped")]
+        public void HealthOffsetNegativeAndCapped(PickleContext ctx, string name)
+        {
+            var need = Contentment.NeedOf(Driver.PawnNamed(ctx, name));
+            ctx.Require(need != null, $"{name} has no contentment need");
+            var offset = need.HealthOffset();
+            ctx.Assert(offset < 0f, $"{name}'s health offset is not negative: {offset:0.000}");
+            ctx.Assert(offset >= -0.35f, $"{name}'s health offset is below the -35% cap: {offset:0.000}");
+        }
+
+        [Then("Contented Livestock health offset for {string} is zero")]
+        public void HealthOffsetZero(PickleContext ctx, string name)
+        {
+            var need = Contentment.NeedOf(Driver.PawnNamed(ctx, name));
+            ctx.Require(need != null, $"{name} has no contentment need");
+            ctx.Assert(Mathf.Abs(need.HealthOffset()) < 0.0001f,
+                $"{name}'s health offset is {need.HealthOffset():0.000}, expected zero");
+        }
+
+        [When("Contented Livestock opens the live contentment tip for {string}")]
+        public void OpenContentmentTip(PickleContext ctx, string name)
+        {
+            var need = Contentment.NeedOf(Driver.PawnNamed(ctx, name));
+            ctx.Require(need != null, $"{name} has no contentment need");
+            Find.WindowStack.Add(new Dialog_MessageBox(need.GetTipString()));
+        }
+
         [When("Contented Livestock records the milk fullness of {string}")]
         public void RecordMilkFullness(PickleContext ctx, string name)
         {
