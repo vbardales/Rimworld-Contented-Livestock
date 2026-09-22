@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+  <testsuite name="Scenario 02 ownership changes refresh Contentment immediately" tests="1" failures="0" skipped="0" flakes="0" time="9.796">
+    <testcase name="a wild muffalo gains the need when tamed and loses it when transferred" classname="Scenario 02 ownership changes refresh Contentment immediately" time="9.796">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+Attachment: scenario 02 - wild muffalo before taming -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--scenario-02---wild-muffalo-before-taming--step0.png
+Attachment: scenario 02 - muffalo immediately after taming -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--scenario-02---muffalo-immediately-after-taming--step0.png
+Attachment: scenario 02 - muffalo immediately after trader transfer -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--scenario-02---muffalo-immediately-after-trader-transfer--step0.png
+Attachment: film-frames -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/film/Scenario-02-ownership-changes-refresh-Contentment-immediately--a-wild-muffalo-gains-the-need-when-tamed-and-loses-it-when-transferred/0000.jpg
+</system-out>
+    </testcase>
+  </testsuite>
+</testsuites>

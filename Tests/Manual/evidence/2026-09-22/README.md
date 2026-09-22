@@ -52,6 +52,20 @@ Contentment; the husky pane omits it, the colonist shows the ordinary human need
 and the wild squirrel has no Needs tab or Contentment display. These stable captures and matching
 in-game assertions complete documented scenario 1.
 
+## Scenario 2 faction transitions
+
+The `scenario-02-faction-transitions/` report records 1 passed, 0 failed and `exitReason: passed`
+at revision `e679f26`. Live assertions found no Contentment on a wild muffalo, found the need
+immediately after assigning it to the player faction, and found it removed immediately after
+transferring the pawn to a visible neutral humanlike faction acting as its trader owner.
+
+All three full-resolution screenshots and the original 9.552-second WebM were reviewed. The wild
+and trader-owned panes omit Contentment; the colony-owned pane visibly contains it. The first still
+has a black upper render-target region, but the selected pawn and its complete lower-left pane are
+unobscured. `contact-sheet.png` is the review derivative. This validates both live `SetFaction`
+transitions, while an actual trade-dialog sale remains unverified and scenario 2 therefore remains
+partial.
+
 ## Scenario 13 save/reload component
 
 The `scenario-13-save-reload/` report records 1 passed, 0 failed and `exitReason: passed` at
