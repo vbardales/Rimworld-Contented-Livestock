@@ -1,5 +1,6 @@
 using RimWorld;
 using RimWorks.Pickle;
+using System.Threading.Tasks;
 using UnityEngine;
 using Verse;
 
@@ -8,6 +9,7 @@ namespace ContentedLivestock.PickleSteps
     [PickleSteps]
     public class AnimalSteps
     {
+        private static float recordedFullness;
         private static IntVec3 FreeCell(PickleContext ctx)
         {
             var map = Driver.Map(ctx);
@@ -124,6 +126,38 @@ namespace ContentedLivestock.PickleSteps
             ctx.Require(need != null, $"{name} has no contentment need");
             var actual = Mathf.RoundToInt(need.FeedOffset() * 100f);
             ctx.Assert(actual == expected, $"{name}'s feed offset is {actual} percent, expected {expected}");
+        }
+
+        [When("Contented Livestock records the milk fullness of {string}")]
+        public void RecordMilkFullness(PickleContext ctx, string name)
+        {
+            var comp = Driver.PawnNamed(ctx, name).TryGetComp<CompMilkable>();
+            ctx.Require(comp != null, $"{name} has no CompMilkable");
+            recordedFullness = comp.fullness;
+        }
+
+        [When("Contented Livestock waits one game hour", TimeoutSeconds = 60f)]
+        public async Task WaitOneHour(PickleContext ctx)
+        {
+            var previous = Find.TickManager.CurTimeSpeed;
+            Find.TickManager.CurTimeSpeed = TimeSpeed.Superfast;
+            try
+            {
+                await ctx.WaitTicks(2500);
+            }
+            finally
+            {
+                Find.TickManager.CurTimeSpeed = previous;
+            }
+        }
+
+        [Then("Contented Livestock milk fullness of {string} has increased")]
+        public void MilkFullnessIncreased(PickleContext ctx, string name)
+        {
+            var comp = Driver.PawnNamed(ctx, name).TryGetComp<CompMilkable>();
+            ctx.Require(comp != null, $"{name} has no CompMilkable");
+            ctx.Assert(comp.fullness > recordedFullness,
+                $"{name}'s milk fullness is {comp.fullness:0.000000}, not above {recordedFullness:0.000000}");
         }
 
         [Then("Contented Livestock production factor for {string} is {int} percent")]
