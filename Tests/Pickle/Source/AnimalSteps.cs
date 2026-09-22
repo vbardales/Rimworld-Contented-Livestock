@@ -98,6 +98,34 @@ namespace ContentedLivestock.PickleSteps
             need.CurLevelPercentage = percent / 100f;
         }
 
+        [When("Contented Livestock records that {string} ate {string}")]
+        public void Ate(PickleContext ctx, string name, string defName)
+        {
+            var def = DefDatabase<ThingDef>.GetNamedSilentFail(defName);
+            ctx.Require(def != null, $"no ThingDef named '{defName}'");
+            var need = Contentment.NeedOf(Driver.PawnNamed(ctx, name));
+            ctx.Require(need != null, $"{name} has no contentment need");
+            need.Notify_Ate(ThingMaker.MakeThing(def));
+        }
+
+        [Then("Contented Livestock animal {string} is at {int} percent contentment")]
+        public void CurrentLevel(PickleContext ctx, string name, int expected)
+        {
+            var need = Contentment.NeedOf(Driver.PawnNamed(ctx, name));
+            ctx.Require(need != null, $"{name} has no contentment need");
+            var actual = Mathf.RoundToInt(need.CurLevelPercentage * 100f);
+            ctx.Assert(actual == expected, $"{name} is at {actual} percent, expected {expected}");
+        }
+
+        [Then("Contented Livestock animal {string} has feed offset {int} percent")]
+        public void FeedOffset(PickleContext ctx, string name, int expected)
+        {
+            var need = Contentment.NeedOf(Driver.PawnNamed(ctx, name));
+            ctx.Require(need != null, $"{name} has no contentment need");
+            var actual = Mathf.RoundToInt(need.FeedOffset() * 100f);
+            ctx.Assert(actual == expected, $"{name}'s feed offset is {actual} percent, expected {expected}");
+        }
+
         [Then("Contented Livestock production factor for {string} is {int} percent")]
         public void Rate(PickleContext ctx, string name, int expected)
         {
