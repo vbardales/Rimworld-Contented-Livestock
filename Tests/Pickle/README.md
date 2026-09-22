@@ -25,6 +25,7 @@ The longer animal-production matrix remains documented in `_tools/FUNCTIONAL-SCE
 | Save/reload evidence | `08` with `wsl-deps.runtime-evidence.map` | contentment level and last-feed memory survive a real save/reload, with reviewed before/after media |
 | Settings restart chain | `09` then `10` with `wsl-deps.runtime-evidence.map` | all eleven distinctive settings survive a separate process and the test-profile file is restored afterward |
 | First game hour | `11` with `wsl-deps.runtime-evidence.map` | a milkable animal advances for 2,500 live ticks without patch/def errors, with before/after film evidence |
+| Scenario 1 eligibility | `12` with `wsl-deps.runtime-evidence.map` | cow and hen receive Contentment; husky, colonist and wild animal do not, with a capture of every stable state |
 
 There are no declared incompatibilities and no other optional gameplay integrations. Harmony is
 a hard dependency and is staged by the shared launcher. RIMMSQOL remains test-only and optional.
@@ -40,6 +41,7 @@ powershell.exe -ExecutionPolicy Bypass -File scripts/Run-PickleWsl.ps1 -Mod Cont
 powershell.exe -ExecutionPolicy Bypass -File scripts/Run-PickleWsl.ps1 -Mod ContentedLivestock -DepMap wsl-deps.runtime-evidence.map -Filter 08-save-reload.feature -Language English
 & scripts/Run-PickleWsl.ps1 -Mod ContentedLivestock -DepMap wsl-deps.runtime-evidence.map -Filter 09-settings-restart-write.feature -Then 10-settings-restart-read.feature -Language English
 powershell.exe -ExecutionPolicy Bypass -File scripts/Run-PickleWsl.ps1 -Mod ContentedLivestock -DepMap wsl-deps.runtime-evidence.map -Filter 11-loading-hour.feature -Language English
+powershell.exe -ExecutionPolicy Bypass -File scripts/Run-PickleWsl.ps1 -Mod ContentedLivestock -DepMap wsl-deps.runtime-evidence.map -Filter 12-scenario-01-eligibility.feature -Language English
 ```
 
 Do not switch language inside a scenario. Do not run the Windows game. Execution and review of

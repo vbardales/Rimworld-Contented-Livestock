@@ -33,12 +33,20 @@ namespace ContentedLivestock.PickleSteps
             Spawn(ctx, name, kindName, null);
         }
 
-        private static void Spawn(PickleContext ctx, string name, string kindName, Faction faction)
+        [Given("Contented Livestock spawns the player pawn {string} as {string}")]
+        public void SpawnPlayerPawn(PickleContext ctx, string name, string kindName)
+        {
+            Spawn(ctx, name, kindName, Faction.OfPlayer, 25f);
+        }
+
+        private static void Spawn(PickleContext ctx, string name, string kindName, Faction faction,
+            float biologicalAge = 3f)
         {
             var kind = DefDatabase<PawnKindDef>.GetNamedSilentFail(kindName);
             ctx.Require(kind != null, $"no PawnKindDef named '{kindName}'");
             var pawn = PawnGenerator.GeneratePawn(new PawnGenerationRequest(
-                kind, faction, forceGenerateNewPawn: true, fixedGender: Gender.Female, fixedBiologicalAge: 3f));
+                kind, faction, forceGenerateNewPawn: true, fixedGender: Gender.Female,
+                fixedBiologicalAge: biologicalAge));
             pawn.Name = new NameSingle(name);
             GenSpawn.Spawn(pawn, FreeCell(ctx), Driver.Map(ctx));
             pawn.needs.AddOrRemoveNeedsAsAppropriate();
