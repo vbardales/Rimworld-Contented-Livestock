@@ -36,6 +36,18 @@ transition and return to the map; `contact-sheet.png` is its review derivative.
 The two full-resolution screenshots visibly retain the selected cow and its 73% Contentment bar
 before and after reload. Their upper area is black because the film recorder and still capture share
 the render target around this save/reload transition; the asserted subject in the lower-left Needs
-pane remains unobscured. This covers the animal-level and last-feed-memory half of scenario 13.
-The separate-process persistence of all settings remains unverified, so scenario 13 as a whole is
-not yet marked complete.
+pane remains unobscured. This covers the animal-level and last-feed-memory half of scenario 13;
+the following two-process chain covers its settings half.
+
+## Scenario 13 settings restart completion
+
+The two-process `scenario-13-settings-restart/` chain passed 1/1 in each process at revision
+`e99ce56`. The first process wrote distinctive values for all five sliders and all six toggles;
+the second process asserted all eleven values after startup, then the sandbox restored the prior
+test-profile settings file. Both full-resolution captures were reviewed: they visibly match at
+11%, 72%, 55%, 165% and 235%, with all six toggles disabled, without clipping or raw keys.
+
+Together with the real save/reload evidence above, this completes documented scenario 13: animal
+Contentment and last-feed memory survive save/reload, and every global setting survives a complete
+process restart. The original reports, Player logs and both screenshots are preserved in the two
+numbered subdirectories.

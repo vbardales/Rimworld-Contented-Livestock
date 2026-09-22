@@ -1,0 +1,1 @@
+{"total":1,"passed":1,"failed":0,"skipped":0,"flaky":0,"exitReason":"passed","setName":"runtime-evidence","scenarios":[{"name":"write distinctive settings and keep them for the next launch","outcome":"Passed","durationMs":11488,"attempts":1}]}

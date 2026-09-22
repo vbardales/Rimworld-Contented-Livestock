@@ -20,14 +20,13 @@ showcase:     complete
 tested_on:
 workshop:     "3806136625 (0.1.0; visibility and subscription test unverified)"
 automated_tests: 35 passed (2026-09-22)
-pickle_scenarios: 22 passed across seven processes, 6 intended skips (2026-09-22)
-manual_scenarios: 18 documented, 0 executed
-manual_visual_evidence: 6 scenario components captured and reviewed (2026-09-22); no full manual scenario completed
+pickle_scenarios: 19 defined; every latest targeted pass succeeded, 6 intended skips in minimal passes (2026-09-22)
+manual_scenarios: 18 documented, 1 completed (scenario 13; 2026-09-22)
+manual_visual_evidence: scenario 13 complete; 5 other scenario components captured and reviewed (2026-09-22)
 remaining:
   - "unverified (done -> tested): Execute scenarios 0-17 in _tools/FUNCTIONAL-SCENARIOS.md; retain Player.log plus screenshots for stable assertions and videos for timed, transitional or restart behavior, covering a new colony and an existing save."
   - "partially verified (done -> tested): Pickle passed live producer eligibility, producers-only refresh, faction changes, initial level and representative rate factors; the remaining option effects and production cases stay in scenarios 0-17."
-  - "unverified (done -> tested): Test separate-process settings persistence and native settings-window close behavior. Scalar Scribe round-trips passed outside Unity; full game load finalization was not executed."
-  - "partially verified (done -> tested): A real Pickle save/reload preserved a live cow's 73% Contentment and -15% Kibble feed memory with before/after captures and video; separate-process persistence of all settings remains unverified."
+  - "validated for scenario 13: A real Pickle save/reload preserved a live cow's 73% Contentment and -15% Kibble feed memory; a two-process restart preserved all eleven distinctive settings and restored the test profile afterward. Captures, video, complete reports and logs are preserved."
   - "partially verified (done -> tested): Pickle passed initial hidden state plus RIMMSQOL reveal, open, hide, forget and visible/hidden persistence across separate processes; broader shared-value editing remains in the manual matrix."
   - "Record tested_on with the game/integration versions and results only after successful game validation."
 session:      01a09726-7616-7ad2-bc3c-d94a8e24da95
