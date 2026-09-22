@@ -20,12 +20,12 @@ showcase:     complete
 tested_on:
 workshop:     "3806136625 (0.1.0; visibility and subscription test unverified)"
 automated_tests: 35 passed (2026-09-22)
-pickle_scenarios: 9 written, 0 executed
+pickle_scenarios: 15 passed across three passes, 6 intended skips (2026-09-22)
 manual_scenarios: 18 documented, 0 executed
 remaining:
-  - "unverified (done -> tested): Execute the Pickle passes documented in Tests/Pickle/README.md in English, French and with RIMMSQOL; require complete reports and inspect every @review capture."
+  - "unverified (done -> tested): Verify RIMMSQOL shortcut visibility persistence across separate process restarts; the passing integration run covered list/reveal/open/hide/forget in one process."
   - "unverified (done -> tested): Execute scenarios 0-17 in _tools/FUNCTIONAL-SCENARIOS.md; check Player.log, a new colony and an existing save."
-  - "unverified (done -> tested): Open/edit/reset/reopen settings in English and French; check clipping, raw keys, formatting, actual option effects and animal eligibility after closing."
+  - "unverified (done -> tested): Exercise actual option effects and animal eligibility after closing settings. English/French page rendering and active-language keys passed in Pickle."
   - "unverified (done -> tested): Test game restart/save persistence and native settings-window close behavior. Scalar Scribe round-trips passed outside Unity; full game load finalization was not executed."
   - "unverified (done -> tested): Confirm no visible or greyed-out shortcut initially; reveal/edit/hide with RIMMSQOL and check shared values and visibility persistence. No customization integration has been tested in game."
   - "Record tested_on with the game/integration versions and results only after successful game validation."
@@ -65,6 +65,17 @@ and inventoried 49 feature step lines. The delivered step DLL SHA256 is
 `264E62E4CFB85D718F07C7F43B94ECBAD967EA581F474B6356389C65E3D4E2AE`.
 No RimWorld process was started or controlled; execution and capture review remain the
 separate `done -> tested` gate.
+
+The three documented WSL/Xvfb passes were subsequently executed through the shared launcher:
+minimal English **6 passed / 0 failed / 3 intended integration skips**, minimal French
+**6 passed / 0 failed / 3 intended integration skips**, and RIMMSQOL **3 passed / 0 failed /
+0 skipped**; every report ended with `exitReason: passed`. All three `@review` captures were
+opened. English and French settings pages show all controls without raw keys, fallback text,
+clipping or overlap; the RIMMSQOL-opened page is the same Contented Livestock dialog.
+Preserved evidence and the review record are under `Tests/Pickle/evidence/2026-09-22/`.
+These results validate the covered UI and integration paths but do not execute the 18 manual
+animal-production scenarios or RIMMSQOL persistence across a separate process restart, so the
+overall stage remains `done` rather than `tested`.
 
 The remote URL and its configured upstream were inspected locally; live `git ls-remote`
 could not connect to GitHub from this environment, so current remote reachability and
