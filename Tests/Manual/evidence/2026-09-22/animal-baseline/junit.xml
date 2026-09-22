@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+  <testsuite name="Contentment belongs to the right live animals" tests="4" failures="0" skipped="0" flakes="0" time="38.272">
+    <testcase name="a producing colony animal receives the need at the configured starting level" classname="Contentment belongs to the right live animals" time="11.295">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+Attachment: scenario 01 - producing cow has contentment -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--scenario-01---producing-cow-has-contentment--step0.png
+</system-out>
+    </testcase>
+    <testcase name="producers-only adds and removes the need from a non-producer when settings close" classname="Contentment belongs to the right live animals" time="8.483">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+Attachment: scenario 03 - husky has contentment when producers only is off -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--scenario-03---husky-has-contentment-when-producers-only-is-off--step0.png
+Attachment: scenario 03 - husky loses contentment when producers only is on -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--scenario-03---husky-loses-contentment-when-producers-only-is-on--step0.png
+Attachment: film-frames -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/film/Contentment-belongs-to-the-right-live-animals--producers-only-adds-and-removes-the-need-from-a-non-producer-when-settings-close/0000.jpg
+</system-out>
+    </testcase>
+    <testcase name="taming and leaving the colony update the need immediately" classname="Contentment belongs to the right live animals" time="9.555">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+Attachment: scenario 02 - tamed muffalo gains contentment -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--scenario-02---tamed-muffalo-gains-contentment--step0.png
+Attachment: scenario 02 - factionless muffalo loses contentment -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--scenario-02---factionless-muffalo-loses-contentment--step0.png
+Attachment: film-frames -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/film/Contentment-belongs-to-the-right-live-animals--taming-and-leaving-the-colony-update-the-need-immediately/0000.jpg
+</system-out>
+    </testcase>
+    <testcase name="the live production factor stops below the floor and reaches the configured maximum" classname="Contentment belongs to the right live animals" time="8.939">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+Attachment: scenario 10 - production halted below the floor -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--scenario-10---production-halted-below-the-floor--step0.png
+Attachment: scenario 09 - full contentment reaches maximum rate -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--scenario-09---full-contentment-reaches-maximum-rate--step0.png
+</system-out>
+    </testcase>
+  </testsuite>
+</testsuites>

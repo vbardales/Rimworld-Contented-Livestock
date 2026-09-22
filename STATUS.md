@@ -22,6 +22,7 @@ workshop:     "3806136625 (0.1.0; visibility and subscription test unverified)"
 automated_tests: 35 passed (2026-09-22)
 pickle_scenarios: 22 passed across seven processes, 6 intended skips (2026-09-22)
 manual_scenarios: 18 documented, 0 executed
+manual_visual_evidence: 5 scenario components captured and reviewed (2026-09-22); no full manual scenario completed
 remaining:
   - "unverified (done -> tested): Execute scenarios 0-17 in _tools/FUNCTIONAL-SCENARIOS.md; retain Player.log plus screenshots for stable assertions and videos for timed, transitional or restart behavior, covering a new colony and an existing save."
   - "partially verified (done -> tested): Pickle passed live producer eligibility, producers-only refresh, faction changes, initial level and representative rate factors; the remaining option effects and production cases stay in scenarios 0-17."
