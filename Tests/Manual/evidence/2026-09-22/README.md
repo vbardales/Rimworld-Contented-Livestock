@@ -96,6 +96,14 @@ WebM were reviewed. The first capture visibly shows 10% Contentment, stopped pro
 `contact-sheet.png` is a review derivative. A shared report image with a different scenario-10
 name was excluded because it was not produced by this attempt.
 
+The corrected `attempt-02/` report passed 1/1 at revision `fbafea8`. Its three full-resolution
+captures were reviewed: the cow's tip says production is stopped at 10% Contentment and 3.3% milk
+fullness, still stopped at 14% and 3.3% one game hour later, then the Needs pane shows 9.1% milk
+fullness after restoration and another game hour. The original film and its contact sheet were
+reviewed, but Pickle's `@film` stops at 60 seconds, before the final state of this 100.989-second
+scenario. Thus the in-game assertions pass, while manual scenario 10 remains incomplete until a
+new film covers the halt and resume transitions. The next run uses a mid-scenario tick film.
+
 ## Scenario 13 save/reload component
 
 The `scenario-13-save-reload/` report records 1 passed, 0 failed and `exitReason: passed` at

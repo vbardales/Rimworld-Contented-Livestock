@@ -1,4 +1,4 @@
-@review @film
+@review @requires:nelim.pickletools.filmticks
 Feature: Scenario 10 production halts below the floor and resumes without loss
 
   Background:
@@ -8,6 +8,7 @@ Feature: Scenario 10 production halts below the floor and resumes without loss
   Scenario: a cow keeps its progress while halted and resumes from it
     Given Contented Livestock spawns the player animal "ScenarioTenCow" as "Cow"
     When Contented Livestock waits one game hour
+    And Nelim's Pickle Tools: I film every 30 ticks as "scenario 10 halt and resume"
     And Contented Livestock sets "ScenarioTenCow" to 10 percent contentment
     Then Contented Livestock production factor for "ScenarioTenCow" is 0 percent
     When Contented Livestock selects animal "ScenarioTenCow" for visual evidence
@@ -26,4 +27,5 @@ Feature: Scenario 10 production halts below the floor and resumes without loss
     Then Contented Livestock milk fullness of "ScenarioTenCow" has increased
     When Contented Livestock selects animal "ScenarioTenCow" for visual evidence
     Then I take a screenshot "scenario 10 - milk progress resumes from prior amount"
+    When Nelim's Pickle Tools: I stop filming
     And no errors were logged
