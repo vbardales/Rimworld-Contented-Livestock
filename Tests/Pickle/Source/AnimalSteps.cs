@@ -64,6 +64,7 @@ namespace ContentedLivestock.PickleSteps
             Find.Selector.ClearSelection();
             Find.Selector.Select(pawn);
             Find.CameraDriver.JumpToCurrentMapLoc(pawn.Position);
+            InspectPaneUtility.OpenTab(typeof(ITab_Pawn_Needs));
         }
 
         [Then("Contented Livestock animal {string} has the contentment need")]
