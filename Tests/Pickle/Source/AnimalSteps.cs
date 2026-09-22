@@ -222,6 +222,15 @@ namespace ContentedLivestock.PickleSteps
                 $"{name}'s milk fullness is {comp.fullness:0.000000}, not above {recordedFullness:0.000000}");
         }
 
+        [Then("Contented Livestock milk fullness of {string} has not changed")]
+        public void MilkFullnessUnchanged(PickleContext ctx, string name)
+        {
+            var comp = Driver.PawnNamed(ctx, name).TryGetComp<CompMilkable>();
+            ctx.Require(comp != null, $"{name} has no CompMilkable");
+            ctx.Assert(Mathf.Abs(comp.fullness - recordedFullness) < 0.000001f,
+                $"{name}'s milk fullness moved from {recordedFullness:0.000000} to {comp.fullness:0.000000}");
+        }
+
         [Then("Contented Livestock production factor for {string} is {int} percent")]
         public void Rate(PickleContext ctx, string name, int expected)
         {
