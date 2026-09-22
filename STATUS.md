@@ -20,16 +20,17 @@ showcase:     complete
 tested_on:
 workshop:     "3806136625 (0.1.0; visibility and subscription test unverified)"
 automated_tests: 35 passed (2026-09-22)
-pickle_scenarios: 22 defined; every latest targeted pass succeeded, 6 intended skips in minimal passes (2026-09-22)
-manual_scenarios: 18 documented, 3 completed (scenarios 0, 1 and 13; 2026-09-22)
-manual_visual_evidence: scenarios 0, 1 and 13 complete; 4 other scenario components captured and reviewed (2026-09-22)
+pickle_scenarios: 23 defined; every latest targeted pass succeeded, 6 intended skips in minimal passes (2026-09-22)
+manual_scenarios: 18 documented, 4 completed (scenarios 0, 1, 6 and 13; 2026-09-22)
+manual_visual_evidence: scenarios 0, 1, 6 and 13 complete; 4 other scenario components captured and reviewed (2026-09-22)
 remaining:
-  - "unverified (done -> tested): Execute remaining scenarios 2-12 and 14-17 in _tools/FUNCTIONAL-SCENARIOS.md; retain Player.log plus screenshots for stable assertions and videos for timed, transitional or restart behavior, covering a new colony and an existing save."
+  - "unverified (done -> tested): Execute remaining scenarios 2-5, 7-12 and 14-17 in _tools/FUNCTIONAL-SCENARIOS.md; retain Player.log plus screenshots for stable assertions and videos for timed, transitional or restart behavior, covering a new colony and an existing save."
   - "partially verified (done -> tested): Pickle passed live producer eligibility, producers-only refresh, faction changes, initial level and representative rate factors; the remaining option effects and production cases stay in scenarios 0-17."
   - "validated for scenario 13: A real Pickle save/reload preserved a live cow's 73% Contentment and -15% Kibble feed memory; a two-process restart preserved all eleven distinctive settings and restored the test profile afterward. Captures, video, complete reports and logs are preserved."
   - "validated for scenario 0: A milkable cow advanced through 2,500 live game ticks in a 31.385-second reviewed film; milk fullness increased from 0.1% to 3.3%, with before/after captures, a passing report and no target patch/def failure signature in the preserved log."
   - "validated for scenario 1: Live in-game assertions and five reviewed full-resolution captures show Contentment on the colony cow and hen, and absent from the producers-only husky, colonist and wild squirrel. The targeted run passed 1/1 and its report and log are preserved."
   - "partially validated for scenario 2: A reviewed 9.552-second film and three captures show a wild muffalo without Contentment, the need appearing immediately on joining the colony, and disappearing immediately on transfer to a neutral trader owner. A real trade-dialog transaction remains unverified."
+  - "validated for scenario 6: A live bleeding cut produced pain and a visible -5% Health contribution, bounded above the -35% cap; healing every injury restored the computed contribution to zero and removed the Health line. The 1/1 report, two reviewed captures, 16.251-second film and clean target-signature log are preserved."
   - "partially verified (done -> tested): Pickle passed initial hidden state plus RIMMSQOL reveal, open, hide, forget and visible/hidden persistence across separate processes; broader shared-value editing remains in the manual matrix."
   - "Record tested_on with the game/integration versions and results only after successful game validation."
 session:      01a09726-7616-7ad2-bc3c-d94a8e24da95

@@ -66,6 +66,21 @@ unobscured. `contact-sheet.png` is the review derivative. This validates both li
 transitions, while an actual trade-dialog sale remains unverified and scenario 2 therefore remains
 partial.
 
+## Scenario 6 health
+
+The `scenario-06-health/` report records 1 passed, 0 failed and `exitReason: passed` at revision
+`733531e`. The live test inflicted a cut that asserted both pain and bleeding, then asserted the
+Health contribution was negative without exceeding the -35% floor. After removing every injury,
+the same live contribution was asserted at zero. The preserved log contains none of the target
+patch/def failure signatures.
+
+Both full-resolution screenshots and the original 16.251-second WebM were reviewed. The injured
+tip visibly shows `Health: -5%`; the healed tip omits the zero-valued Health line, while the cow's
+pane visibly returns to `Healthy`. The injured still has a black upper render-target region, but
+the complete live tip and selected animal pane remain unobscured. The denser `contact-sheet.png`
+review derivative shows fixture loading, map arrival and the injured animal transition. These
+assertions and media complete documented scenario 6.
+
 ## Scenario 13 save/reload component
 
 The `scenario-13-save-reload/` report records 1 passed, 0 failed and `exitReason: passed` at
