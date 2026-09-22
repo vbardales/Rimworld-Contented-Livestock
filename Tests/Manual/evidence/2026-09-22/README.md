@@ -81,6 +81,21 @@ the complete live tip and selected animal pane remain unobscured. The denser `co
 review derivative shows fixture loading, map arrival and the injured animal transition. These
 assertions and media complete documented scenario 6.
 
+## Scenario 10 first attempt and correction pending
+
+`scenario-10-halt-resume/attempt-01/` preserves a complete failed 1/1 report and Player log
+from revision `378c20d`. Milk fullness moved from 0.033214 to 0.033239, a one-tick increment.
+The test recorded fullness before setting Contentment to 10% and taking the first capture, so
+the baseline included setup time before the rate was asserted at zero. The corrected feature
+records fullness after that setup and awaits another game run. This failure does not validate
+scenario 10 or establish a production defect.
+
+The first full-resolution screenshot, automatic failure screenshot and original 57.728-second
+WebM were reviewed. The first capture visibly shows 10% Contentment, stopped production and
+3.3% fullness; the failure frame shows 3.3% a game hour later. The film's six-frame
+`contact-sheet.png` is a review derivative. A shared report image with a different scenario-10
+name was excluded because it was not produced by this attempt.
+
 ## Scenario 13 save/reload component
 
 The `scenario-13-save-reload/` report records 1 passed, 0 failed and `exitReason: passed` at

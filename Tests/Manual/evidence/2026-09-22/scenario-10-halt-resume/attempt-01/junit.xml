@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+  <testsuite name="Scenario 10 production halts below the floor and resumes without loss" tests="1" failures="1" skipped="0" flakes="0" time="57.876">
+    <testcase name="a cow keeps its progress while halted and resumes from it" classname="Scenario 10 production halts below the floor and resumes without loss" time="57.876">
+      <failure message="ScenarioTenCow's milk fullness moved from 0.033214 to 0.033239">ScenarioTenCow's milk fullness moved from 0.033214 to 0.033239</failure>
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+Attachment: scenario 10 - milk progress before halted hour -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--scenario-10---milk-progress-before-halted-hour--step0.png
+Attachment: screenshot -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/Scenario-10-production-halts-below-the-floor-and-resumes-without-loss--a-cow-keeps-its-progress-while-halted-and-resumes-from-it--step13.png
+</system-out>
+    </testcase>
+  </testsuite>
+</testsuites>
