@@ -12,3 +12,11 @@ Source/bin/
 
 # Windows shortcuts dropped in the mod folder, never content.
 *.lnk
+
+# Pickle writes two files no run needs afterwards, and they are enormous: report.html is the
+# whole run inlined as base64, around 80 MB, and messages.ndjson around 9 MB. The evidence worth
+# keeping is junit.xml, summary.json, summary.md, Player.log and the screenshots - which is what
+# every earlier run in this folder kept. One 2026-09-23 commit added the other two before this
+# rule existed; their blobs are in the history and only a rewrite would take them out.
+Tests/Pickle/evidence/**/report.html
+Tests/Pickle/evidence/**/messages.ndjson
