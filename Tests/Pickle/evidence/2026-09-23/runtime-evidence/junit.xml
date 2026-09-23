@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+  <testsuite name="Contented Livestock loads with its runtime contracts" tests="3" failures="0" skipped="0" flakes="0" time="1.471">
+    <testcase name="the mod loads after Harmony without startup errors" classname="Contented Livestock loads with its runtime contracts" time="0.561">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+    <testcase name="its need and hidden settings shortcut are present" classname="Contented Livestock loads with its runtime contracts" time="0.166">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+    <testcase name="a clean profile loads the documented defaults" classname="Contented Livestock loads with its runtime contracts" time="0.744">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+  </testsuite>
+  <testsuite name="Contented Livestock settings in the language this pass runs" tests="3" failures="0" skipped="0" flakes="0" time="27.921">
+    <testcase name="every keyed text is loaded for this language" classname="Contented Livestock settings in the language this pass runs" time="11.365">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+    <testcase name="the primary settings page belongs to this mod and can be reviewed" classname="Contented Livestock settings in the language this pass runs" time="8.622">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+Attachment: contented livestock settings in this language -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--contented-livestock-settings-in-this-language--step0.png
+</system-out>
+    </testcase>
+    <testcase name="the native shortcut is hidden, revealable, enabled and opens the same page" classname="Contented Livestock settings in the language this pass runs" time="7.934">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+</system-out>
+    </testcase>
+  </testsuite>
+  <testsuite name="RIMMSQOL reveals and hides the Contented Livestock shortcut" tests="3" failures="0" skipped="3" flakes="0" time="0.000">
+    <testcase name="RIMMSQOL lists the hidden shortcut" classname="RIMMSQOL reveals and hides the Contented Livestock shortcut" time="0.000">
+      <skipped />
+    </testcase>
+    <testcase name="RIMMSQOL reveals a live shortcut that opens this mod's settings" classname="RIMMSQOL reveals and hides the Contented Livestock shortcut" time="0.000">
+      <skipped />
+    </testcase>
+    <testcase name="RIMMSQOL hides and forgets the shortcut cleanly" classname="RIMMSQOL reveals and hides the Contented Livestock shortcut" time="0.000">
+      <skipped />
+    </testcase>
+  </testsuite>
+  <testsuite name="Contentment belongs to the right live animals" tests="4" failures="0" skipped="0" flakes="0" time="30.735">
+    <testcase name="a producing colony animal receives the need at the configured starting level" classname="Contentment belongs to the right live animals" time="7.204">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+Attachment: scenario 01 - producing cow has contentment -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--scenario-01---producing-cow-has-contentment--step0.png
+</system-out>
+    </testcase>
+    <testcase name="producers-only adds and removes the need from a non-producer when settings close" classname="Contentment belongs to the right live animals" time="7.721">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+Attachment: scenario 03 - husky has contentment when producers only is off -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--scenario-03---husky-has-contentment-when-producers-only-is-off--step0.png
+Attachment: scenario 03 - husky loses contentment when producers only is on -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--scenario-03---husky-loses-contentment-when-producers-only-is-on--step0.png
+Attachment: film-frames -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/film/Contentment-belongs-to-the-right-live-animals--producers-only-adds-and-removes-the-need-from-a-non-producer-when-settings-close/0000.jpg
+</system-out>
+    </testcase>
+    <testcase name="taming and leaving the colony update the need immediately" classname="Contentment belongs to the right live animals" time="7.796">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+Attachment: scenario 02 - tamed muffalo gains contentment -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--scenario-02---tamed-muffalo-gains-contentment--step0.png
+Attachment: scenario 02 - factionless muffalo loses contentment -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--scenario-02---factionless-muffalo-loses-contentment--step0.png
+Attachment: film-frames -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/film/Contentment-belongs-to-the-right-live-animals--taming-and-leaving-the-colony-update-the-need-immediately/0000.jpg
+</system-out>
+    </testcase>
+    <testcase name="the live production factor stops below the floor and reaches the configured maximum" classname="Contentment belongs to the right live animals" time="8.014">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+Attachment: scenario 10 - production halted below the floor -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--scenario-10---production-halted-below-the-floor--step0.png
+Attachment: scenario 09 - full contentment reaches maximum rate -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--scenario-09---full-contentment-reaches-maximum-rate--step0.png
+</system-out>
+    </testcase>
+  </testsuite>
+  <testsuite name="RIMMSQOL keeps the revealed shortcut for the next launch" tests="1" failures="0" skipped="1" flakes="0" time="0.000">
+    <testcase name="reveal and keep" classname="RIMMSQOL keeps the revealed shortcut for the next launch" time="0.000">
+      <skipped />
+    </testcase>
+  </testsuite>
+  <testsuite name="RIMMSQOL reads the revealed shortcut after restart and keeps it hidden" tests="1" failures="0" skipped="1" flakes="0" time="0.000">
+    <testcase name="read reveal, hide and keep" classname="RIMMSQOL reads the revealed shortcut after restart and keeps it hidden" time="0.000">
+      <skipped />
+    </testcase>
+  </testsuite>
+  <testsuite name="RIMMSQOL reads the hidden shortcut after restart and cleans up" tests="1" failures="0" skipped="1" flakes="0" time="0.000">
+    <testcase name="read hide and forget" classname="RIMMSQOL reads the hidden shortcut after restart and cleans up" time="0.000">
+      <skipped />
+    </testcase>
+  </testsuite>
+  <testsuite name="Contentment survives a save and reload" tests="1" failures="0" skipped="0" flakes="0" time="16.594">
+    <testcase name="level and last-feed memory return with the animal" classname="Contentment survives a save and reload" time="16.594">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+Attachment: scenario 13 - contentment before save and reload -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--scenario-13---contentment-before-save-and-reload--step0.png
+Attachment: scenario 13 - contentment after save and reload -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--scenario-13---contentment-after-save-and-reload--step0.png
+Attachment: film-frames -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/film/Contentment-survives-a-save-and-reload--level-and-last-feed-memory-return-with-the-animal/0000.jpg
+</system-out>
+    </testcase>
+  </testsuite>
+  <testsuite name="Settings are written for a separate-process restart" tests="1" failures="0" skipped="0" flakes="0" time="11.707">
+    <testcase name="write distinctive settings and keep them for the next launch" classname="Settings are written for a separate-process restart" time="11.707">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+Attachment: scenario 13 - distinctive settings before process restart -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--scenario-13---distinctive-settings-before-process-restart--step0.png
+</system-out>
+    </testcase>
+  </testsuite>
+  <testsuite name="Settings return after a separate-process restart" tests="1" failures="0" skipped="0" flakes="0" time="11.114">
+    <testcase name="read every distinctive setting in the next launch and clean up" classname="Settings return after a separate-process restart" time="11.114">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+Attachment: scenario 13 - distinctive settings after process restart -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--scenario-13---distinctive-settings-after-process-restart--step0.png
+</system-out>
+    </testcase>
+  </testsuite>
+  <testsuite name="Contented Livestock remains healthy through the first game hour" tests="1" failures="0" skipped="0" flakes="0" time="29.595">
+    <testcase name="a milkable animal advances without patch or def errors" classname="Contented Livestock remains healthy through the first game hour" time="29.595">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+Attachment: scenario 00 - milkable cow before first game hour -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--scenario-00---milkable-cow-before-first-game-hour--step0.png
+Attachment: scenario 00 - milkable cow after first game hour -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--scenario-00---milkable-cow-after-first-game-hour--step0.png
+Attachment: film-frames -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/film/Contented-Livestock-remains-healthy-through-the-first-game-hour--a-milkable-animal-advances-without-patch-or-def-errors/0000.jpg
+</system-out>
+    </testcase>
+  </testsuite>
+  <testsuite name="Scenario 01 assigns Contentment only to eligible colony producers" tests="1" failures="1" skipped="0" flakes="0" time="8.636">
+    <testcase name="cow and hen have the need while husky colonist and wild animal do not" classname="Scenario 01 assigns Contentment only to eligible colony producers" time="8.636">
+      <failure message="ScenarioOneHusky unexpectedly has a Nelim_Contentment need">ScenarioOneHusky unexpectedly has a Nelim_Contentment need</failure>
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+Attachment: screenshot -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/Scenario-01-assigns-Contentment-only-to-eligible-colony-producers--cow-and-hen-have-the-need-while-husky-colonist-and-wild-animal-do-not--step10.png
+</system-out>
+    </testcase>
+  </testsuite>
+  <testsuite name="Scenario 02 ownership changes refresh Contentment immediately" tests="1" failures="0" skipped="0" flakes="0" time="9.716">
+    <testcase name="a wild muffalo gains the need when tamed and loses it when transferred" classname="Scenario 02 ownership changes refresh Contentment immediately" time="9.716">
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+Attachment: scenario 02 - wild muffalo before taming -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--scenario-02---wild-muffalo-before-taming--step0.png
+Attachment: scenario 02 - muffalo immediately after taming -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--scenario-02---muffalo-immediately-after-taming--step0.png
+Attachment: scenario 02 - muffalo immediately after trader transfer -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/manual--scenario-02---muffalo-immediately-after-trader-transfer--step0.png
+Attachment: film-frames -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/film/Scenario-02-ownership-changes-refresh-Contentment-immediately--a-wild-muffalo-gains-the-need-when-tamed-and-loses-it-when-transferred/0000.jpg
+</system-out>
+    </testcase>
+  </testsuite>
+  <testsuite name="Scenario 06 health pulls Contentment down and recovers" tests="1" failures="1" skipped="0" flakes="0" time="8.166">
+    <testcase name="pain and bleeding make a capped negative contribution that healing clears" classname="Scenario 06 health pulls Contentment down and recovers" time="8.166">
+      <failure message="ScenarioSixCow's health offset is not negative: 0.000">ScenarioSixCow's health offset is not negative: 0.000</failure>
+      <system-out>Attachment: smoke-attachment -&gt; smoke test attachment content
+Attachment: screenshot -&gt; /mnt/c/Users/nelim/Documents/rimworld/pickle-reports/screenshots/Scenario-06-health-pulls-Contentment-down-and-recovers--pain-and-bleeding-make-a-capped-negative-contribution-that-healing-clears--step5.png
+</system-out>
+    </testcase>
+  </testsuite>
+  <testsuite name="Scenario 10 production halts below the floor and resumes without loss" tests="1" failures="0" skipped="1" flakes="0" time="0.000">
+    <testcase name="a cow keeps its progress while halted and resumes from it" classname="Scenario 10 production halts below the floor and resumes without loss" time="0.000">
+      <skipped />
+    </testcase>
+  </testsuite>
+</testsuites>

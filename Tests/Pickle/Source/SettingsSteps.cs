@@ -54,5 +54,30 @@ namespace ContentedLivestock.PickleSteps
         [When("Contented Livestock keeps its settings for the next launch")]
         public void KeepForNextLaunch(PickleContext ctx) => SettingsSandbox.KeepForNextLaunch(ctx);
 
+        /// <summary>
+        /// Puts every setting back to its shipped default and applies it.
+        /// </summary>
+        /// <remarks>
+        /// A run of the whole companion executes these features in one process, one after another,
+        /// and settings are global: whatever a scenario writes is still there for the next one.
+        /// The restart pair writes eleven deliberately non-default values, and on 2026-09-23 that
+        /// took down two later scenarios that had passed when run alone under a filter - the
+        /// eligibility one saw a husky with the need because producersOnly was still false, and
+        /// the health one measured an offset of exactly zero because healthMatters was still false.
+        /// Neither was a fault of the mod.
+        ///
+        /// Reset() rather than eleven assignments: it is the mod's own method, it is covered by
+        /// the out-of-game suite, and a twelfth setting added later is cleaned up here without
+        /// anyone remembering to come back. WriteSettings() normalizes and calls
+        /// AddOrRemoveNeedsAsAppropriate on every animal alive, so the restore reaches the pawns
+        /// already on the map rather than only the stored values.
+        /// </remarks>
+        [When("Contented Livestock restores its default settings")]
+        public void RestoreDefaults(PickleContext ctx)
+        {
+            Driver.Settings(ctx).Reset();
+            Driver.Mod(ctx).WriteSettings();
+        }
+
     }
 }

@@ -20,4 +20,9 @@ Feature: Settings return after a separate-process restart
     When Nelim's Pickle Tools: screenshot mode is enabled around the open windows
     And I take a screenshot "scenario 13 - distinctive settings after process restart"
     And Nelim's Pickle Tools: screenshot mode is disabled
+    And I close all dialogs
+    And Contented Livestock restores its default settings
+    Then Contented Livestock setting "producersOnly" reads "True"
+    And Contented Livestock setting "healthMatters" reads "True"
+    And Contented Livestock setting "floorLevel" reads "0.25"
     And no errors were logged

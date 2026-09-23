@@ -4,6 +4,9 @@ Feature: Scenario 06 health pulls Contentment down and recovers
   Background:
     Given the save "test-colony" is loaded
     And I close all dialogs
+    # Stated rather than assumed: the health factor has an on/off switch, and a whole-companion
+    # run reaches this feature with that switch left false by the restart pair.
+    And Contented Livestock restores its default settings
 
   Scenario: pain and bleeding make a capped negative contribution that healing clears
     Given Contented Livestock spawns the player animal "ScenarioSixCow" as "Cow"
