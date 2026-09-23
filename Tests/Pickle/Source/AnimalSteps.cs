@@ -11,14 +11,17 @@ namespace ContentedLivestock.PickleSteps
     public class AnimalSteps
     {
         private static float recordedFullness;
-        private static IntVec3 FreeCell(PickleContext ctx)
+        private static readonly System.Collections.Generic.Dictionary<string, float> recordedByName =
+            new System.Collections.Generic.Dictionary<string, float>();
+
+        private static IntVec3 FreeCell(PickleContext ctx, IntVec3? near = null, int radius = 20)
         {
             var map = Driver.Map(ctx);
             IntVec3 cell;
-            var found = CellFinder.TryFindRandomCellNear(map.Center, map, 20,
+            var found = CellFinder.TryFindRandomCellNear(near ?? map.Center, map, radius,
                 c => c.Standable(map) && c.GetEdifice(map) == null && c.GetFirstPawn(map) == null,
                 out cell);
-            ctx.Require(found, "no free standable cell was found near the map center");
+            ctx.Require(found, "no free standable cell was found near {(near ?? map.Center)}");
             return cell;
         }
 
@@ -26,6 +29,16 @@ namespace ContentedLivestock.PickleSteps
         public void SpawnPlayerAnimal(PickleContext ctx, string name, string kindName)
         {
             Spawn(ctx, name, kindName, Faction.OfPlayer);
+        }
+
+        /// <summary>
+        /// Spawns beside a chosen cell instead of the map centre, for presentation scenes where the
+        /// animal has to stand in a particular part of a fixture map. Close, so two of them frame together.
+        /// </summary>
+        [Given("Contented Livestock spawns the player animal {string} as {string} near x {int} and z {int}")]
+        public void SpawnPlayerAnimalNear(PickleContext ctx, string name, string kindName, int x, int z)
+        {
+            Spawn(ctx, name, kindName, Faction.OfPlayer, 3f, new IntVec3(x, 0, z), 5);
         }
 
         [Given("Contented Livestock spawns the wild animal {string} as {string}")]
@@ -41,7 +54,7 @@ namespace ContentedLivestock.PickleSteps
         }
 
         private static void Spawn(PickleContext ctx, string name, string kindName, Faction faction,
-            float biologicalAge = 3f)
+            float biologicalAge = 3f, IntVec3? near = null, int radius = 20)
         {
             var kind = DefDatabase<PawnKindDef>.GetNamedSilentFail(kindName);
             ctx.Require(kind != null, $"no PawnKindDef named '{kindName}'");
@@ -49,7 +62,7 @@ namespace ContentedLivestock.PickleSteps
                 kind, faction, forceGenerateNewPawn: true, fixedGender: Gender.Female,
                 fixedBiologicalAge: biologicalAge));
             pawn.Name = new NameSingle(name);
-            GenSpawn.Spawn(pawn, FreeCell(ctx), Driver.Map(ctx));
+            GenSpawn.Spawn(pawn, FreeCell(ctx, near, radius), Driver.Map(ctx));
             pawn.needs.AddOrRemoveNeedsAsAppropriate();
         }
 
@@ -196,6 +209,23 @@ namespace ContentedLivestock.PickleSteps
             var comp = Driver.PawnNamed(ctx, name).TryGetComp<CompMilkable>();
             ctx.Require(comp != null, $"{name} has no CompMilkable");
             recordedFullness = comp.fullness;
+            recordedByName[name] = comp.fullness;
+        }
+
+        [Then("Contented Livestock milk gained by {string} exceeds the milk gained by {string}")]
+        public void MilkGainExceeds(PickleContext ctx, string more, string less)
+        {
+            float Gain(string name)
+            {
+                var comp = Driver.PawnNamed(ctx, name).TryGetComp<CompMilkable>();
+                ctx.Require(comp != null, $"{name} has no CompMilkable");
+                ctx.Require(recordedByName.ContainsKey(name), $"no milk fullness was recorded for {name}");
+                return comp.fullness - recordedByName[name];
+            }
+            var gainMore = Gain(more);
+            var gainLess = Gain(less);
+            ctx.Assert(gainMore > gainLess,
+                $"{more} gained {gainMore:0.000000} and {less} gained {gainLess:0.000000}: expected the first to be larger");
         }
 
         [When("Contented Livestock waits one game hour", TimeoutSeconds = 60f)]

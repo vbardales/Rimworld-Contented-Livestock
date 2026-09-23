@@ -14,7 +14,7 @@ sent, posted or tagged.
 | --- | --- |
 | Manual scenarios in `_tools/FUNCTIONAL-SCENARIOS.md` | 4 of 18 complete, 1 partial, 13 unplayed |
 | Pickle passes against the current revision | `runtime-evidence` passed 17 of 24, 0 failed. `avec-rimmsqol` and a FilmTicks set have not run against it |
-| Presentation screenshots for the page | none exist yet, see below |
+| Presentation screenshots for the page | scenes written in `16-publication-shots.feature`, not run |
 | Captures of the last run actually opened | 2 of 22 |
 | Tag and GitHub release | not created, awaiting a decision |
 | Item tested by subscribing to it, then made public by hand | not done |
@@ -52,20 +52,32 @@ at the next update.
 
 ## Screenshots, in the order to upload
 
-None exist. Steam shows the first one large, so it should be the most demonstrative, not the prettiest.
-The review captures kept in `Tests/Pickle/evidence/` are not fit for it: the live-tip capture is tiled by
-a render-target artefact, and the others are Pickle's own assertion frames. What the page needs is a
-dedicated presentation scenario, replayed on the minimal set with ScreenshotMode, and each result opened
-before it is uploaded.
+The scenes are written and **not yet run**: `Tests/Pickle/Mod/Pickle/Features/16-publication-shots.feature`,
+on the `wsl-deps.studio.map` set (the zen-meadow fixture plus ScreenshotMode), through the shared launcher:
 
-The order to aim for, and why:
+```bash
+powershell.exe -ExecutionPolicy Bypass -File scripts/Run-PickleWsl.ps1 -Mod ContentedLivestock -DepMap wsl-deps.studio.map
+```
 
-1. **A cow selected, its Needs pane open, the Contentment bar visible, with the live tip beside it**
-   showing the five contributions and the rate. It is the mod's whole idea in one frame.
-2. **Two cows side by side with different milk fullness after the same time**, one kept well and one
-   badly. The proof that the rate changes, which is the sentence the description opens on.
-3. **The settings page**, English. The 2026-09-23 capture is clean and legible: eleven controls, no
-   raw key, no clipping.
+Steam shows the first picture large, so it should be the most demonstrative, not the prettiest. Order:
+
+1. **A cow with its Contentment bar and the live tip**, the five contributions and the rate. It is the
+   mod's whole idea in one frame.
+2. **The well-kept cow after two game hours**, then
+3. **the badly kept cow after the same two hours**, to be uploaded as a pair. Each shows its own bar and
+   its own milk fullness; the scenario asserts the first gained more before it takes them. The inspect pane
+   shows one animal at a time, so a single frame with both was not possible.
+4. **The settings page** over the meadow, ScreenshotMode on, English.
+
+**These are staged, and the page must not say otherwise.** Contentment is set directly and the feed memory
+is planted, because nobody waits a game week for a store picture. The rates and the milk are the real
+ones; only the starting state is set. Do not caption them as a week of play.
+
+Nothing about them is confirmed until they are opened: whether the interface clutter (the Learning helper,
+the colonist bar) sits badly on the meadow, whether the tip dialog and its OK button read well, and whether
+the cows have wandered out of frame after two hours. The camera follows the selected animal, so the last
+is unlikely. The Needs pane is the subject of scenes 1 to 3, which is why ScreenshotMode is not used there;
+if it turns out to hide the pane, that is the right call, and if it does not, the scenes can gain it.
 
 Upload budget, from the reference release of another mod here: JPEG at 1280 x 800, each file at most
 2 MB, the batch at most 8 MB. Re-check after any recompression.

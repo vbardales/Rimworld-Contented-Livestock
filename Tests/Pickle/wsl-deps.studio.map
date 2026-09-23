@@ -1,0 +1,7 @@
+# Presentation pass for the Workshop screenshots in 16-publication-shots.feature.
+#
+# It stages the reusable, all-DLC zen-meadow fixture. Kept apart from every functional set on purpose:
+# store-page pictures should show Contented Livestock alone, and no functional scenario is allowed to
+# acquire a scenic-fixture dependency by accident.
+nelim.pickletools.screenshotstudio path:PickleTools/ScreenshotStudio/Mod
+nelim.pickletools.screenshotmode   path:PickleTools/ScreenshotMode/Mod
