@@ -24,6 +24,10 @@ pickle_scenarios: 24 defined; scenario 10 corrected rerun passed 1/1 after a fai
 manual_scenarios: 18 documented, 4 completed (scenarios 0, 1, 6 and 13; 2026-09-22)
 manual_visual_evidence: scenarios 0, 1, 6 and 13 complete; 4 other scenario components captured and reviewed (2026-09-22)
 remaining:
+  - "verified (done -> tested), no @wip: the fifteen feature files declare no @wip scenario, so nothing is parked waiting to be repaired or deleted. Checked 2026-09-23."
+  - "unverified (done -> tested), conditional scenarios: of the three @requires conditions, only ScreenshotMode has run against the current revision. The six RIMMSQOL scenarios passed on 2026-09-22 under set avec-rimmsqol, but against revision 7716d99 and before the scenario-isolation fix, so that pass is due again. The one FilmTicks scenario has NO preserved report from a set that stages FilmTicks: the report that shows it passing is labelled set=runtime-evidence, and under that same map today it skips. A set name is not proof that the scenario ran with its condition present."
+  - "defect (done -> tested), undeclared condition: features 04, 11, 12, 13 and 14 take screenshots without declaring @requires:nelim.pickletools.screenshotmode, unlike feature 02. Absent that companion they would fail rather than skip, which is the wrong signal and hides them from the conditional-scenario count."
+  - "unverified (done -> tested), manual tests: 4 of the 18 scenarios in _tools/FUNCTIONAL-SCENARIOS.md are complete with reviewed media (0, 1, 6, 13) and one is partial (2). The gate requires none left to validate: each remaining scenario is either played and green, or listed as not applicable with its reason."
   - "unverified (done -> tested): Execute remaining scenarios 2-5, 7-12 and 14-17 in _tools/FUNCTIONAL-SCENARIOS.md; retain Player.log plus screenshots for stable assertions and videos for timed, transitional or restart behavior, covering a new colony and an existing save."
   - "partially verified (done -> tested): Pickle passed live producer eligibility, producers-only refresh, faction changes, initial level and representative rate factors; the remaining option effects and production cases stay in scenarios 0-17."
   - "validated for scenario 13: A real Pickle save/reload preserved a live cow's 73% Contentment and -15% Kibble feed memory; a two-process restart preserved all eleven distinctive settings and restored the test profile afterward. Captures, video, complete reports and logs are preserved."
@@ -35,7 +39,7 @@ remaining:
   - "partially verified (done -> tested): Pickle passed initial hidden state plus RIMMSQOL reveal, open, hide, forget and visible/hidden persistence across separate processes; broader shared-value editing remains in the manual matrix."
   - "Record tested_on with the game/integration versions and results only after successful game validation."
 session:      01a09726-7616-7ad2-bc3c-d94a8e24da95
-updated:      2026-09-22, maintained by Codex in this standalone repository
+updated:      2026-09-23, tested-gate checks applied by the mod's own session
 ---
 
 # Contented Livestock — status
