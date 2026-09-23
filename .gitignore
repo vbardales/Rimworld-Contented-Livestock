@@ -20,3 +20,8 @@ Source/bin/
 # rule existed; their blobs are in the history and only a rewrite would take them out.
 Tests/Pickle/evidence/**/report.html
 Tests/Pickle/evidence/**/messages.ndjson
+
+# Evidence lives on disk and is ignored. The record that is versioned is the text summary in
+# docs/runs/. This supersedes the two per-file rules above, which are kept only for history.
+Tests/Pickle/evidence/
+Tests/Manual/evidence/

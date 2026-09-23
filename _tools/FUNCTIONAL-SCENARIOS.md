@@ -19,8 +19,8 @@ nothing below happens in seconds. Where a scenario says *a day*, that is a game 
 Save at least one full-resolution screenshot for every stable state being asserted. Record a video
 when the assertion depends on time, motion, a transition, persistence across reload/restart, or a
 before/after comparison that one image cannot prove. Keep the unedited media under
-`Tests/Manual/evidence/<date>/scenario-XX/`, name files so the asserted state is identifiable, and
-link them from that run's evidence index. The final handoff must provide the captures or videos to
+`Tests/Manual/evidence/<date>/scenario-XX/` (on disk, ignored by git), name files so the asserted
+state is identifiable, and record what was seen in that day's summary under `docs/runs/`. The final handoff must provide the captures or videos to
 the user; a written claim without its media remains `unverified`.
 
 ---
