@@ -1,4 +1,4 @@
-@review
+@review @requires:nelim.pickletools.screenshotmode
 Feature: Settings return after a separate-process restart
 
   Scenario: read every distinctive setting in the next launch and clean up

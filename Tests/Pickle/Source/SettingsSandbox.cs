@@ -51,6 +51,17 @@ namespace ContentedLivestock.PickleSteps
             if (keepForNextLaunch) return;
             if (chainReader)
             {
+                // The writer scenario took a snapshot and skipped its own restore, so in a
+                // single-process run that snapshot is still here and holds the pre-chain values.
+                // Putting back only the file left the eleven distinctive values live in memory
+                // for every scenario after this one. In a real two-process chain the reader
+                // process starts with no snapshot and the process ends soon after: nothing to do.
+                if (snapshot != null)
+                {
+                    foreach (var field in Fields) field.SetValue(ContentedLivestockMod.Settings, snapshot[field.Name]);
+                    snapshot = null;
+                    Driver.Mod(ctx).WriteSettings();
+                }
                 if (File.Exists(backupPath))
                 {
                     File.Copy(backupPath, settingsPath, true);

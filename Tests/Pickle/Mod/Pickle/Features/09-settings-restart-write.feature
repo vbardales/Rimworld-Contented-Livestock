@@ -1,4 +1,4 @@
-@review
+@review @requires:nelim.pickletools.screenshotmode
 Feature: Settings are written for a separate-process restart
 
   Scenario: write distinctive settings and keep them for the next launch

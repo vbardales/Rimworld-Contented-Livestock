@@ -1,5 +1,5 @@
 @review
-Feature: Scenario 01 assigns Contentment only to eligible colony producers
+Feature: Scenario 01 eligibility
 
   Background:
     Given the save "test-colony" is loaded
@@ -8,7 +8,7 @@ Feature: Scenario 01 assigns Contentment only to eligible colony producers
     # whole-companion run has already written eleven non-default values by the time it gets here.
     And Contented Livestock restores its default settings
 
-  Scenario: cow and hen have the need while husky colonist and wild animal do not
+  Scenario: only colony producers carry the need
     Given Contented Livestock spawns the player animal "ScenarioOneCow" as "Cow"
     And Contented Livestock spawns the player animal "ScenarioOneHen" as "Chicken"
     And Contented Livestock spawns the player animal "ScenarioOneHusky" as "Husky"
