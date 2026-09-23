@@ -22,7 +22,7 @@ workshop:     "3806136625 (0.1.0; visibility and subscription test unverified)"
 automated_tests: 35 passed (2026-09-22)
 pickle_scenarios: 24 defined; scenario 10 corrected rerun passed 1/1 after a failed baseline-timing attempt, 6 intended skips in minimal passes (2026-09-22)
 manual_scenarios: 18 documented, 4 completed (scenarios 0, 1, 6 and 13; 2026-09-22)
-manual_visual_evidence: current media = the 24 captures of the 2026-09-23 run on d9be961 (1 of 24 opened) plus scenario 10 attempt-02; the 2026-09-22 media for scenarios 0, 1, 2, 6, 13 were deleted as superseded, see docs/runs/2026-09-22.md
+manual_visual_evidence: current media = 22 minified JPEG captures of the 2026-09-23 run on d9be961 (1 of 22 opened; what to keep and how: docs/runs/README.md) plus scenario 10 attempt-02; the 2026-09-22 media for scenarios 0, 1, 2, 6, 13 were deleted as superseded, see docs/runs/2026-09-22.md
 remaining:
   - "verified (done -> tested), no @wip: the fifteen feature files declare no @wip scenario, so nothing is parked waiting to be repaired or deleted. Checked 2026-09-23."
   - "unverified (done -> tested), conditional scenarios: of the three @requires conditions, only ScreenshotMode has run against the current revision. The six RIMMSQOL scenarios passed on 2026-09-22 under set avec-rimmsqol, but against revision 7716d99 and before the scenario-isolation fix, so that pass is due again. The one FilmTicks scenario has NO preserved report from a set that stages FilmTicks: the report that shows it passing is labelled set=runtime-evidence, and under that same map today it skips. A set name is not proof that the scenario ran with its condition present."
