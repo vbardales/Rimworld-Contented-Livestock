@@ -1,8 +1,12 @@
 # Changelog
 
-## 1.0.0 — unreleased
+## 0.1.0 — prepublished 2026-09-23
 
-First version. Not yet tested in a running game.
+First version. Uploaded to the Steam Workshop as item `3806136625`, private, which is how Steam
+creates every item: RimWorld never calls `SetItemVisibility`, so going public is a manual step.
+
+- `About/PublishedFileId.txt` created and committed. It is what ties this repository to that item:
+  lose it and the next upload creates a second one rather than updating this.
 
 ### Settings and dependency corrections — 2026-09-13
 
@@ -69,16 +73,23 @@ First version. Not yet tested in a running game.
 
 ### Testing
 
-- `_tools/Run-Functional-Tests.ps1`, seventeen tests in ten seconds with no game launched, asking
+- `_tools/Run-Functional-Tests.ps1`, thirty-five tests in seconds with no game launched, asking
   whether the vanilla members this mod patches still behave as it assumes. It is what found the
   bug above, and a widening of it later turned up a third non-public member on the same footing,
-  `Pawn_NeedsTracker.pawn`, read by the postfix that grants the need at all. Twelve of the
-  seventeen have been seen to fail under a deliberate fault; the file says which five have not,
-  and why they cannot be.
-- `_tools/FUNCTIONAL-SCENARIOS.md`, fifteen scenarios to play in a game, with what to watch and
+  `Pawn_NeedsTracker.pawn`, read by the postfix that grants the need at all. Twelve of them have
+  been seen to fail under a deliberate fault; the file says which five have not, and why they
+  cannot be.
+- `_tools/Settings-Tests.ps1`, covering defaults, bounds, persistence and the shortcut contract.
+- `Tests/Pickle/`, twenty-four Gherkin scenarios across fifteen features, for what only a running
+  game can show.
+- `_tools/FUNCTIONAL-SCENARIOS.md`, eighteen scenarios to play by hand, with what to watch and
   what a failure looks like in `Player.log`.
 
 ### Known gaps
 
-- Not run in game. The patches resolve against 1.6.4871 rev590 by reflection, and the defs pass
-  `Check-XmlFields`, `Check-DefRefs` and `Check-DefInjected`, but no save has been loaded with it.
+- Not fully validated in game. Pickle has run it for real and four of the eighteen manual
+  scenarios are complete with reviewed media, but the remaining fourteen are unplayed and the
+  Pickle evidence on file was produced against an earlier revision. `STATUS.md` lists what stands
+  scenario by scenario.
+- The Workshop item is private. Making it public, and posting the thank-you messages, comes after
+  the in-game validation, not before.
