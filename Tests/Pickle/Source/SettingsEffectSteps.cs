@@ -49,7 +49,7 @@ namespace ContentedLivestock.PickleSteps
 
         private static string Capitalised(string word) => char.ToUpperInvariant(word[0]) + word.Substring(1);
 
-        private static float Contribution(PickleContext ctx, string kind, string name)
+        internal static float Contribution(PickleContext ctx, string kind, string name)
         {
             var need = Contentment.NeedOf(Driver.PawnNamed(ctx, name));
             ctx.Require(need != null, $"{name} has no contentment need");
