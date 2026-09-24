@@ -199,8 +199,24 @@ changes it (CI/CD session, 2026-09-24). Do not do these one by one:
 3. the four final pictures, resized to JPEG 1280 x 800, at most 2 MB each and 8 MB the batch, committed in
    `Art/WorkshopScreenshots/` and named `01-...`, `02-...`, in the upload order of section 2 (Virginie asked
    for this, so the dry-run lists them as a reminder of the manual gallery upload; it sends nothing);
-4. the workflow regenerated with the same arguments plus `--replace` and `--gallery-dir Art/WorkshopScreenshots`
-   (only `publish.config.json` changes, the template stamp stays).
+4. the workflow regenerated with the **full** argument list below, never only the new option: a `--replace`
+   with an argument missing changes the config, and a later one typed from memory without `--gallery-dir`
+   silently drops `galleryDir`. Then run `node --test '.github/tests/*.test.mjs'` and check that
+   `git diff` shows only `galleryDir` added in `.github/publish.config.json` (files that differ by line
+   endings only are normalized on commit).
+
+```bash
+bash /c/Users/nelim/Documents/rimworld/Rimworld-Release-Admin/scripts/generate-publish-workflow.sh \
+  /c/Users/nelim/Documents/rimworld/ContentedLivestock --replace \
+  --workshop-id 3806136625 --package-id nelim.contentedlivestock \
+  --release-title "Contented Livestock {version}" \
+  --require Assemblies/ContentedLivestock.dll \
+  --description-file PUBLICATION.md --description-heading '^## 1\.' \
+  --gallery-dir Art/WorkshopScreenshots
+```
+
+The gallery listing is alphabetical and counts only png, jpg, jpeg and gif files, non-recursive: the folder
+must hold nothing else that should be listed. Send the CI/CD session the SHA once the final commit is pushed.
 
 The description is an option, off by default, and it must be on in **both** the dry-run and the publish:
 `dispatch-publish.sh` refuses a publish whose options differ from the dry-run's, so add `--description`
