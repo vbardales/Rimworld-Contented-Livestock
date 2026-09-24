@@ -12,7 +12,7 @@ sent, posted or tagged.
 
 | Blocker | State |
 | --- | --- |
-| Manual scenarios in `_tools/FUNCTIONAL-SCENARIOS.md` | 4 of 18 complete, 1 partial, 13 unplayed |
+| Manual scenarios in `_tools/FUNCTIONAL-SCENARIOS.md` | 4 of 18 complete, 1 partial, 12 unplayed, 1 out of scope (14) |
 | Pickle passes against the current revision | `runtime-evidence` passed 17 of 24, 0 failed. `avec-rimmsqol` passed 6 of 6 and `runtime-film` passed 1 of 1 on 2026-09-24: every conditional scenario has now run on this revision |
 | Presentation screenshots for the page | pictures 2, 3 and 4 taken and opened, usable; picture 1 has a stray tooltip, fixed in the scene, rerun not yet done |
 | Captures of the last run actually opened | 2 of 22 |

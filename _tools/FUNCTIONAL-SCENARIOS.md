@@ -188,6 +188,10 @@ every mod setting, quit the game entirely, relaunch: every setting is as you lef
 
 ## 14. It can be added to a running save, and taken out of one
 
+**Out of scope (decision of 2026-09-24).** Backward compatibility of saves is not handled, so this
+scenario is not played: doing so would be opportunistic. What stays is the property the code has by
+construction, below, which the out-of-game suite checks; it is not a promise verified in game.
+
 **Do.** Load a save made without the mod. Play an hour.
 
 **Expect.** Animals gain the need at 50 % and walk from there. Nothing in the save is disturbed.

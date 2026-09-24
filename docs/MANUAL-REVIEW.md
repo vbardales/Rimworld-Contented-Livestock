@@ -1,6 +1,7 @@
 # Manual review sheet
 
-The 13 scenarios of `_tools/FUNCTIONAL-SCENARIOS.md` that no one has played by hand. Method, agreed
+The 12 scenarios of `_tools/FUNCTIONAL-SCENARIOS.md` that no one has played by hand (the 13th, number 14,
+is out of scope: backward compatibility of saves is not handled). Method, agreed
 2026-09-24: **Claude produces the media (a capture or a film) with Pickle, and says what a person must
 look at that Claude cannot judge; the person watches and gives a verdict per point.** Nothing here is
 certified until that verdict is written in `STATUS.md`. A scenario stays `unverified` until then.
@@ -19,14 +20,14 @@ Media live on disk, ignored by git, under `Tests/Pickle/evidence/`; the paths ar
 
 ---
 
-## Status of the 13
+## Status of the 12
 
 | # | Scenario | Media now | Claude checked | Still to produce |
 | --- | --- | --- | --- | --- |
 | 10 | Below the floor, nothing is lost | film + 3 captures | all 3 captures opened, values read | nothing |
 | 9 | The rate really changes | 1 capture at maximum, the 2 pictures of the publication pair | pair opened | tips at three levels |
 | 3 | Producers-only switch | 2 captures | not opened | toggle film, cow level kept |
-| 17 | RIMMSQOL shortcut, both languages | English: 6 of 6 asserted, 1 capture | opened | French repeat, DLL hash, world view |
+| 17 | RIMMSQOL shortcut | English: 6 of 6 asserted, 1 capture | opened | DLL hash, bare main bar, world view |
 | 7 | Company | none (a "Company -10%" line is visible in scenario 10's tip) | that line only | a new feature |
 | 12 | Unfertilised hen | none | - | a new feature |
 | 11 | Harvest and laying reset | none | - | a new feature |
@@ -35,9 +36,9 @@ Media live on disk, ignored by git, under `Tests/Pickle/evidence/`; the paths ar
 | 4 | Feed and its fading memory | none | - | a new feature, a game-day wait |
 | 5 | Temperature per animal | none | - | a new step to set the temperature |
 | 8 | Pen balance | none | - | a new feature, a pen to build |
-| 14 | Add to and remove from a save | none | - | cannot be one Pickle launch, see below |
+| 14 | Add to and remove from a save | - | - | **out of scope**: no backward compatibility is handled or tested |
 
-Order proposed: the cheap ones first (10, 9, 3, 17), then 7, 12, 11, then 15, 16, then 4, 5, 8, and 14 last.
+Order proposed: the cheap ones first (10, 9, 3, 17), then 7, 12, 11, then 15, 16, then 4, 5, 8.
 Small requests, one scenario or a pair each.
 
 ---
@@ -97,7 +98,7 @@ husky, tick, close, it goes), and the level of a cow captured before and after t
 caravan variant ("a husky returning from a caravan") has no Pickle step and stays a manual play or a
 documented gap.
 
-## 17. RIMMSQOL shortcut, both languages
+## 17. RIMMSQOL shortcut
 
 **Media.** English: `2026-09-24/avec-rimmsqol/seq1/screenshots/...opened-through-rimmsqol.jpg` (opened: the
 ordinary settings dialog, eleven controls).
@@ -109,10 +110,14 @@ hide and forget it, and the choice survives a process restart.
 greyed out** on the main bar before RIMMSQOL reveals it. That is asserted, but a picture of the bar is the
 better evidence and has not been taken.
 
-**Still to produce.** The same pass in **French** (`-Language French`), the RIMMSQOL DLL version and hash,
-a capture of the bare main bar, and "use it from the world view without a map".
+**Still to produce.** The RIMMSQOL DLL version and hash, a capture of the bare main bar, and "use it from
+the world view without a map". **No French pass:** the shortcut's label is the same in both languages
+("Contented Livestock"); the one string that differs is its description, the tooltip ("Open Contented
+Livestock settings." / "Ouvrir les réglages de Contented Livestock."), which belongs to the translation
+check and can be asserted from the def without RIMMSQOL. RIMMSQOL's own screens are in its language, not
+this mod's.
 
-## 7. Company, 12. Unfertilised hen, 11. Harvest, 15. Settings, 16. Effects, 4. Feed, 5. Temperature, 8. Pen, 14. Add and remove
+## 7. Company, 12. Unfertilised hen, 11. Harvest, 15. Settings, 16. Effects, 4. Feed, 5. Temperature, 8. Pen
 
 No media yet. Each needs a new feature, so each is one small request. Notes on what is hard:
 
@@ -126,7 +131,10 @@ No media yet. Each needs a new feature, so each is one small request. Notes on w
 - **4.** Needs a game day (60 000 ticks) and real grazing by the animal; a film sampled every 1 000 ticks.
 - **5.** Needs a way to set the temperature of a room in winter, which no step does yet.
 - **8.** Needs a pen with a pasture built in code and the pen marker's own figure; the riskiest.
-- **14.** Cannot be one launch: the save must be made **without** the mod and loaded with it, then the mod
-  removed. The Pickle suite lives in the mod's own assembly, so a launch without the mod has no suite.
-  Options: two requests with different staging around a save that persists in the WSL Saves folder and a
-  small separate suite, or a manual play. To decide before anything is written.
+
+**14 is not on this sheet.** Adding the mod to a save, and removing it, is backward compatibility, which is
+not handled or tested here (decision of 2026-09-24). One thing follows and needs an answer: `About.xml`
+and `README.md` still say "Safe to add to an existing save. Safe to remove", and the Steam page created
+for 0.1.0 carries the same sentence. That is a promise no game run backs. It is true by construction (an
+animal with no contentment need is worth exactly the vanilla rate) and the out-of-game suite checks that
+property, but it is not "safe" in the sense a player reads.
