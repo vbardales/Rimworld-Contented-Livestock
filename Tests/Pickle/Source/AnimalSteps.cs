@@ -53,7 +53,7 @@ namespace ContentedLivestock.PickleSteps
             Spawn(ctx, name, kindName, Faction.OfPlayer, 25f);
         }
 
-        private static void Spawn(PickleContext ctx, string name, string kindName, Faction faction,
+        internal static void Spawn(PickleContext ctx, string name, string kindName, Faction faction,
             float biologicalAge = 3f, IntVec3? near = null, int radius = 20)
         {
             var kind = DefDatabase<PawnKindDef>.GetNamedSilentFail(kindName);
@@ -278,6 +278,46 @@ namespace ContentedLivestock.PickleSteps
             var gainLess = Gain(less);
             ctx.Assert(gainMore > gainLess,
                 $"{more} gained {gainMore:0.000000} and {less} gained {gainLess:0.000000}: expected the first to be larger");
+        }
+
+        /// <summary>
+        /// What one game hour of filling is worth with no mod at all: 2500 ticks over the interval the def
+        /// gives, read from the animal's own comp so it holds for any milkable kind.
+        /// </summary>
+        private static float VanillaHourGain(PickleContext ctx, string name, out float actualGain)
+        {
+            var comp = Driver.PawnNamed(ctx, name).TryGetComp<CompMilkable>();
+            ctx.Require(comp != null, $"{name} has no CompMilkable");
+            var props = comp.props as CompProperties_Milkable;
+            ctx.Require(props != null && props.milkIntervalDays > 0f, $"{name}'s milk comp has no interval");
+            ctx.Require(recordedByName.ContainsKey(name), $"no milk fullness was recorded for {name}");
+            actualGain = comp.fullness - recordedByName[name];
+            return 2500f / (props.milkIntervalDays * 60000f);
+        }
+
+        [Then("Contented Livestock milk gained by {string} in one game hour is above the vanilla amount")]
+        public void MilkAboveVanilla(PickleContext ctx, string name)
+        {
+            float vanilla = VanillaHourGain(ctx, name, out float gain);
+            ctx.Assert(gain > vanilla,
+                $"{name} gained {gain:0.0000} in an hour, not above the vanilla {vanilla:0.0000}");
+        }
+
+        [Then("Contented Livestock milk gained by {string} in one game hour is below the vanilla amount")]
+        public void MilkBelowVanilla(PickleContext ctx, string name)
+        {
+            float vanilla = VanillaHourGain(ctx, name, out float gain);
+            ctx.Assert(gain < vanilla,
+                $"{name} gained {gain:0.0000} in an hour, not below the vanilla {vanilla:0.0000}");
+        }
+
+        [Then("Contented Livestock milk gained by {string} in one game hour is within {int} percent of the vanilla amount")]
+        public void MilkNearVanilla(PickleContext ctx, string name, int tolerance)
+        {
+            float vanilla = VanillaHourGain(ctx, name, out float gain);
+            float percent = gain / vanilla * 100f;
+            ctx.Assert(Mathf.Abs(percent - 100f) <= tolerance,
+                $"{name} gained {gain:0.0000} in an hour, {percent:0}% of the vanilla {vanilla:0.0000}, not within {tolerance}% of it");
         }
 
         [When("Contented Livestock waits one game hour", TimeoutSeconds = 60f)]
