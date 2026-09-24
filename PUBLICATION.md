@@ -13,8 +13,8 @@ sent, posted or tagged.
 | Blocker | State |
 | --- | --- |
 | Manual scenarios in `_tools/FUNCTIONAL-SCENARIOS.md` | 4 of 18 complete, 1 partial, 13 unplayed |
-| Pickle passes against the current revision | `runtime-evidence` passed 17 of 24, 0 failed. `avec-rimmsqol` and a FilmTicks set have not run against it |
-| Presentation screenshots for the page | scenes written in `16-publication-shots.feature`, not run |
+| Pickle passes against the current revision | `runtime-evidence` passed 17 of 24, 0 failed. `avec-rimmsqol` (requests `…-8eb0`) and `runtime-film` (`…-5a81`) are submitted to TicketDispatcher and not yet run |
+| Presentation screenshots for the page | pictures 2, 3 and 4 taken and opened, usable; picture 1 has a stray tooltip, fixed in the scene, rerun not yet done |
 | Captures of the last run actually opened | 2 of 22 |
 | Tag and GitHub release | not created, awaiting a decision |
 | Item tested by subscribing to it, then made public by hand | not done |
@@ -52,12 +52,11 @@ at the next update.
 
 ## Screenshots, in the order to upload
 
-The scenes are written and **not yet run**: `Tests/Pickle/Mod/Pickle/Features/16-publication-shots.feature`,
-on the `wsl-deps.studio.map` set (the zen-meadow fixture plus ScreenshotMode), through the shared launcher:
-
-```bash
-powershell.exe -ExecutionPolicy Bypass -File scripts/Run-PickleWsl.ps1 -Mod ContentedLivestock -DepMap wsl-deps.studio.map
-```
+The scenes are `Tests/Pickle/Mod/Pickle/Features/16-publication-shots.feature`, on the `wsl-deps.studio.map`
+set (the zen-meadow fixture plus ScreenshotMode). Run them by submitting a request to TicketDispatcher, not
+by launching anything (`Rimworld-Ticket-Dispatcher/docs/WELCOME.md`); to redo one picture, filter on its
+scenario with `-Filter '::<scenario name>'`. The 2026-09-24 run and its findings are in `docs/runs/2026-09-24.md`;
+the media are in `Tests/Pickle/evidence/2026-09-24/publication-shots/`, as JPEG at 1920 x 1080.
 
 Steam shows the first picture large, so it should be the most demonstrative, not the prettiest. Order:
 
@@ -73,11 +72,21 @@ Steam shows the first picture large, so it should be the most demonstrative, not
 is planted, because nobody waits a game week for a store picture. The rates and the milk are the real
 ones; only the starting state is set. Do not caption them as a week of play.
 
-Nothing about them is confirmed until they are opened: whether the interface clutter (the Learning helper,
-the colonist bar) sits badly on the meadow, whether the tip dialog and its OK button read well, and whether
-the cows have wandered out of frame after two hours. The camera follows the selected animal, so the last
-is unlikely. The Needs pane is the subject of scenes 1 to 3, which is why ScreenshotMode is not used there;
-if it turns out to hide the pane, that is the right call, and if it does not, the scenes can gain it.
+What opening them showed, 2026-09-24:
+
+- **Pictures 2, 3 and 4 are usable.** The pair shows milk fullness 11% against 4.7% after the same two game
+  hours, and each pane shows its own Contentment bar. The gain is 2.3 times, not the 2.9 of the two
+  production factors (140% and 49%), because contentment drifts over the two hours: **do not quote a
+  ratio in a caption.** The settings page is clean.
+- **Picture 1 has a stray tooltip**, another pawn's name floating beside the cow, drawn because Pickle's
+  pointer rests at the screen centre after a camera jump. The scene now shows the cow three cells left and
+  four up, so the pointer rests on bare ground. A rerun of that one scenario is owed; the old capture is deleted.
+- **The tip is a dialog, not the game's hover tooltip.** It carries the real text of the need, in a message box
+  moved to the top left. Say "the contentment tip", not "hover tooltip".
+- The right edge still shows the fixture's own alerts ("Need colonist beds", "Pen needed", "Medical treatment
+  needed") and the Learning helper. They were left: ScreenshotMode would hide the Needs pane, which is the subject.
+- The files are 1920 x 1080 and 0.6 MB each; the upload budget above asks for 1280 x 800, so they are resized
+  once all four are final, not before.
 
 Upload budget, from the reference release of another mod here: JPEG at 1280 x 800, each file at most
 2 MB, the batch at most 8 MB. Re-check after any recompression.

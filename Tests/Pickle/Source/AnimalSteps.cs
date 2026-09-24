@@ -100,6 +100,24 @@ namespace ContentedLivestock.PickleSteps
             InspectPaneUtility.OpenTab(typeof(ITab_Pawn_Needs));
         }
 
+        /// <summary>
+        /// The same selection, with the view shifted so the animal stands left of and above the centre of the
+        /// screen. After a camera jump Pickle's pointer rests at the centre and the game draws the tooltip of
+        /// whatever is under it: in the first presentation run that was another pawn's name floating beside
+        /// the cow. Shifted, the pointer rests on bare ground. Left and up are on screen: the camera looks
+        /// right of and below the animal.
+        /// </summary>
+        [When("Contented Livestock selects animal {string} for visual evidence, shown {int} cells left and {int} cells up")]
+        public void SelectForEvidenceOffCentre(PickleContext ctx, string name, int cellsLeft, int cellsUp)
+        {
+            var pawn = Driver.PawnNamed(ctx, name);
+            Find.Selector.ClearSelection();
+            Find.Selector.Select(pawn);
+            var target = pawn.Position + new IntVec3(cellsLeft, 0, -cellsUp);
+            Find.CameraDriver.JumpToCurrentMapLoc(target.InBounds(pawn.Map) ? target : pawn.Position);
+            InspectPaneUtility.OpenTab(typeof(ITab_Pawn_Needs));
+        }
+
         [Then("Contented Livestock animal {string} has the contentment need")]
         public void HasNeed(PickleContext ctx, string name)
         {

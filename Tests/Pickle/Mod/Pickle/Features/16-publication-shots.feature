@@ -11,7 +11,10 @@
 # mode is used only for the settings page, where nothing but the window matters. In the animal scenes
 # the letters the fixture has piled up are dismissed, the camera is framed on the glade before the
 # animal is selected (that step also sets the zoom, which the saved camera leaves too far out), and
-# the tip is moved to the top left so it does not sit on top of the cow.
+# the tip is moved to the top left so it does not sit on top of the cow. In the first scene the cow is
+# also shown off-centre: after a camera jump Pickle's pointer rests at the screen centre and the game
+# draws the tooltip of whatever is under it, which in the first run was another pawn's name ("Miel,
+# Surveyor") floating beside the cow. Scenes 2 and 3 had no pawn under the pointer and need no shift.
 #
 # Animal names must not exist in the fixture: the steps take the first pawn of that name. The zen
 # meadow already has a macaw called "Clover", which is why the cows are not.
@@ -31,7 +34,7 @@ Feature: Workshop pictures
     Then Contented Livestock production factor for "Daisy" is 112 percent
     When Contented Livestock dismisses every letter
     And Nelim's Pickle Tools: I frame the studio "flowers"
-    And Contented Livestock selects animal "Daisy" for visual evidence
+    And Contented Livestock selects animal "Daisy" for visual evidence, shown 3 cells left and 4 cells up
     And Contented Livestock opens the live contentment tip for "Daisy" at the top left
     And I wait 30 ticks
     Then I take a screenshot "publication 1 - cow with contentment and its tip"
