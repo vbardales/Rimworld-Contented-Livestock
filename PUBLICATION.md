@@ -1,62 +1,113 @@
 # Publication
 
 What the Steam Workshop page asks for and the repository holds nowhere else. It serves twice: for the
-first public release, and for whoever takes the mod over. Workshop item **3806136625**, version 0.1.0,
-created private. `Mod/About/PublishedFileId.txt` holds the id and must never be lost: without it the next
+next release, and for whoever takes the mod over. Workshop item **3806136625**, version 0.1.0 uploaded from
+the game, private. `Mod/About/PublishedFileId.txt` holds the id and must never be lost: without it the next
 upload creates a second item.
 
-## Status on 2026-09-23
+Publication goes through GitHub Actions, not the in-game button (root `AGENTS.md`,
+`Rimworld-Release-Admin/docs/OPERATIONS.md`). **This mod has no workflow yet**: see section 6.
+
+## Status on 2026-09-24
 
 Prepared, not released. The gate before this one, `tested`, is not met, so nothing below has been
 sent, posted or tagged.
 
 | Blocker | State |
 | --- | --- |
-| Manual scenarios in `_tools/FUNCTIONAL-SCENARIOS.md` | 4 of 18 complete, 1 partial, 12 unplayed, 1 out of scope (14) |
-| Pickle passes against the current revision | `runtime-evidence` passed 17 of 24, 0 failed. `avec-rimmsqol` passed 6 of 6 and `runtime-film` passed 1 of 1 on 2026-09-24: every conditional scenario has now run on this revision |
-| Presentation screenshots for the page | pictures 2, 3 and 4 taken and opened, usable; picture 1 has a stray tooltip, fixed in the scene, rerun not yet done |
-| Captures of the last run actually opened | 2 of 22 |
-| Tag and GitHub release | not created, awaiting a decision |
+| Manual scenarios in `_tools/FUNCTIONAL-SCENARIOS.md` | 4 of 18 complete, 1 partial, 12 unplayed, 1 out of scope (14). Method and progress: `docs/MANUAL-REVIEW.md` |
+| Pickle passes against the current revision | `runtime-evidence` passed 17 of 24, `avec-rimmsqol` 6 of 6, `runtime-film` 1 of 1, 0 failed: every conditional scenario has run |
+| Presentation pictures | 2, 3 and 4 taken and opened, usable; picture 1 has a stray tooltip, fixed in the scene, rerun submitted |
+| Publication workflow in this repository | none: to be generated, see section 6 |
+| Tag and GitHub release | created by the CI after a successful upload, never by hand |
 | Item tested by subscribing to it, then made public by hand | not done |
 
-What is verified: the repository is clean and pushed; `Mod/` is byte-identical to what was uploaded
-(no change since commit `4531a66`); rebuilding `Source/` reproduces the shipped DLL exactly
-(SHA-256 starts `e69349c34f01e7e3`), so the item is reproducible from this repository.
+What is verified: rebuilding `Source/` reproduces the shipped DLL exactly (SHA-256 starts
+`e69349c34f01e7e3`). `Mod/` now differs from the 0.1.0 upload in one file, `About/About.xml`, from which
+the sentence promising that the mod is safe to add to and to remove from a save was removed on 2026-09-24
+(backward compatibility of saves is not handled or tested). It ships with the next release.
 
-## The description
+## 1. Steam description
 
-`SetItemDescription` is called only when RimWorld creates an item, so the Workshop page still carries the
-description as it was on 0.1.0. A later change to `About.xml` never reaches it: correct the page by hand.
+The source for the CI (`--description-file PUBLICATION.md --description-heading '^## 1\.'`). It is the
+fenced block below, in Steam BBCode, and the same text in plain form is in `Mod/About/About.xml`: keep the two
+in step by hand. Steam accepts at most 8000 bytes. Sent only when the publish is dispatched with the
+description option, and then it **overwrites what is on the page**, so edit this block and never the page.
 
-The page as created is out of order against the convention. It has **SOURCE CODE before IF I GO QUIET**,
-and **no licence line at all**. The tail should read, in this order, after the body:
+The page created for 0.1.0 carries the older text: it has the promise about saves, puts SOURCE CODE before
+IF I GO QUIET, and has no licence line. The first publish with the description option corrects all three.
 
-```
+```text
+A cow in RimWorld gives the same fourteen milk whether it spends its life on good grass or in a concrete corridor. This mod makes how you keep an animal decide what it gives you.
+
+[h2]WHAT IT ADDS[/h2]
+
+Every colony animal that produces something gets a contentment need, alongside food and rest. It is not a mood - animals have no thoughts and get none here. It is a slow state, built from five things:
+
+[list]
+[*] [b]What it last ate.[/b] Grazing a living plant is the best thing that can happen to a grazer; then raw produce and meat, then hay, then kibble, then carrion. The memory of a meal fades over two days.
+[*] [b]Its pasture or its room.[/b] Roped animals are judged on whether their pen grows back faster than the herd eats it - the figure the pen marker already shows you. Everything else is judged on floor space per animal.
+[*] [b]Its temperature[/b], measured against its own comfortable range. A heated barn matters to a chicken and not to a husky.
+[*] [b]Its health.[/b] Pain, bleeding and hunger all pull contentment down.
+[*] [b]Its company.[/b] A bond with a colonist helps; a herd animal kept away from its own kind suffers.
+[/list]
+
+Contentment then decides how fast the animal fills with milk, wool or eggs. Content, it fills faster than vanilla. Neglected, slower. Below a floor you can set, it stops filling altogether - but never loses what it had already accumulated. A bad week costs you the week, not the progress.
+
+Nothing jumps. Contentment walks toward its target over about a day, so losing a pasture takes a day to show and a day to undo.
+
+[h2]WHY THE NEED, AND NOT A MOOD[/h2]
+
+An animal in RimWorld carries exactly two needs: food and rest. Eight of the ten in the base game are barred from animals by a single line of their definition. That is not an oversight to be worked around - it is the reason a herd is cheap to run - so this adds one need and no thoughts, no mental states, and no new jobs. Everything it reads is something the game already tracks and you already build for.
+
+Production is scaled at the tick rather than at the yield. The obvious target is the amount an animal gives, but that is a property each kind of animal product overrides separately, so patching it would catch cows and miss sheep, and would miss every modded product entirely. The filling itself is written once. One patch covers milk, wool, eggs, and anything a mod hangs off the same machinery.
+
+[h2]WHAT IT DELIBERATELY DOES NOT DO[/h2]
+
+It does not touch reproduction, taming, training, wildness, or how much an animal eats. Contentment changes the rate of one thing only.
+
+It does not give animals thoughts, mental breaks or moods, and it adds no new jobs for your colonists. There is nothing new to do - only reasons for what you already do.
+
+It does not put a need on wild animals or on other factions' animals. Only your own, and by default only the ones that actually produce something.
+
+It does not add an alert. An animal that has stopped producing says so in its own inspect pane, and that is where you were already looking.
+
+[h2]COMPATIBILITY[/h2]
+
+Requires [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077]Harmony[/url], loaded before this mod (built and checked with Harmony 2.4.2.0). RIMMSQOL is optional: mod settings are always available through Mod options.
+
+Works with modded animals and modded animal products without patches, as long as they use the game's own milkable, shearable or egg-laying machinery.
+
+Every setting is adjustable, and each of the five inputs can be switched off on its own. Set the fastest rate to 100% for a version that only ever penalises.
+
+[h2]LICENCE[/h2]
+
+This mod is MIT licensed. Full attribution: [url=https://github.com/vbardales/Rimworld-Contented-Livestock/blob/main/ATTRIBUTION.md]ATTRIBUTION.md[/url]. Licence text: [url=https://github.com/vbardales/Rimworld-Contented-Livestock/blob/main/LICENSE]LICENSE[/url].
+
 [h2]IF I GO QUIET[/h2]
+
 If I do not answer within a reasonable time after being contacted, anyone may freely update this or any other of my mods, including publishing a continuation of it. All credit must be preserved.
 
 [h2]AI-GENERATED[/h2]
+
 This mod was written with Claude Code (Anthropic) under human direction, review and testing. Stated openly: working with these tools is my job.
 
 [h2]THANKS[/h2]
-ConcernedApe, whose farm animals in Stardew Valley refuse to give anything at all when they are unhappy, and give their best when they have been let out on fresh grass. The idea is his; none of his work is here.
 
-See ATTRIBUTION.md in the repository. This mod is MIT licensed.
+ConcernedApe, whose farm animals in Stardew Valley refuse to give anything at all when they are unhappy, and give their best when they have been let out on fresh grass. The idea is his; none of his work is here.
 
 [url=https://github.com/vbardales/Rimworld-Contented-Livestock]Source code on GitHub[/url]
 ```
 
-`About.xml` has the same ordering fault and is left as it is on purpose: changing it now would make
-`Mod/` differ from the uploaded item, and the tag below is only true while it does not. Bring it in step
-at the next update.
+## 2. Pictures, in the order to upload
 
-## Screenshots, in the order to upload
-
-The scenes are `Tests/Pickle/Mod/Pickle/Features/16-publication-shots.feature`, on the `wsl-deps.studio.map`
-set (the zen-meadow fixture plus ScreenshotMode). Run them by submitting a request to TicketDispatcher, not
-by launching anything (`Rimworld-Ticket-Dispatcher/docs/WELCOME.md`); to redo one picture, filter on its
-scenario with `-Filter '::<scenario name>'`. The 2026-09-24 run and its findings are in `docs/runs/2026-09-24.md`;
-the media are in `Tests/Pickle/evidence/2026-09-24/publication-shots/`, as JPEG at 1920 x 1080.
+The CI sends only the header image (`Mod/About/Preview.png`, when its option is on). The gallery is a manual
+step on the Steam page, in this order. Run the scenes by submitting a request to TicketDispatcher, not by
+launching anything (`Rimworld-Ticket-Dispatcher/docs/WELCOME.md`); to redo one picture, filter on its
+scenario with `-Filter '::<scenario name>'`. The scenes are
+`Tests/Pickle/Mod/Pickle/Features/16-publication-shots.feature`, on the `wsl-deps.studio.map` set. The
+2026-09-24 run and its findings are in `docs/runs/2026-09-24.md`; the media are in
+`Tests/Pickle/evidence/2026-09-24/publication-shots/`, as JPEG at 1920 x 1080.
 
 Steam shows the first picture large, so it should be the most demonstrative, not the prettiest. Order:
 
@@ -80,18 +131,16 @@ What opening them showed, 2026-09-24:
   ratio in a caption.** The settings page is clean.
 - **Picture 1 has a stray tooltip**, another pawn's name floating beside the cow, drawn because Pickle's
   pointer rests at the screen centre after a camera jump. The scene now shows the cow three cells left and
-  four up, so the pointer rests on bare ground. A rerun of that one scenario is owed; the old capture is deleted.
+  four up, so the pointer rests on bare ground. A rerun of that one scenario is submitted; the old capture
+  is deleted.
 - **The tip is a dialog, not the game's hover tooltip.** It carries the real text of the need, in a message box
   moved to the top left. Say "the contentment tip", not "hover tooltip".
 - The right edge still shows the fixture's own alerts ("Need colonist beds", "Pen needed", "Medical treatment
-  needed") and the Learning helper. They were left: ScreenshotMode would hide the Needs pane, which is the subject.
-- The files are 1920 x 1080 and 0.6 MB each; the upload budget above asks for 1280 x 800, so they are resized
-  once all four are final, not before.
+  needed") and the Learning helper. They are kept on purpose: the alerts are part of the real interface.
+- The files are 1920 x 1080 and 0.6 MB each; the upload budget asks for JPEG at 1280 x 800, each file at most
+  2 MB, the batch at most 8 MB. They are resized once all four are final, not before.
 
-Upload budget, from the reference release of another mod here: JPEG at 1280 x 800, each file at most
-2 MB, the batch at most 8 MB. Re-check after any recompression.
-
-## Dependencies and DLC
+## 3. Dependencies and DLC
 
 - **Hard dependency: Harmony only** (`modDependencies`, with its Workshop and download links). The code
   uses `HarmonyLib` and no other third-party assembly.
@@ -100,13 +149,16 @@ Upload budget, from the reference release of another mod here: JPEG at 1280 x 80
 - **`loadAfter`** holds Harmony, the base game and the five expansions, for order only.
 - **No expansion is required.** No `LoadFolders.xml`, no `IfModActive`. Supported version: 1.6.
 
-## Content boxes
+## 4. Content boxes
 
 No adult content. The Preview and the ModIcon were opened: a lit animal shelter at night with a cow, a
 calf, a pail of milk, eggs and a fleece; and a cartoon mascot among a cow, a sheep, a hen and a pig in a
-pen. The screenshots above are still to be opened once they exist.
+pen. The pictures above were opened as they were taken.
 
-## Steam release notes, for the first upload
+## 5. Steam change note, for the next upload
+
+The CI takes the release notes from the `## [<version>]` section of `CHANGELOG.md`; the version and that
+format are for the CI/CD session to settle (section 6). The gist for a first content release:
 
 ```
 First release. Colony animals that produce milk, wool or eggs now carry a contentment need, built from
@@ -116,20 +168,25 @@ already accumulated is ever lost. Every threshold and rate is a setting, and eac
 be switched off. Needs Harmony.
 ```
 
-## After the upload
+## 6. Publishing through the CI
 
-- `Mod/About/PublishedFileId.txt` is unchanged for an update. `git status` must stay clean.
-- Steam creates a new item private and RimWorld never calls `SetItemVisibility`: **subscribe to the item
-  yourself, check it loads, then switch it to public by hand**.
-- Post the thanks below only once the item is public: a link to a private item opens for nobody.
+Rules that never bend (root `AGENTS.md`): a dry-run for the exact commit passes first and its run ID and SHA
+are recorded next to `STATUS.md`; `publish` takes a full 40-character SHA, never a branch; **only Virginie
+approves the `steam-production` environment**; Steam credentials never enter this repository; the CI creates
+the tag and the GitHub release after a successful upload, so **none is created by hand**.
 
-## Tag and release
+What this mod still lacks: the generated workflow and its `.github/publish.config.json`, and nothing has
+run. The generator (`Rimworld-Release-Admin/scripts/generate-publish-workflow.sh`) writes files under `.github/`
+only; reading the diff, committing and pushing are the caller's, and the first run is a dry-run. The values
+this mod would give it: `--workshop-id 3806136625`, `--package-id nelim.contentedlivestock`,
+`--require Assemblies/ContentedLivestock.dll`, `--description-file PUBLICATION.md --description-heading '^## 1\.'`.
+Asked of the CI/CD session on 2026-09-24; nothing is generated until it answers.
 
-Not created. The tag belongs on a commit whose `Mod/` matches the upload, and every commit since
-`4531a66` does, so the current head is a truthful target. The GitHub release takes the `0.1.0` section
-of `CHANGELOG.md` as its notes. A public tag and release are an outward-facing step and wait for a yes.
+After a publish: check the public page against section 1, subscribe to the item yourself and check it loads
+in game, then **Virginie changes the visibility by hand**: the CI never sends it, and RimWorld never did.
+Post the thanks below only once the item is public: a link to a private item opens for nobody.
 
-## Thanks to post on the mods' pages
+## 7. Thanks to post on the mods' pages
 
 One per page, once they can see the link. Pasting the bare item URL gives a thumbnail:
 `https://steamcommunity.com/sharedfiles/filedetails/?id=3806136625`. Each is under 1000 characters, the

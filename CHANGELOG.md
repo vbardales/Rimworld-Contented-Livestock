@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- `About/About.xml`: removed the sentence saying the mod is safe to add to an existing save and safe to
+  remove. Backward compatibility of saves is not handled or tested, so nothing backs it. The design
+  property behind it is unchanged: an animal with no contentment need is worth exactly the vanilla rate.
+
 ## 0.1.0 — prepublished 2026-09-23
 
 First version. Uploaded to the Steam Workshop as item `3806136625`, private, which is how Steam
@@ -87,9 +93,10 @@ creates every item: RimWorld never calls `SetItemVisibility`, so going public is
 
 ### Known gaps
 
-- Not fully validated in game. Pickle has run it for real and four of the eighteen manual
-  scenarios are complete with reviewed media, but the remaining fourteen are unplayed and the
-  Pickle evidence on file was produced against an earlier revision. `STATUS.md` lists what stands
-  scenario by scenario.
+- Not fully validated in game. Pickle has run every conditional scenario on the current revision
+  (`runtime-evidence` 17 of 24, `avec-rimmsqol` 6 of 6, `runtime-film` 1 of 1, none failed). Four of
+  the eighteen manual scenarios are complete with reviewed media, twelve remain to be checked by a
+  person against media (`docs/MANUAL-REVIEW.md`), and scenario 14, adding to and removing from a save,
+  is out of scope. `STATUS.md` lists what stands scenario by scenario.
 - The Workshop item is private. Making it public, and posting the thank-you messages, comes after
   the in-game validation, not before.

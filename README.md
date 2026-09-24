@@ -132,8 +132,7 @@ a hopper.
 
 `Contentment.RateFactor` returns exactly `1f` for any animal with no contentment need — a wild
 one, another faction's, or every animal at all when the need is switched off. Absence is not a
-special case, it is the neutral value. That is what makes the mod safe to add to a running save
-and safe to remove from one.
+special case, it is the neutral value. Backward compatibility of saves is not handled or tested.
 
 ## Testing
 

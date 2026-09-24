@@ -52,8 +52,6 @@ COMPATIBILITY
 Requires Harmony, loaded before this mod (built and checked with Harmony 2.4.2.0).
 RIMMSQOL is optional: mod settings are always available through Mod options.
 
-Safe to add to an existing save. Safe to remove: an animal with no contentment need produces at exactly the vanilla rate, which is the same thing that happens the moment you uninstall.
-
 Works with modded animals and modded animal products without patches, as long as they use the game's own milkable, shearable or egg-laying machinery.
 
 Every setting is adjustable, and each of the five inputs can be switched off on its own. Set the fastest rate to 100% for a version that only ever penalises.
