@@ -25,12 +25,12 @@ Media live on disk, ignored by git, under `Tests/Pickle/evidence/`; the paths ar
 | # | Scenario | Media now | Claude checked | Still to produce |
 | --- | --- | --- | --- | --- |
 | 10 | Below the floor, nothing is lost | film + 3 captures | all 3 captures opened, values read | nothing |
-| 9 | The rate really changes | 1 capture at maximum, the 2 pictures of the publication pair | pair opened | tips at three levels |
-| 3 | Producers-only switch | 2 captures | not opened | toggle film, cow level kept |
+| 9 | The rate really changes | feature 19 written (3 tips, 2 after one hour); request `…-7485` pending | not run | media to review once it has run |
+| 3 | Producers-only switch | feature 17 written (6 captures); request `…-ee20` pending | not run | media to review; the caravan variant has no step |
 | 17 | RIMMSQOL shortcut | English: 6 of 6 asserted, 1 capture | opened | DLL hash, bare main bar, world view |
-| 7 | Company | none (a "Company -10%" line is visible in scenario 10's tip) | that line only | a new feature |
-| 12 | Unfertilised hen | none | - | a new feature |
-| 11 | Harvest and laying reset | none | - | a new feature |
+| 7 | Company | feature 18 written (3 tips); request `…-ee20` pending | not run | media to review |
+| 12 | Unfertilised hen | feature 21 written (2 captures); request `…-49a5` pending | not run | media to review |
+| 11 | Harvest and laying reset | feature 20 written (3 captures); request `…-49a5` pending | not run | media to review |
 | 15 | Settings, boundaries, reset | 1 settings capture | opened | slider extremes, reset dialog |
 | 16 | Each setting's effect | none | - | a new feature |
 | 4 | Feed and its fading memory | none | - | a new feature, a game-day wait |
@@ -40,6 +40,20 @@ Media live on disk, ignored by git, under `Tests/Pickle/evidence/`; the paths ar
 
 Order proposed: the cheap ones first (10, 9, 3, 17), then 7, 12, 11, then 15, 16, then 4, 5, 8.
 Small requests, one scenario or a pair each.
+
+**2026-09-24.** Features 17 to 21 were written for scenarios 3, 7, 9, 11 and 12 and submitted in three
+requests; none has run. What each asserts, and what stays out:
+
+- **12 does not guess what vanilla does** to a hen with no rooster. It runs the same hen twice, one with the
+  need taken away so the mod's factor is exactly 1, and requires the other to gain 140% of what it gains,
+  or nothing if vanilla holds it. A chicken lays every day, so an hour is about 4% of egg progress.
+- **11 calls the game's own gather and lay methods**, not the colonist's job: it proves the reset and the size
+  of the yield (equal at 100% and at 30% contentment, retried when the game wastes a yield), not the walk.
+- **7 forces the company cache to refresh** instead of waiting a day; the day in the manual scenario is for
+  the level to move, not for the offset.
+- **9 checks gains against the vanilla amount with room**, never for an exact ratio, because contentment
+  drifts during the hour.
+- No film for any of them: each asserts stable states, so captures are the evidence.
 
 ---
 

@@ -191,6 +191,17 @@ under `^## 1\.`. **No dry-run has run.** The CI/CD session reviews the diff and 
 `Mod/` has no `.steamignore` here (that belongs to another release path), so everything in `Mod/` is uploaded:
 it holds only About, Assemblies, Defs, Languages, `ATTRIBUTION.md` and `LICENSE`.
 
+**The final commit carries all of this at once**, because the dry-run validates one SHA and any later commit
+changes it (CI/CD session, 2026-09-24). Do not do these one by one:
+
+1. the last change to `Mod/`, if any;
+2. `## Unreleased` in `CHANGELOG.md` renamed to `## [1.0.0] - <date>`, with a non-empty body;
+3. the four final pictures, resized to JPEG 1280 x 800, at most 2 MB each and 8 MB the batch, committed in
+   `Art/WorkshopScreenshots/` and named `01-...`, `02-...`, in the upload order of section 2 (Virginie asked
+   for this, so the dry-run lists them as a reminder of the manual gallery upload; it sends nothing);
+4. the workflow regenerated with the same arguments plus `--replace` and `--gallery-dir Art/WorkshopScreenshots`
+   (only `publish.config.json` changes, the template stamp stays).
+
 The description is an option, off by default, and it must be on in **both** the dry-run and the publish:
 `dispatch-publish.sh` refuses a publish whose options differ from the dry-run's, so add `--description`
 to the command. The dry-run prints its length, SHA-256 and a line diff against the public page, which is how
