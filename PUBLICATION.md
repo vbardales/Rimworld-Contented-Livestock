@@ -13,7 +13,7 @@ sent, posted or tagged.
 | Blocker | State |
 | --- | --- |
 | Manual scenarios in `_tools/FUNCTIONAL-SCENARIOS.md` | 4 of 18 complete, 1 partial, 13 unplayed |
-| Pickle passes against the current revision | `runtime-evidence` passed 17 of 24, 0 failed. `avec-rimmsqol` (requests `…-8eb0`) and `runtime-film` (`…-5a81`) are submitted to TicketDispatcher and not yet run |
+| Pickle passes against the current revision | `runtime-evidence` passed 17 of 24, 0 failed. `avec-rimmsqol` passed 6 of 6 on 2026-09-24 (request `…-8eb0`); `runtime-film` (`…-5a81`, the FilmTicks scenario) is submitted to TicketDispatcher and not yet run |
 | Presentation screenshots for the page | pictures 2, 3 and 4 taken and opened, usable; picture 1 has a stray tooltip, fixed in the scene, rerun not yet done |
 | Captures of the last run actually opened | 2 of 22 |
 | Tag and GitHub release | not created, awaiting a decision |
