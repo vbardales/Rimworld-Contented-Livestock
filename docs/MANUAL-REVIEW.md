@@ -33,9 +33,9 @@ Media live on disk, ignored by git, under `Tests/Pickle/evidence/`; the paths ar
 | 11 | Harvest and laying reset | feature 20 written (3 captures); request `…-49a5` pending | not run | media to review |
 | 15 | Settings, boundaries, reset | feature 22 written (4 scenarios, about 8 captures); request pending | not run | media to review; the Options route is not driven |
 | 16 | Each setting's effect | feature 23 written (7 scenarios, 12 tip captures); request pending | not run | media to review |
-| 4 | Feed and its fading memory | none | - | a new feature, a game-day wait |
-| 5 | Temperature per animal | none | - | a new step to set the temperature |
-| 8 | Pen balance | none | - | a new feature, a pen to build |
+| 4 | Feed and its fading memory | feature 24 written (2 scenarios, 8 tip captures); request `…-398b` pending | not run | media to review; the two days are simulated, see below |
+| 5 | Temperature per animal | feature 25 written (3 tip captures); request `…-919e` pending | not run | media to review; a cold snap, not a room |
+| 8 | Pen balance | feature 26 written (4 captures); request `…-0294` pending | not run | media to review; the riskiest premise |
 | 14 | Add to and remove from a save | - | - | **out of scope**: no backward compatibility is handled or tested |
 
 Order proposed: the cheap ones first (10, 9, 3, 17), then 7, 12, 11, then 15, 16, then 4, 5, 8.
@@ -54,6 +54,24 @@ requests; none has run. What each asserts, and what stays out:
 - **9 checks gains against the vanilla amount with room**, never for an exact ratio, because contentment
   drifts during the hour.
 - No film for any of them: each asserts stable states, so captures are the evidence.
+
+Features 24 to 26 (scenarios 4, 5 and 8), the three heavy ones, were added last, also not run. What a person
+should know before reading their captures:
+
+- **4 feeds through the game's own `Thing.Ingested`** with a real rooted grass plant, a stack of hay and one of
+  kibble, so the patch is exercised. **The waiting is simulated**: a game day of the level moving is 400 need
+  intervals in a loop, and the two days of fading are done by moving the recorded time of the meal back in
+  hours, since waiting would take over half an hour. It tests the formulas, not the clock, and the fading is
+  a separate scenario from the levels for that reason.
+- **5 is a cold snap outdoors, not an unheated room**, set six degrees below the hen's own cold limit and then
+  ended to stand for heating. It says the hen is penalised more than the husky, and does not assume the husky
+  is spared. Building a room with a roof and a heater in code was judged not worth it for the same physics.
+- **8 builds the pen in code** (a closed fence, soil, a marker, four cows then two) and requires the pasture
+  line to equal the mod's rule applied to the marker's own figures. **The manual scenario's wording is wider
+  than the rule.** The rule is a line from -20% (nothing grown) to +20% (grown at least what is eaten), so the
+  line is negative only when the pen grows less than half of what is eaten; a herd that eats a little more
+  than the grass grows reads positive. Whether that is what was meant is a question for the person, not
+  something a run can settle. Whether the game recognises the pen at all is the riskiest premise.
 
 Features 22 and 23 (scenarios 15 and 16) were added the same day, also not run:
 
