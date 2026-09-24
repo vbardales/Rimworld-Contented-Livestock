@@ -31,8 +31,8 @@ Media live on disk, ignored by git, under `Tests/Pickle/evidence/`; the paths ar
 | 7 | Company | feature 18 written (3 tips); request `…-ee20` pending | not run | media to review |
 | 12 | Unfertilised hen | feature 21 written (2 captures); request `…-49a5` pending | not run | media to review |
 | 11 | Harvest and laying reset | feature 20 written (3 captures); request `…-49a5` pending | not run | media to review |
-| 15 | Settings, boundaries, reset | 1 settings capture | opened | slider extremes, reset dialog |
-| 16 | Each setting's effect | none | - | a new feature |
+| 15 | Settings, boundaries, reset | feature 22 written (4 scenarios, about 8 captures); request pending | not run | media to review; the Options route is not driven |
+| 16 | Each setting's effect | feature 23 written (7 scenarios, 12 tip captures); request pending | not run | media to review |
 | 4 | Feed and its fading memory | none | - | a new feature, a game-day wait |
 | 5 | Temperature per animal | none | - | a new step to set the temperature |
 | 8 | Pen balance | none | - | a new feature, a pen to build |
@@ -54,6 +54,20 @@ requests; none has run. What each asserts, and what stays out:
 - **9 checks gains against the vanilla amount with room**, never for an exact ratio, because contentment
   drifts during the hour.
 - No film for any of them: each asserts stable states, so captures are the evidence.
+
+Features 22 and 23 (scenarios 15 and 16) were added the same day, also not run:
+
+- **15 sets the sliders and check boxes in code**, to the value the widget would give, and lets the real dialog
+  draw them: Pickle has no step that names a slider. What is really clicked is the reset button and its two
+  confirmation buttons, by their English label, since this runs in English. Those labels ("Reset to defaults",
+  "Confirm", "Go back") and the step `I click button {string}` are unverified until it runs. Closing the
+  window is the real close. Not covered: the route through the Options screen, and scrolling on a screen
+  shorter than 1080 lines. Quit and relaunch is features 09 and 10.
+- **16 measures the speed over the need's own intervals**, not over a wait, so the distance is exact: at speed
+  25, 100 and 400% over 20 intervals, 1.25, 5 and 20 points. Each input is switched off through the setting
+  and its writing, read as a contribution and as a tip line, and switched back on. The pasture case uses a
+  husky, because a cow is judged on a pen and reads zero without one; that choice is a guess about the game
+  and the first run will confirm or correct it.
 
 ---
 
