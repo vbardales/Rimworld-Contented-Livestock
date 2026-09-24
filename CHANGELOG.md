@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- **Fixed: the pen rule.** A roped animal in a pen is judged on the pen marker's own figure, and the mod was
+  meant to read negative when the herd eats faster than the pasture grows and positive when it does not.
+  It ran a straight line from -20% with nothing grown to +20% at balance, so a herd that ate more than the
+  pen grew, down to half of it, still read positive. It is now zero at balance, negative below it and
+  positive above it, from -20% with nothing grown to +20% at twice what is eaten. Found while writing the
+  in-game scenario for it. Only pen-managed animals with a pen are affected; a room and a lone animal are not.
 - `About/About.xml`: removed the sentence saying the mod is safe to add to an existing save and safe to
   remove. Backward compatibility of saves is not handled or tested, so nothing backs it. The design
   property behind it is unchanged: an animal with no contentment need is worth exactly the vanilla rate.

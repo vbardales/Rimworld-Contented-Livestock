@@ -159,7 +159,13 @@ namespace ContentedLivestock
                 float grown = food.NutritionPerDayToday;
                 float eaten = food.SumNutritionConsumptionPerDay;
                 if (eaten <= 0f) return 0.1f;
-                return Mathf.Lerp(-0.2f, 0.2f, Mathf.Clamp01(grown / eaten));
+
+                // Negative when the herd eats faster than the grass grows, positive when it does not, and
+                // zero exactly at balance: the sign follows the pen marker's own figure, which is the whole
+                // point of judging a pen this way. -20% with nothing grown, +20% at twice what is eaten.
+                // (The first version ran a straight line from -20% at nothing to +20% at balance, which
+                // read positive for a herd that ate more than the pen grew, down to half of it.)
+                return Mathf.Clamp((grown / eaten - 1f) * 0.2f, -0.2f, 0.2f);
             }
 
             var room = pawn.GetRoom();

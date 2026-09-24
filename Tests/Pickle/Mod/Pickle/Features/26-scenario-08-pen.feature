@@ -4,10 +4,11 @@
 # a pen marker inside, four cows. The pen's own two figures (nutrition grown and eaten per day) are read from
 # the marker, and the pasture contribution must equal the mod's rule applied to them, computed in the step
 # without the mod's code. The manual scenario says the line is "negative when the herd eats faster than
-# the grass grows". The rule is a straight line from -20 percent (nothing grown) to +20 percent (grown at least
-# what is eaten), so the line is negative only below one half of the balance, zero at one half and positive
-# above it; a herd that eats a little more than the grass grows still reads positive. The scenario checks the
-# rule, not that wording, and a person reading the captures should know the difference.
+# the grass grows and positive when it does not", and the owner confirmed on 2026-09-25 that this is what was
+# meant. The first version of the mod did not do that: it ran a straight line from -20 percent to +20 percent
+# between nothing grown and balance, so a herd eating a little more than the pen grew still read positive.
+# The rule is now zero at balance, negative below it and positive above it, from -20 percent with nothing
+# grown to +20 percent at twice what is eaten, and this feature holds the sign as well as the value.
 #
 # Whether the game recognises the pen is the riskiest premise: a closed fence, a marker and regions that
 # have had time to update. The step that finds the pen says which of these failed. The pen is small on
@@ -29,6 +30,7 @@ Feature: Scenario 8 - the pen is judged on its food balance
     When Contented Livestock lets the game run 120 ticks
     And Contented Livestock refreshes the surroundings of "ScenarioEightA"
     Then Contented Livestock the pen holding "ScenarioEightA" grows less than its animals eat
+    And Contented Livestock the pasture contribution to "ScenarioEightA" is negative
     And Contented Livestock the pasture contribution to "ScenarioEightA" follows its pen's own figures
     When Contented Livestock selects the pen marker of the pen holding "ScenarioEightA"
     Then I take a screenshot "scenario 08 - the pen and its marker, four cows inside"

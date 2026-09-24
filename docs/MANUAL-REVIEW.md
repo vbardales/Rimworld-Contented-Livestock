@@ -67,11 +67,12 @@ should know before reading their captures:
   ended to stand for heating. It says the hen is penalised more than the husky, and does not assume the husky
   is spared. Building a room with a roof and a heater in code was judged not worth it for the same physics.
 - **8 builds the pen in code** (a closed fence, soil, a marker, four cows then two) and requires the pasture
-  line to equal the mod's rule applied to the marker's own figures. **The manual scenario's wording is wider
-  than the rule.** The rule is a line from -20% (nothing grown) to +20% (grown at least what is eaten), so the
-  line is negative only when the pen grows less than half of what is eaten; a herd that eats a little more
-  than the grass grows reads positive. Whether that is what was meant is a question for the person, not
-  something a run can settle. Whether the game recognises the pen at all is the riskiest premise.
+  line to equal the mod's rule applied to the marker's own figures, and to be negative with four cows.
+  **The mod did not follow the manual scenario's wording, and was fixed on 2026-09-25.** The first rule ran
+  from -20% (nothing grown) to +20% (grown at least what is eaten), so a herd eating more than the pen grew,
+  down to half of it, still read positive. The owner confirmed the wording was what was meant, so the rule is
+  now zero at balance, negative below it and positive above, from -20% with nothing grown to +20% at twice
+  what is eaten. Whether the game recognises the pen at all is the riskiest premise.
 
 Features 22 and 23 (scenarios 15 and 16) were added the same day, also not run:
 

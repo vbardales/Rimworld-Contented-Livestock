@@ -23,9 +23,12 @@ sent, posted or tagged.
 | Item tested by subscribing to it, then made public by hand | not done |
 
 What is verified: rebuilding `Source/` reproduces the shipped DLL exactly (SHA-256 starts
-`e69349c34f01e7e3`). `Mod/` now differs from the 0.1.0 upload in one file, `About/About.xml`, from which
-the sentence promising that the mod is safe to add to and to remove from a save was removed on 2026-09-24
-(backward compatibility of saves is not handled or tested). It ships with the next release.
+`7653167da2c9a605`, checked by a second rebuild). `Mod/` now differs from the 0.1.0 upload in two files.
+`About/About.xml`: the sentence promising that the mod is safe to add to and to remove from a save was
+removed on 2026-09-24 (backward compatibility of saves is not handled or tested). `Assemblies/ContentedLivestock.dll`:
+the pen rule was corrected on 2026-09-25 (see `CHANGELOG.md`); the 0.1.0 DLL started `e69349c34f01e7e3`.
+Both ship with the next release. Pickle evidence taken before 2026-09-25 is on the older DLL, so a full
+pass on the final SHA is owed.
 
 ## 1. Steam description
 

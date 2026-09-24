@@ -230,7 +230,7 @@ namespace ContentedLivestock.PickleSteps
         public void FollowsPen(PickleContext ctx, string name)
         {
             Figures(ctx, name, out float grown, out float eaten);
-            float expected = eaten <= 0f ? 0.1f : Mathf.Lerp(-0.2f, 0.2f, Mathf.Clamp01(grown / eaten));
+            float expected = eaten <= 0f ? 0.1f : Mathf.Clamp((grown / eaten - 1f) * 0.2f, -0.2f, 0.2f);
             float actual = SettingsEffectSteps.Contribution(ctx, "space", name);
             ctx.Assert(Mathf.Abs(actual - expected) < 0.006f,
                 $"the pen of {name} grows {grown:0.00} and its animals eat {eaten:0.00} a day, so the contribution should be {expected:0.000}, and it is {actual:0.000}");
