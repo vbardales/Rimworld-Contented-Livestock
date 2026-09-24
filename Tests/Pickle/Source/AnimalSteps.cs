@@ -203,11 +203,46 @@ namespace ContentedLivestock.PickleSteps
             Find.WindowStack.Add(new Dialog_MessageBox(need.GetTipString()));
         }
 
+        /// <summary>
+        /// The same tip, moved to the top left so it does not cover the animal the camera has just
+        /// centred on. Nothing else of the interface sits there: the Needs pane is bottom left, the
+        /// colonist bar top centre, the alerts on the right.
+        /// </summary>
+        [When("Contented Livestock opens the live contentment tip for {string} at the top left")]
+        public void OpenContentmentTipTopLeft(PickleContext ctx, string name)
+        {
+            var need = Contentment.NeedOf(Driver.PawnNamed(ctx, name));
+            ctx.Require(need != null, $"{name} has no contentment need");
+            var dialog = new Dialog_MessageBox(need.GetTipString());
+            Find.WindowStack.Add(dialog);
+            dialog.windowRect.x = 30f;
+            dialog.windowRect.y = 30f;
+        }
+
+        /// <summary>
+        /// A fixture accumulates letters (here "Area revealed" and "Fallen monolith") that have nothing
+        /// to do with what the picture shows.
+        /// </summary>
+        [When("Contented Livestock dismisses every letter")]
+        public void DismissLetters(PickleContext ctx)
+        {
+            foreach (var letter in Find.LetterStack.LettersListForReading.ToList())
+                Find.LetterStack.RemoveLetter(letter);
+        }
+
+        private static CompMilkable MilkComp(PickleContext ctx, string name)
+        {
+            var pawn = Driver.PawnNamed(ctx, name);
+            var comp = pawn.TryGetComp<CompMilkable>();
+            // Name the race: a fixture can already hold a pawn of that name, and PawnNamed takes the first.
+            ctx.Require(comp != null, $"{name} has no CompMilkable (found a {pawn.def.defName}, id {pawn.thingIDNumber})");
+            return comp;
+        }
+
         [When("Contented Livestock records the milk fullness of {string}")]
         public void RecordMilkFullness(PickleContext ctx, string name)
         {
-            var comp = Driver.PawnNamed(ctx, name).TryGetComp<CompMilkable>();
-            ctx.Require(comp != null, $"{name} has no CompMilkable");
+            var comp = MilkComp(ctx, name);
             recordedFullness = comp.fullness;
             recordedByName[name] = comp.fullness;
         }
@@ -217,8 +252,7 @@ namespace ContentedLivestock.PickleSteps
         {
             float Gain(string name)
             {
-                var comp = Driver.PawnNamed(ctx, name).TryGetComp<CompMilkable>();
-                ctx.Require(comp != null, $"{name} has no CompMilkable");
+                var comp = MilkComp(ctx, name);
                 ctx.Require(recordedByName.ContainsKey(name), $"no milk fullness was recorded for {name}");
                 return comp.fullness - recordedByName[name];
             }

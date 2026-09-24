@@ -7,8 +7,14 @@
 # production rates and the milk they produce are the real ones: only the state they start from is set.
 # The page must not describe them as a week of play.
 #
-# The interface stays on for the two animal scenes, because the Needs pane IS the subject. Screenshot
-# mode is used only for the settings page, where nothing but the window matters.
+# The interface stays on for the animal scenes, because the Needs pane IS the subject. Screenshot
+# mode is used only for the settings page, where nothing but the window matters. In the animal scenes
+# the letters the fixture has piled up are dismissed, the camera is framed on the glade before the
+# animal is selected (that step also sets the zoom, which the saved camera leaves too far out), and
+# the tip is moved to the top left so it does not sit on top of the cow.
+#
+# Animal names must not exist in the fixture: the steps take the first pawn of that name. The zen
+# meadow already has a macaw called "Clover", which is why the cows are not.
 @review @requires:nelim.pickletools.screenshotstudio @requires:nelim.pickletools.screenshotmode
 Feature: Workshop pictures
 
@@ -23,24 +29,28 @@ Feature: Workshop pictures
     And Contented Livestock records that "Daisy" ate "RawCorn"
     When Contented Livestock sets "Daisy" to 72 percent contentment
     Then Contented Livestock production factor for "Daisy" is 112 percent
-    When Contented Livestock selects animal "Daisy" for visual evidence
-    And Contented Livestock opens the live contentment tip for "Daisy"
+    When Contented Livestock dismisses every letter
+    And Nelim's Pickle Tools: I frame the studio "flowers"
+    And Contented Livestock selects animal "Daisy" for visual evidence
+    And Contented Livestock opens the live contentment tip for "Daisy" at the top left
     And I wait 30 ticks
     Then I take a screenshot "publication 1 - cow with contentment and its tip"
 
   Scenario: two cows after the same two hours, one kept well and one badly
-    Given Contented Livestock spawns the player animal "Clover" as "Cow" near x 154 and z 98
+    Given Contented Livestock spawns the player animal "Buttercup" as "Cow" near x 154 and z 98
     And Contented Livestock spawns the player animal "Thistle" as "Cow" near x 154 and z 98
-    When Contented Livestock sets "Clover" to 100 percent contentment
+    When Contented Livestock sets "Buttercup" to 100 percent contentment
     And Contented Livestock sets "Thistle" to 30 percent contentment
-    Then Contented Livestock production factor for "Clover" is 140 percent
+    Then Contented Livestock production factor for "Buttercup" is 140 percent
     And Contented Livestock production factor for "Thistle" is 49 percent
-    When Contented Livestock records the milk fullness of "Clover"
+    When Contented Livestock records the milk fullness of "Buttercup"
     And Contented Livestock records the milk fullness of "Thistle"
     And Contented Livestock waits one game hour
     And Contented Livestock waits one game hour
-    Then Contented Livestock milk gained by "Clover" exceeds the milk gained by "Thistle"
-    When Contented Livestock selects animal "Clover" for visual evidence
+    Then Contented Livestock milk gained by "Buttercup" exceeds the milk gained by "Thistle"
+    When Contented Livestock dismisses every letter
+    And Nelim's Pickle Tools: I frame the studio "flowers"
+    And Contented Livestock selects animal "Buttercup" for visual evidence
     And I wait 30 ticks
     Then I take a screenshot "publication 2 - the well kept cow after two hours"
     When Contented Livestock selects animal "Thistle" for visual evidence
