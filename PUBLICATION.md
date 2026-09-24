@@ -6,7 +6,7 @@ the game, private. `Mod/About/PublishedFileId.txt` holds the id and must never b
 upload creates a second item.
 
 Publication goes through GitHub Actions, not the in-game button (root `AGENTS.md`,
-`Rimworld-Release-Admin/docs/OPERATIONS.md`). **This mod has no workflow yet**: see section 6.
+`Rimworld-Release-Admin/docs/OPERATIONS.md`). The workflow is generated and no dry-run has run: see section 6.
 
 ## Status on 2026-09-24
 
@@ -18,7 +18,7 @@ sent, posted or tagged.
 | Manual scenarios in `_tools/FUNCTIONAL-SCENARIOS.md` | 4 of 18 complete, 1 partial, 12 unplayed, 1 out of scope (14). Method and progress: `docs/MANUAL-REVIEW.md` |
 | Pickle passes against the current revision | `runtime-evidence` passed 17 of 24, `avec-rimmsqol` 6 of 6, `runtime-film` 1 of 1, 0 failed: every conditional scenario has run |
 | Presentation pictures | 2, 3 and 4 taken and opened, usable; picture 1 has a stray tooltip, fixed in the scene, rerun submitted |
-| Publication workflow in this repository | none: to be generated, see section 6 |
+| Publication workflow | generated 2026-09-24 (`.github/`), 48 of 48 script tests pass; no dry-run has run, see section 6 |
 | Tag and GitHub release | created by the CI after a successful upload, never by hand |
 | Item tested by subscribing to it, then made public by hand | not done |
 
@@ -155,17 +155,22 @@ No adult content. The Preview and the ModIcon were opened: a lit animal shelter 
 calf, a pail of milk, eggs and a fleece; and a cartoon mascot among a cow, a sheep, a hen and a pig in a
 pen. The pictures above were opened as they were taken.
 
-## 5. Steam change note, for the next upload
+## 5. Steam change note
 
-The CI takes the release notes from the `## [<version>]` section of `CHANGELOG.md`; the version and that
-format are for the CI/CD session to settle (section 6). The gist for a first content release:
+The workflow reads the Steam change note from the fenced block under the `### 1.0.0` line below, sent as
+written (BBCode, at most 8000 bytes, no double quote and no backslash: the upload library turns every double
+quote into a typographic one). The GitHub release notes come from the `## [1.0.0]` section of `CHANGELOG.md`,
+which is renamed from `## Unreleased` in the commit that carries the final suite, because any later commit
+changes the SHA that the dry-run validates.
+
+The version is **1.0.0**, the first production release (`PUBLISHING.md`, "Mise en production d'une 1.0.0"),
+tag `v1.0.0`. The 0.1.0 uploaded from the game is a prepublication and has no GitHub tag, so nothing collides.
+Virginie decides if another number is wanted.
+
+### 1.0.0
 
 ```
-First release. Colony animals that produce milk, wool or eggs now carry a contentment need, built from
-what they ate, their pasture or room, their temperature, their health and their company. Contentment
-sets how fast they fill: nothing below a floor you choose, up to 40% faster above a plateau. Nothing
-already accumulated is ever lost. Every threshold and rate is a setting, and each of the five inputs can
-be switched off. Needs Harmony.
+First release. Colony animals that produce milk, wool or eggs now carry a contentment need, built from what they ate, their pasture or room, their temperature, their health and their company. Contentment sets how fast they fill: nothing below a floor you choose, up to 40% faster above a plateau. Nothing already accumulated is ever lost. Every threshold and rate is a setting, and each of the five inputs can be switched off. Needs Harmony.
 ```
 
 ## 6. Publishing through the CI
@@ -175,12 +180,22 @@ are recorded next to `STATUS.md`; `publish` takes a full 40-character SHA, never
 approves the `steam-production` environment**; Steam credentials never enter this repository; the CI creates
 the tag and the GitHub release after a successful upload, so **none is created by hand**.
 
-What this mod still lacks: the generated workflow and its `.github/publish.config.json`, and nothing has
-run. The generator (`Rimworld-Release-Admin/scripts/generate-publish-workflow.sh`) writes files under `.github/`
-only; reading the diff, committing and pushing are the caller's, and the first run is a dry-run. The values
-this mod would give it: `--workshop-id 3806136625`, `--package-id nelim.contentedlivestock`,
-`--require Assemblies/ContentedLivestock.dll`, `--description-file PUBLICATION.md --description-heading '^## 1\.'`.
-Asked of the CI/CD session on 2026-09-24; nothing is generated until it answers.
+The workflow was generated on 2026-09-24 by `Rimworld-Release-Admin/scripts/generate-publish-workflow.sh`
+(template stamp `eba6b3fdf670`), which writes under `.github/` only: `workflows/publish-tag.yml`,
+`workflows/script-tests.yml`, `publish.config.json`, `scripts/` and `tests/`. Its 48 script tests pass locally
+(`node --test '.github/tests/*.test.mjs'`). Values: workshop id `3806136625`, package id
+`nelim.contentedlivestock`, required payload `Assemblies/ContentedLivestock.dll`, description from this file
+under `^## 1\.`. **No dry-run has run.** The CI/CD session reviews the diff and the dry-run log, and checks the
+`release-dry-run` and `steam-production` environments and their secrets; this repository touches none of them.
+
+`Mod/` has no `.steamignore` here (that belongs to another release path), so everything in `Mod/` is uploaded:
+it holds only About, Assemblies, Defs, Languages, `ATTRIBUTION.md` and `LICENSE`.
+
+The description is an option, off by default, and it must be on in **both** the dry-run and the publish:
+`dispatch-publish.sh` refuses a publish whose options differ from the dry-run's, so add `--description`
+to the command. The dry-run prints its length, SHA-256 and a line diff against the public page, which is how
+the corrections of section 1 are seen before they go. Preview (`--preview`) only if the page image must change.
+Visibility is never sent.
 
 After a publish: check the public page against section 1, subscribe to the item yourself and check it loads
 in game, then **Virginie changes the visibility by hand**: the CI never sends it, and RimWorld never did.

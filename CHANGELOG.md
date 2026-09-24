@@ -6,7 +6,7 @@
   remove. Backward compatibility of saves is not handled or tested, so nothing backs it. The design
   property behind it is unchanged: an animal with no contentment need is worth exactly the vanilla rate.
 
-## 0.1.0 — prepublished 2026-09-23
+## [0.1.0] — prepublished 2026-09-23
 
 First version. Uploaded to the Steam Workshop as item `3806136625`, private, which is how Steam
 creates every item: RimWorld never calls `SetItemVisibility`, so going public is a manual step.

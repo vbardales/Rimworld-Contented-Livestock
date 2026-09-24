@@ -1,0 +1,15 @@
+{
+  "templateStamp": "eba6b3fdf670",
+  "workshopId": "3806136625",
+  "packageId": "nelim.contentedlivestock",
+  "releaseTitle": "Contented Livestock {version}",
+  "requirePaths": [
+    "Assemblies/ContentedLivestock.dll"
+  ],
+  "forbidPaths": [],
+  "previewFile": "About/Preview.png",
+  "description": {
+    "file": "PUBLICATION.md",
+    "heading": "^## 1\\."
+  }
+}
