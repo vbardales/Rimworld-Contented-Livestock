@@ -40,6 +40,26 @@ was.
 - **Cost.** As for item 1, and it breaks the same sentence of the promise ("does not touch ... a
   single thing"): the description and the About text would change.
 
+## 3. A contentment widget for RimHUD (proposed 2026-09-25)
+
+Idea from the owner: RimHUD shows a pawn's needs and stats in its own panel, and the contentment of an animal
+should appear there as it does in the game's Needs pane.
+
+- **Why it fits.** The bar already exists in the vanilla Needs pane; RimHUD players read animals there and may
+  never open that pane. It is presentation only: it changes no rate and no promise of the mod, so it can ship
+  in a 1.0.x or 1.1.0 without touching the description's "does not do" section.
+- **Unknown, to read before any code.** Whether RimHUD lets another mod add a widget or a line, and how (an
+  API, a def, or a Harmony patch on its own drawing code); which version of RimHUD is on the Workshop for 1.6 and
+  its Workshop id; whether it already lists every need of a pawn, animals included, in which case the bar might
+  appear with no work at all and the item shrinks to a check. First step: read RimHUD's source and its own
+  documentation, and search the Workshop for a mod that already adds a widget to it (`scripts/SEARCHING.md`).
+- **Design questions.** One bar, or the bar plus the rate ("112% of the usual rate")? Only for animals that carry
+  the need. Follow RimHUD's own layout and theme options rather than drawing our own.
+- **Cost.** A soft integration: an optional `loadAfter`, never a hard dependency, and code that must do nothing
+  when RimHUD is absent. It needs its own Pickle pass with RimHUD staged (a `wsl-deps.avec-rimhud.map`, one more
+  request in `TESTING.md`), a thanks entry for RimHUD's author in the description and in
+  `WORKSHOP_COMMENTS.md` (an integration that is exercised must be thanked), and translated text in English and
+  French if the widget carries any.
 ## Notes for both
 
 - Items 1 and 2 are meant to arrive together as one version (1.1.0) with one rewritten promise, not as
