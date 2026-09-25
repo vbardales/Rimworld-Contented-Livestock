@@ -293,7 +293,10 @@ points at 25, 100 and 400 percent) and never goes past its target.
 1. In each pair the only difference is the one line; the level stays at 50 percent and the rate at 83 percent,
    because switching an input off changes the offset at once and the level moves only over time.
 2. The wording of the lines: "Last fed on", "Pasture and room", "Company" and the sign of each.
-3. The "Too miserable to produce" sentence: clear, and does it say enough that nothing is lost?
+3. The "Too miserable to produce" sentence: **reworded on 2026-09-25 at your request**. The capture shows the
+   first wording ("Nothing is accumulating, and nothing already gathered is lost"); the shipped text is now
+   "Too miserable to produce. Production freezes until conditions improve." (French: "La production est gelée
+   tant que les conditions ne s'améliorent pas."). The capture predates the change.
 4. Nothing red apart from the wounded cow itself, and no error window.
 
 **Not covered, and worth knowing.** The tip is shown in a **message box** the test opens, not the game's hover

@@ -6,7 +6,7 @@
 
   <!-- Need tooltip -->
   <ContentedLivestock.Tip.Rate>Filling with milk, wool or eggs at {0} of the usual rate.</ContentedLivestock.Tip.Rate>
-  <ContentedLivestock.Tip.Halted>Too miserable to produce. Nothing already gathered is lost; nothing new will accumulate until conditions improve.</ContentedLivestock.Tip.Halted>
+  <ContentedLivestock.Tip.Halted>Too miserable to produce. Production freezes until conditions improve.</ContentedLivestock.Tip.Halted>
   <ContentedLivestock.Tip.Feed>Last fed on: {0}</ContentedLivestock.Tip.Feed>
   <ContentedLivestock.Tip.Space>Pasture and room: {0}</ContentedLivestock.Tip.Space>
   <ContentedLivestock.Tip.Temperature>Temperature: {0}</ContentedLivestock.Tip.Temperature>

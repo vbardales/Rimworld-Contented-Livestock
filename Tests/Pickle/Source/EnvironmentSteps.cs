@@ -130,15 +130,20 @@ namespace ContentedLivestock.PickleSteps
         {
             var map = Driver.Map(ctx);
             var pawn = Driver.PawnNamed(ctx, name);
-            var def = DefDatabase<GameConditionDef>.GetNamedSilentFail("ColdSnap");
-            ctx.Require(def != null, "no GameConditionDef named ColdSnap");
-
             float limit = pawn.ComfortableTemperatureRange().min;
             float offset = limit - degrees - map.mapTemperature.OutdoorTemp;
+
+            // The game's own ColdSnap ramps to a fixed -20 and has no offset to set. The climate adjusters use
+            // a condition class that holds the offset it is given, so a def of that class is made here, never
+            // registered in the database and never saved: it lives for this scenario only.
+            var def = new GameConditionDef
+            {
+                defName = "ContentedLivestockTestColdSnap",
+                label = "test cold snap",
+                conditionClass = typeof(GameCondition_TemperatureOffset),
+                temperatureOffset = offset,
+            };
             cold = GameConditionMaker.MakeCondition(def, 60000);
-            var field = cold.GetType().GetField("tempOffset", Driver.InstanceAny);
-            ctx.Require(field != null, $"{cold.GetType().Name} has no tempOffset field: the offset of the cold snap cannot be set");
-            field.SetValue(cold, offset);
             map.gameConditionManager.RegisterCondition(cold);
         }
 
@@ -190,7 +195,7 @@ namespace ContentedLivestock.PickleSteps
                 }
             }
 
-            var pen = ThingMaker.MakeThing(marker);
+            var pen = ThingMaker.MakeThing(marker, GenStuff.DefaultStuffFor(marker));
             pen.SetFaction(Faction.OfPlayer);
             GenSpawn.Spawn(pen, origin, map);
         }

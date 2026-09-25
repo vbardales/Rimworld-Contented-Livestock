@@ -6,7 +6,7 @@
 
   <!-- Infobulle du besoin -->
   <ContentedLivestock.Tip.Rate>Se remplit de lait, de laine ou d'œufs à {0} du rythme habituel.</ContentedLivestock.Tip.Rate>
-  <ContentedLivestock.Tip.Halted>Trop mal en point pour produire. Rien de ce qui a déjà été récolté n'est perdu ; rien de nouveau ne s'accumulera tant que les conditions ne s'amélioreront pas.</ContentedLivestock.Tip.Halted>
+  <ContentedLivestock.Tip.Halted>Trop mal en point pour produire. La production est gelée tant que les conditions ne s'améliorent pas.</ContentedLivestock.Tip.Halted>
   <ContentedLivestock.Tip.Feed>Dernier repas : {0}</ContentedLivestock.Tip.Feed>
   <ContentedLivestock.Tip.Space>Pâture et espace : {0}</ContentedLivestock.Tip.Space>
   <ContentedLivestock.Tip.Temperature>Température : {0}</ContentedLivestock.Tip.Temperature>
