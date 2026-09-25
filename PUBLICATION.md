@@ -97,7 +97,7 @@ If I do not answer within a reasonable time after being contacted, anyone may fr
 
 [h2]AI-GENERATED[/h2]
 
-This mod was written with Claude Code (Anthropic) under human direction, review and testing. Stated openly: working with these tools is my job.
+This mod was written with Claude Code (Anthropic) and OpenAI Codex under human direction, review and testing. The Preview and the ModIcon were generated with DALL-E (OpenAI). Stated openly: working with these tools is my job.
 
 [h2]THANKS[/h2]
 
@@ -249,13 +249,12 @@ publication. **Before the `publish` is dispatched, nothing of this is skipped:**
    on `docs/MANUAL-REVIEW.md`).
 3. **The guard rails, unchanged:** dry-run of the exact commit first, `publish` with the full SHA, approval of
    `steam-production` by Virginie alone.
-4. **The rollback target, chosen now and not after a red.** It is open here: the 0.1.0 upload only created
-   the item and was never a tested version, and it carries the old pen rule. Options are the commit of that
-   upload, or the last commit before the final one whose out-of-game tests are green; Virginie picks, and the
-   choice is written in this section before the dispatch. A tag is set at each good version so that the next
-   one has a target. The item stays private until Virginie makes it public by hand, so a rollback before that
-   reaches nobody.
-
+4. **The rollback target, chosen by Virginie on 2026-09-25: the item goes back from public to private.** If the
+   non-regression pass comes back red on the published 1.0.0, Virginie returns the item to private by hand on
+   Steam (the visibility is hers, never the CI's nor a session's); no rollback version is published to do it.
+   The fix is then published as a new version, through the same gates, and the item is made public again by
+   hand. This is a visibility rollback, not the version rollback described in `AUDIT.md`: the commit to fall
+   back on, if a version is ever wanted, is the last one whose out-of-game tests and passes were green.
 **What is lifted:** waiting for the non-regression pass, that is the replay of the rest of the suite (the
 scenarios that were never red, and the whole suite on the final build) and of the game passes still queued.
 They run right after the publication, as small tickets, and their verdict goes in `STATUS.md` and

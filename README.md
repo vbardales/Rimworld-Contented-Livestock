@@ -26,7 +26,8 @@ An optional `Nelim_ContentedLivestockSettings` main button opens the same native
 settings window and shares its values and persistence. It is hidden by default,
 including the greyed-out state. RIMMSQOL's **Main Buttons -> Contented Livestock ->
 Visible** can reveal it through the standard game field. No customization tool is
-needed for the primary access. Interactive RIMMSQOL validation is still pending.
+needed for the primary access. The reveal, activation, hide and forget of the shortcut through RIMMSQOL
+passed in game (six scenarios, 2026-09-24, `TESTING.md`).
 
 | Setting | Default | Range |
 | --- | --- | --- |

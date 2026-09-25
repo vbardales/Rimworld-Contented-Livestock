@@ -19,9 +19,9 @@ dependencies: "brrainz.harmony (required); RIMMSQOL optional, Pickle integration
 showcase:     complete
 tested_on:
 workshop:     "3806136625 (0.1.0; visibility and subscription test unverified)"
-automated_tests: 35 passed (2026-09-22)
+automated_tests: 35 passed (2026-09-25, after the tip rewording and the pen rule)
 pickle_scenarios: 24 defined; scenario 10 corrected rerun passed 1/1 after a failed baseline-timing attempt, 6 intended skips in minimal passes (2026-09-22)
-manual_scenarios: 18 documented, 4 completed (scenarios 0, 1, 6 and 13; 2026-09-22)
+manual_scenarios: 18 documented; 4 completed with reviewed media (0, 1, 6, 13); 2026-09-25 ran and passed, media read by Claude and waiting for the owner's verdict: 3, 4, 7, 9, 10, 11 (cow and sheep), 15, 16; failed on a test step, fixed and rerun pending: 5, 8, 11 (hen), 12, presentation picture 1; 14 out of scope. Sheets in docs/MANUAL-REVIEW.md
 manual_visual_evidence: current media = 22 minified JPEG captures of the 2026-09-23 run on d9be961 (1 of 22 opened; what to keep and how: docs/runs/README.md) plus 3 Workshop-page pictures of 2026-09-24 (all opened; Tests/Pickle/evidence/2026-09-24/publication-shots), the avec-rimmsqol capture and reports, and the scenario 10 captures and film (Tests/Pickle/evidence/2026-09-24/runtime-film); the 2026-09-22 media for scenarios 0, 1, 2, 6, 13 were deleted as superseded, see docs/runs/2026-09-22.md
 remaining:
   - "changed 2026-09-25, pen rule: Mod/Assemblies/ContentedLivestock.dll now starts 7653167da2c9a605 (was e69349c34f01e7e3), after the pen rule was corrected so the pasture line is negative below the pen marker's balance and positive above it, as scenario 8 says and as confirmed by the owner (docs/runs/2026-09-25.md). The Pickle passes recorded before that, on HEAD 10001d1, were taken on the older DLL; none exercised a pen. A full pass on the final SHA is owed, together with the last change to Mod/, the dated changelog heading and the gallery folder (PUBLICATION.md section 6)."
@@ -37,10 +37,23 @@ remaining:
   - "partially verified (done -> tested): Pickle passed initial hidden state plus RIMMSQOL reveal, open, hide, forget and visible/hidden persistence across separate processes; broader shared-value editing remains in the manual matrix."
   - "Record tested_on with the game/integration versions and results only after successful game validation."
 session:      01a09726-7616-7ad2-bc3c-d94a8e24da95
-updated:      2026-09-23, tested-gate checks applied by the mod's own session
+updated:      2026-09-25, manual scenarios run, tip reworded, docs read (docs/PROTOCOLS-READ.md), TESTING.md added
 ---
 
 # Contented Livestock — status
+
+## Translation re-audit — 2026-09-25
+
+The text of `ContentedLivestock.Tip.Halted` (the tip of an animal below the floor) was reworded in English and
+French at the owner's request: "Too miserable to produce. Production freezes until conditions improve." and "Trop
+mal en point pour produire. La production est gelée tant que les conditions ne s'améliorent pas." (`TRANSLATIONS.md`
+asks for the fields to go back to `unchecked` after a change to player-facing text.) Revalidated the same day by
+the out-of-game suite, 35 of 35 passed, which includes the key parity and parameter checks in both languages and
+the XML parse. The three fields stay `complete` for readiness for `preTest`; the in-game reading of the new
+sentence in both languages is still part of the `tested` gate (one capture in English exists, taken with the
+older wording). Also on 2026-09-25, for the record: the mod's description now names Codex among the tools and
+DALL-E for the Preview and the ModIcon (owner's confirmation), and the item's rollback is a return from public to
+private by the owner (`PUBLICATION.md` section 6).
 
 ## Workflow audit — 2026-09-22
 
