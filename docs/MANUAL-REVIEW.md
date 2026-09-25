@@ -26,9 +26,9 @@ Media live on disk, ignored by git, under `Tests/Pickle/evidence/`; the paths ar
 | --- | --- | --- | --- | --- |
 | 10 | Below the floor, nothing is lost | film + 3 captures | all 3 captures opened, values read | nothing |
 | 9 | The rate really changes | 5 captures, ran 2026-09-25, passed | all 5 opened, values read | your verdict |
-| 3 | Producers-only switch | feature 17 written (6 captures); request `…-ee20` pending | not run | media to review; the caravan variant has no step |
+| 3 | Producers-only switch | 5 captures, ran 2026-09-25, passed | all 5 opened | your verdict; the caravan variant has no step |
 | 17 | RIMMSQOL shortcut | English: 6 of 6 asserted, 1 capture | opened | DLL hash, bare main bar, world view |
-| 7 | Company | feature 18 written (3 tips); request `…-ee20` pending | not run | media to review |
+| 7 | Company | 3 captures, ran 2026-09-25, passed | all 3 opened | your verdict |
 | 12 | Unfertilised hen | feature 21 written (2 captures); request `…-49a5` pending | not run | media to review |
 | 11 | Harvest and laying reset | feature 20 written (3 captures); request `…-49a5` pending | not run | media to review |
 | 15 | Settings, boundaries, reset | feature 22 written (4 scenarios, about 8 captures); request pending | not run | media to review; the Options route is not driven |
