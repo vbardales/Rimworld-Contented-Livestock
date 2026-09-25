@@ -147,9 +147,13 @@ What opening them showed, 2026-09-24:
   are deleted.
 - **The tip is a dialog, not the game's hover tooltip.** It carries the real text of the need, in a message box
   moved to the top left. Say "the contentment tip", not "hover tooltip".
-- The right edge still shows the fixture's own alerts ("Need colonist beds", "Pen needed", "Medical treatment
-  needed") and the Learning helper. They are kept on purpose: the alerts are part of the real interface.
-- The files are 1920 x 1080 and 0.6 MB each; the upload budget asks for JPEG at 1280 x 800, each file at most
+- The right edge of the full frame shows the fixture's own alerts ("Need colonist beds", "Pen needed", "Medical
+  treatment needed") and the Learning helper. They were kept on purpose at first (the alerts are part of the real
+  interface), then **picture 1 is cropped to its left 1500 pixels** at the owner's suggestion (2026-09-25): the
+  right part carries nothing of the subject, and the crop puts the cow, the tip and the panes at a larger scale.
+  The crop keeps the full height (1080), so the left panes and the bottom bar stay; it is 1500 x 1080, not the
+  16:10 of the upload budget, and is scaled to 1280 pixels wide (1280 x 922). Pictures 2, 3 and 4 are still to be
+  looked at for the same crop.- The files are 1920 x 1080 and 0.6 MB each; the upload budget asks for JPEG at 1280 x 800, each file at most
   2 MB, the batch at most 8 MB. They are resized once all four are final, not before.
 
 ## 3. Dependencies and DLC
