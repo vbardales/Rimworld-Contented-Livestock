@@ -40,7 +40,7 @@
   <ContentedLivestock.Settings.Company>Compagnie</ContentedLivestock.Settings.Company>
   <ContentedLivestock.Settings.CompanyTip>Un lien avec un colon aide. Un animal grégaire tenu à l'écart des siens en souffre.</ContentedLivestock.Settings.CompanyTip>
 
-  <ContentedLivestock.Settings.ProducersOnly>Seulement les animaux qui produisent</ContentedLivestock.Settings.ProducersOnly>
+  <ContentedLivestock.Settings.ProducersOnly>Seuls les animaux qui donnent du lait, de la laine ou des œufs ont du bien-être</ContentedLivestock.Settings.ProducersOnly>
   <ContentedLivestock.Settings.ProducersOnlyTip>Activé, seuls les animaux qui donnent du lait, de la laine ou des œufs ont un besoin de bien-être. Désactivé, tous les animaux de la colonie l'ont — y compris les animaux de compagnie et de bât, chez qui il s'affiche sans rien changer.</ContentedLivestock.Settings.ProducersOnlyTip>
 
   <ContentedLivestock.Settings.Reset>Rétablir les valeurs par défaut</ContentedLivestock.Settings.Reset>

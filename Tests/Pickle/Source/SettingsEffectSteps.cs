@@ -51,6 +51,8 @@ namespace ContentedLivestock.PickleSteps
 
         internal static float Contribution(PickleContext ctx, string kind, string name)
         {
+            // The pen and the room are one input in the mod, judged by SpaceOffset: a scenario may say "pasture".
+            if (kind == "pasture") kind = "space";
             var need = Contentment.NeedOf(Driver.PawnNamed(ctx, name));
             ctx.Require(need != null, $"{name} has no contentment need");
             var method = typeof(Need_Contentment).GetMethod(Capitalised(kind) + "Offset", Driver.InstanceAny);

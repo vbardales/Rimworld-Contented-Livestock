@@ -40,7 +40,7 @@
   <ContentedLivestock.Settings.Company>Company</ContentedLivestock.Settings.Company>
   <ContentedLivestock.Settings.CompanyTip>A bond with a colonist helps. A herd animal kept away from its own kind suffers.</ContentedLivestock.Settings.CompanyTip>
 
-  <ContentedLivestock.Settings.ProducersOnly>Only animals that produce something</ContentedLivestock.Settings.ProducersOnly>
+  <ContentedLivestock.Settings.ProducersOnly>Only animals that give milk, wool or eggs have contentment</ContentedLivestock.Settings.ProducersOnly>
   <ContentedLivestock.Settings.ProducersOnlyTip>On, only animals that give milk, wool or eggs keep a contentment need. Off, every colony animal does — including pets and pack animals, for whom it shows but changes nothing.</ContentedLivestock.Settings.ProducersOnlyTip>
 
   <ContentedLivestock.Settings.Reset>Reset to defaults</ContentedLivestock.Settings.Reset>

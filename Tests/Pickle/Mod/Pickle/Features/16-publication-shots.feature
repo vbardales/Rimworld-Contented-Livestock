@@ -7,8 +7,9 @@
 # production rates and the milk they produce are the real ones: only the state they start from is set.
 # The page must not describe them as a week of play.
 #
-# The interface stays on for the animal scenes, because the Needs pane IS the subject. Screenshot
-# mode is used only for the settings page, where nothing but the window matters. In the animal scenes
+# The interface stays on in all three scenes, because the Needs pane IS the subject, and the settings page
+# is taken with a cow selected beside the window so that its contentment bar stands next to the settings
+# (owner, 2026-09-25: the first version, in screenshot mode, showed no bar). In the animal scenes
 # the letters the fixture has piled up are dismissed, the camera is framed on the glade before the
 # animal is selected (that step also sets the zoom, which the saved camera leaves too far out), and
 # the tip is moved to the top left so it does not sit on top of the cow. In the first scene the cow is
@@ -63,11 +64,17 @@ Feature: Workshop pictures
     And I wait 30 ticks
     Then I take a screenshot "publication 3 - the badly kept cow after the same two hours"
 
-  Scenario: the settings page over the meadow
-    When I open the Contented Livestock settings dialog
+  Scenario: the settings page over the meadow, with a cow's contentment bar beside it
+    Given Contented Livestock sends the colonist "Miel" to x 97 and z 152
+    And Contented Livestock spawns the player animal "Daisy" as "Cow" near x 154 and z 98
+    And Contented Livestock records that "Daisy" ate "RawCorn"
+    When Contented Livestock sets "Daisy" to 72 percent contentment
+    And Contented Livestock dismisses every letter
+    And Nelim's Pickle Tools: I frame the studio "flowers"
+    And Contented Livestock selects animal "Daisy" for visual evidence, shown 12 cells left and 2 cells up
+    And I open the Contented Livestock settings dialog
     Then Contented Livestock sees its own settings dialog open
-    When Nelim's Pickle Tools: I frame the studio "flowers"
-    And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
-    And I take a screenshot "publication 4 - settings page"
-    And Nelim's Pickle Tools: screenshot mode is disabled
-    And I close all dialogs
+    When Contented Livestock lets the settings dialog draw
+    And I wait 30 ticks
+    Then I take a screenshot "publication 4 - settings page with the contentment bar"
+    When I close all dialogs
