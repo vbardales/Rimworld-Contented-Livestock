@@ -150,17 +150,29 @@ run also asserts these in code, plus that a third cow at the plateau gains withi
 not earned. The rates and the milk are the real ones.
 ## 3. Producers-only switch
 
-**Media.** `runtime-evidence-fix/screenshots/scenario-03---husky-has-contentment-when-producers-only-is-off.jpg`
-and `...-loses-contentment-when-producers-only-is-on.jpg` (not yet opened by Claude).
+**Status: ran 2026-09-25, request `…-ee20` (first launch), passed 1 of 1. Waiting for your verdict.**
 
-**You check.** In the first, the husky's pane has a Contentment bar; in the second it has none. The
-wording of the settings toggle matches what it does.
+**Media.** `2026-09-24/scenarios-03-07/seq1/screenshots/`, five JPEGs, all opened at full size by Claude, in this
+order: husky before the switch; husky once producers-only is off; cow at 72% while it is off; husky when it is on
+again; cow after both switches.
 
-**Still to produce.** A short film of the toggle itself (open settings, untick, close, the bar appears on the
-husky, tick, close, it goes), and the level of a cow captured before and after to show it is kept. The
-caravan variant ("a husky returning from a caravan") has no Pickle step and stays a manual play or a
-documented gap.
+**Claude checked.** The husky's pane shows only Food and Sleep at first, then a **Contentment bar, about half
+full**, once producers-only is off, then only Food and Sleep again once it is back on. The cow's Contentment bar
+is the same length in both cow captures, about **72%**. The run asserts the same, and that the husky has no need
+before and after and has one in between.
 
+**You check.**
+
+1. On the husky, the bar is absent, present, absent, in the three husky captures.
+2. On the cow, the bar is the same length before and after the two switches: the switch never touches an
+   animal that already has the need.
+3. Nothing red, and no error window.
+4. **Ignore the small label beside the animal in captures 3 and 4.** It is the game's hover label, and it names
+   the animal of the *previous* capture (the husky next to the cow, the cow next to the husky): the pointer sat
+   still while the selection moved. It comes from the test setup, not from the mod.
+
+**Not covered.** The caravan variant (a husky coming back from a caravan) has no step. The switch is set in code
+and applied the way closing the settings window applies it; the check box itself was not clicked.
 ## 17. RIMMSQOL shortcut
 
 **Media.** English: `2026-09-24/avec-rimmsqol/seq1/screenshots/...opened-through-rimmsqol.jpg` (opened: the
@@ -180,7 +192,29 @@ Livestock settings." / "Ouvrir les réglages de Contented Livestock."), which be
 check and can be asserted from the def without RIMMSQOL. RIMMSQOL's own screens are in its language, not
 this mod's.
 
-## 7. Company, 12. Unfertilised hen, 11. Harvest, 15. Settings, 16. Effects, 4. Feed, 5. Temperature, 8. Pen
+## 7. Company
+
+**Status: ran 2026-09-25, request `…-ee20` (second launch), passed 1 of 1. Waiting for your verdict.**
+
+**Media.** `2026-09-24/scenarios-03-07/seq2/screenshots/`, three JPEGs, all opened at full size by Claude: a lone
+muffalo; the same one with two of its kind beside it; the same one bonded to a colonist, still with kin beside it.
+
+**Claude checked.** The tip of the lone muffalo lists "Temperature: +5%" and **"Company: -10%"**. With two muffalos
+beside it the Company line is **gone**. Bonded to the colonist Jet, with kin still beside it, it reads
+**"Company: +10%"**. The run asserts the same three values (a penalty of 10, zero, a bonus of 10).
+
+**You check.**
+
+1. The three tips differ only in the Company line: penalty, nothing, bonus.
+2. In captures 2 and 3 the other muffalos are visibly next to the selected one, within about twelve cells.
+3. The wording "Company: -10%" and "Company: +10%" is understandable to a player.
+4. Nothing red, and no error window. The small hover label beside the animal names the selected muffalo, which
+   is correct here.
+
+**Not covered, and worth knowing.** In all three tips the level stays at **50%** and the rate at **83%**: only the
+offset changed. The level takes time to move, which is exactly what the manual scenario's "wait a day" is for;
+this run reads the offset at once and does not wait. The bond was set in code, not earned by taming or training.
+## 12. Unfertilised hen, 11. Harvest, 15. Settings, 16. Effects, 4. Feed, 5. Temperature, 8. Pen
 
 No media yet. Each needs a new feature, so each is one small request. Notes on what is hard:
 
