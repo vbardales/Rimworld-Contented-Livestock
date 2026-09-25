@@ -2,18 +2,21 @@
 
 The 12 scenarios of `_tools/FUNCTIONAL-SCENARIOS.md` that no one has played by hand (the 13th, number 14,
 is out of scope: backward compatibility of saves is not handled). Method, agreed
-2026-09-24: **Claude produces the media (a capture or a film) with Pickle, and says what a person must
-look at that Claude cannot judge; the person watches and gives a verdict per point.** Nothing here is
-certified until that verdict is written in `STATUS.md`. A scenario stays `unverified` until then.
-
+2026-09-24: **Claude produces the media (a capture or a film) with Pickle and judges everything it can read or
+assert.** **Rule of 2026-09-25 (Virginie): she validates only what Claude cannot validate.** So Claude gives its own
+verdict on what is machine-readable (numbers, signs, words, presence and absence of a line, values before and after)
+and marks the scenario validated, and the person is asked one image at a time only for what needs a person: whether
+a sentence reads well, whether a layout or a picture looks right, a design choice. The table below says, for each
+scenario, Claude's verdict and what is left for her eye. The "you check" lists inside the sheets were written before
+this rule and are superseded by that table.
 ## What Claude cannot judge, and what it can
 
 Claude reads numbers and words in a full-size capture, and asserts values in code. It cannot judge how
 a film *looks* over time (smoothness, a flicker, a window that pops up for one frame, the cow doing
 something odd), how a sentence *reads* to a player, or whether a layout looks wrong rather than merely
 being inside its bounds. A film is viewed by Claude only as a contact sheet, where the small text of the
-inspect pane is unreadable: **a figure in a film is never Claude's evidence; the full-size capture next
-to it is.**
+inspect pane is unreadable. Checked on 2026-09-25: a frame pulled from the film at its own size (960 x 540) does
+show the milk figure, so Claude can read the numbers of a film from single frames; smoothness and oddities stay a person's.
 
 Every sheet below has the same four lines: *media*, *Claude checked*, *you check*, *still to produce*.
 Media live on disk, ignored by git, under `Tests/Pickle/evidence/`; the paths are relative to it.
@@ -22,21 +25,21 @@ Media live on disk, ignored by git, under `Tests/Pickle/evidence/`; the paths ar
 
 ## Status of the 12
 
-| # | Scenario | Media now | Claude checked | Still to produce |
+| # | Scenario | Media | Claude's verdict (2026-09-25) | Left for Virginie's eye |
 | --- | --- | --- | --- | --- |
-| 10 | Below the floor, nothing is lost | film + 3 captures | all 3 captures opened, values read | nothing |
-| 9 | The rate really changes | 5 captures, ran 2026-09-25, passed | all 5 opened, values read | your verdict |
-| 3 | Producers-only switch | 5 captures, ran 2026-09-25, passed | all 5 opened | your verdict; the caravan variant has no step |
-| 17 | RIMMSQOL shortcut | English: 6 of 6 asserted, 1 capture | opened | DLL hash, bare main bar, world view |
-| 7 | Company | 3 captures, ran 2026-09-25, passed | all 3 opened | your verdict |
-| 12 | Unfertilised hen | feature 21: ran and passed (`…-088f`), 2 captures read | 1 of 1 passed | nothing left for your eye |
-| 11 | Harvest and laying reset | feature 20: cow and sheep ran and passed (`…-49a5`), the hen failed again on 2026-09-25 (old steps DLL), rerun `…-09ac` pending | 2 of 3 passed | waiting for your verdict on the cow and the sheep |
-| 15 | Settings, boundaries, reset | feature 22: 4 scenarios, 8 captures, ran and passed (`…-67a2`) | 4 of 4 passed | waiting for your verdict; the Options route is not driven |
-| 16 | Each setting's effect | feature 23: 7 scenarios, 12 captures, ran and passed (`…-0c3c`) | 7 of 7 passed | waiting for your verdict |
-| 4 | Feed and its fading memory | feature 24: 2 scenarios, 9 captures, ran and passed (`…-398b`) | 2 of 2 passed | waiting for your verdict on the two bar pictures; the two days are simulated |
-| 5 | Temperature per animal | feature 25 written (3 tip captures); first run `…-919e` failed on a test step (fixed), the rerun `…-69e3` ran the old steps DLL and failed the same way; rerun `…-0318` pending | not passed yet | media to review; a cold snap, not a room |
-| 8 | Pen balance | feature 26 written (4 captures); first run `…-0294` failed on a test step (fixed), the rerun `…-d762` ran the old steps DLL and failed the same way; rerun `…-8821` pending | not passed yet | media to review; the riskiest premise |
-| 14 | Add to and remove from a save | - | - | **out of scope**: no backward compatibility is handled or tested |
+| 10 | Below the floor, nothing is lost | film + 3 captures | **validated**: 3.3% before the halted hour, 3.3% after, 9.1% after restoration; frames of the film read 3.3% then 8.8% | nothing |
+| 9 | The rate really changes | 5 captures | **validated**: 140, 100 and 42 percent read in the tips; 5.9% against 1.9% against 4.17% for a vanilla hour | nothing |
+| 3 | Producers-only switch | 5 captures | **validated**: husky has no bar, gains it, loses it; the cow keeps 72 percent through both (the caravan variant has no step) | nothing |
+| 17 | RIMMSQOL shortcut | English: 6 of 6 asserted, 1 capture | opened | DLL hash, bare main bar, world view still to produce |
+| 7 | Company | 3 captures | **validated**: Company -10, nothing, +10 | nothing |
+| 12 | Unfertilised hen | 2 captures | **validated**: 16% against 14% from 10, the Contentment bar only on the first | nothing |
+| 11 | Harvest and laying reset | cow and sheep captures; hen rerun `…-09ac` pending | cow and sheep **validated** (fullness back to 0.01% and 0%, same yield at 100 and 30 percent); hen not yet passed | nothing yet |
+| 15 | Settings, boundaries, reset | 8 captures | **validated**: defaults, both slider ends, plateau held at 55, eleven values kept, reset cancelled then confirmed; rerun `…-215f` with keyed clicks pending | the reset confirmation window (large and mostly empty): design; the slider caps (stop below 50%, speed 400%): design |
+| 16 | Each setting's effect | 12 captures | **validated**: each input adds and removes its line, floor and maximum, speed of change; the tip wording was reworded at her request | nothing |
+| 4 | Feed and its fading memory | 9 captures | **validated**: grass +25, hay none, kibble -15; the meal fades +25, +19, +6, gone at 48 hours; the two days are simulated | the two bar pictures (well fed against not): does it read at a glance |
+| 5 | Temperature per animal | rerun `…-0318` pending | not passed yet | not yet |
+| 8 | Pen balance | rerun `…-8821` pending | not passed yet | not yet |
+| 14 | Add to and remove from a save | - | **out of scope**: no backward compatibility is handled or tested | - |
 
 Order proposed: the cheap ones first (10, 9, 3, 17), then 7, 12, 11, then 15, 16, then 4, 5, 8.
 Small requests, one scenario or a pair each.
