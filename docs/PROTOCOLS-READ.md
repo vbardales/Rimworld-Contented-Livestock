@@ -42,3 +42,17 @@ All monorepo files below were clean in `git status` when read.
 | `BACKLOG.md` | created 2026-09-25, mine (moved from `docs/` the same day) | yes | the mod's own, not the monorepo's |
 | `TESTING.md` | created 2026-09-25 | yes | was missing; `AUDIT.md` requires it |
 | `NOTES.md`, `BUGS.md` | **do not exist** | | not created: nothing to put in them |
+
+## Messages from other sessions that change a rule
+
+- **CI/CD setup, 2026-09-25** (`Rimworld-Release-Admin` `f196148`, `docs/OPERATIONS.md` "Changing where the Steam
+  description comes from"; `PUBLISHING.md` of Rimworld-protocols `16f3c59`): one source for the Workshop description,
+  written once in Markdown in a fenced block under `## Steam description` of `PUBLICATION.md`; the CI converts it to
+  BBCode and generates the `<description>` of `About.xml` from it (no hand-kept copy) and stops on any drift. Nothing
+  forced; adopt at the next publication or when the owner asks. Here the description is still a BBCode block under
+  `## 1.` with a hand-kept plain copy in `About.xml`: adopting means writing the Markdown block, regenerating the
+  workflow with `--description-markdown PUBLICATION.md --description-heading '^## Steam description$'
+  --about-from-description --replace`, then `sync-about-description.mjs --write` and reading the diff. It changes the SHA,
+  so a new dry-run. Same message: the CI refuses a change note whose first line does not carry the version
+  (`[b]1.0.0[/b]`, already the case here), and `dispatch-publish.sh` refuses without a reviewer and both secret names
+  on `steam-production`. Do not edit `.github/` by hand.
