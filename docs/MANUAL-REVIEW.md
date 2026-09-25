@@ -34,8 +34,8 @@ Media live on disk, ignored by git, under `Tests/Pickle/evidence/`; the paths ar
 | 15 | Settings, boundaries, reset | feature 22: 4 scenarios, 8 captures, ran and passed (`…-67a2`) | 4 of 4 passed | waiting for your verdict; the Options route is not driven |
 | 16 | Each setting's effect | feature 23: 7 scenarios, 12 captures, ran and passed (`…-0c3c`) | 7 of 7 passed | waiting for your verdict |
 | 4 | Feed and its fading memory | feature 24: 2 scenarios, 9 captures, ran and passed (`…-398b`) | 2 of 2 passed | waiting for your verdict on the two bar pictures; the two days are simulated |
-| 5 | Temperature per animal | feature 25 written (3 tip captures); request `…-919e` pending | not run | media to review; a cold snap, not a room |
-| 8 | Pen balance | feature 26 written (4 captures); request `…-0294` pending | not run | media to review; the riskiest premise |
+| 5 | Temperature per animal | feature 25 written (3 tip captures); first run `…-919e` failed on a test step (fixed), rerun `…-69e3` pending | not passed yet | media to review; a cold snap, not a room |
+| 8 | Pen balance | feature 26 written (4 captures); first run `…-0294` failed on a test step (fixed), rerun `…-d762` pending | not passed yet | media to review; the riskiest premise |
 | 14 | Add to and remove from a save | - | - | **out of scope**: no backward compatibility is handled or tested |
 
 Order proposed: the cheap ones first (10, 9, 3, 17), then 7, 12, 11, then 15, 16, then 4, 5, 8.
