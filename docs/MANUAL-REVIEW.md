@@ -25,7 +25,7 @@ Media live on disk, ignored by git, under `Tests/Pickle/evidence/`; the paths ar
 | # | Scenario | Media now | Claude checked | Still to produce |
 | --- | --- | --- | --- | --- |
 | 10 | Below the floor, nothing is lost | film + 3 captures | all 3 captures opened, values read | nothing |
-| 9 | The rate really changes | feature 19 written (3 tips, 2 after one hour); request `…-7485` pending | not run | media to review once it has run |
+| 9 | The rate really changes | 5 captures, ran 2026-09-25, passed | all 5 opened, values read | your verdict |
 | 3 | Producers-only switch | feature 17 written (6 captures); request `…-ee20` pending | not run | media to review; the caravan variant has no step |
 | 17 | RIMMSQOL shortcut | English: 6 of 6 asserted, 1 capture | opened | DLL hash, bare main bar, world view |
 | 7 | Company | feature 18 written (3 tips); request `…-ee20` pending | not run | media to review |
@@ -118,20 +118,36 @@ asserts unchanged-below-floor and resumes-above-it, and passed 1 of 1.
 
 ## 9. The rate really changes
 
-**Media.** `2026-09-23/runtime-evidence-fix/screenshots/scenario-09---full-contentment-reaches-maximum-rate.jpg`
-(not yet opened by Claude); `2026-09-24/publication-shots/screenshots/publication-2...jpg` and `-3...jpg`, a
-well-kept and a badly kept cow after the same two game hours (opened).
+**Status: ran 2026-09-25, request `…-7485`, passed 1 of 1. Waiting for your verdict.**
 
-**Claude checked.** In the pair: milk fullness 11% against 4.7%, each pane with its own bar. In code: the
-production factors are 140% and 49%. The gain ratio is 2.3, not 2.9, because contentment drifts during the
-wait.
+**Media.** `2026-09-24/scenario-09/screenshots/`, five JPEGs, all opened at full size by Claude:
 
-**You check.** The pair reads as "well kept gained clearly more". The maximum-rate capture's tip says
-**140%** of the usual rate.
+1. `scenario-09---full-contentment--140-percent-of-the-usual-rate`
+2. `scenario-09---at-the-plateau--100-percent-of-the-usual-rate`
+3. `scenario-09---just-above-the-floor--about-40-percent-of-the-usual-rate`
+4. `scenario-09---the-well-kept-cow-after-one-game-hour`
+5. `scenario-09---the-neglected-cow-after-the-same-hour`
 
-**Still to produce.** One cow, three tips in a row at contentment **100%, 60% (the plateau) and just above
-the floor**: the scenario expects 140%, 100% and about 40%. One feature, three captures.
+**Claude checked.** In 1 to 3, one cow each at 100%, 60% and 26% contentment, the tip reads "at 140% of the usual
+rate", "at 100%" and "at 42%". In 4 and 5, after the same game hour, the well-kept cow shows **5.9%** milk
+fullness and the neglected one **1.9%**, from about 0.04% and 0.02%. One game hour of a cow's milk is 4.17% with
+no mod (it fills in a day), so the well-kept cow gained about 140% of that and the neglected one about 45%.
+That is a little above the 42% the tip promised because its contentment rises while the hour passes. The
+run also asserts these in code, plus that a third cow at the plateau gains within 15% of the vanilla amount;
+**no capture was taken of that third cow after the hour**, so that one is the code's word only.
 
+**You check.**
+
+1. In 1 to 3 the sentence "Filling with milk, wool or eggs at N% of the usual rate" is the one a player would
+   want to read, and the three numbers are the ones the scenario expects (140, 100, about 40).
+2. On the Contentment bar in the bottom left, the fill matches the tip's percentage (full, 60%, 26%), and
+   the two small marks on the bar sit where the floor (25%) and the plateau (60%) should.
+3. In 4 and 5, the well-kept cow's milk figure is clearly higher than the neglected cow's, and its bar is
+   still full while the other's is short.
+4. Nothing red, no error window, and no cow doing something odd in the background.
+
+**Not covered.** The scenario says a full day. This is one hour, staged at chosen levels: the levels are set,
+not earned. The rates and the milk are the real ones.
 ## 3. Producers-only switch
 
 **Media.** `runtime-evidence-fix/screenshots/scenario-03---husky-has-contentment-when-producers-only-is-off.jpg`
