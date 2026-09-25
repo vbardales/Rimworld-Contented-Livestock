@@ -211,7 +211,10 @@ it holds only About, Assemblies, Defs, Languages, `ATTRIBUTION.md` and `LICENSE`
 **The final commit carries all of this at once**, because the dry-run validates one SHA and any later commit
 changes it (CI/CD session, 2026-09-24). Do not do these one by one:
 
-1. the last change to `Mod/`, if any;
+1. the last changes to `Mod/`, held back until the queued requests are back (a request stages the tree as it is
+   when it plays): the `About.xml` description brought in step with section 1; a copy of `ATTRIBUTION.md` in `Mod/`
+   if the root one changes; and the wording of the producers-only setting, which has no verb (owner, 2026-09-25),
+   in English and French (`ContentedLivestock.Settings.ProducersOnly` and its tip), with a line in `CHANGELOG.md`;
 2. `## Unreleased` in `CHANGELOG.md` renamed to `## [1.0.0] - <date>`, with a non-empty body;
 3. the four final pictures, resized to JPEG 1280 x 800, at most 2 MB each and 8 MB the batch, committed in
    `Art/WorkshopScreenshots/` and named `01-...`, `02-...`, in the upload order of section 2 (Virginie asked
