@@ -5,12 +5,12 @@
 # Options screen opens it; the Options route itself (Options, Mod options, pick the mod) is not driven
 # here. Sliders and check boxes have no name Pickle can click, so each is set to the value the widget would
 # give and the dialog is left to draw it. Closing the window is the real close, which writes the settings.
-# The reset button and its two confirmation buttons are real buttons and are clicked, by their English
-# label: this runs in English. Surviving a quit and a relaunch is covered by features 09 and 10.
+# The reset button and its two confirmation buttons are real buttons and are clicked by their translation key (KeyedClick), so the scenario no longer depends on the language it runs in.
+# Surviving a quit and a relaunch is covered by features 09 and 10.
 #
 # Each slider has one low end and one high end, so the five are set together and captured twice. Screens
 # under 1080 lines would need scrolling to reach every control; this runs at 1920 x 1080, where they all fit.
-@review
+@review @requires:nelim.pickletools.keyedclick
 Feature: Scenario 15 - primary settings, defaults, boundaries and reset
 
   Background:
@@ -125,19 +125,19 @@ Feature: Scenario 15 - primary settings, defaults, boundaries and reset
     And Contented Livestock sets setting "producersOnly" to "false" and writes settings
     And I open the Contented Livestock settings dialog
     And Contented Livestock lets the settings dialog draw
-    And I click button "Reset to defaults"
+    And Nelim's Pickle Tools: I click button keyed "ContentedLivestock.Settings.Reset"
     Then Contented Livestock the reset confirmation is open
     When Contented Livestock lets the settings dialog draw
     Then I take a screenshot "scenario 15 - the reset confirmation"
-    When I click button "Go back"
+    When Nelim's Pickle Tools: I click button keyed "GoBack"
     Then Contented Livestock the reset confirmation is not open
     And Contented Livestock its settings dialog is still open
     And Contented Livestock setting "floorLevel" reads about 31 percent
     And Contented Livestock setting "adjustSpeed" reads about 250 percent
     And Contented Livestock setting "feedMatters" reads "False"
     And Contented Livestock setting "producersOnly" reads "False"
-    When I click button "Reset to defaults"
-    And I click button "Confirm"
+    When Nelim's Pickle Tools: I click button keyed "ContentedLivestock.Settings.Reset"
+    And Nelim's Pickle Tools: I click button keyed "Confirm"
     Then Contented Livestock the reset confirmation is not open
     And Contented Livestock setting "floorLevel" reads about 25 percent
     And Contented Livestock setting "plateauLevel" reads about 60 percent
