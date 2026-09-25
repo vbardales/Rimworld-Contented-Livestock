@@ -1,5 +1,5 @@
 {
-  "templateStamp": "eba6b3fdf670",
+  "templateStamp": "51b1f34258b9",
   "workshopId": "3806136625",
   "packageId": "nelim.contentedlivestock",
   "releaseTitle": "Contented Livestock {version}",
@@ -8,8 +8,11 @@
   ],
   "forbidPaths": [],
   "previewFile": "About/Preview.png",
+  "galleryDir": "Art/WorkshopScreenshots",
+  "aboutFromDescription": true,
   "description": {
     "file": "PUBLICATION.md",
-    "heading": "^## 1\\."
+    "format": "markdown",
+    "heading": "^## Steam description$"
   }
 }

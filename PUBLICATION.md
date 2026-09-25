@@ -18,7 +18,7 @@ sent, posted or tagged.
 | Manual scenarios in `_tools/FUNCTIONAL-SCENARIOS.md` | 4 of 18 complete, 1 partial, 12 unplayed, 1 out of scope (14). Method and progress: `docs/MANUAL-REVIEW.md` |
 | Pickle passes against the current revision | `runtime-evidence` passed 17 of 24, `avec-rimmsqol` 6 of 6, `runtime-film` 1 of 1, 0 failed: every conditional scenario has run |
 | Presentation pictures | all four taken and opened; picture 1 is clean since the third run (2026-09-25) and waits for the owner's eye |
-| Publication workflow | generated 2026-09-24 (`.github/`), 48 of 48 script tests pass; no dry-run has run, see section 6 |
+| Publication workflow | generated 2026-09-24 (`.github/`), 57 of 57 script tests pass; no dry-run has run, see section 6 |
 | Tag and GitHub release | created by the CI after a successful upload, never by hand |
 | Item tested by subscribing to it, then made public by hand | not done |
 
@@ -34,42 +34,44 @@ pass on the final SHA is owed. Under the fail fast policy (section 6) it runs af
 before it, but no scenario may still be red: the fixes of the test steps found on 2026-09-25 must first come
 back green.
 
-## 1. Steam description
+## Steam description
 
-The source for the CI (`--description-file PUBLICATION.md --description-heading '^## 1\.'`). It is the
-fenced block below, in Steam BBCode, and the same text in plain form is in `Mod/About/About.xml`: keep the two
-in step by hand. Steam accepts at most 8000 bytes. Sent only when the publish is dispatched with the
-description option, and then it **overwrites what is on the page**, so edit this block and never the page.
+The single source of the Workshop description, decided by the owner on 2026-09-25 (`Rimworld-Release-Admin/docs/OPERATIONS.md`,
+"Changing where the Steam description comes from"). It is written **once**, in Markdown, in the fenced block below. The CI
+converts it to Steam BBCode and **generates the plain-text `<description>` of `Mod/About/About.xml` from it**, so nothing is
+kept in step by hand: edit this block, never `About.xml`, and run `node .github/scripts/sync-about-description.mjs --write`
+after a change (read the diff, commit both). Every dry-run and publish stops if `About.xml` differs. The block cannot contain
+a code fence, and its last line is the source link. Steam accepts at most 8000 bytes of BBCode. Sent only when the publish
+is dispatched with the description option, and then it **overwrites what is on the page**: read the description that the
+dry-run prints, and compare it with the page, before any publish.
 
-The page created for 0.1.0 carries the older text: it has the promise about saves, puts SOURCE CODE before
-IF I GO QUIET, and has no licence line. The first publish with the description option corrects all three.
+The page created for 0.1.0 carries the older text: it has the promise about saves, puts SOURCE CODE before IF I GO QUIET,
+and has no licence line. The first publish with the description option corrects all three.
 
-```text
+```markdown
 A cow in RimWorld gives the same fourteen milk whether it spends its life on good grass or in a concrete corridor. This mod makes how you keep an animal decide what it gives you.
 
-[h2]WHAT IT ADDS[/h2]
+## WHAT IT ADDS
 
 Every colony animal that produces something gets a contentment need, alongside food and rest. It is not a mood - animals have no thoughts and get none here. It is a slow state, built from five things:
 
-[list]
-[*] [b]What it last ate.[/b] Grazing a living plant is the best thing that can happen to a grazer; then raw produce and meat, then hay, then kibble, then carrion. The memory of a meal fades over two days.
-[*] [b]Its pasture or its room.[/b] Roped animals are judged on whether their pen grows back faster than the herd eats it - the figure the pen marker already shows you. Everything else is judged on floor space per animal.
-[*] [b]Its temperature[/b], measured against its own comfortable range. A heated barn matters to a chicken and not to a husky.
-[*] [b]Its health.[/b] Pain, bleeding and hunger all pull contentment down.
-[*] [b]Its company.[/b] A bond with a colonist helps; a herd animal kept away from its own kind suffers.
-[/list]
+- **What it last ate.** Grazing a living plant is the best thing that can happen to a grazer; then raw produce and meat, then hay, then kibble, then carrion. The memory of a meal fades over two days.
+- **Its pasture or its room.** Roped animals are judged on whether their pen grows back faster than the herd eats it - the figure the pen marker already shows you. Everything else is judged on floor space per animal.
+- **Its temperature**, measured against its own comfortable range. A heated barn matters to a chicken and not to a husky.
+- **Its health.** Pain, bleeding and hunger all pull contentment down.
+- **Its company.** A bond with a colonist helps; a herd animal kept away from its own kind suffers.
 
 Contentment then decides how fast the animal fills with milk, wool or eggs. Content, it fills faster than vanilla. Neglected, slower. Below a floor you can set, it stops filling altogether - but never loses what it had already accumulated. A bad week costs you the week, not the progress.
 
 Nothing jumps. Contentment walks toward its target over about a day, so losing a pasture takes a day to show and a day to undo.
 
-[h2]WHY THE NEED, AND NOT A MOOD[/h2]
+## WHY THE NEED, AND NOT A MOOD
 
 An animal in RimWorld carries exactly two needs: food and rest. Eight of the ten in the base game are barred from animals by a single line of their definition. That is not an oversight to be worked around - it is the reason a herd is cheap to run - so this adds one need and no thoughts, no mental states, and no new jobs. Everything it reads is something the game already tracks and you already build for.
 
 Production is scaled at the tick rather than at the yield. The obvious target is the amount an animal gives, but that is a property each kind of animal product overrides separately, so patching it would catch cows and miss sheep, and would miss every modded product entirely. The filling itself is written once. One patch covers milk, wool, eggs, and anything a mod hangs off the same machinery.
 
-[h2]WHAT IT DELIBERATELY DOES NOT DO[/h2]
+## WHAT IT DELIBERATELY DOES NOT DO
 
 It does not touch reproduction, taming, training, wildness, or how much an animal eats. Contentment changes the rate of one thing only.
 
@@ -79,35 +81,34 @@ It does not put a need on wild animals or on other factions' animals. Only your 
 
 It does not add an alert. An animal that has stopped producing says so in its own inspect pane, and that is where you were already looking.
 
-[h2]COMPATIBILITY[/h2]
+## COMPATIBILITY
 
-Requires [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077]Harmony[/url], loaded before this mod (built and checked with Harmony 2.4.2.0). [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1084452457]RIMMSQOL[/url] is optional: mod settings are always available through Mod options.
+Requires [Harmony](https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077), loaded before this mod (built and checked with Harmony 2.4.2.0). [RIMMSQOL](https://steamcommunity.com/sharedfiles/filedetails/?id=1084452457) is optional: mod settings are always available through Mod options.
 
 Works with modded animals and modded animal products without patches, as long as they use the game's own milkable, shearable or egg-laying machinery.
 
 Every setting is adjustable, and each of the five inputs can be switched off on its own. Set the fastest rate to 100% for a version that only ever penalises.
 
-[h2]LICENCE[/h2]
+## LICENCE
 
-This mod is MIT licensed. Full attribution: [url=https://github.com/vbardales/Rimworld-Contented-Livestock/blob/main/ATTRIBUTION.md]ATTRIBUTION.md[/url]. Licence text: [url=https://github.com/vbardales/Rimworld-Contented-Livestock/blob/main/LICENSE]LICENSE[/url].
+This mod is MIT licensed. Full attribution: [ATTRIBUTION.md](https://github.com/vbardales/Rimworld-Contented-Livestock/blob/main/ATTRIBUTION.md). Licence text: [LICENSE](https://github.com/vbardales/Rimworld-Contented-Livestock/blob/main/LICENSE).
 
-[h2]IF I GO QUIET[/h2]
+## IF I GO QUIET
 
 If I do not answer within a reasonable time after being contacted, anyone may freely update this or any other of my mods, including publishing a continuation of it. All credit must be preserved.
 
-[h2]AI-GENERATED[/h2]
+## AI-GENERATED
 
 This mod was written with Claude Code (Anthropic) and OpenAI Codex under human direction, review and testing. The Preview and the ModIcon were generated with DALL-E (OpenAI). Stated openly: working with these tools is my job.
 
-[h2]THANKS[/h2]
+## THANKS
 
 ConcernedApe, whose farm animals in Stardew Valley refuse to give anything at all when they are unhappy, and give their best when they have been let out on fresh grass. The idea is his; none of his work is here.
 
-Andreas Pardeike, for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077]Harmony[/url], which every patch of this mod stands on. The author of [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1084452457]RIMMSQOL[/url], the tool the optional settings shortcut was built to be revealed by, and which the tests exercised. The tests also ran on [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3791648678]Pickle[/url], [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3733484696]RimLogging[/url] and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3806142401]Nelim's Pickle Tools[/url]: development only, never a dependency of this mod.
+Andreas Pardeike, for [Harmony](https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077), which every patch of this mod stands on. The author of [RIMMSQOL](https://steamcommunity.com/sharedfiles/filedetails/?id=1084452457), the tool the optional settings shortcut was built to be revealed by, and which the tests exercised. The tests also ran on [Pickle](https://steamcommunity.com/sharedfiles/filedetails/?id=3791648678), [RimLogging](https://steamcommunity.com/sharedfiles/filedetails/?id=3733484696) and [Nelim's Pickle Tools](https://steamcommunity.com/sharedfiles/filedetails/?id=3806142401): development only, never a dependency of this mod.
 
-[url=https://github.com/vbardales/Rimworld-Contented-Livestock]Source code on GitHub[/url]
+[Source code on GitHub](https://github.com/vbardales/Rimworld-Contented-Livestock)
 ```
-
 ## 2. Pictures, in the order to upload
 
 The CI sends only the header image (`Mod/About/Preview.png`, when its option is on). The gallery is a manual
@@ -205,10 +206,10 @@ the tag and the GitHub release after a successful upload, so **none is created b
 
 The workflow was generated on 2026-09-24 by `Rimworld-Release-Admin/scripts/generate-publish-workflow.sh`
 (template stamp `eba6b3fdf670`), which writes under `.github/` only: `workflows/publish-tag.yml`,
-`workflows/script-tests.yml`, `publish.config.json`, `scripts/` and `tests/`. Its 48 script tests pass locally
+`workflows/script-tests.yml`, `publish.config.json`, `scripts/` and `tests/`. Its 57 script tests pass locally (regenerated on 2026-09-25 for the Markdown description, template stamp `51b1f34258b9`)
 (`node --test '.github/tests/*.test.mjs'`). Values: workshop id `3806136625`, package id
 `nelim.contentedlivestock`, required payload `Assemblies/ContentedLivestock.dll`, description from this file
-under `^## 1\.`. **No dry-run has run.** The CI/CD session reviews the diff and the dry-run log, and checks the
+under `^## Steam description$` (Markdown; `About.xml` is generated from it). **No dry-run has run.** The CI/CD session reviews the diff and the dry-run log, and checks the
 `release-dry-run` and `steam-production` environments and their secrets; this repository touches none of them.
 
 `Mod/` has no `.steamignore` here (that belongs to another release path), so everything in `Mod/` is uploaded:
@@ -218,7 +219,7 @@ it holds only About, Assemblies, Defs, Languages, `ATTRIBUTION.md` and `LICENSE`
 changes it (CI/CD session, 2026-09-24). Do not do these one by one:
 
 1. the last changes to `Mod/`, held back until the queued requests are back (a request stages the tree as it is
-   when it plays): the `About.xml` description brought in step with section 1; a copy of `ATTRIBUTION.md` in `Mod/`
+   when it plays): the `About.xml` description regenerated from the Markdown block (`node .github/scripts/sync-about-description.mjs --write`, diff read); a copy of `ATTRIBUTION.md` in `Mod/`
    if the root one changes; and the wording of the producers-only setting, which had no verb: **chosen by the owner on 2026-09-25, option C**,
    "Only animals that give milk, wool or eggs have contentment" and, in French, "Seuls les animaux qui donnent du
    lait, de la laine ou des œufs ont du bien-être" (key `ContentedLivestock.Settings.ProducersOnly`; its tip does
@@ -239,7 +240,8 @@ bash /c/Users/nelim/Documents/rimworld/Rimworld-Release-Admin/scripts/generate-p
   --workshop-id 3806136625 --package-id nelim.contentedlivestock \
   --release-title "Contented Livestock {version}" \
   --require Assemblies/ContentedLivestock.dll \
-  --description-file PUBLICATION.md --description-heading '^## 1\.' \
+  --description-markdown PUBLICATION.md --description-heading '^## Steam description$' \
+  --about-from-description \
   --gallery-dir Art/WorkshopScreenshots
 ```
 
@@ -249,7 +251,7 @@ must hold nothing else that should be listed. Send the CI/CD session the SHA onc
 The description is an option, off by default, and it must be on in **both** the dry-run and the publish:
 `dispatch-publish.sh` refuses a publish whose options differ from the dry-run's, so add `--description`
 to the command. The dry-run prints its length, SHA-256 and a line diff against the public page, which is how
-the corrections of section 1 are seen before they go. Preview (`--preview`) only if the page image must change.
+the corrections of the Steam description are seen before they go. Preview (`--preview`) only if the page image must change.
 Visibility is never sent.
 
 **Fail fast policy (Virginie, 2026-09-25; `AUDIT.md`, step `prepublished` to `published`, and root
@@ -277,7 +279,7 @@ They run right after the publication, as small tickets, and their verdict goes i
 `docs/runs/`. If one comes back red it is a defect of the published version, said as such: a **rollback published
 as a new version** (`ref` = the full SHA of the last good commit, the next patch number, a note "Reverts to ...,
 because ..."; the workflow refuses an existing tag and versions only go up), then a separate fix.
-After a publish: check the public page against section 1, subscribe to the item yourself and check it loads
+After a publish: check the public page against the Steam description, subscribe to the item yourself and check it loads
 in game, then **Virginie changes the visibility by hand**: the CI never sends it, and RimWorld never did.
 Post the thanks below only once the item is public: a link to a private item opens for nobody.
 
@@ -291,7 +293,7 @@ Checked against the global register (`WORKSHOP_COMMENTS.md` at the collection ro
 (2009463077), **RIMMSQOL** (1084452457), **Pickle** (3791648678) and **RimLogging** (3733484696) are already
 `posted` there, so **nothing is posted again**. After the item is public, add `Contented Livestock` to the `Covers`
 column of those four rows. **PickleTools** (3806142401) is the author's own project: `not_applicable`, no self-comment.
-All four external recipients are also thanked in the description (section 1), as the workflow asks for a named
+All four external recipients are also thanked in the Steam description, as the workflow asks for a named
 or exercised integration.
 
 **Immersive Taming** (GuppyFacesAreCute, 3778917393) - not in the register yet: add a `drafted` row for it. Optional,

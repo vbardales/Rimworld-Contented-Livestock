@@ -14,7 +14,19 @@ export function fencedBlockUnder(text, headingRegex, { label, what }) {
   return block;
 }
 
+// A note sent as written has only the version heading it carries: Steam shows an entry whose first line has no
+// version as an entry with no version at all, and only the owner can correct a published note, by hand (Architect
+// Studio 1.0.5, 2026-09-25). So the first line must be a BBCode line ([b] or [h1] to [h3]) that carries the version.
+export function checkVersionHeading(note, version) {
+  const first = note.split('\n', 1)[0].trim();
+  const escaped = version.replaceAll('.', '\\.');
+  if (!new RegExp(`^\\[(b|h[1-3])\\].*(?<![\\d.])${escaped}(?![\\d.]).*\\[/(b|h[1-3])\\]$`).test(first)) {
+    throw new Error(`the change note of ${version} must begin with a line that carries the version, like [b]${version}[/b] or [h3]${version}[/h3]: Steam shows the entry with no version otherwise. It begins with: ${first.slice(0, 80)}`);
+  }
+  return note;
+}
+
 export function changenoteFor(publication, version) {
   const heading = new RegExp(`^### +${version.replaceAll('.', '\\.')}(\\s|$)`);
-  return fencedBlockUnder(publication, heading, { label: `"### ${version}"`, what: 'change note' });
+  return checkVersionHeading(fencedBlockUnder(publication, heading, { label: `"### ${version}"`, what: 'change note' }), version);
 }

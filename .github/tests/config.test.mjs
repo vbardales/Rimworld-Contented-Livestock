@@ -8,7 +8,7 @@ import { checkMod, parseConfig } from '../scripts/config.mjs';
 const valid = { workshopId: '123', packageId: 'nelim.test', releaseTitle: 'Test {version}' };
 
 test('accepts a minimal configuration and fills the defaults', () => {
-  assert.deepEqual(parseConfig(JSON.stringify(valid)), { ...valid, templateStamp: null, requirePaths: [], forbidPaths: [], previewFile: 'About/Preview.png', galleryDir: null, description: null });
+  assert.deepEqual(parseConfig(JSON.stringify(valid)), { ...valid, templateStamp: null, requirePaths: [], forbidPaths: [], previewFile: 'About/Preview.png', galleryDir: null, description: null, aboutFromDescription: false });
 });
 
 test('keeps the gallery folder, and rejects one that would leave the repository', () => {
@@ -30,6 +30,14 @@ test('rejects what would send the wrong thing or escape the repository', () => {
   for (const config of bad) assert.throws(() => parseConfig(JSON.stringify(config)), /publish\.config\.json/, JSON.stringify(config));
   assert.throws(() => parseConfig('{not json'), /not valid JSON/);
   for (const text of ['null', '[]', '"text"', '3']) assert.throws(() => parseConfig(text), /must contain a JSON object/, text);
+});
+
+test('a description is BBCode by default, or Markdown to convert (a whole file, or the block under a heading)', () => {
+  assert.equal(parseConfig(JSON.stringify({ ...valid, description: { file: 'README.template.md', format: 'markdown' } })).description.format, 'markdown');
+  assert.equal(parseConfig(JSON.stringify({ ...valid, description: { file: 'P.md', format: 'bbcode', heading: '^## 1' } })).description.format, 'bbcode');
+  assert.equal(parseConfig(JSON.stringify({ ...valid, description: { file: 'PUBLICATION.md', format: 'markdown', heading: '^## Steam description$' } })).description.heading, '^## Steam description$');
+  assert.throws(() => parseConfig(JSON.stringify({ ...valid, description: { file: 'R.md', format: 'html' } })), /description.format/);
+  assert.throws(() => parseConfig(JSON.stringify({ ...valid, description: { file: 'R.md', format: 'markdown', heading: '(' } })), /not a valid regular expression/);
 });
 
 test('the template stamp is kept when it is a string', () => {
@@ -58,4 +66,13 @@ test('checkMod stops on another item, another package, a missing or a forbidden 
   await assert.rejects(checkMod(commented, config()), /packageId nelim\.test/);
   await assert.rejects(checkMod(await mod(), config({ requirePaths: ['Defs'] })), /Mod\/Defs is required and missing/);
   await assert.rejects(checkMod(await mod({ files: ['Assemblies'] }), config({ forbidPaths: ['Assemblies'] })), /Mod\/Assemblies must not exist/);
+});
+
+test('aboutFromDescription needs a Markdown description source and a boolean', () => {
+  const markdown = { file: 'PUBLICATION.md', format: 'markdown', heading: '^## Steam description$' };
+  assert.equal(parseConfig(JSON.stringify({ ...valid, description: markdown, aboutFromDescription: true })).aboutFromDescription, true);
+  assert.equal(parseConfig(JSON.stringify({ ...valid, description: markdown })).aboutFromDescription, false);
+  assert.throws(() => parseConfig(JSON.stringify({ ...valid, description: { file: 'PUBLICATION.md' }, aboutFromDescription: true })), /needs a Markdown description source/);
+  assert.throws(() => parseConfig(JSON.stringify({ ...valid, aboutFromDescription: true })), /needs a Markdown description source/);
+  assert.throws(() => parseConfig(JSON.stringify({ ...valid, description: markdown, aboutFromDescription: 'yes' })), /must be true or false/);
 });

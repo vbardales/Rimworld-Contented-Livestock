@@ -2,6 +2,7 @@ import { mkdtemp, readFile, readdir, stat, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { aboutName, tagsFor } from './about.mjs';
+import { aboutProblem } from './about-description.mjs';
 import { changenoteFor, fencedBlockUnder } from './changenote.mjs';
 import { checkMod, loadConfig } from './config.mjs';
 import { formatGallery, listGallery } from './gallery.mjs';
@@ -51,6 +52,13 @@ const config = await loadConfig(commitDir);
 const changenote = changenoteFor(await readFile(join(commitDir, 'PUBLICATION.md'), 'utf8'), version);
 await checkMod(modPath, config);
 checkBytes('the change note', changenote, LIMITS.changenote);
+// With aboutFromDescription the <description> of About.xml is generated from the description source: a hand edit that
+// drifted from it stops the run, in the dry-run as in the publish.
+if (config.aboutFromDescription) {
+  const problem = await aboutProblem(commitDir, config);
+  if (problem) throw new Error(problem);
+  console.log(`About.xml: its description is the plain text of ${config.description.file}`);
+}
 
 const { stageModContent } = await import('semantic-release-steam/lib/stage-content.mjs');
 const { uploadWorkshopItem } = await import('semantic-release-steam/lib/steamcmd.mjs');
@@ -100,12 +108,26 @@ let description;
 if (updateDescription) {
   if (!config.description) throw new Error('update_description: publish.config.json has no "description" source');
   const source = await readFile(join(commitDir, config.description.file), 'utf8');
-  description = config.description.heading
-    ? fencedBlockUnder(source, new RegExp(config.description.heading), { label: `"${config.description.heading}"`, what: 'description' })
-    : source.trim();
+  const markdown = config.description.format === 'markdown';
+  if (markdown) {
+    // A heading means the Markdown is the fenced block under it (PUBLICATION.md, next to the change notes); without
+    // one the whole file is the description (Mod/README.template.md).
+    const text = config.description.heading
+      ? fencedBlockUnder(source, new RegExp(config.description.heading), { label: `"${config.description.heading}"`, what: 'description' })
+      : source;
+    if (!text.trim()) throw new Error(`update_description: ${config.description.file} is empty`);
+    // The same converter semantic-release-steam uses for a README: Markdown in, Steam BBCode out.
+    const { renderSteamBBCode } = await import('semantic-release-steam/lib/description.mjs');
+    description = renderSteamBBCode(text).trim();
+  } else {
+    description = config.description.heading
+      ? fencedBlockUnder(source, new RegExp(config.description.heading), { label: `"${config.description.heading}"`, what: 'description' })
+      : source.trim();
+  }
   const descriptionBytes = checkBytes('update_description: the description', description, LIMITS.description);
   const local = digest(Buffer.from(description));
-  console.log(`description to send: ${description.length} characters (${descriptionBytes} bytes), sha256 ${local.sha256}, from ${config.description.file}`);
+  console.log(`description to send: ${description.length} characters (${descriptionBytes} bytes), sha256 ${local.sha256}, from ${config.description.file}${markdown ? `${config.description.heading ? ', block under the heading,' : ''} (Markdown converted to BBCode)` : ''}`);
+  if (markdown) console.log(`description as converted (this exact text is sent):\n${description}`);
   if (page) {
     const diff = lineDiff(page.description, description);
     console.log(isIdentical(diff) ? 'the page already has this description: nothing would change' : `changes against the description on the page ('-' is on the page now, '+' would be sent):\n${formatDiff(diff)}`);
