@@ -14,7 +14,9 @@
 # the tip is moved to the top left so it does not sit on top of the cow. In the first scene the cow is
 # also shown off-centre: after a camera jump Pickle's pointer rests at the screen centre and the game
 # draws the tooltip of whatever is under it, which in the first run was another pawn's name ("Miel,
-# Surveyor") floating beside the cow. Scenes 2 and 3 had no pawn under the pointer and need no shift.
+# Surveyor") floating beside the cow. Off-centre was not enough: the glade is her station and she walks
+# under the pointer, so the second run still showed her name. She is now sent to the zen garden first.
+# Scenes 2 and 3 had no pawn under the pointer and need no change.
 #
 # Animal names must not exist in the fixture: the steps take the first pawn of that name. The zen
 # meadow already has a macaw called "Clover", which is why the cows are not.
@@ -28,7 +30,8 @@ Feature: Workshop pictures
     And Contented Livestock restores its default settings
 
   Scenario: a cow with its contentment bar and the live tip
-    Given Contented Livestock spawns the player animal "Daisy" as "Cow" near x 154 and z 98
+    Given Contented Livestock sends the colonist "Miel" to x 97 and z 152
+    And Contented Livestock spawns the player animal "Daisy" as "Cow" near x 154 and z 98
     And Contented Livestock records that "Daisy" ate "RawCorn"
     When Contented Livestock sets "Daisy" to 72 percent contentment
     Then Contented Livestock production factor for "Daisy" is 112 percent

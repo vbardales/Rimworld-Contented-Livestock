@@ -83,6 +83,26 @@ namespace ContentedLivestock.PickleSteps
                 $"{animalName} does not report a bond with {colonistName}");
         }
 
+        /// <summary>
+        /// Sends a colonist somewhere else, for a picture. After a camera jump Pickle's pointer rests at the
+        /// screen centre and the game draws the tooltip of whoever stands under it: in the studio fixture the
+        /// glade where the cows are put is the station of an actress, and her name floated beside the cow.
+        /// Framing the cow off-centre was not enough, because she walks under the pointer while the game runs.
+        /// </summary>
+        [When("Contented Livestock sends the colonist {string} to x {int} and z {int}")]
+        public void SendAway(PickleContext ctx, string name, int x, int z)
+        {
+            var pawn = Driver.PawnNamed(ctx, name);
+            var map = Driver.Map(ctx);
+            IntVec3 cell;
+            ctx.Require(CellFinder.TryFindRandomCellNear(new IntVec3(x, 0, z), map, 8,
+                c => c.Standable(map) && c.GetFirstPawn(map) == null, out cell),
+                $"no free cell near {x},{z} to send {name} to");
+            pawn.jobs?.StopAll();
+            pawn.Position = cell;
+            pawn.Notify_Teleported(true, true);
+        }
+
         // ---------------------------------------------------------------- egg laying (scenarios 11 and 12)
 
         private static readonly Dictionary<string, float> eggStart = new Dictionary<string, float>();

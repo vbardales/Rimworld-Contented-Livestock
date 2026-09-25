@@ -17,7 +17,7 @@ sent, posted or tagged.
 | --- | --- |
 | Manual scenarios in `_tools/FUNCTIONAL-SCENARIOS.md` | 4 of 18 complete, 1 partial, 12 unplayed, 1 out of scope (14). Method and progress: `docs/MANUAL-REVIEW.md` |
 | Pickle passes against the current revision | `runtime-evidence` passed 17 of 24, `avec-rimmsqol` 6 of 6, `runtime-film` 1 of 1, 0 failed: every conditional scenario has run |
-| Presentation pictures | 2, 3 and 4 taken and opened, usable; picture 1 has a stray tooltip, fixed in the scene, rerun submitted |
+| Presentation pictures | 2, 3 and 4 taken and opened, usable; picture 1 still shows a stray tooltip after a second run, third fix in the scene, rerun submitted |
 | Publication workflow | generated 2026-09-24 (`.github/`), 48 of 48 script tests pass; no dry-run has run, see section 6 |
 | Tag and GitHub release | created by the CI after a successful upload, never by hand |
 | Item tested by subscribing to it, then made public by hand | not done |
@@ -132,10 +132,12 @@ What opening them showed, 2026-09-24:
   hours, and each pane shows its own Contentment bar. The gain is 2.3 times, not the 2.9 of the two
   production factors (140% and 49%), because contentment drifts over the two hours: **do not quote a
   ratio in a caption.** The settings page is clean.
-- **Picture 1 has a stray tooltip**, another pawn's name floating beside the cow, drawn because Pickle's
-  pointer rests at the screen centre after a camera jump. The scene now shows the cow three cells left and
-  four up, so the pointer rests on bare ground. A rerun of that one scenario is submitted; the old capture
-  is deleted.
+- **Picture 1 has a stray tooltip, and two attempts have not removed it.** Another pawn's name ("Miel,
+  Surveyor") floats beside the cow, drawn because Pickle's pointer rests at the screen centre after a camera
+  jump and the game draws the tooltip of whoever is under it. The first fix showed the cow three cells left
+  and four up; the rerun passed, the cow was off-centre as intended, and the name was still there, because the
+  glade is the station of the actress Miel and she walks under the pointer. The scene now sends her to the zen
+  garden first. A third run of that one scenario is submitted; both flawed captures are deleted.
 - **The tip is a dialog, not the game's hover tooltip.** It carries the real text of the need, in a message box
   moved to the top left. Say "the contentment tip", not "hover tooltip".
 - The right edge still shows the fixture's own alerts ("Need colonist beds", "Pen needed", "Medical treatment
