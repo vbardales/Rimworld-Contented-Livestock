@@ -12,6 +12,9 @@
   and nothing already gathered is lost", which did not say that production stops until conditions improve. It now
   says "Production freezes until conditions improve" (owner's wording, 2026-09-25). "Nothing already accumulated
   is ever lost" stays in the general text of the tip.
+- **Reworded: the producers-only setting**, in English and French. It read "Only animals that produce something", a
+  fragment with no verb. It now reads "Only animals that give milk, wool or eggs have contentment" (owner's choice,
+  2026-09-25). Its tip is unchanged.
 - `About/About.xml`: removed the sentence saying the mod is safe to add to an existing save and safe to
   remove. Backward compatibility of saves is not handled or tested, so nothing backs it. The design
   property behind it is unchanged: an animal with no contentment need is worth exactly the vanilla rate.
