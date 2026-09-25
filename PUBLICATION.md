@@ -17,7 +17,7 @@ sent, posted or tagged.
 | --- | --- |
 | Manual scenarios in `_tools/FUNCTIONAL-SCENARIOS.md` | 4 of 18 complete, 1 partial, 12 unplayed, 1 out of scope (14). Method and progress: `docs/MANUAL-REVIEW.md` |
 | Pickle passes against the current revision | `runtime-evidence` passed 17 of 24, `avec-rimmsqol` 6 of 6, `runtime-film` 1 of 1, 0 failed: every conditional scenario has run |
-| Presentation pictures | all four taken and opened; picture 1 is clean since the third run (2026-09-25) and waits for the owner's eye |
+| Presentation pictures | all four accepted by the owner on 2026-09-25 and in `Art/WorkshopScreenshots/`; the upload to the Steam page is manual |
 | Publication workflow | generated 2026-09-24 (`.github/`), 57 of 57 script tests pass; no dry-run has run, see section 6 |
 | Tag and GitHub release | created by the CI after a successful upload, never by hand |
 | Item tested by subscribing to it, then made public by hand | not done |
@@ -154,12 +154,16 @@ What opening them showed, 2026-09-24:
   moved to the top left. Say "the contentment tip", not "hover tooltip".
 - The right edge of the full frame shows the fixture's own alerts ("Need colonist beds", "Pen needed", "Medical
   treatment needed") and the Learning helper. They were kept on purpose at first (the alerts are part of the real
-  interface), then **picture 1 is cropped to its left 1500 pixels** at the owner's suggestion (2026-09-25): the
-  right part carries nothing of the subject, and the crop puts the cow, the tip and the panes at a larger scale.
-  The crop keeps the full height (1080), so the left panes and the bottom bar stay; it is 1500 x 1080, not the
-  16:10 of the upload budget, and is scaled to 1280 pixels wide (1280 x 922). Pictures 2, 3 and 4 are still to be
-  looked at for the same crop.- The files are 1920 x 1080 and 0.6 MB each; the upload budget asks for JPEG at 1280 x 800, each file at most
-  2 MB, the batch at most 8 MB. They are resized once all four are final, not before.
+  interface), then the pictures were cropped at the owner's suggestion (2026-09-25): the right part carries nothing of
+  the subject, and the crop puts the cow, its pane and its bar at a larger scale. Her remark for the gallery: **zoom on
+  the subject**.
+- **The four pictures are final (owner, 2026-09-25) and in `Art/WorkshopScreenshots/`**, JPEG, 1.09 MB in all (each
+  under 2 MB, the batch under 8 MB), cropped from the 1920 x 1080 captures, not to the 1280 x 800 of the first budget:
+  `01-cow-with-contentment-bar-and-tip.jpg` (left 1500 pixels, 1280 x 922), `02-well-kept-cow-after-two-hours.jpg`
+  (the cow and its pane, 1280 x 820), `03-badly-kept-cow-after-two-hours.jpg` (the same crop, 1280 x 818, to be read
+  as a pair with the second) and `04-settings-page-with-contentment-bar.jpg` (left 1500 pixels, 1280 x 922). The
+  owner found the cow of picture 3 a little far from the centre and the cow of picture 4 small, and accepted both.
+  The folder holds these images and nothing else. Uploading them to the Steam page is manual.
 
 ## 3. Dependencies and DLC
 
@@ -223,7 +227,7 @@ changes it (CI/CD session, 2026-09-24). Do not do these one by one:
    lait, de la laine ou des œufs ont du bien-être" (key `ContentedLivestock.Settings.ProducersOnly`; its tip does
    not change), already noted in `CHANGELOG.md`;
 2. `## Unreleased` in `CHANGELOG.md` renamed to `## [1.0.0] - <date>`, with a non-empty body;
-3. the four final pictures, resized to JPEG 1280 x 800, at most 2 MB each and 8 MB the batch, committed in
+3. the four final pictures (done on 2026-09-25, see section 2), JPEG, at most 2 MB each and 8 MB the batch, committed in
    `Art/WorkshopScreenshots/` and named `01-...`, `02-...`, in the upload order of section 2 (Virginie asked
    for this, so the dry-run lists them as a reminder of the manual gallery upload; it sends nothing);
 4. the workflow regenerated with the **full** argument list below, never only the new option: a `--replace`
