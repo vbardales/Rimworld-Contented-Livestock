@@ -206,7 +206,17 @@ namespace ContentedLivestock.PickleSteps
             ctx.Require(produce != null, "CompEggLayer has no ProduceEgg method any more");
             EggField(ctx).SetValue(comp, 1f);
             eggsBefore[name] = EggsOnMap(ctx, props);
-            produce.Invoke(comp, null);
+            // ProduceEgg only makes the egg and resets the progress: the laying job is what puts it on the
+            // map. The range of a clutch can be zero, so it is tried again until an egg comes out.
+            Thing egg = null;
+            for (int attempt = 0; attempt < 20 && egg == null; attempt++)
+            {
+                EggField(ctx).SetValue(comp, 1f);
+                egg = produce.Invoke(comp, null) as Thing;
+            }
+            ctx.Require(egg != null, $"{name}'s egg comp produced no egg in 20 tries");
+            var pawn = (Pawn)comp.parent;
+            GenPlace.TryPlaceThing(egg, pawn.Position, pawn.Map, ThingPlaceMode.Near);
             eggStart[name] = Progress(ctx, comp);
         }
 
