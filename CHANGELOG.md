@@ -8,6 +8,10 @@
   pen grew, down to half of it, still read positive. It is now zero at balance, negative below it and
   positive above it, from -20% with nothing grown to +20% at twice what is eaten. Found while writing the
   in-game scenario for it. Only pen-managed animals with a pen are affected; a room and a lone animal are not.
+- **Reworded: the tip of an animal below the floor**, in English and French. It read "Nothing is accumulating,
+  and nothing already gathered is lost", which did not say that production stops until conditions improve. It now
+  says that what was gathered is kept and that nothing new accumulates until conditions improve (owner's wording,
+  2026-09-25).
 - `About/About.xml`: removed the sentence saying the mod is safe to add to an existing save and safe to
   remove. Backward compatibility of saves is not handled or tested, so nothing backs it. The design
   property behind it is unchanged: an animal with no contentment need is worth exactly the vanilla rate.

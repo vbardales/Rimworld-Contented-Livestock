@@ -270,7 +270,9 @@ run is in English; the French labels of this window are checked by feature 02.
 
 ## 16. Each setting has its effect
 
-**Status: ran 2026-09-25, request `…-0c3c`, passed 7 of 7. Waiting for your verdict.**
+**Status: ran 2026-09-25, request `…-0c3c`, passed 7 of 7. Waiting for your verdict. Image "feed input on"
+validated by Virginie on 2026-09-25; the text of the other captures was read by Claude, so only the wording and
+the "Too miserable" sentence are left for her eye.**
 
 **Media.** `2026-09-24/scenario-16/`, twelve JPEGs, all opened at full size by Claude: for each of the five inputs
 (feed, pasture and room, temperature, health, company) the animal's contentment tip with the input on and with it
