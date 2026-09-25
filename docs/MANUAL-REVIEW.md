@@ -33,7 +33,7 @@ Media live on disk, ignored by git, under `Tests/Pickle/evidence/`; the paths ar
 | 17 | RIMMSQOL shortcut | English: 6 of 6 asserted, 1 capture | opened | DLL hash, bare main bar, world view still to produce |
 | 7 | Company | 3 captures | **validated**: Company -10, nothing, +10 | nothing |
 | 12 | Unfertilised hen | 2 captures | **validated**: 16% against 14% from 10, the Contentment bar only on the first | nothing |
-| 11 | Harvest and laying reset | cow and sheep captures; hen rerun `…-09ac` pending | cow and sheep **validated** (fullness back to 0.01% and 0%, same yield at 100 and 30 percent); hen not yet passed | nothing yet |
+| 11 | Harvest and laying reset | cow, sheep and hen captures | **validated** (2 of 3 in `…-49a5`, the hen in `…-09ac`): fullness back to 0.01% and 0%, same yield at 100 and 30 percent, the hen lays an egg and reads 0% egg progress, then rises slowly over an hour | nothing |
 | 15 | Settings, boundaries, reset | 8 captures | **validated**: defaults, both slider ends, plateau held at 55, eleven values kept, reset cancelled then confirmed; rerun `…-215f` with keyed clicks pending | the reset confirmation window (large and mostly empty): design; the slider caps (stop below 50%, speed 400%): design |
 | 16 | Each setting's effect | 12 captures | **validated**: each input adds and removes its line, floor and maximum, speed of change; the tip wording was reworded at her request | nothing |
 | 4 | Feed and its fading memory | 9 captures | **validated**: grass +25, hay none, kibble -15; the meal fades +25, +19, +6, gone at 48 hours; the two days are simulated | the two bar pictures (well fed against not): does it read at a glance |
@@ -219,10 +219,10 @@ offset changed. The level takes time to move, which is exactly what the manual s
 this run reads the offset at once and does not wait. The bond was set in code, not earned by taming or training.
 ## 11. Harvest and laying reset cleanly
 
-**Status: ran 2026-09-25, request `…-49a5`: cow and sheep passed (2 of 3); the hen failed on a defect of the
-test step, not of the mod, and its rerun is pending (request `…-217d`). Waiting for your verdict on the cow and
-the sheep only.**
-
+**Status: ran 2026-09-25, passed 3 of 3 (cow and sheep in `…-49a5`, the hen in `…-09ac` after the test step was
+fixed). Validated by Claude; nothing is left for your eye.** The hen capture reads "Egg progress: 0%" right after
+laying, with the egg on the cell; the run asserted that an egg appeared, that the progress went back to zero, and
+that it rose by more than nothing and less than twice the def's rate over one game hour.
 **Media.** `2026-09-24/scenarios-11-12/seq1/`, two JPEGs, both opened at full size by Claude: the cow just after
 being milked and the sheep just after being shorn, each with its tip and pane.
 
