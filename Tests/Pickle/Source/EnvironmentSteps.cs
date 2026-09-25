@@ -239,7 +239,8 @@ namespace ContentedLivestock.PickleSteps
         public void SpawnInPen(PickleContext ctx, string name, string kindName)
         {
             var map = Driver.Map(ctx);
-            AnimalSteps.Spawn(ctx, name, kindName, Faction.OfPlayer, 3f, map.Center, 1);
+            var inside = chosenPenOrigin.HasValue ? chosenPenOrigin.Value + new IntVec3(1, 0, 1) : map.Center;
+            AnimalSteps.Spawn(ctx, name, kindName, Faction.OfPlayer, 3f, inside, 1);
         }
 
         private static CompAnimalPenMarker PenOf(PickleContext ctx, string name)
