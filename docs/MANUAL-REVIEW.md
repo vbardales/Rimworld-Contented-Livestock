@@ -32,7 +32,7 @@ Media live on disk, ignored by git, under `Tests/Pickle/evidence/`; the paths ar
 | 12 | Unfertilised hen | feature 21 written (2 captures); did not run in `…-49a5`, request `…-088f` pending | not run | media to review |
 | 11 | Harvest and laying reset | feature 20: cow and sheep ran and passed (`…-49a5`), hen step fixed, rerun `…-217d` pending | 2 of 3 passed | waiting for your verdict on the cow and the sheep |
 | 15 | Settings, boundaries, reset | feature 22: 4 scenarios, 8 captures, ran and passed (`…-67a2`) | 4 of 4 passed | waiting for your verdict; the Options route is not driven |
-| 16 | Each setting's effect | feature 23 written (7 scenarios, 12 tip captures); request pending | not run | media to review |
+| 16 | Each setting's effect | feature 23: 7 scenarios, 12 captures, ran and passed (`…-0c3c`) | 7 of 7 passed | waiting for your verdict |
 | 4 | Feed and its fading memory | feature 24 written (2 scenarios, 8 tip captures); request `…-398b` pending | not run | media to review; the two days are simulated, see below |
 | 5 | Temperature per animal | feature 25 written (3 tip captures); request `…-919e` pending | not run | media to review; a cold snap, not a room |
 | 8 | Pen balance | feature 26 written (4 captures); request `…-0294` pending | not run | media to review; the riskiest premise |
@@ -268,14 +268,47 @@ held (floor 0.9 gives 50, speed 10 gives 400, speed 0.01 gives 25), which no pic
 slider. The Options, Mod options route is not driven (features 02 and the RIMMSQOL ones cover the shortcut). This
 run is in English; the French labels of this window are checked by feature 02.
 
-## 12. Unfertilised hen, 16. Effects, 4. Feed, 5. Temperature, 8. Pen
+## 16. Each setting has its effect
+
+**Status: ran 2026-09-25, request `…-0c3c`, passed 7 of 7. Waiting for your verdict.**
+
+**Media.** `2026-09-24/scenario-16/`, twelve JPEGs, all opened at full size by Claude: for each of the five inputs
+(feed, pasture and room, temperature, health, company) the animal's contentment tip with the input on and with it
+off, then two for the rate curve: a floor of 30 with a cow at 29 percent, and a maximum of 160 with a cow at full.
+The tip is a message box the test opens at the top left; it holds the game's own text for the need.
+
+**Claude checked.** On: "Last fed on: +15%" (cow that ate corn), "Pasture and room: +5%" (husky), "Health: -12%"
+(cow with a bleeding cut, shown red), "Company: -10%" (muffalo alone); "Temperature: +5%" is on every tip. Off: the
+matching line is gone and the others stay. With a floor of 30 the cow at 29 percent reads "Too miserable to
+produce. Nothing is accumulating, and nothing already gathered is lost." With a maximum of 160 the cow at 100
+percent reads "Filling with milk, wool or eggs at 160% of the usual rate". The run also asserted the contribution
+itself is zero when off and back when on again, the rate at 22, 60, 100 and 160 percent between the two ends
+with these settings, and that the speed of change scales the distance travelled in 20 intervals (1.25, 5 and 20
+points at 25, 100 and 400 percent) and never goes past its target.
+
+**You check.**
+
+1. In each pair the only difference is the one line; the level stays at 50 percent and the rate at 83 percent,
+   because switching an input off changes the offset at once and the level moves only over time.
+2. The wording of the lines: "Last fed on", "Pasture and room", "Company" and the sign of each.
+3. The "Too miserable to produce" sentence: clear, and does it say enough that nothing is lost?
+4. Nothing red apart from the wounded cow itself, and no error window.
+
+**Not covered, and worth knowing.** The tip is shown in a **message box** the test opens, not the game's hover
+tooltip, so its size (large, mostly empty) is the box's and says nothing about the real tooltip. Four captures
+(feed off, temperature off, health off, and the maximum at 160) show a small hover label with the animal's name: the
+pointer rests still while the selection moves, a harness artefact. Nothing accumulated in the pane: milk fullness
+reads 0.01 to 0.03 percent. The speed of change is measured in need intervals, not by waiting, so it does not
+depend on the clock. Pasture and room was tested on a husky, with producers-only off; a cow in a real pen is
+scenario 8.
+
+## 12. Unfertilised hen, 4. Feed, 5. Temperature, 8. Pen
 
 No media yet. Each needs a new feature, so each is one small request. Notes on what is hard:
 
 - **7.** Cheap: a herd animal alone, then two of its kind beside it, the Company line in the tip. The bond
   with a colonist needs a relation set in code.
 - **12.** The assertion is numeric (egg progress against vanilla's rate); the media would be the hen's pane.
-- **16.** Settings values are set in code; a capture per disabled factor. Cheap but numerous.
 - **4.** Needs a game day (60 000 ticks) and real grazing by the animal; a film sampled every 1 000 ticks.
 - **5.** Needs a way to set the temperature of a room in winter, which no step does yet.
 - **8.** Needs a pen with a pasture built in code and the pen marker's own figure; the riskiest.
