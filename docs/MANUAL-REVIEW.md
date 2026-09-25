@@ -33,7 +33,7 @@ Media live on disk, ignored by git, under `Tests/Pickle/evidence/`; the paths ar
 | 11 | Harvest and laying reset | feature 20: cow and sheep ran and passed (`…-49a5`), hen step fixed, rerun `…-217d` pending | 2 of 3 passed | waiting for your verdict on the cow and the sheep |
 | 15 | Settings, boundaries, reset | feature 22: 4 scenarios, 8 captures, ran and passed (`…-67a2`) | 4 of 4 passed | waiting for your verdict; the Options route is not driven |
 | 16 | Each setting's effect | feature 23: 7 scenarios, 12 captures, ran and passed (`…-0c3c`) | 7 of 7 passed | waiting for your verdict |
-| 4 | Feed and its fading memory | feature 24 written (2 scenarios, 8 tip captures); request `…-398b` pending | not run | media to review; the two days are simulated, see below |
+| 4 | Feed and its fading memory | feature 24: 2 scenarios, 9 captures, ran and passed (`…-398b`) | 2 of 2 passed | waiting for your verdict on the two bar pictures; the two days are simulated |
 | 5 | Temperature per animal | feature 25 written (3 tip captures); request `…-919e` pending | not run | media to review; a cold snap, not a room |
 | 8 | Pen balance | feature 26 written (4 captures); request `…-0294` pending | not run | media to review; the riskiest premise |
 | 14 | Add to and remove from a save | - | - | **out of scope**: no backward compatibility is handled or tested |
@@ -304,14 +304,37 @@ reads 0.01 to 0.03 percent. The speed of change is measured in need intervals, n
 depend on the clock. Pasture and room was tested on a husky, with producers-only off; a cow in a real pen is
 scenario 8.
 
-## 12. Unfertilised hen, 4. Feed, 5. Temperature, 8. Pen
+## 4. Feed and its fading memory
+
+**Status: ran 2026-09-25, request `…-398b`, passed 2 of 2. Waiting for your verdict on the two bar pictures;
+the text of the others was read by Claude.**
+
+**Media.** `2026-09-24/scenario-04/`, nine JPEGs, all opened at full size by Claude. Three cows just after eating
+(grass, hay, kibble); the grazer's and the kibble cow's bars after a simulated game day; and one cow's tip just
+after eating, twelve hours later, thirty-six hours later and forty-eight hours later.
+
+**Claude checked (text read on the pictures).** Grass reads "Last fed on: +25%", hay shows **no** Feed line,
+kibble reads "Last fed on: -15%". The fading meal reads +25%, +19% at 12 hours, +6% at 36 hours, and the line is
+gone at 48 hours (the formula gives 25 x (1 - age / 2 days): 19 and 6). The run asserted the same signs and the
+order of the three targets, and that after 400 need intervals (a game day) the grazer's level is above the hay
+cow's, which is above the kibble cow's. In the two bar pictures the grazer's contentment bar is about three
+quarters full and the kibble cow's about a third.
+
+**You check.** Only the two bar pictures, by eye: after a day, does the grazer's bar against the kibble cow's read
+as "one is well fed, one is not" at a glance, without the tip?
+
+**Not covered, and worth knowing.** Eating went through the game's own `Thing.Ingested` (so the patch and the grass
+test are exercised), but time is arranged: a game day is 400 need intervals in a loop, and the two days of fading
+are made by moving the recorded time of the meal back, so the formula is tested, not the clock. The cows did not
+graze by themselves. In the bar pictures the game is not paused and the tip is not open.
+
+## 12. Unfertilised hen, 5. Temperature, 8. Pen
 
 No media yet. Each needs a new feature, so each is one small request. Notes on what is hard:
 
 - **7.** Cheap: a herd animal alone, then two of its kind beside it, the Company line in the tip. The bond
   with a colonist needs a relation set in code.
 - **12.** The assertion is numeric (egg progress against vanilla's rate); the media would be the hen's pane.
-- **4.** Needs a game day (60 000 ticks) and real grazing by the animal; a film sampled every 1 000 ticks.
 - **5.** Needs a way to set the temperature of a room in winter, which no step does yet.
 - **8.** Needs a pen with a pasture built in code and the pen marker's own figure; the riskiest.
 
