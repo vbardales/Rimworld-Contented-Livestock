@@ -38,7 +38,7 @@ Media live on disk, ignored by git, under `Tests/Pickle/evidence/`; the paths ar
 | 16 | Each setting's effect | 12 captures | **validated**: each input adds and removes its line, floor and maximum, speed of change; the tip wording was reworded at her request | nothing |
 | 4 | Feed and its fading memory | 9 captures | **validated**: grass +25, hay none, kibble -15; the meal fades +25, +19, +6, gone at 48 hours; the two days are simulated | the two bar pictures (well fed against not): does it read at a glance |
 | 5 | Temperature per animal | 3 captures | **validated**: hen -12% in a cold snap where the husky reads +5%, hen +5% again after the snap ends | nothing |
-| 8 | Pen balance | rerun `…-8821` pending | not passed yet | not yet |
+| 8 | Pen balance | rerun after a step fix pending | the game recognises the fenced pen and its food balance (steps passed on 2026-09-25); the pasture-line checks are not yet run: the step maps a name wrongly, fix waits for the queue | not yet |
 | 14 | Add to and remove from a save | - | **out of scope**: no backward compatibility is handled or tested | - |
 
 Order proposed: the cheap ones first (10, 9, 3, 17), then 7, 12, 11, then 15, 16, then 4, 5, 8.
@@ -371,7 +371,7 @@ need at all.
 
 ## 8. Pen
 
-Pending: rerun `…-8821`. The riskiest premise is whether the game recognises the fence built in code as a pen.
+Pending: the first run (`…-8821`, 2026-09-25) showed that the game does recognise the fence built in code as a pen (the steps up to "the pen grows less than its animals eat" passed) and then failed on a step that turns "pasture" into a method name the mod does not have; the fix is filed for when the queue is empty.
 **14 is not on this sheet.** Adding the mod to a save, and removing it, is backward compatibility, which is
 not handled or tested here (decision of 2026-09-24). One thing follows and needs an answer: `About.xml`
 and `README.md` still say "Safe to add to an existing save. Safe to remove", and the Steam page created
