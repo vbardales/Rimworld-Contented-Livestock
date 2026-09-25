@@ -31,7 +31,7 @@ Media live on disk, ignored by git, under `Tests/Pickle/evidence/`; the paths ar
 | 7 | Company | 3 captures, ran 2026-09-25, passed | all 3 opened | your verdict |
 | 12 | Unfertilised hen | feature 21 written (2 captures); did not run in `…-49a5`, request `…-088f` pending | not run | media to review |
 | 11 | Harvest and laying reset | feature 20: cow and sheep ran and passed (`…-49a5`), hen step fixed, rerun `…-217d` pending | 2 of 3 passed | waiting for your verdict on the cow and the sheep |
-| 15 | Settings, boundaries, reset | feature 22 written (4 scenarios, about 8 captures); request pending | not run | media to review; the Options route is not driven |
+| 15 | Settings, boundaries, reset | feature 22: 4 scenarios, 8 captures, ran and passed (`…-67a2`) | 4 of 4 passed | waiting for your verdict; the Options route is not driven |
 | 16 | Each setting's effect | feature 23 written (7 scenarios, 12 tip captures); request pending | not run | media to review |
 | 4 | Feed and its fading memory | feature 24 written (2 scenarios, 8 tip captures); request `…-398b` pending | not run | media to review; the two days are simulated, see below |
 | 5 | Temperature per animal | feature 25 written (3 tip captures); request `…-919e` pending | not run | media to review; a cold snap, not a room |
@@ -238,15 +238,44 @@ called for a colonist directly, not through the job a colonist would take, so th
 tested. The hen half of the scenario failed because the step called `ProduceEgg`, which only makes the egg (the
 laying job is what puts it on the map): the step now places it. The hen's captures will be added when it runs.
 
-## 12. Unfertilised hen, 15. Settings, 16. Effects, 4. Feed, 5. Temperature, 8. Pen
+## 15. Primary settings, defaults, boundaries and reset
+
+**Status: ran 2026-09-25, request `…-67a2`, passed 4 of 4. Waiting for your verdict.**
+
+**Media.** `2026-09-24/scenario-15/`, eight JPEGs, all opened at full size by Claude, all of the mod's own settings
+window over the test colony: the shipped defaults; every slider at its low end; every slider at its high end;
+floor at 50 with the plateau asked at 30; eleven distinctive values; the same eleven after closing and reopening;
+the reset confirmation; the defaults back after confirming.
+
+**Claude checked.** Defaults read 25, 60, 40, 140 and 100 percent, six green ticks. Low end reads 0, 30, 0, 100
+and 25. High end reads 50, 90, 100, 200 and 400, each slider at the right of its track. With the floor at 50 and
+the plateau asked at 30, the plateau reads **55**, five points above the floor. The distinctive set (31, 71, 22,
+163, 250 and six red crosses) reads the same after closing and reopening. The reset window asks "Reset every
+Contented Livestock setting to its default?" with Go back and Confirm; Go back kept the values, Confirm brought
+back the eleven defaults (last capture equals the first). The run also asserted that out-of-range values are
+held (floor 0.9 gives 50, speed 10 gives 400, speed 0.01 gives 25), which no picture shows.
+
+**You check.**
+
+1. The wording of each line and of the two intro paragraphs reads well to a player, and nothing is cut off.
+2. The slider ends make sense: is "Production stops below" capped at 50% and "Speed of change" at 400% what you
+   want to offer?
+3. **The reset confirmation window is large (about 640 by 460 px) with a single line of text and a lot of empty
+   black.** Is that how you want it, or should it be smaller? Compare with another vanilla confirmation.
+4. Red crosses and green ticks are easy to tell apart, and the first capture and the last look identical.
+
+**Not covered, and worth knowing.** Sliders and ticks were set in code and the dialog drew them: nobody dragged a
+slider. The Options, Mod options route is not driven (features 02 and the RIMMSQOL ones cover the shortcut). This
+run is in English; the French labels of this window are checked by feature 02.
+
+## 12. Unfertilised hen, 16. Effects, 4. Feed, 5. Temperature, 8. Pen
 
 No media yet. Each needs a new feature, so each is one small request. Notes on what is hard:
 
 - **7.** Cheap: a herd animal alone, then two of its kind beside it, the Company line in the tip. The bond
   with a colonist needs a relation set in code.
 - **12.** The assertion is numeric (egg progress against vanilla's rate); the media would be the hen's pane.
-- **15, 16.** Settings values are set in code; a capture per slider end and per disabled factor. Cheap but
-  numerous.
+- **16.** Settings values are set in code; a capture per disabled factor. Cheap but numerous.
 - **4.** Needs a game day (60 000 ticks) and real grazing by the animal; a film sampled every 1 000 ticks.
 - **5.** Needs a way to set the temperature of a room in winter, which no step does yet.
 - **8.** Needs a pen with a pasture built in code and the pen marker's own figure; the riskiest.
