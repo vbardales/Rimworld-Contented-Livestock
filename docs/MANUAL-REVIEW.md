@@ -37,7 +37,7 @@ Media live on disk, ignored by git, under `Tests/Pickle/evidence/`; the paths ar
 | 15 | Settings, boundaries, reset | 8 captures | **validated**: defaults, both slider ends, plateau held at 55, eleven values kept, reset cancelled then confirmed; rerun `…-215f` with keyed clicks pending | the reset confirmation window (large and mostly empty): design; the slider caps (stop below 50%, speed 400%): design |
 | 16 | Each setting's effect | 12 captures | **validated**: each input adds and removes its line, floor and maximum, speed of change; the tip wording was reworded at her request | nothing |
 | 4 | Feed and its fading memory | 9 captures | **validated**: grass +25, hay none, kibble -15; the meal fades +25, +19, +6, gone at 48 hours; the two days are simulated | the two bar pictures (well fed against not): does it read at a glance |
-| 5 | Temperature per animal | rerun `…-0318` pending | not passed yet | not yet |
+| 5 | Temperature per animal | 3 captures | **validated**: hen -12% in a cold snap where the husky reads +5%, hen +5% again after the snap ends | nothing |
 | 8 | Pen balance | rerun `…-8821` pending | not passed yet | not yet |
 | 14 | Add to and remove from a save | - | **out of scope**: no backward compatibility is handled or tested | - |
 
@@ -350,16 +350,28 @@ label with the animal's name: the pointer rests still, a harness artefact.
 **Not covered.** The ceiling itself (the progress a hen with no rooster stops at) is not reached in one hour; the
 scenario asserts the rate, and the vanilla stall is untouched by construction (only a rising delta is scaled).
 
-## 5. Temperature, 8. Pen
+## 5. Temperature is measured against the animal's own range
 
-No media yet. Each needs a new feature, so each is one small request. Notes on what is hard:
+**Status: ran 2026-09-25, request `…-0318` (after two failures of the test step, see `docs/runs/2026-09-25.md`),
+passed 1 of 1. Validated by Claude; nothing is left for your eye.**
 
-- **7.** Cheap: a herd animal alone, then two of its kind beside it, the Company line in the tip. The bond
-  with a colonist needs a relation set in code.
-- **12.** The assertion is numeric (egg progress against vanilla's rate); the media would be the hen's pane.
-- **5.** Needs a way to set the temperature of a room in winter, which no step does yet.
-- **8.** Needs a pen with a pasture built in code and the pen marker's own figure; the riskiest.
+**Media.** `2026-09-25/scenario-05-b/`, three JPEGs, opened at full size: the hen in the cold snap, the husky in the
+same cold snap, the hen after the snap ended.
 
+**Claude checked.** With the outdoors at -16 degrees (a cold snap set 6 degrees under the hen's own cold limit), the
+hen's tip reads **"Temperature: -12%"**; the husky's tip in the same snap reads **"Temperature: +5%"**, no penalty;
+after the snap ends the hen reads **"Temperature: +5%"** again. The run asserted that the hen's contribution is
+negative, lower than the husky's, and positive again after the end. That is the point of the scenario: the band
+belongs to the animal, a hen suffers where a husky does not.
+
+**Not covered, and worth knowing.** A cold snap outdoors stands for the manual scenario's unheated room in winter:
+the band is tested, not a room with walls and a heater. The snap is a condition made for the test (its label
+"Test cold snap" shows in the alerts on the right), never saved. The husky needs producers-only off to have the
+need at all.
+
+## 8. Pen
+
+Pending: rerun `…-8821`. The riskiest premise is whether the game recognises the fence built in code as a pen.
 **14 is not on this sheet.** Adding the mod to a save, and removing it, is backward compatibility, which is
 not handled or tested here (decision of 2026-09-24). One thing follows and needs an answer: `About.xml`
 and `README.md` still say "Safe to add to an existing save. Safe to remove", and the Steam page created
