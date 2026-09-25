@@ -31,7 +31,8 @@ removed on 2026-09-24 (backward compatibility of saves is not handled or tested)
 the pen rule was corrected on 2026-09-25 (see `CHANGELOG.md`); the 0.1.0 DLL started `e69349c34f01e7e3`.
 Both ship with the next release. Pickle evidence taken before 2026-09-25 is on the older DLL, so a full
 pass on the final SHA is owed. Under the fail fast policy (section 6) it runs after the publication, not
-before it.
+before it, but no scenario may still be red: the fixes of the test steps found on 2026-09-25 must first come
+back green.
 
 ## 1. Steam description
 
@@ -80,7 +81,7 @@ It does not add an alert. An animal that has stopped producing says so in its ow
 
 [h2]COMPATIBILITY[/h2]
 
-Requires [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077]Harmony[/url], loaded before this mod (built and checked with Harmony 2.4.2.0). RIMMSQOL is optional: mod settings are always available through Mod options.
+Requires [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077]Harmony[/url], loaded before this mod (built and checked with Harmony 2.4.2.0). [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1084452457]RIMMSQOL[/url] is optional: mod settings are always available through Mod options.
 
 Works with modded animals and modded animal products without patches, as long as they use the game's own milkable, shearable or egg-laying machinery.
 
@@ -101,6 +102,8 @@ This mod was written with Claude Code (Anthropic) under human direction, review 
 [h2]THANKS[/h2]
 
 ConcernedApe, whose farm animals in Stardew Valley refuse to give anything at all when they are unhappy, and give their best when they have been let out on fresh grass. The idea is his; none of his work is here.
+
+Andreas Pardeike, for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077]Harmony[/url], which every patch of this mod stands on. The author of [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1084452457]RIMMSQOL[/url], the tool the optional settings shortcut was built to be revealed by, and which the tests exercised. The tests also ran on [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3791648678]Pickle[/url], [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3733484696]RimLogging[/url] and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3806142401]Nelim's Pickle Tools[/url]: development only, never a dependency of this mod.
 
 [url=https://github.com/vbardales/Rimworld-Contented-Livestock]Source code on GitHub[/url]
 ```
@@ -178,6 +181,7 @@ Virginie decides if another number is wanted.
 ### 1.0.0
 
 ```
+[b]1.0.0[/b]
 First release. Colony animals that produce milk, wool or eggs now carry a contentment need, built from what they ate, their pasture or room, their temperature, their health and their company. Contentment sets how fast they fill: nothing below a floor you choose, up to 40% faster above a plateau. Nothing already accumulated is ever lost. Every threshold and rate is a setting, and each of the five inputs can be switched off. Needs Harmony.
 ```
 
@@ -233,19 +237,31 @@ the corrections of section 1 are seen before they go. Preview (`--preview`) only
 Visibility is never sent.
 
 **Fail fast policy (Virginie, 2026-09-25; `AUDIT.md`, step `prepublished` to `published`, and root
-`PUBLISHING.md`).** The passes still in the queue do not hold the publication back. The order is: final
-commit, dry-run of that exact SHA, Virginie's approval, publish, then the remaining Pickle passes as small
-tickets. A red result is a defect of the published version and is written as such in `STATUS.md` and
-`docs/runs/`. The answer is a **rollback published as a new version** (`ref` = the full SHA of the last good
-commit, the next patch number, a note "Reverts to ..., because ..."; the workflow refuses an existing tag and
-versions only go up), and a separate fix published afterwards. Guard rails do not move: dry-run of the exact
-commit, full SHA, approval by Virginie alone.
-**The rollback target is chosen before publishing, not after a red.** It is open here: the 0.1.0 upload
-only created the item and was never a tested version, and it carries the old pen rule. Options are the
-commit of that upload, or the last commit before the final one whose out-of-game tests are green; Virginie
-picks, and the choice is written in this section before the dispatch. The item stays private until Virginie
-makes it public by hand, so a rollback before that reaches nobody.
+`PUBLISHING.md`).** We publish once no red is left open, and the non-regression pass runs after the
+publication. **Before the `publish` is dispatched, nothing of this is skipped:**
 
+1. **No red scenario without a green rerun.** Every scenario that failed must have been replayed green on a
+   build that holds its fix. Open here on 2026-09-25: the hen of scenario 11 (`...-217d`), scenario 12
+   (`...-088f`), scenario 5 (`...-69e3`), scenario 8 (`...-d762`) and presentation picture 1 (`...-29ec`).
+   Those failures were faults of the test steps, fixed and resubmitted; until each has come back green they
+   count as red.
+2. **The Workshop gallery** (four pictures, section 2) and **the owner's manual validations** (the verdicts
+   on `docs/MANUAL-REVIEW.md`).
+3. **The guard rails, unchanged:** dry-run of the exact commit first, `publish` with the full SHA, approval of
+   `steam-production` by Virginie alone.
+4. **The rollback target, chosen now and not after a red.** It is open here: the 0.1.0 upload only created
+   the item and was never a tested version, and it carries the old pen rule. Options are the commit of that
+   upload, or the last commit before the final one whose out-of-game tests are green; Virginie picks, and the
+   choice is written in this section before the dispatch. A tag is set at each good version so that the next
+   one has a target. The item stays private until Virginie makes it public by hand, so a rollback before that
+   reaches nobody.
+
+**What is lifted:** waiting for the non-regression pass, that is the replay of the rest of the suite (the
+scenarios that were never red, and the whole suite on the final build) and of the game passes still queued.
+They run right after the publication, as small tickets, and their verdict goes in `STATUS.md` and
+`docs/runs/`. If one comes back red it is a defect of the published version, said as such: a **rollback published
+as a new version** (`ref` = the full SHA of the last good commit, the next patch number, a note "Reverts to ...,
+because ..."; the workflow refuses an existing tag and versions only go up), then a separate fix.
 After a publish: check the public page against section 1, subscribe to the item yourself and check it loads
 in game, then **Virginie changes the visibility by hand**: the CI never sends it, and RimWorld never did.
 Post the thanks below only once the item is public: a link to a private item opens for nobody.
@@ -256,21 +272,15 @@ One per page, once they can see the link. Pasting the bare item URL gives a thum
 `https://steamcommunity.com/sharedfiles/filedetails/?id=3806136625`. Each is under 1000 characters, the
 limit of a Steam comment.
 
-**Harmony** (Andreas Pardeike)
+Checked against the global register (`WORKSHOP_COMMENTS.md` at the collection root, 2026-09-25): **Harmony**
+(2009463077), **RIMMSQOL** (1084452457), **Pickle** (3791648678) and **RimLogging** (3733484696) are already
+`posted` there, so **nothing is posted again**. After the item is public, add `Contented Livestock` to the `Covers`
+column of those four rows. **PickleTools** (3806142401) is the author's own project: `not_applicable`, no self-comment.
+All four external recipients are also thanked in the description (section 1), as the workflow asks for a named
+or exercised integration.
 
-```
-Contented Livestock changes how fast a cow, a sheep or a hen fills, and it does it with five small Harmony patches: the tick of the milk and egg comps, the food an animal eats, and who gets a need at all. Without Harmony there would be no way to reach any of those places from a mod that adds no new class of animal. Thank you for it, and for keeping it working through every RimWorld update! 🙏
-https://steamcommunity.com/sharedfiles/filedetails/?id=3806136625
-```
-
-**RIMMSQOL** (packageId prefix MalteSchulze; check the author name on the page before posting)
-
-```
-Contented Livestock ships a settings shortcut on the main bar, hidden by default, and RIMMSQOL is the mod I built it for: you can reveal it from your own list of main buttons, and it opens the same settings page as Mod options. I tested reveal, open, hide and forget, and that the choice survives a restart. Nothing depends on it, but it made the design easy. Thank you for it! 😊
-https://steamcommunity.com/sharedfiles/filedetails/?id=3806136625
-```
-
-**Immersive Taming** (GuppyFacesAreCute) - optional, and a decision for the author of the mod, not for me
+**Immersive Taming** (GuppyFacesAreCute, 3778917393) - not in the register yet: add a `drafted` row for it. Optional,
+and a decision for the author of the mod, not for me
 
 ```
 While checking that nobody had done it already, I found that Immersive Taming patches the same two places I needed, the gatherable comp and the egg layer, to stop a merely tolerated animal from producing. That told me the hook works. Contented Livestock uses a different one, the tick rather than the yield, and a different idea, a rate that follows how an animal is kept. No code is shared, and I wanted to say thank you for the proof. 😊
