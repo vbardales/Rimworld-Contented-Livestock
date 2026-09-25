@@ -158,7 +158,41 @@ namespace ContentedLivestock.PickleSteps
 
         private static readonly Dictionary<string, float> recordedSpace = new Dictionary<string, float>();
 
-        private static IntVec3 PenOrigin(Map map, int size) => new IntVec3(map.Center.x - size / 2, 0, map.Center.z - size / 2);
+        private static IntVec3? chosenPenOrigin;
+
+        private static IntVec3 PenOrigin(Map map, int size)
+            => chosenPenOrigin ?? new IntVec3(map.Center.x - size / 2, 0, map.Center.z - size / 2);
+
+        /// <summary>
+        /// The square nearest the middle of the map that has no roof over it or over its fence ring. The middle of
+        /// the test colony lies under a mountain: with a roof no grass grows, the pen marker reads "Nutrition
+        /// growth: 0" and the pasture line sits at its floor whatever the herd, which is what the first run showed.
+        /// </summary>
+        private static IntVec3 OpenPenOrigin(PickleContext ctx, Map map, int size)
+        {
+            IntVec3? best = null;
+            float bestDistance = float.MaxValue;
+            for (int x = 1; x < map.Size.x - size - 2; x++)
+            {
+                for (int z = 1; z < map.Size.z - size - 2; z++)
+                {
+                    var origin = new IntVec3(x, 0, z);
+                    float distance = (origin - map.Center).LengthHorizontalSquared;
+                    if (distance >= bestDistance) continue;
+                    bool open = true;
+                    for (int dx = -1; dx <= size && open; dx++)
+                        for (int dz = -1; dz <= size && open; dz++)
+                        {
+                            var cell = new IntVec3(x + dx, 0, z + dz);
+                            open = cell.InBounds(map) && !map.roofGrid.Roofed(cell) && cell.Walkable(map)
+                                && cell.GetEdifice(map) == null && !cell.GetTerrain(map).IsWater;
+                        }
+                    if (open) { best = origin; bestDistance = distance; }
+                }
+            }
+            ctx.Require(best.HasValue, $"no unroofed {size + 2} by {size + 2} square was found on the map");
+            return best.Value;
+        }
 
         /// <summary>
         /// A closed ring of fence around a square of soil at the middle of the map, with a pen marker inside.
@@ -174,7 +208,8 @@ namespace ContentedLivestock.PickleSteps
             ctx.Require(fence != null, "no ThingDef named Fence");
             ctx.Require(marker != null, "no ThingDef named PenMarker");
             var stuff = GenStuff.DefaultStuffFor(fence);
-            var origin = PenOrigin(map, size);
+            var origin = OpenPenOrigin(ctx, map, size);
+            chosenPenOrigin = origin;
 
             for (int x = origin.x - 1; x <= origin.x + size; x++)
             {
