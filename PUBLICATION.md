@@ -28,7 +28,8 @@ What is verified: rebuilding `Source/` reproduces the shipped DLL exactly (SHA-2
 removed on 2026-09-24 (backward compatibility of saves is not handled or tested). `Assemblies/ContentedLivestock.dll`:
 the pen rule was corrected on 2026-09-25 (see `CHANGELOG.md`); the 0.1.0 DLL started `e69349c34f01e7e3`.
 Both ship with the next release. Pickle evidence taken before 2026-09-25 is on the older DLL, so a full
-pass on the final SHA is owed.
+pass on the final SHA is owed. Under the fail fast policy (section 6) it runs after the publication, not
+before it.
 
 ## 1. Steam description
 
@@ -228,6 +229,20 @@ The description is an option, off by default, and it must be on in **both** the 
 to the command. The dry-run prints its length, SHA-256 and a line diff against the public page, which is how
 the corrections of section 1 are seen before they go. Preview (`--preview`) only if the page image must change.
 Visibility is never sent.
+
+**Fail fast policy (Virginie, 2026-09-25; `AUDIT.md`, step `prepublished` to `published`, and root
+`PUBLISHING.md`).** The passes still in the queue do not hold the publication back. The order is: final
+commit, dry-run of that exact SHA, Virginie's approval, publish, then the remaining Pickle passes as small
+tickets. A red result is a defect of the published version and is written as such in `STATUS.md` and
+`docs/runs/`. The answer is a **rollback published as a new version** (`ref` = the full SHA of the last good
+commit, the next patch number, a note "Reverts to ..., because ..."; the workflow refuses an existing tag and
+versions only go up), and a separate fix published afterwards. Guard rails do not move: dry-run of the exact
+commit, full SHA, approval by Virginie alone.
+**The rollback target is chosen before publishing, not after a red.** It is open here: the 0.1.0 upload
+only created the item and was never a tested version, and it carries the old pen rule. Options are the
+commit of that upload, or the last commit before the final one whose out-of-game tests are green; Virginie
+picks, and the choice is written in this section before the dispatch. The item stays private until Virginie
+makes it public by hand, so a rollback before that reaches nobody.
 
 After a publish: check the public page against section 1, subscribe to the item yourself and check it loads
 in game, then **Virginie changes the visibility by hand**: the CI never sends it, and RimWorld never did.
