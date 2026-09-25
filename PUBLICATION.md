@@ -126,7 +126,13 @@ Steam shows the first picture large, so it should be the most demonstrative, not
 3. **the badly kept cow after the same two hours**, to be uploaded as a pair. Each shows its own bar and
    its own milk fullness; the scenario asserts the first gained more before it takes them. The inspect pane
    shows one animal at a time, so a single frame with both was not possible.
-4. **The settings page** over the meadow, ScreenshotMode on, English.
+4. **The settings page** over the meadow, English. Owner's remark of 2026-09-25: the first version (ScreenshotMode on)
+   showed no contentment bar, since that mode hides the game's interface. It is being redone without the mode, with
+   a cow selected to the left of the window so that the bar in the bottom-left pane stands beside the settings, then
+   cropped like picture 1 (the left 1500 pixels). The redo waits for the queued requests (a request stages the
+   tree as it is when it plays); the scene is ready in the session's notes and goes in as the third scenario of
+   `16-publication-shots.feature`. Until then the settings-only capture in `Tests/Pickle/evidence/2026-09-24/` stands
+   in.
 
 **These are staged, and the page must not say otherwise.** Contentment is set directly and the feed memory
 is planted, because nobody waits a game week for a store picture. The rates and the milk are the real
