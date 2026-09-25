@@ -29,13 +29,13 @@ Media live on disk, ignored by git, under `Tests/Pickle/evidence/`; the paths ar
 | 3 | Producers-only switch | 5 captures, ran 2026-09-25, passed | all 5 opened | your verdict; the caravan variant has no step |
 | 17 | RIMMSQOL shortcut | English: 6 of 6 asserted, 1 capture | opened | DLL hash, bare main bar, world view |
 | 7 | Company | 3 captures, ran 2026-09-25, passed | all 3 opened | your verdict |
-| 12 | Unfertilised hen | feature 21 written (2 captures); did not run in `…-49a5`, request `…-088f` pending | not run | media to review |
-| 11 | Harvest and laying reset | feature 20: cow and sheep ran and passed (`…-49a5`), hen step fixed, rerun `…-217d` pending | 2 of 3 passed | waiting for your verdict on the cow and the sheep |
+| 12 | Unfertilised hen | feature 21: ran and passed (`…-088f`), 2 captures read | 1 of 1 passed | nothing left for your eye |
+| 11 | Harvest and laying reset | feature 20: cow and sheep ran and passed (`…-49a5`), the hen failed again on 2026-09-25 (old steps DLL), rerun `…-09ac` pending | 2 of 3 passed | waiting for your verdict on the cow and the sheep |
 | 15 | Settings, boundaries, reset | feature 22: 4 scenarios, 8 captures, ran and passed (`…-67a2`) | 4 of 4 passed | waiting for your verdict; the Options route is not driven |
 | 16 | Each setting's effect | feature 23: 7 scenarios, 12 captures, ran and passed (`…-0c3c`) | 7 of 7 passed | waiting for your verdict |
 | 4 | Feed and its fading memory | feature 24: 2 scenarios, 9 captures, ran and passed (`…-398b`) | 2 of 2 passed | waiting for your verdict on the two bar pictures; the two days are simulated |
-| 5 | Temperature per animal | feature 25 written (3 tip captures); first run `…-919e` failed on a test step (fixed), rerun `…-69e3` pending | not passed yet | media to review; a cold snap, not a room |
-| 8 | Pen balance | feature 26 written (4 captures); first run `…-0294` failed on a test step (fixed), rerun `…-d762` pending | not passed yet | media to review; the riskiest premise |
+| 5 | Temperature per animal | feature 25 written (3 tip captures); first run `…-919e` failed on a test step (fixed), the rerun `…-69e3` ran the old steps DLL and failed the same way; rerun `…-0318` pending | not passed yet | media to review; a cold snap, not a room |
+| 8 | Pen balance | feature 26 written (4 captures); first run `…-0294` failed on a test step (fixed), the rerun `…-d762` ran the old steps DLL and failed the same way; rerun `…-8821` pending | not passed yet | media to review; the riskiest premise |
 | 14 | Add to and remove from a save | - | - | **out of scope**: no backward compatibility is handled or tested |
 
 Order proposed: the cheap ones first (10, 9, 3, 17), then 7, 12, 11, then 15, 16, then 4, 5, 8.
@@ -331,7 +331,23 @@ test are exercised), but time is arranged: a game day is 400 need intervals in a
 are made by moving the recorded time of the meal back, so the formula is tested, not the clock. The cows did not
 graze by themselves. In the bar pictures the game is not paused and the tip is not open.
 
-## 12. Unfertilised hen, 5. Temperature, 8. Pen
+## 12. Unfertilised hen
+
+**Status: ran 2026-09-25, request `…-088f`, passed 1 of 1. Read by Claude; nothing is left for your eye.**
+
+**Media.** `2026-09-25/scenario-12/`, two JPEGs, opened at full size: the hen that has the need and the reference
+hen whose need was taken away, both after one game hour from 10 percent.
+
+**Claude checked.** The hen with the need reads "Egg progress: 16%", the reference "Egg progress: 14%"; the first
+pane shows Food, Sleep and a Contentment bar, the second only Food and Sleep. The run asserted that the gain is 140
+percent of the reference's give or take 15 points, and that the map holds no fertilised egg (no rooster): a hen
+with no rooster fills and stops at its ceiling like vanilla, only faster. The reference capture shows a small hover
+label with the animal's name: the pointer rests still, a harness artefact.
+
+**Not covered.** The ceiling itself (the progress a hen with no rooster stops at) is not reached in one hour; the
+scenario asserts the rate, and the vanilla stall is untouched by construction (only a rising delta is scaled).
+
+## 5. Temperature, 8. Pen
 
 No media yet. Each needs a new feature, so each is one small request. Notes on what is hard:
 
