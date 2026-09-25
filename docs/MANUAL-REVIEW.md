@@ -29,8 +29,8 @@ Media live on disk, ignored by git, under `Tests/Pickle/evidence/`; the paths ar
 | 3 | Producers-only switch | 5 captures, ran 2026-09-25, passed | all 5 opened | your verdict; the caravan variant has no step |
 | 17 | RIMMSQOL shortcut | English: 6 of 6 asserted, 1 capture | opened | DLL hash, bare main bar, world view |
 | 7 | Company | 3 captures, ran 2026-09-25, passed | all 3 opened | your verdict |
-| 12 | Unfertilised hen | feature 21 written (2 captures); request `…-49a5` pending | not run | media to review |
-| 11 | Harvest and laying reset | feature 20 written (3 captures); request `…-49a5` pending | not run | media to review |
+| 12 | Unfertilised hen | feature 21 written (2 captures); did not run in `…-49a5`, request `…-088f` pending | not run | media to review |
+| 11 | Harvest and laying reset | feature 20: cow and sheep ran and passed (`…-49a5`), hen step fixed, rerun `…-217d` pending | 2 of 3 passed | waiting for your verdict on the cow and the sheep |
 | 15 | Settings, boundaries, reset | feature 22 written (4 scenarios, about 8 captures); request pending | not run | media to review; the Options route is not driven |
 | 16 | Each setting's effect | feature 23 written (7 scenarios, 12 tip captures); request pending | not run | media to review |
 | 4 | Feed and its fading memory | feature 24 written (2 scenarios, 8 tip captures); request `…-398b` pending | not run | media to review; the two days are simulated, see below |
@@ -214,15 +214,37 @@ beside it the Company line is **gone**. Bonded to the colonist Jet, with kin sti
 **Not covered, and worth knowing.** In all three tips the level stays at **50%** and the rate at **83%**: only the
 offset changed. The level takes time to move, which is exactly what the manual scenario's "wait a day" is for;
 this run reads the offset at once and does not wait. The bond was set in code, not earned by taming or training.
-## 12. Unfertilised hen, 11. Harvest, 15. Settings, 16. Effects, 4. Feed, 5. Temperature, 8. Pen
+## 11. Harvest and laying reset cleanly
+
+**Status: ran 2026-09-25, request `…-49a5`: cow and sheep passed (2 of 3); the hen failed on a defect of the
+test step, not of the mod, and its rerun is pending (request `…-217d`). Waiting for your verdict on the cow and
+the sheep only.**
+
+**Media.** `2026-09-24/scenarios-11-12/seq1/`, two JPEGs, both opened at full size by Claude: the cow just after
+being milked and the sheep just after being shorn, each with its tip and pane.
+
+**Claude checked.** The cow's pane reads "Milk fullness: 0.01%" and the sheep's "Wool growth: 0%", both with the
+contentment bar full (set to 100% before the gathering). The run gathered through the game's own method, once at
+100% and once at 30% contentment, and asserted that the yield equals what the game says a full animal gives and
+that the two yields are equal: the mod scales the clock, never the amount.
+
+**You check.**
+
+1. After the harvest the fullness is back at about zero, not at some fraction of what it was.
+2. Nothing red, no error window, no stuck job text: the pane says "Wandering".
+
+**Not covered, and worth knowing.** The amounts are read by the run and are not on the pictures. Gathering was
+called for a colonist directly, not through the job a colonist would take, so the walk to the animal is not
+tested. The hen half of the scenario failed because the step called `ProduceEgg`, which only makes the egg (the
+laying job is what puts it on the map): the step now places it. The hen's captures will be added when it runs.
+
+## 12. Unfertilised hen, 15. Settings, 16. Effects, 4. Feed, 5. Temperature, 8. Pen
 
 No media yet. Each needs a new feature, so each is one small request. Notes on what is hard:
 
 - **7.** Cheap: a herd animal alone, then two of its kind beside it, the Company line in the tip. The bond
   with a colonist needs a relation set in code.
 - **12.** The assertion is numeric (egg progress against vanilla's rate); the media would be the hen's pane.
-- **11.** Harvest by calling the game's own "gathered" methods, not by a colonist's job. That proves the
-  reset and the unchanged yield, not the job itself.
 - **15, 16.** Settings values are set in code; a capture per slider end and per disabled factor. Cheap but
   numerous.
 - **4.** Needs a game day (60 000 ticks) and real grazing by the animal; a film sampled every 1 000 ticks.
