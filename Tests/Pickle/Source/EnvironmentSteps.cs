@@ -286,7 +286,21 @@ namespace ContentedLivestock.PickleSteps
         {
             ctx.Require(recordedSpace.ContainsKey(name), $"no pasture contribution was recorded for {name}");
             float now = SettingsEffectSteps.Contribution(ctx, "space", name);
-            ctx.Assert(now > recordedSpace[name] + 0.002f, $"the pasture contribution to {name} is {now:0.000}, it was {recordedSpace[name]:0.000}: expected it to rise");
+            Figures(ctx, name, out float grown, out float eaten);
+            var marker = PenOf(ctx, name);
+            var map = Driver.Map(ctx);
+            int cells = 0, roofed = 0;
+            float fertility = 0f;
+            if (chosenPenOrigin.HasValue)
+                for (int dx = 0; dx < 5; dx++)
+                    for (int dz = 0; dz < 5; dz++)
+                    {
+                        var c = chosenPenOrigin.Value + new IntVec3(dx, 0, dz);
+                        cells++;
+                        if (map.roofGrid.Roofed(c)) roofed++;
+                        fertility += c.GetTerrain(map).fertility;
+                    }
+            ctx.Assert(now > recordedSpace[name] + 0.002f, $"the pasture contribution to {name} is {now:0.000}, it was {recordedSpace[name]:0.000}: expected it to rise (the pen grows {grown:0.000} and its animals eat {eaten:0.000} a day; {cells} cells, {roofed} roofed, fertility {fertility:0.0}; marker at {marker.parent.Position})");
         }
 
         [When("Contented Livestock removes the animal {string} from the map")]
