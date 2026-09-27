@@ -60,23 +60,23 @@ namespace ContentedLivestock
 
             settings.floorLevel = PercentRow(listing,
                 "ContentedLivestock.Settings.Floor", settings.floorLevel, 0f, 0.5f,
-                "ContentedLivestock.Settings.FloorTip");
+                "ContentedLivestock.Settings.FloorTip", defaultValue: 0.25f);
             settings.plateauLevel = PercentRow(listing,
                 "ContentedLivestock.Settings.Plateau", settings.plateauLevel, 0.3f, 0.9f,
-                "ContentedLivestock.Settings.PlateauTip");
+                "ContentedLivestock.Settings.PlateauTip", defaultValue: 0.60f);
             settings.minRateFactor = PercentRow(listing,
                 "ContentedLivestock.Settings.MinRate", settings.minRateFactor, 0f, 1f,
-                "ContentedLivestock.Settings.MinRateTip");
+                "ContentedLivestock.Settings.MinRateTip", defaultValue: 0.40f);
             settings.maxRateFactor = PercentRow(listing,
                 "ContentedLivestock.Settings.MaxRate", settings.maxRateFactor, 1f, 2f,
-                "ContentedLivestock.Settings.MaxRateTip");
+                "ContentedLivestock.Settings.MaxRateTip", defaultValue: 1.40f);
 
             // The floor can never sit above the plateau: the curve between them would invert.
             settings.plateauLevel = Mathf.Max(settings.plateauLevel, settings.floorLevel + 0.05f);
 
             settings.adjustSpeed = PercentRow(listing,
                 "ContentedLivestock.Settings.Speed", settings.adjustSpeed, 0.25f, 4f,
-                "ContentedLivestock.Settings.SpeedTip");
+                "ContentedLivestock.Settings.SpeedTip", defaultValue: 1f);
 
             listing.GapLine();
             listing.Label("ContentedLivestock.Settings.InputsHeader".Translate());
@@ -111,14 +111,39 @@ namespace ContentedLivestock
             Widgets.EndScrollView();
         }
 
-        /// <summary>A slider shown as a percentage, stored as a factor.</summary>
+        /// <summary>
+        /// A slider shown as a percentage, stored as a factor. When <paramref name="defaultValue"/> is given,
+        /// a thin mark is drawn on the track at that point, so the shipped default is visible while dragging.
+        /// </summary>
         private static float PercentRow(Listing_Standard listing, string key, float value,
-            float min, float max, string tooltipKey = null)
+            float min, float max, string tooltipKey = null, float? defaultValue = null)
         {
             int percent = Mathf.RoundToInt(value * 100f);
             string label = key.Translate(percent);
             string tooltip = tooltipKey == null ? null : (string)tooltipKey.Translate();
-            float updated = listing.SliderLabeled(label, percent, min * 100f, max * 100f, 0.62f, tooltip);
+
+            Rect rect = listing.GetRect(30f);
+            Rect labelRect = rect.LeftPart(0.62f);
+            Rect sliderRect = rect.RightPart(0.38f);
+            TextAnchor anchor = Text.Anchor;
+            Text.Anchor = TextAnchor.MiddleLeft;
+            Widgets.Label(labelRect, label);
+            Text.Anchor = anchor;
+            if (!tooltip.NullOrEmpty()) TooltipHandler.TipRegion(rect, tooltip);
+
+            float minPercent = min * 100f;
+            float maxPercent = max * 100f;
+            float updated = Widgets.HorizontalSlider(sliderRect, percent, minPercent, maxPercent, false, null, null, null, -1f);
+
+            if (defaultValue.HasValue)
+            {
+                float frac = Mathf.InverseLerp(minPercent, maxPercent, defaultValue.Value * 100f);
+                float tickX = sliderRect.x + sliderRect.width * frac;
+                Widgets.DrawLine(new Vector2(tickX, sliderRect.y + sliderRect.height * 0.2f),
+                    new Vector2(tickX, sliderRect.y + sliderRect.height * 0.8f), Color.grey, 1f);
+            }
+
+            listing.Gap(listing.verticalSpacing);
             return Mathf.Clamp(Mathf.Round(updated) / 100f, min, max);
         }
     }
