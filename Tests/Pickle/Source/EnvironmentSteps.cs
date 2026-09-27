@@ -230,6 +230,18 @@ namespace ContentedLivestock.PickleSteps
                 }
             }
 
+            var grassDef = ThingDefOf.Plant_Grass;
+            for (int x = origin.x; x < origin.x + size; x++)
+            {
+                for (int z = origin.z; z < origin.z + size; z++)
+                {
+                    var cell = new IntVec3(x, 0, z);
+                    var plant = (Plant)ThingMaker.MakeThing(grassDef);
+                    GenSpawn.Spawn(plant, cell, map);
+                    plant.Growth = 1f;
+                }
+            }
+
             var pen = ThingMaker.MakeThing(marker, GenStuff.DefaultStuffFor(marker));
             pen.SetFaction(Faction.OfPlayer);
             GenSpawn.Spawn(pen, origin, map);

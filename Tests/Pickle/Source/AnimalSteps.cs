@@ -21,7 +21,7 @@ namespace ContentedLivestock.PickleSteps
             var found = CellFinder.TryFindRandomCellNear(near ?? map.Center, map, radius,
                 c => c.Standable(map) && c.GetEdifice(map) == null && c.GetFirstPawn(map) == null,
                 out cell);
-            ctx.Require(found, "no free standable cell was found near {(near ?? map.Center)}");
+            ctx.Require(found, $"no free standable cell was found near {(near ?? map.Center)}");
             return cell;
         }
 

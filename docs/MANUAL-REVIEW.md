@@ -312,7 +312,7 @@ scenario 8.
 
 ## 4. Feed and its fading memory
 
-**Status: ran 2026-09-25, request `…-398b`, passed 2 of 2. Waiting for your verdict on the two bar pictures;
+**Status: ran 2026-09-25, request `…-398b`, passed 2 of 2. Owner verdict 2026-09-26 on the bar pictures: the kibble cow reads as moderately fed, which is right (the bar is overall contentment, kibble adds only -15%); accepted as is;
 the text of the others was read by Claude.**
 
 **Media.** `2026-09-24/scenario-04/`, nine JPEGs, all opened at full size by Claude. Three cows just after eating
@@ -326,8 +326,7 @@ order of the three targets, and that after 400 need intervals (a game day) the g
 cow's, which is above the kibble cow's. In the two bar pictures the grazer's contentment bar is about three
 quarters full and the kibble cow's about a third.
 
-**You check.** Only the two bar pictures, by eye: after a day, does the grazer's bar against the kibble cow's read
-as "one is well fed, one is not" at a glance, without the tip?
+**You checked (2026-09-26).** The kibble cow bar reads "moderately fed", not "unfed": accepted, since the bar is overall contentment. For the gallery, use the grazer and kibble cow side by side, zoomed.
 
 **Not covered, and worth knowing.** Eating went through the game's own `Thing.Ingested` (so the patch and the grass
 test are exercised), but time is arranged: a game day is 400 need intervals in a loop, and the two days of fading
