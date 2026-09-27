@@ -121,7 +121,7 @@ asserts unchanged-below-floor and resumes-above-it, and passed 1 of 1.
 
 ## 9. The rate really changes
 
-**Status: ran 2026-09-25, request `…-7485`, passed 1 of 1. Waiting for your verdict.**
+**Status: ran 2026-09-25, request `…-7485`, passed 1 of 1. Validated by Claude from the opened captures: nothing left for the owner.**
 
 **Media.** `2026-09-24/scenario-09/screenshots/`, five JPEGs, all opened at full size by Claude:
 
@@ -153,7 +153,7 @@ run also asserts these in code, plus that a third cow at the plateau gains withi
 not earned. The rates and the milk are the real ones.
 ## 3. Producers-only switch
 
-**Status: ran 2026-09-25, request `…-ee20` (first launch), passed 1 of 1. Waiting for your verdict.**
+**Status: ran 2026-09-25, request `…-ee20` (first launch), passed 1 of 1. Validated by Claude from the opened captures: nothing left for the owner.**
 
 **Media.** `2026-09-24/scenarios-03-07/seq1/screenshots/`, five JPEGs, all opened at full size by Claude, in this
 order: husky before the switch; husky once producers-only is off; cow at 72% while it is off; husky when it is on
@@ -197,7 +197,7 @@ this mod's.
 
 ## 7. Company
 
-**Status: ran 2026-09-25, request `…-ee20` (second launch), passed 1 of 1. Waiting for your verdict.**
+**Status: ran 2026-09-25, request `…-ee20` (second launch), passed 1 of 1. Validated by Claude from the opened captures: nothing left for the owner.**
 
 **Media.** `2026-09-24/scenarios-03-07/seq2/screenshots/`, three JPEGs, all opened at full size by Claude: a lone
 muffalo; the same one with two of its kind beside it; the same one bonded to a colonist, still with kin beside it.
@@ -243,7 +243,9 @@ laying job is what puts it on the map): the step now places it. The hen's captur
 
 ## 15. Primary settings, defaults, boundaries and reset
 
-**Status: ran 2026-09-25, request `…-67a2`, passed 4 of 4. Waiting for your verdict.**
+**Status: ran 2026-09-25, request `…-67a2`, passed 4 of 4. Owner verdict 2026-09-27: the reset confirmation window
+and the slider caps are accepted as they are; a grey tick mark now shows each slider's shipped default, still to
+see in a capture.**
 
 **Media.** `2026-09-24/scenario-15/`, eight JPEGs, all opened at full size by Claude, all of the mod's own settings
 window over the test colony: the shipped defaults; every slider at its low end; every slider at its high end;
@@ -273,9 +275,9 @@ run is in English; the French labels of this window are checked by feature 02.
 
 ## 16. Each setting has its effect
 
-**Status: ran 2026-09-25, request `…-0c3c`, passed 7 of 7. Waiting for your verdict. Image "feed input on"
-validated by Virginie on 2026-09-25; the text of the other captures was read by Claude, so only the wording and
-the "Too miserable" sentence are left for her eye.**
+**Status: ran 2026-09-25, request `…-0c3c`, passed 7 of 7. Image "feed input on" validated by Virginie on
+2026-09-25; the text of the other captures was read by Claude, and the wording (including "Too miserable") was
+reworded at her request: nothing left for the owner.**
 
 **Media.** `2026-09-24/scenario-16/`, twelve JPEGs, all opened at full size by Claude: for each of the five inputs
 (feed, pasture and room, temperature, health, company) the animal's contentment tip with the input on and with it
