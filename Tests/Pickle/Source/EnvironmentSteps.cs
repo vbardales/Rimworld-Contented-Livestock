@@ -312,7 +312,9 @@ namespace ContentedLivestock.PickleSteps
                         if (map.roofGrid.Roofed(c)) roofed++;
                         fertility += c.GetTerrain(map).fertility;
                     }
-            ctx.Assert(now > recordedSpace[name] + 0.002f, $"the pasture contribution to {name} is {now:0.000}, it was {recordedSpace[name]:0.000}: expected it to rise (the pen grows {grown:0.000} and its animals eat {eaten:0.000} a day; {cells} cells, {roofed} roofed, fertility {fertility:0.0}; marker at {marker.parent.Position})");
+            var biome = map.Biome;
+            var wildGrazing = map.plantGrowthRateCalculator.WildGrazingPlants;
+            ctx.Assert(now > recordedSpace[name] + 0.002f, $"the pasture contribution to {name} is {now:0.000}, it was {recordedSpace[name]:0.000}: expected it to rise (the pen grows {grown:0.000} and its animals eat {eaten:0.000} a day; {cells} cells, {roofed} roofed, fertility {fertility:0.0}; marker at {marker.parent.Position}; biome {biome.defName}, {wildGrazing.Count} wild grazing plant(s): {string.Join(", ", wildGrazing.ConvertAll(p => p.defName))})");
         }
 
         [When("Contented Livestock removes the animal {string} from the map")]
