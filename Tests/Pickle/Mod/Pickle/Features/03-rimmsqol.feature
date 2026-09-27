@@ -10,6 +10,9 @@ Feature: RIMMSQOL reveals and hides the Contented Livestock shortcut
     Then RIMMSQOL's own list of main buttons offers "Nelim_ContentedLivestockSettings"
     And RIMMSQOL shows the main button "Nelim_ContentedLivestockSettings" as hidden
     And the main bar does not draw the button "Nelim_ContentedLivestockSettings"
+    When Nelim's Pickle Tools: screenshot mode is enabled around the open windows
+    And I take a screenshot "the main bar, bare, before RIMMSQOL reveals anything"
+    And Nelim's Pickle Tools: screenshot mode is disabled
 
   Scenario: RIMMSQOL reveals a live shortcut that opens this mod's settings
     When RIMMSQOL reveals the main button "Nelim_ContentedLivestockSettings"
