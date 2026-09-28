@@ -15,6 +15,7 @@ audit_date: 2026-09-22
 licence:      original
 license_spdx: MIT
 licence_at:   an original creation, MIT with no reservation. Nothing is reused from another mod - no code, no def, no texture, no sound - and the `LICENSE` is a bare MIT with no scope section, so the showcase images fall under it too. The mechanic is Stardew Valley's, credited in ATTRIBUTION.md and reused from none of its lines.
+upstream_mod_remotes: N/A
 dependencies: "brrainz.harmony (required); RIMMSQOL optional, Pickle integration and restart persistence passed"
 showcase:     complete
 tested_on:
