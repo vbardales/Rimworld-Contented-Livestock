@@ -12,7 +12,9 @@
 #
 # Whether the game recognises the pen is the riskiest premise: a closed fence, a marker and regions that
 # have had time to update. The step that finds the pen says which of these failed. The pen is small on
-# purpose, so that four cows exceed it; if the run shows it sustains them, its size is what to change.
+# purpose, so that four cows exceed it. The test colony lies on a Desert tile, where the game grants a pen
+# almost no growth whatever its terrain (0.001 a day, seen on 2026-09-27), so the pen's natural growth is staged at
+# 1.0 a day: four cows eat 1.7 (line negative), two cows eat 0.86 (line positive), and the herd's consumption is the game's.
 @review
 Feature: Scenario 8 - the pen is judged on its food balance
 
@@ -22,7 +24,8 @@ Feature: Scenario 8 - the pen is judged on its food balance
     And Contented Livestock restores its default settings
 
   Scenario: four cows in a pen that cannot feed them, then two cows, and the line follows the pen's own figures
-    Given Contented Livestock builds a fenced pen 5 cells wide on soil at the middle of the map
+    Given Contented Livestock stages the natural growth of every pen at "1.0" nutrition a day
+    And Contented Livestock builds a fenced pen 5 cells wide on soil at the middle of the map
     And Contented Livestock spawns the player animal "ScenarioEightA" as "Cow" inside the pen
     And Contented Livestock spawns the player animal "ScenarioEightB" as "Cow" inside the pen
     And Contented Livestock spawns the player animal "ScenarioEightC" as "Cow" inside the pen
@@ -48,4 +51,5 @@ Feature: Scenario 8 - the pen is judged on its food balance
     When Contented Livestock selects animal "ScenarioEightA" for visual evidence
     And Contented Livestock opens the live contentment tip for "ScenarioEightA" at the top left
     Then I take a screenshot "scenario 08 - two cows left, the Pasture line has risen"
+    And Contented Livestock the natural growth of the pens is no longer staged
     And no errors were logged

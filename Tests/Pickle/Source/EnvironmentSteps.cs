@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using HarmonyLib;
 using RimWorld;
 using RimWorks.Pickle;
 using UnityEngine;
@@ -159,6 +160,42 @@ namespace ContentedLivestock.PickleSteps
         private static readonly Dictionary<string, float> recordedSpace = new Dictionary<string, float>();
 
         private static IntVec3? chosenPenOrigin;
+
+        /// <summary>
+        /// The test colony lies on a Desert tile, where the game itself grants a pen almost no growth (0.001 a day):
+        /// however few cows stand in it, the pasture line stays at its floor. So the pen's natural growth is staged,
+        /// as scenario 9 stages the levels: after the game has counted the pen, its figure is replaced by a chosen one.
+        /// The mod's own rule is then judged on known numbers, and the herd's consumption stays the game's own.
+        /// </summary>
+        [HarmonyPatch(typeof(PenFoodCalculator), nameof(PenFoodCalculator.ResetAndProcessPen),
+            typeof(IntVec3), typeof(Map), typeof(bool))]
+        private static class StagedGrowth
+        {
+            public static float? Value;
+            private static bool installed;
+
+            public static void Install()
+            {
+                if (installed) return;
+                new Harmony("nelim.contentedlivestock.pickle.stagedgrowth").CreateClassProcessor(typeof(StagedGrowth)).Patch();
+                installed = true;
+            }
+
+            private static void Postfix(PenFoodCalculator __instance)
+            {
+                if (Value.HasValue && __instance.numCells > 0) __instance.sumNutritionPerDayToday = Value.Value;
+            }
+        }
+
+        [Given("Contented Livestock stages the natural growth of every pen at {string} nutrition a day")]
+        public void StageGrowth(PickleContext ctx, string amount)
+        {
+            StagedGrowth.Install();
+            StagedGrowth.Value = float.Parse(amount, System.Globalization.CultureInfo.InvariantCulture);
+        }
+
+        [Then("Contented Livestock the natural growth of the pens is no longer staged")]
+        public void UnstageGrowth(PickleContext ctx) => StagedGrowth.Value = null;
 
         private static IntVec3 PenOrigin(Map map, int size)
             => chosenPenOrigin ?? new IntVec3(map.Center.x - size / 2, 0, map.Center.z - size / 2);
