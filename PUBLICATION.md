@@ -17,7 +17,7 @@ sent, posted or tagged.
 | --- | --- |
 | Manual scenarios in `_tools/FUNCTIONAL-SCENARIOS.md` | 4 of 18 complete, 1 partial, 12 unplayed, 1 out of scope (14). Method and progress: `docs/MANUAL-REVIEW.md` |
 | Pickle passes against the current revision | `runtime-evidence` passed 17 of 24, `avec-rimmsqol` 6 of 6, `runtime-film` 1 of 1, 0 failed: every conditional scenario has run |
-| Presentation pictures | all four accepted by the owner on 2026-09-25 and in `Art/WorkshopScreenshots/`; the upload to the Steam page is manual |
+| Presentation pictures | four accepted by the owner on 2026-09-25 and a fifth (Grass and Kibble bars side by side, labelled in English) on 2026-09-28, all in `Art/WorkshopScreenshots/`; the upload to the Steam page is manual |
 | Publication workflow | generated 2026-09-24 (`.github/`), 57 of 57 script tests pass; no dry-run has run, see section 6 |
 | Tag and GitHub release | created by the CI after a successful upload, never by hand |
 | Item tested by subscribing to it, then made public by hand | not done |
@@ -157,11 +157,11 @@ What opening them showed, 2026-09-24:
   interface), then the pictures were cropped at the owner's suggestion (2026-09-25): the right part carries nothing of
   the subject, and the crop puts the cow, its pane and its bar at a larger scale. Her remark for the gallery: **zoom on
   the subject**.
-- **The four pictures are final (owner, 2026-09-25) and in `Art/WorkshopScreenshots/`**, JPEG, 1.09 MB in all (each
+- **Five pictures are final (owner: four on 2026-09-25, the fifth on 2026-09-28) and in `Art/WorkshopScreenshots/`**, JPEG, 1.2 MB in all (each
   under 2 MB, the batch under 8 MB), cropped from the 1920 x 1080 captures, not to the 1280 x 800 of the first budget:
   `01-cow-with-contentment-bar-and-tip.jpg` (left 1500 pixels, 1280 x 922), `02-well-kept-cow-after-two-hours.jpg`
   (the cow and its pane, 1280 x 820), `03-badly-kept-cow-after-two-hours.jpg` (the same crop, 1280 x 818, to be read
-  as a pair with the second) and `04-settings-page-with-contentment-bar.jpg` (left 1500 pixels, 1280 x 922). The
+  as a pair with the second), `04-settings-page-with-contentment-bar.jpg` (left 1500 pixels, 1280 x 922) and `05-grass-and-kibble-cows-contentment-bars.jpg` (the two Needs panels after a simulated day, zoomed and side by side, labelled Grass and Kibble, 1350 x 715). The
   owner found the cow of picture 3 a little far from the centre and the cow of picture 4 small, and accepted both.
   The folder holds these images and nothing else. Uploading them to the Steam page is manual.
 
