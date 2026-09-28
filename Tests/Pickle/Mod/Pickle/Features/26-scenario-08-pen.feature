@@ -14,7 +14,8 @@
 # have had time to update. The step that finds the pen says which of these failed. The pen is small on
 # purpose, so that four cows exceed it. The test colony lies on a Desert tile, where the game grants a pen
 # almost no growth whatever its terrain (0.001 a day, seen on 2026-09-27), so the pen's natural growth is staged at
-# 1.0 a day: four cows eat 1.7 (line negative), two cows eat 0.86 (line positive), and the herd's consumption is the game's.
+# 1.0 a day: four cows eat 3.4 (line -14 percent), two cows eat 1.7 (line -8 percent: still negative, but risen), and the
+# herd's consumption is the game's.
 @review
 Feature: Scenario 8 - the pen is judged on its food balance
 

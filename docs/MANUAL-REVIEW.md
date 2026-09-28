@@ -38,7 +38,7 @@ Media live on disk, ignored by git, under `Tests/Pickle/evidence/`; the paths ar
 | 16 | Each setting's effect | 12 captures | **validated**: each input adds and removes its line, floor and maximum, speed of change; the tip wording was reworded at her request | nothing |
 | 4 | Feed and its fading memory | 9 captures | **validated**: grass +25, hay none, kibble -15; the meal fades +25, +19, +6, gone at 48 hours; the two days are simulated | the two bar pictures (well fed against not): does it read at a glance |
 | 5 | Temperature per animal | 3 captures | **validated**: hen -12% in a cold snap where the husky reads +5%, hen +5% again after the snap ends | nothing |
-| 8 | Pen balance | rerun after a step fix pending | the game recognises the fenced pen and its food balance (steps passed on 2026-09-25); the pasture-line checks are not yet run: the step maps a name wrongly, fix waits for the queue | not yet |
+| 8 | Pen balance | 1 capture set, 3 pictures | **validated**: with growth staged at 1.0 (the test colony is on a Desert tile), four cows eating 3.42 read Pasture -14%, two cows eating 1.71 read -8%, both equal to the rule; the line follows the pen figures and rises when animals leave | nothing |
 | 14 | Add to and remove from a save | - | **out of scope**: no backward compatibility is handled or tested | - |
 
 Order proposed: the cheap ones first (10, 9, 3, 17), then 7, 12, 11, then 15, 16, then 4, 5, 8.
@@ -372,7 +372,26 @@ need at all.
 
 ## 8. Pen
 
-Pending: the first run (`…-8821`, 2026-09-25) showed that the game does recognise the fence built in code as a pen (the steps up to "the pen grows less than its animals eat" passed) and then failed on a step that turns "pasture" into a method name the mod does not have; the fix is filed for when the queue is empty.
+**Status: ran 2026-09-28, request `…-5103`, passed 1 of 1, after earlier failures: four runs with a filter string Pickle
+did not know (`scenario 8`, mine) and reds caused by the test colony lying on a Desert tile. Validated by Claude from the
+opened captures: nothing left for the owner.**
+
+**Media.** `2026-09-28/scenario-08-m/screenshots/`, three JPEGs, all opened at full size by Claude: the fenced 5 x 5 pen with
+its marker selected and four cows inside; one cow's tip with four cows; the same tip with two cows left.
+
+**Claude checked.** The marker pane reads "Pen marker 1: Very small pen", "Nutrition growth: 1" and "Nutrition
+consumption: 3.42" (in red). With four cows the tip of the cow reads "Pasture and room: -14%"; with two cows, consumption
+1.71, it reads "-8%". Both equal the mod's rule on those figures, `(grown / eaten - 1) x 0.2`: `(1 / 3.42 - 1) x 0.2 = -0.142`
+and `(1 / 1.71 - 1) x 0.2 = -0.083`. The line therefore follows the pen's own figures and rises when animals leave. The run
+asserted the same, computed in the step without the mod's code.
+
+**Not covered, and worth knowing.** **The growth figure is staged at 1.0 a day**, not the game's own: the test colony lies on
+a Desert tile where the game grants a pen 0.001 a day whatever its terrain (biome Desert, 7 wild grazing plants, seen on
+2026-09-27), so no herd, however small, could move the line off its floor. The consumption is the game's own. So this proves
+the mod's formula on the pen marker's two figures, not that grass regrows at a given speed on a lush map. The pen shows grass
+because the step sows some; the game does not count it. The line stays negative with two cows: 1.71 eaten still exceeds 1.0.
+
+
 **14 is not on this sheet.** Adding the mod to a save, and removing it, is backward compatibility, which is
 not handled or tested here (decision of 2026-09-24). One thing follows and needs an answer: `About.xml`
 and `README.md` still say "Safe to add to an existing save. Safe to remove", and the Steam page created
