@@ -8,7 +8,14 @@ import { checkMod, parseConfig } from '../scripts/config.mjs';
 const valid = { workshopId: '123', packageId: 'nelim.test', releaseTitle: 'Test {version}' };
 
 test('accepts a minimal configuration and fills the defaults', () => {
-  assert.deepEqual(parseConfig(JSON.stringify(valid)), { ...valid, templateStamp: null, requirePaths: [], forbidPaths: [], previewFile: 'About/Preview.png', galleryDir: null, description: null, aboutFromDescription: false });
+  assert.deepEqual(parseConfig(JSON.stringify(valid)), { ...valid, templateStamp: null, requirePaths: [], forbidPaths: [], previewFile: 'About/Preview.png', galleryDir: null, description: null, aboutFromDescription: false, build: null });
+});
+
+test('build.project must be a .csproj path inside the repository', () => {
+  assert.deepEqual(parseConfig(JSON.stringify({ ...valid, build: { project: 'Source/X.csproj' } })).build, { project: 'Source/X.csproj' });
+  for (const build of [{ project: 'Source/X.sln' }, { project: '../X.csproj' }, { project: '/abs/X.csproj' }, { project: 3 }, {}, 'Source/X.csproj']) {
+    assert.throws(() => parseConfig(JSON.stringify({ ...valid, build })), /build\.project must be a \.csproj path/, JSON.stringify(build));
+  }
 });
 
 test('keeps the gallery folder, and rejects one that would leave the repository', () => {
