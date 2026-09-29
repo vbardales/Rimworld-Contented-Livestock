@@ -30,7 +30,7 @@ Media live on disk, ignored by git, under `Tests/Pickle/evidence/`; the paths ar
 | 10 | Below the floor, nothing is lost | film + 3 captures | **validated**: 3.3% before the halted hour, 3.3% after, 9.1% after restoration; frames of the film read 3.3% then 8.8% | nothing |
 | 9 | The rate really changes | 5 captures | **validated**: 140, 100 and 42 percent read in the tips; 5.9% against 1.9% against 4.17% for a vanilla hour | nothing |
 | 3 | Producers-only switch | 5 captures | **validated**: husky has no bar, gains it, loses it; the cow keeps 72 percent through both (the caravan variant has no step) | nothing |
-| 17 | RIMMSQOL shortcut | English: 6 of 6 asserted, 1 capture | opened | DLL hash, bare main bar, world view still to produce |
+| 17 | RIMMSQOL shortcut | English: 7 of 7 asserted, 2 captures | **validated**: opened dialog through the shortcut, bare main bar shows no button; RIMMSqol.dll 1.0.9591.34971, sha256 1152b0c1...fc81bd1 (Workshop id 1084452457, 1.6 assembly) | nothing |
 | 7 | Company | 3 captures | **validated**: Company -10, nothing, +10 | nothing |
 | 12 | Unfertilised hen | 2 captures | **validated**: 16% against 14% from 10, the Contentment bar only on the first | nothing |
 | 11 | Harvest and laying reset | cow, sheep and hen captures | **validated** (2 of 3 in `…-49a5`, the hen in `…-09ac`): fullness back to 0.01% and 0%, same yield at 100 and 30 percent, the hen lays an egg and reads 0% egg progress, then rises slowly over an hour | nothing |
@@ -178,22 +178,24 @@ before and after and has one in between.
 and applied the way closing the settings window applies it; the check box itself was not clicked.
 ## 17. RIMMSQOL shortcut
 
-**Media.** English: `2026-09-24/avec-rimmsqol/seq1/screenshots/...opened-through-rimmsqol.jpg` (opened: the
-ordinary settings dialog, eleven controls).
+**Status: ran 2026-09-28, requests `…-e553` (bare bar, 3/3) and the world-view scenario added the same day.
+Validated by Claude from the opened captures: nothing left for the owner.**
 
-**Claude checked.** 6 of 6 scenarios passed: the shortcut is hidden by default, RIMMSQOL can reveal, open,
-hide and forget it, and the choice survives a process restart.
+**Media.** `2026-09-28/scenario-17-bare-bar2/screenshots/`, two JPEGs, both opened at full size by Claude: the
+ordinary settings dialog opened through the shortcut, eleven controls; the bare main bar (bottom right, Architect
+to Storyteller) with no Contented Livestock button among them, before RIMMSQOL reveals anything.
 
-**You check.** Nothing that the assertions do not already cover, except that no button is visible **or
-greyed out** on the main bar before RIMMSQOL reveals it. That is asserted, but a picture of the bar is the
-better evidence and has not been taken.
+**Claude checked.** 7 of 7 scenarios passed: the shortcut is hidden by default (asserted and now seen), RIMMSQOL
+can reveal, open, hide and forget it, the choice survives a process restart, and the revealed shortcut opens the
+settings from the world view with no map current (`Current.Game.CurrentMap == null`, asserted directly) — the def
+declares `validWithoutMap`, and this is what exercises it.
 
-**Still to produce.** The RIMMSQOL DLL version and hash, a capture of the bare main bar, and "use it from
-the world view without a map". **No French pass:** the shortcut's label is the same in both languages
-("Contented Livestock"); the one string that differs is its description, the tooltip ("Open Contented
-Livestock settings." / "Ouvrir les réglages de Contented Livestock."), which belongs to the translation
-check and can be asserted from the def without RIMMSQOL. RIMMSQOL's own screens are in its language, not
-this mod's.
+**Not covered, and worth knowing.** RIMMSqol.dll: version 1.0.9591.34971, sha256
+`1152b0c198d34d4bb346fc74a4c4b72856f21ada71ff376c5e4ff5f00fc81bd1` (Workshop id 1084452457, the `1.6/` assembly).
+**No French pass:** the shortcut's label is the same in both languages ("Contented Livestock"); the one string
+that differs is its description, the tooltip ("Open Contented Livestock settings." / "Ouvrir les réglages de
+Contented Livestock."), which belongs to the translation check and can be asserted from the def without RIMMSQOL.
+RIMMSQOL's own screens are in its language, not this mod's.
 
 ## 7. Company
 
