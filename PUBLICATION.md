@@ -176,7 +176,8 @@ What opening them showed, 2026-09-24:
   `Art/ModIcon-cutout.png`), sits in the bottom-left corner (the emptiest part of this scene; the bottom-right
   holds the pail, eggs and wool), tilted `+15deg`, 240 x 240, bleeding slightly off the left and bottom edges
   (`Art/preview.html`'s `.icon`, composited by the existing `Art/render-preview.cjs`, which also regenerates
-  `00-preview.png`'s source — copy it again after any re-render). `cutout-icon.cjs` is a one-off, re-run by hand
+  `00-preview.png`'s source — copy it again after any re-render). **Placement and angle accepted by the owner,
+  2026-09-29.** `cutout-icon.cjs` is a one-off, re-run by hand
   only if the source icon changes; its output is committed. Reference: `ManyHappyReturns/Art/README.md`.
 
 ## 3. Dependencies and DLC
