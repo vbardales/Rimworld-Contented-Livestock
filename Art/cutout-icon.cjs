@@ -1,8 +1,12 @@
-// One-off: flood-fills the near-black background of ModIcon-source.png from its border inward,
-// turning only the background transparent (the mascot ring's own dark outline is never touched,
-// since it does not connect to the frame). Writes Art/ModIcon-cutout.png. Re-run by hand only if
-// the source icon changes; its output is committed. Same approach as
-// ManyHappyReturns/_tools/cutout-icon.cjs, adapted to this mod's file layout.
+// One-off: flood-fills the background of ModIcon-source.png from its border inward, turning
+// only the background transparent. The background is a near-black brown plate (~10,3,1); the
+// mascot's own black linework (0,0,0 and darker) sits at Euclidean distance >=10 from that
+// colour and never connects to the border, so it survives. A blind "<12 on every channel"
+// threshold used to catch that linework too, since 0,0,0 also passes it — fixed by matching the
+// background's own sampled colour within a radius instead of any generic near-black test.
+// Writes Art/ModIcon-cutout.png. Re-run by hand only if the source icon changes; its output is
+// committed. Same approach as ManyHappyReturns/_tools/cutout-icon.cjs, adapted to this mod's
+// file layout.
 const sharp = require('sharp');
 const path = require('path');
 const root = path.resolve(__dirname, '..');
@@ -11,7 +15,15 @@ const root = path.resolve(__dirname, '..');
   const img = sharp(src).ensureAlpha();
   const { data, info } = await img.raw().toBuffer({ resolveWithObject: true });
   const { width: w, height: h, channels: c } = info;
-  const isBg = i => data[i] < 12 && data[i + 1] < 12 && data[i + 2] < 12;
+  let sr = 0, sg = 0, sb = 0, n = 0;
+  for (let x = 0; x < w; x++) for (const y of [0, h - 1]) { const i = (y * w + x) * c; sr += data[i]; sg += data[i + 1]; sb += data[i + 2]; n++; }
+  for (let y = 0; y < h; y++) for (const x of [0, w - 1]) { const i = (y * w + x) * c; sr += data[i]; sg += data[i + 1]; sb += data[i + 2]; n++; }
+  const bg = [sr / n, sg / n, sb / n];
+  const radius = 9.5;
+  const isBg = i => {
+    const dr = data[i] - bg[0], dg = data[i + 1] - bg[1], db = data[i + 2] - bg[2];
+    return Math.sqrt(dr * dr + dg * dg + db * db) < radius;
+  };
   const visited = new Uint8Array(w * h);
   const stack = [];
   for (let x = 0; x < w; x++) { stack.push([x, 0]); stack.push([x, h - 1]); }
