@@ -14,10 +14,12 @@ body { position: relative; font-family: "Segoe UI", system-ui, sans-serif; }
 .summary { width: 430px; font-size: 21px; font-weight: 400; line-height: 1.45; letter-spacing: 0; }
 .badge { position: absolute; right: 0; top: 0; width: 80px; height: 80px; background: var(--accent); clip-path: polygon(0 0,100% 0,100% 100%); }
 .version { position: absolute; left: 869px; top: 27px; transform: translate(-50%,-50%) rotate(45deg); font-size: 26px; font-weight: 700; line-height: 1; color: var(--badgeInk); }
+.icon { position: absolute; left: -20px; bottom: -20px; width: 240px; height: 240px; transform: rotate(15deg); filter: drop-shadow(0 6px 14px rgba(0,0,0,.55)); }
 </style></head><body>
 <div class="scene"></div><div class="veil"></div>
 <div class="plate"><h1 class="name">Contented<br>Livestock</h1><div class="rule"></div><p class="summary">How you keep an animal decides what it gives you.</p></div>
 <div class="badge"></div><span class="version"></span>
+<img class="icon" src="ModIcon-cutout.png" alt="">
 <script>
 window.previewReady = (async () => {
  const palette = await (await fetch('preview-palette.json')).json();
