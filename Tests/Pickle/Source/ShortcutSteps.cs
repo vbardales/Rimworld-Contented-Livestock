@@ -16,7 +16,7 @@ namespace ContentedLivestock.PickleSteps
         private static readonly FieldInfo CurrentMapIndex =
             typeof(Game).GetField("currentMapIndex", Driver.InstanceAny);
 
-        private static int? savedMapIndex;
+        private static sbyte? savedMapIndex;
 
         private static MainButtonDef Shortcut(PickleContext ctx)
         {
@@ -29,8 +29,8 @@ namespace ContentedLivestock.PickleSteps
         public void LeaveMap(PickleContext ctx)
         {
             ctx.Require(Current.Game != null, "no game is loaded");
-            savedMapIndex = (int)CurrentMapIndex.GetValue(Current.Game);
-            CurrentMapIndex.SetValue(Current.Game, -1);
+            savedMapIndex = (sbyte)CurrentMapIndex.GetValue(Current.Game);
+            CurrentMapIndex.SetValue(Current.Game, (sbyte)-1);
             ctx.Assert(Current.Game.CurrentMap == null, "CurrentMap is still set after clearing the map index");
         }
 
