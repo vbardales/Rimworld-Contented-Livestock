@@ -1,7 +1,7 @@
 ---
 localization: complete
 translation_en: complete
-translation_fr: complete
+translation_fr: partial
 mod:          Contented Livestock
 packageId:    nelim.contentedlivestock
 repo:         Rimworld-Contented-Livestock
@@ -37,6 +37,7 @@ remaining:
   - "scenario 10 (halt and resume): passed 1/1 on 2026-09-24 under set runtime-film (request 5a81, HEAD 10001d1, Mod/ unchanged since 4531a66), the FilmTicks condition present. Milk fullness 3.3% before the halted hour, 3.3% after it (Contentment 10% then 14%, below the floor, tip reads 'Too miserable to produce'), 9.1% after restoration; all three captures opened. Media in Tests/Pickle/evidence/2026-09-24/runtime-film: three JPEGs and film.webm (52 s, 153 KB). The film was only viewed as a contact sheet, where the milk figure is unreadable, so the numbers rest on the captures; a person watching the film is still owed for manual completion. The 2026-09-22 attempt-02 media were deleted as superseded."
   - "partially verified (done -> tested): Pickle passed initial hidden state plus RIMMSQOL reveal, open, hide, forget and visible/hidden persistence across separate processes; broader shared-value editing remains in the manual matrix."
   - "Record tested_on with the game/integration versions and results only after successful game validation."
+  - "unverified: French review by Virginie (TRANSLATIONS.md section 3, 2026-09-30). All three shipped French files were re-read this session against the gender-agreement rule; none contains a {PAWN_gender ? ...} switch, since every text is settings UI, a tooltip or a need description, not a text about a specific animal's gender. FRENCH_REVIEW.md generated at the mod root by scripts/Generate-FrenchReview.ps1 from revision dd0f716, listing all 17 player-facing rows with no session-flagged row. translation_fr stays partial until Virginie reads it; no session marks its own French as reviewed."
 session:      01a09726-7616-7ad2-bc3c-d94a8e24da95
 updated:      2026-09-25, manual scenarios run, tip reworded, docs read (docs/PROTOCOLS-READ.md), TESTING.md added
 ---
@@ -430,6 +431,27 @@ grammar resources or other generated player-facing text.
   in `_tools/FUNCTIONAL-SCENARIOS.md` and tracked as `unverified` in `remaining`.
   Reset affected translation fields to `unchecked` after relevant source/resource changes
   until this audit is repeated.
+
+## Translation audit — 2026-09-30
+
+Applied the French gender-agreement rule and systematic-review requirement added to
+`../TRANSLATIONS.md` section 3 on 2026-09-30. `translation_fr` had been reset to
+`unchecked` repo-wide by that change; this pass re-establishes `partial`.
+
+- Read every shipped French file directly, not by pattern search:
+  `Mod/Languages/French/Keyed/ContentedLivestock.xml`,
+  `Mod/Languages/French/DefInjected/NeedDef/Needs_Contentment.xml`,
+  `Mod/Languages/French/DefInjected/MainButtonDef/MainButtons_ContentedLivestock.xml`.
+- No text agrees with a pawn's gender: the mod's only player-facing strings are settings
+  labels/tooltips, need tooltips and the need's own label/description, none phrased about
+  a specific animal's gender. No `{PAWN_gender ? ...}` switch is required or present.
+- Generated `FRENCH_REVIEW.md` at the mod root with a new script,
+  `scripts/Generate-FrenchReview.ps1` (reads the shipped XML, never edits it; re-run after
+  any French or English change). 17 rows across the three files, Original column equal to
+  English (no source language other than English for this original mod), no row flagged.
+- `translation_fr: partial`: the session's own checks pass, but `TRANSLATIONS.md` reserves
+  `complete` for Virginie's own reading of `FRENCH_REVIEW.md`. Recorded as `unverified` in
+  `remaining` until she reviews it.
 
 ## What this mod taught the repository, and it outlives the mod
 
