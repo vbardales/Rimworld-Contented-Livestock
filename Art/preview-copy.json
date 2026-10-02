@@ -1,0 +1,42 @@
+{
+  "title": "Contented Livestock",
+  "titleSize": 54,
+  "titleParts": [
+    { "text": "Contented", "scale": 1 },
+    { "break": true },
+    { "text": "Livestock", "scale": 1 }
+  ],
+  "suffix": "",
+  "tag": "",
+  "copyLines": [
+    "How you keep an animal decides what it gives you."
+  ],
+  "layout": "panel",
+  "panelAnchor": "top-left",
+  "backgroundFile": "Preview.png",
+  "backgroundPosition": "center",
+  "backgroundSize": "cover",
+  "echo": {
+    "file": "echo.png",
+    "preSized": true,
+    "color": "var(--accent)",
+    "width": 200,
+    "height": 164,
+    "opacity": 1,
+    "veil": false,
+    "panelTop": 3,
+    "panelRight": -1,
+    "panelWidth": 38,
+    "flipX": true
+  },
+  "iconBadge": {
+    "file": "ModIcon-cutout.png",
+    "corner": "bottom-left",
+    "width": 180,
+    "outline": false,
+    "veil": "radial",
+    "veilSize": 275,
+    "veilLeft": -55,
+    "veilBottom": -61
+  }
+}

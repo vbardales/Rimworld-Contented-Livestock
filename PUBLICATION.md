@@ -17,7 +17,7 @@ sent, posted or tagged.
 | --- | --- |
 | Manual scenarios in `_tools/FUNCTIONAL-SCENARIOS.md` | 4 of 18 complete, 1 partial, 12 unplayed, 1 out of scope (14). Method and progress: `docs/MANUAL-REVIEW.md` |
 | Pickle passes against the current revision | `runtime-evidence` passed 17 of 24, `avec-rimmsqol` 6 of 6, `runtime-film` 1 of 1, 0 failed: every conditional scenario has run |
-| Presentation pictures | six in `Art/WorkshopScreenshots/`: `00-preview.png` (owner rule, 2026-09-29, a byte-identical copy of `Mod/About/Preview.png`, itself now carrying the cutout ModIcon in the bottom-left corner, tilted +15deg), four JPEGs accepted 2026-09-25 and a fifth (Grass and Kibble bars) on 2026-09-28; the upload to the Steam page is manual |
+| Presentation pictures | six in `Art/Gallery/`: `0-preview.png` (owner rule, a byte-identical copy of `Mod/About/Preview.png`, itself carrying the transparent ModIcon in the bottom-left corner, tilted +15deg), four JPEGs accepted 2026-09-25 and a fifth (Grass and Kibble bars) on 2026-09-28; the upload to the Steam page is manual |
 | Publication workflow | generated 2026-09-24 (`.github/`), 72 of 72 script tests pass; no dry-run has run, see section 6 |
 | Tag and GitHub release | created by the CI after a successful upload, never by hand |
 | Item tested by subscribing to it, then made public by hand | not done |
@@ -157,28 +157,24 @@ What opening them showed, 2026-09-24:
   interface), then the pictures were cropped at the owner's suggestion (2026-09-25): the right part carries nothing of
   the subject, and the crop puts the cow, its pane and its bar at a larger scale. Her remark for the gallery: **zoom on
   the subject**.
-- **Six pictures are final and in `Art/WorkshopScreenshots/`** (owner: four on 2026-09-25, the fifth on 2026-09-28,
-  `00-` on 2026-09-29), 1.9 MB in all (each under 2 MB, the batch under 8 MB):
-  `00-preview.png` (owner rule, 2026-09-29, numbering from zero: every gallery opens with a byte-identical copy of
-  `Mod/About/Preview.png`; a folder without one matching the current Preview is not a ready gallery, and `00-` is
+- **Six pictures are final and in `Art/Gallery/`** (owner: four on 2026-09-25, the fifth on 2026-09-28,
+  `0-` on 2026-09-29), 1.9 MB in all (each under 2 MB, the batch under 8 MB):
+  `0-preview.png` (owner rule, numbering from zero: every gallery opens with a byte-identical copy of
+  `Mod/About/Preview.png`; a folder without one matching the current Preview is not a ready gallery, and `0-` is
   recopied whenever the Preview is regenerated, or the two quietly drift), then the JPEGs, cropped from the
-  1920 x 1080 captures, not to the 1280 x 800 of the first budget: `01-cow-with-contentment-bar-and-tip.jpg` (left
-  1500 pixels, 1280 x 922), `02-well-kept-cow-after-two-hours.jpg` (the cow and its pane, 1280 x 820),
-  `03-badly-kept-cow-after-two-hours.jpg` (the same crop, 1280 x 818, to be read as a pair with the second),
-  `04-settings-page-with-contentment-bar.jpg` (left 1500 pixels, 1280 x 922) and
-  `05-grass-and-kibble-cows-contentment-bars.jpg` (the two Needs panels after a simulated day, zoomed and side by
+  1920 x 1080 captures, not to the 1280 x 800 of the first budget: `1-cow-with-contentment-bar-and-tip.jpg` (left
+  1500 pixels, 1280 x 922), `2-well-kept-cow-after-two-hours.jpg` (the cow and its pane, 1280 x 820),
+  `3-badly-kept-cow-after-two-hours.jpg` (the same crop, 1280 x 818, to be read as a pair with the second),
+  `4-settings-page-with-contentment-bar.jpg` (left 1500 pixels, 1280 x 922) and
+  `5-grass-and-kibble-cows-contentment-bars.jpg` (the two Needs panels after a simulated day, zoomed and side by
   side, labelled Grass and Kibble, 1350 x 715). The owner found the cow of picture 3 a little far from the centre
   and the cow of picture 4 small, and accepted both. The folder holds these images and nothing else. Uploading
   them to the Steam page is manual.
-- **The Preview itself now carries the cutout ModIcon** (owner rule, 2026-09-29): the icon, flood-filled from its
-  border so only the near-black background goes transparent (the mascot's own outline is never touched, since it
-  does not connect to the frame — `Art/cutout-icon.cjs`, source `Art/ModIcon-source.png`, output
-  `Art/ModIcon-cutout.png`), sits in the bottom-left corner (the emptiest part of this scene; the bottom-right
-  holds the pail, eggs and wool), tilted `+15deg`, 240 x 240, bleeding slightly off the left and bottom edges
-  (`Art/preview.html`'s `.icon`, composited by the existing `Art/render-preview.cjs`, which also regenerates
-  `00-preview.png`'s source — copy it again after any re-render). **Placement and angle accepted by the owner,
-  2026-09-29.** `cutout-icon.cjs` is a one-off, re-run by hand
-  only if the source icon changes; its output is committed. Reference: `ManyHappyReturns/Art/README.md`.
+- **The Preview itself carries the transparent ModIcon**: `Art/ModIcon-cutout.png` is the committed, regenerated
+  RGBA master. The shared preview renderer places it in the bottom-left corner at 180 px, tilted `+15deg`, with
+  the standard corner veil and slight bleed outside the frame. Its placement is declared in
+  `Art/preview-copy.json`; `Art/Gallery/0-preview.png` must be recopied after every render. The icon must retain
+  intentional black linework while true gaps remain transparent; border flood-fill is no longer used.
 
 ## 3. Dependencies and DLC
 
@@ -242,10 +238,10 @@ changes it (CI/CD session, 2026-09-24). Do not do these one by one:
    lait, de la laine ou des œufs ont du bien-être" (key `ContentedLivestock.Settings.ProducersOnly`; its tip does
    not change), already noted in `CHANGELOG.md`;
 2. `## Unreleased` in `CHANGELOG.md` renamed to `## [1.0.0] - <date>`, with a non-empty body;
-3. the six final pictures (done, see section 2), `00-preview.png` then five JPEGs, at most 2 MB each and 8 MB
-   the batch, committed in `Art/WorkshopScreenshots/` and named `00-...`, `01-...`, `02-...`, in the upload order
+3. the six final pictures (done, see section 2), `0-preview.png` then five JPEGs, at most 2 MB each and 8 MB
+   the batch, committed in `Art/Gallery/` and named `0-...`, `1-...`, `2-...`, in the upload order
    of section 2 (Virginie asked for this, so the dry-run lists them as a reminder of the manual gallery upload;
-   it sends nothing) — check `00-preview.png` is still byte-identical to `Mod/About/Preview.png` first;
+   it sends nothing) — check `0-preview.png` is still byte-identical to `Mod/About/Preview.png` first;
 4. the workflow regenerated with the **full** argument list below, never only the new option: a `--replace`
    with an argument missing changes the config, and a later one typed from memory without `--gallery-dir`
    silently drops `galleryDir`. Then run `node --test '.github/tests/*.test.mjs'` and check that
@@ -260,7 +256,7 @@ bash /c/Users/nelim/Documents/rimworld/Rimworld-Release-Admin/scripts/generate-p
   --require Assemblies/ContentedLivestock.dll \
   --description-markdown PUBLICATION.md --description-heading '^## Steam description$' \
   --about-from-description \
-  --gallery-dir Art/WorkshopScreenshots
+  --gallery-dir Art/Gallery
 ```
 
 The gallery listing is alphabetical and counts only png, jpg, jpeg and gif files, non-recursive: the folder
