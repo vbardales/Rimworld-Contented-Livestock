@@ -32,3 +32,6 @@ Tests/Pickle/evidence/**/messages.ndjson
 # docs/runs/. This supersedes the two per-file rules above, which are kept only for history.
 Tests/Pickle/evidence/
 Tests/Manual/evidence/
+
+# Reproducible Preview diagnostics generated locally by the shared renderer.
+Art/.render/
