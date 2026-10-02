@@ -35,6 +35,21 @@ an initial or a final pass runs everything above. A pass that skips a scenario b
 that scenario: pass 1 skips the features that need a companion staged by another map, and those are covered
 by passes 3 to 7.
 
+## Proofs to keep after a pass
+
+Evidence stays on disk in `Tests/Pickle/evidence/` (ignored by git, shared disk), one text line per run in
+`docs/runs/`. After each pass, using `-EvidenceDir`, keep only:
+
+- `summary.json`, `summary.md`, `junit.xml`, `Player.log` of the latest run of each pass, after reading `exitReason`
+  and the played count against the discovered count;
+- one capture per asserted state, as JPEG `-q:v 3`, opened before it is converted;
+- a film only for the halt-and-resume scenario (pass 6), the one assertion that depends on time;
+- an older report only when no later run repeats its check.
+
+Delete `report.html` and `messages.ndjson` at once, the whole archive in `pickle-reports-archive/` of the run once its
+evidence is copied, and everything a newer run of the same pass replaces. The list of what stays today is in
+`docs/runs/README.md`.
+
 ## What a green run does not say
 
 A green run says the path ran, not that the capture shows the right thing: the `@review` captures are opened

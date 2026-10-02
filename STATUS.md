@@ -8,10 +8,11 @@ repo:         Rimworld-Contented-Livestock
 visibility:   public
 detached:     yes
 stage:        done
+workflow_stage: done
 settings_audit: complete
 dependencies_audit: complete
-audit_revision: 4531a66dfc7b4b731c6b4de562bdd7c0486b4185
-audit_date: 2026-09-22
+audit_revision: b81970a589f8387b992d7029daa9131586fca06b
+audit_date: 2026-10-02
 licence:      original
 license_spdx: MIT
 licence_at:   an original creation, MIT with no reservation. Nothing is reused from another mod - no code, no def, no texture, no sound - and the `LICENSE` is a bare MIT with no scope section, so the showcase images fall under it too. The mechanic is Stardew Valley's, credited in ATTRIBUTION.md and reused from none of its lines.
@@ -20,10 +21,10 @@ dependencies: "brrainz.harmony (required); RIMMSQOL optional, Pickle integration
 showcase:     complete
 tested_on:
 workshop:     "3806136625 (0.1.0; visibility and subscription test unverified)"
-automated_tests: 35 passed (2026-09-25, after the tip rewording and the pen rule)
+automated_tests: 35 of 35 passed (rerun 2026-10-02 on b81970a, against the shipped DLL); Tests/Pickle/Check-Steps.ps1 could not run on 2026-10-02 (Pickle's CucumberExpressions.dll not found under the Windows Workshop folder), so the step expressions are unverified this time, not failing
 pickle_scenarios: 24 defined; scenario 10 corrected rerun passed 1/1 after a failed baseline-timing attempt, 6 intended skips in minimal passes (2026-09-22)
 manual_scenarios: 18 documented; 4 completed with reviewed media (0, 1, 6, 13); rule of 2026-09-25 (owner): she validates only what Claude cannot, so Claude's own verdict counts for what it can read. Validated by Claude on 2026-09-25 from opened captures: 3, 7, 9, 10, 11 (cow and sheep), 12, 16, and 4 and 15 for their machine-readable content; left for her eye: (bar pictures of 4 accepted 2026-09-26) the reset confirmation window and slider caps of 15, and the four Workshop pictures (1 accepted, 4 sent); rerun done since: 5, 11 (hen), 15 (keyed clicks); 8 validated 2026-09-28 (growth staged: Desert tile); 14 out of scope. Table in docs/MANUAL-REVIEW.md
-manual_visual_evidence: current media = 22 minified JPEG captures of the 2026-09-23 run on d9be961 (1 of 22 opened; what to keep and how: docs/runs/README.md) plus 3 Workshop-page pictures of 2026-09-24 (all opened; Tests/Pickle/evidence/2026-09-24/publication-shots), the avec-rimmsqol capture and reports, and the scenario 10 captures and film (Tests/Pickle/evidence/2026-09-24/runtime-film); the 2026-09-22 media for scenarios 0, 1, 2, 6, 13 were deleted as superseded, see docs/runs/2026-09-22.md
+manual_visual_evidence: on disk, `Tests/Pickle/evidence/`, 20 MB after the cut of 2026-10-02 (the list of what stays and why is in docs/runs/README.md "What to keep"): the latest avec-rimmsqol run (2026-09-30, 4 of 4, two JPEG captures opened), the 2026-09-24 restart chain and scenario 10 film, the latest run of scenarios 3, 4, 5, 7, 9, 11, 12, 15, 16, the Workshop picture sources (2026-09-24/publication-shots; the published set is Art/Gallery/), and the 2026-09-23 captures for scenarios 0, 1, 2, 6, 13 (older DLL, 1 of 18 opened). Nothing of this is in git.
 remaining:
   - "changed 2026-09-25, pen rule: Mod/Assemblies/ContentedLivestock.dll now starts 7653167da2c9a605 (was e69349c34f01e7e3), after the pen rule was corrected so the pasture line is negative below the pen marker's balance and positive above it, as scenario 8 says and as confirmed by the owner (docs/runs/2026-09-25.md). The Pickle passes recorded before that, on HEAD 10001d1, were taken on the older DLL; none exercised a pen. A full pass on the final SHA is owed, together with the last change to Mod/, the dated changelog heading and the gallery folder (PUBLICATION.md section 6)."
   - "prepared, not released (updated 2026-09-24): PUBLICATION.md section 1 holds the full Steam description in BBCode (4622 of 8000 bytes; the page created for 0.1.0 has SOURCE CODE before IF I GO QUIET, no licence line and the removed promise about saves), the dependency and content-box answers, and three thanks drafts under 1000 characters. Publication goes through the CI: the workflow was generated on 2026-09-24 (48 of 48 script tests pass), version 1.0.0 as advised by the CI/CD session; no dry-run has run, and CHANGELOG.md keeps `## Unreleased` until the commit that carries the final suite. Blocked on the tested gate, on one presentation picture still to redo (the cow with its tip: a stray tooltip, scene fixed, rerun owed) and on a yes for the tag and GitHub release. Two Pickle passes are submitted to TicketDispatcher, avec-rimmsqol and runtime-film, not yet run."
@@ -37,12 +38,45 @@ remaining:
   - "scenario 10 (halt and resume): passed 1/1 on 2026-09-24 under set runtime-film (request 5a81, HEAD 10001d1, Mod/ unchanged since 4531a66), the FilmTicks condition present. Milk fullness 3.3% before the halted hour, 3.3% after it (Contentment 10% then 14%, below the floor, tip reads 'Too miserable to produce'), 9.1% after restoration; all three captures opened. Media in Tests/Pickle/evidence/2026-09-24/runtime-film: three JPEGs and film.webm (52 s, 153 KB). The film was only viewed as a contact sheet, where the milk figure is unreadable, so the numbers rest on the captures; a person watching the film is still owed for manual completion. The 2026-09-22 attempt-02 media were deleted as superseded."
   - "partially verified (done -> tested): Pickle passed initial hidden state plus RIMMSQOL reveal, open, hide, forget and visible/hidden persistence across separate processes; broader shared-value editing remains in the manual matrix."
   - "Record tested_on with the game/integration versions and results only after successful game validation."
+  - "unverified (done -> tested, audit 2026-10-02): the `tested` gate of AUDIT.md now also asks for (a) no scenario in @wip, met: no feature file carries @wip; (b) every conditional scenario run on the current revision, not met: the @requires conditions are RIMMSQOL (features 03, 05, 06, 07), ScreenshotMode (02, 09, 10, 16, 03), FilmTicks (15), KeyedClick (22) and ScreenshotStudio (16), and only feature 03 under avec-rimmsqol (2026-09-30, 4 of 4) ran after the pen-rule DLL 7653167da2c9a605; the restart chain 05 to 07 and the FilmTicks scenario last ran on 2026-09-24 on the older DLL, KeyedClick on 2026-09-28 (4 of 4) and the Workshop pictures on 2026-09-24/25; (c) no manual test left to validate, not met: see the manual-scenarios line above and docs/MANUAL-REVIEW.md. The full seven-pass validation of TESTING.md on the final SHA covers (b)."
+  - "unverified: Tests/Pickle/Check-Steps.ps1 not rerun on 2026-10-02: it looks for Pickle's CucumberExpressions.dll in the Windows Workshop folder and that copy is not there on this machine (Pickle runs in the WSL). Not a defect of the suite; run it where Pickle's assemblies exist before `tested`."
   - "unverified: French review by Virginie (TRANSLATIONS.md section 3, 2026-09-30). All three shipped French files were re-read this session against the gender-agreement rule; none contains a {PAWN_gender ? ...} switch, since every text is settings UI, a tooltip or a need description, not a text about a specific animal's gender. FRENCH_REVIEW.md generated at the mod root by scripts/Generate-FrenchReview.ps1 from revision dd0f716, listing all 17 player-facing rows with no session-flagged row. translation_fr stays partial until Virginie reads it; no session marks its own French as reviewed."
 session:      01a09726-7616-7ad2-bc3c-d94a8e24da95
-updated:      2026-09-25, manual scenarios run, tip reworded, docs read (docs/PROTOCOLS-READ.md), TESTING.md added
+updated:      2026-10-02, audit against the AUDIT.md of 2026-09-29: stage stays done, evidence cut, docs reread (docs/PROTOCOLS-READ.md)
 ---
 
 # Contented Livestock — status
+
+## Workflow audit — 2026-10-02
+
+**`done` confirmed, `tested` not reached.** Revision audited: `b81970a589f8387b992d7029daa9131586fca06b`, working
+tree clean of mod changes before this audit's own edits (`.gitignore`, `docs/`). Checked directly, not from this file:
+
+- `Mod/` carries `About.xml`, `ModIcon.png`, `Preview.png`, `PublishedFileId.txt` (item 3806136625, 0.1.0 prepublished)
+  and the DLL, no `.dds`, no `.ico`, no `desktop.ini` tracked; `Mod/desktop.ini` exists on disk only (Explorer folder
+  icon, AUDIT.md convention) and is now ignored by git. No `.dds` is tracked or on disk in the working tree
+  (history not searched); `*.dds` is ignored anyway.
+- `CHANGELOG.md` already opens its released part with `## [0.1.0]`, "prepublished 2026-09-23", with the
+  `PublishedFileId.txt` creation; the `## Unreleased` block above it holds the 1.0.0 content.
+- Upstream: the mod is original (`licence: original`), so there is no source mod and no upstream git to base a
+  patch or a PR on; `upstream_mod_remotes: N/A` stands.
+- Out-of-game tests rerun: 35 of 35 passed. `Check-Steps.ps1` could not run on this machine (see `remaining`).
+- No feature file carries `@wip`.
+- Evidence: nothing of it is tracked by git (only the pass map `wsl-deps.runtime-evidence.map` matches the word);
+  `Tests/Pickle/evidence/` and `Tests/Manual/evidence/` were already ignored. On disk it went from 92 MB to 20 MB:
+  `report.html` and `messages.ndjson` deleted everywhere, superseded runs deleted, the two scenario 17 PNGs minified to
+  JPEG after being opened. One finding while reading the captures: the scenario 17 world-view run of 2026-09-29 had a
+  step-5 capture showing the colony map, not the world view; it was deleted with its failed run, and the passing
+  run of 2026-09-30 attaches no world-view capture either, so that scenario is proved by its assertion alone. What stays
+  and why: `docs/runs/README.md`. Text record: `docs/runs/2026-09-30.md`.
+- No `STATUS.md` field points at a deleted report: `manual_visual_evidence` was rewritten to the new layout.
+
+Why not `tested`: the three new conditions of AUDIT.md section 9 are met for `@wip` only. Conditional scenarios have
+not all run on the current DLL, and manual validations remain (the reset confirmation window and slider caps of
+scenario 15, the Workshop pictures, the French review). Detail in `remaining`.
+
+Next transition (strictly): the seven passes of `TESTING.md` on the final SHA, then Virginie's reading of the
+captures only she can judge.
 
 ## Translation re-audit — 2026-09-25
 

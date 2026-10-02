@@ -13,6 +13,13 @@ Source/bin/
 # Windows shortcuts dropped in the mod folder, never content.
 *.lnk
 
+# Explorer folder icons (local cosmetics, AUDIT.md) and compiled textures: none of them belongs in git,
+# and Steam sends Mod/ as it is, so a desktop.ini or .ico there would reach the players.
+# Art/ModIcon.ico was committed before this rule and stays tracked.
+desktop.ini
+Mod/**/*.ico
+*.dds
+
 # Pickle writes two files no run needs afterwards, and they are enormous: report.html is the
 # whole run inlined as base64, around 80 MB, and messages.ndjson around 9 MB. The evidence worth
 # keeping is junit.xml, summary.json, summary.md, Player.log and the screenshots - which is what

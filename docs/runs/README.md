@@ -31,9 +31,18 @@ one. So a run's evidence is cut down as soon as a newer one replaces it.
 - one capture per asserted state, not one per step. Two features that photograph the same state keep
   one. A capture that shows no assertion (loading, a dialog in the way) goes
 - a film only where the assertion depends on time, motion or a transition, and only the last one
-- an older report only when it is the sole proof of a check the latest run did not repeat. Today:
-  the RIMMSQOL reports and restart chain, the French settings capture, and scenario 10 attempt 02
-  (that scenario needs FilmTicks, which the `runtime-evidence` set does not stage)
+- an older report only when it is the sole proof of a check the latest run did not repeat. Today, after the
+  2026-10-02 cut (what stays on disk, in `Tests/Pickle/evidence/`):
+  - `2026-09-30/` (set avec-rimmsqol, 4 of 4, two JPEG captures): the latest RIMMSQOL run, scenario 17
+  - `2026-09-24/avec-rimmsqol/` (restart chain 05, 06, 07) and `2026-09-24/runtime-film/` (scenario 10, the only
+    film): the sole proofs of checks no later run repeated, taken on the DLL before the pen rule
+  - `2026-09-28/scenario-15-ticks2/` (scenario 15, latest), `2026-09-25/` (scenarios 5, 11 hen, 12) and
+    `2026-09-24/` (scenarios 4, 9, 16, 3 and 7, 11 cow and sheep): the latest run of each of those scenarios
+  - `2026-09-24/publication-shots/` (the four Workshop pictures' sources; the published set is `Art/Gallery/`)
+  - `2026-09-23/runtime-evidence-fix/` (scenarios 0, 1, 2, 6, 13 and the French settings) and
+    `2026-09-22/settings-french.jpg`: sole proofs for those scenarios, on the older DLL
+  Anything on a DLL older than `7653167da2c9a605` is a record of what was seen then, not proof of the current
+  build: the full pass owed on the final SHA replaces it.
 
 **Delete:** the whole-run `report.html` (about 80 MB) and `messages.ndjson` (about 9 MB), review
 contact sheets derived from a film, earlier runs of the same set, failed attempts once their cause is
