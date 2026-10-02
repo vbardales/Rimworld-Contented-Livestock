@@ -33,6 +33,11 @@ Feature: Workshop pictures
   Scenario: a cow with its contentment bar and the live tip
     Given Contented Livestock sends the colonist "Miel" to x 97 and z 152
     And Contented Livestock spawns the player animal "Daisy" as "Cow" near x 154 and z 98
+    And Nelim's Pickle Tools: the animal "Daisy" is given coat 1
+    And Nelim's Pickle Tools: I place the decor "TorchLamp" at (151, 100)
+    And Nelim's Pickle Tools: the decor "TorchLamp" at (151, 100) is lit
+    And Nelim's Pickle Tools: I place the decor "PlantPot" at (157, 100)
+    And Nelim's Pickle Tools: I place the decor "PlantPot" at (151, 96)
     And Contented Livestock records that "Daisy" ate "RawCorn"
     When Contented Livestock sets "Daisy" to 72 percent contentment
     Then Contented Livestock production factor for "Daisy" is 112 percent
@@ -41,11 +46,18 @@ Feature: Workshop pictures
     And Contented Livestock selects animal "Daisy" for visual evidence, shown 3 cells left and 4 cells up
     And Contented Livestock opens the live contentment tip for "Daisy" at the top left
     And I wait 30 ticks
+    And Nelim's Pickle Tools: I move the mouse to (1800, 1000)
     Then I take a screenshot "publication 1 - cow with contentment and its tip"
+    When Nelim's Pickle Tools: the decor is removed
 
   Scenario: two cows after the same two hours, one kept well and one badly
     Given Contented Livestock spawns the player animal "Buttercup" as "Cow" near x 154 and z 98
     And Contented Livestock spawns the player animal "Thistle" as "Cow" near x 154 and z 98
+    And Nelim's Pickle Tools: the animal "Buttercup" is given coat -1
+    And Nelim's Pickle Tools: the animal "Thistle" is given coat 2
+    And Nelim's Pickle Tools: I place the decor "TorchLamp" at (151, 100)
+    And Nelim's Pickle Tools: the decor "TorchLamp" at (151, 100) is lit
+    And Nelim's Pickle Tools: I place the decor "PlantPot" at (157, 100)
     When Contented Livestock sets "Buttercup" to 100 percent contentment
     And Contented Livestock sets "Thistle" to 30 percent contentment
     Then Contented Livestock production factor for "Buttercup" is 140 percent
@@ -59,10 +71,13 @@ Feature: Workshop pictures
     And Nelim's Pickle Tools: I frame the studio "flowers"
     And Contented Livestock selects animal "Buttercup" for visual evidence
     And I wait 30 ticks
+    And Nelim's Pickle Tools: I move the mouse to (1800, 1000)
     Then I take a screenshot "publication 2 - the well kept cow after two hours"
     When Contented Livestock selects animal "Thistle" for visual evidence
     And I wait 30 ticks
+    And Nelim's Pickle Tools: I move the mouse to (1800, 1000)
     Then I take a screenshot "publication 3 - the badly kept cow after the same two hours"
+    When Nelim's Pickle Tools: the decor is removed
 
   Scenario: the settings page over the meadow, with a cow's contentment bar beside it
     Given Contented Livestock sends the colonist "Miel" to x 97 and z 152
