@@ -1,7 +1,7 @@
 ---
 localization: complete
 translation_en: complete
-translation_fr: unchecked
+translation_fr: complete
 mod:          Contented Livestock
 packageId:    nelim.contentedlivestock
 repo:         Rimworld-Contented-Livestock
@@ -40,14 +40,17 @@ remaining:
   - "Record tested_on with the game/integration versions and results only after successful game validation."
   - "unverified (done -> tested, audit 2026-10-02): the `tested` gate of AUDIT.md now also asks for (a) no scenario in @wip, met: no feature file carries @wip; (b) every conditional scenario run on the current revision, not met: the @requires conditions are RIMMSQOL (features 03, 05, 06, 07), ScreenshotMode (02, 09, 10, 16, 03), FilmTicks (15), KeyedClick (22) and ScreenshotStudio (16), and only feature 03 under avec-rimmsqol (2026-09-30, 4 of 4) ran after the pen-rule DLL 7653167da2c9a605; the restart chain 05 to 07 and the FilmTicks scenario last ran on 2026-09-24 on the older DLL, KeyedClick on 2026-09-28 (4 of 4) and the Workshop pictures on 2026-09-24/25; (c) no manual test left to validate, not met: see the manual-scenarios line above and docs/MANUAL-REVIEW.md. The full seven-pass validation of TESTING.md on the final SHA covers (b)."
   - "unverified: Tests/Pickle/Check-Steps.ps1 not rerun on 2026-10-02: it looks for Pickle's CucumberExpressions.dll in the Windows Workshop folder and that copy is not there on this machine (Pickle runs in the WSL). Not a defect of the suite; run it where Pickle's assemblies exist before `tested`."
-  - "unverified: French review by Virginie (TRANSLATIONS.md section 3, 2026-09-30). All three shipped French files were re-read this session against the gender-agreement rule; none contains a {PAWN_gender ? ...} switch, since every text is settings UI, a tooltip or a need description, not a text about a specific animal's gender. FRENCH_REVIEW.md generated at the mod root by scripts/Generate-FrenchReview.ps1 from revision dd0f716, listing all 17 player-facing rows with no session-flagged row. translation_fr stays partial until Virginie reads it; no session marks its own French as reviewed."
 session:      01a09726-7616-7ad2-bc3c-d94a8e24da95
 updated:      2026-10-02, audit against the AUDIT.md of 2026-09-29: stage stays done, evidence cut, docs reread (docs/PROTOCOLS-READ.md)
 ---
 
 # Contented Livestock — status
 
-## French review by Virginie — 2026-10-02: not validated, corrections applied
+## French review by Virginie — 2026-10-02: validated
+
+**Review line:** reviewer Virginie, 2026-10-02, French files as of revision `dadebc2` (she named `f6e70ac`, the audit
+commit before the corrections; the French files are unchanged since `dadebc2`), 7 corrections requested and applied,
+no dynamic gender agreement needed. `translation_fr: complete`. First pass, not validated, kept below.
 
 Requested corrections, all applied in `Languages/French` (Keyed and `NeedDef/Needs_Contentment.xml`): `Tip.Rate` now
 "Production de lait, de laine ou d'œufs à {0} du rythme habituel."; `Settings.Intro` drops the "nourri" and "se remplissent"
