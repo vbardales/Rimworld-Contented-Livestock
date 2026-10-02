@@ -47,6 +47,17 @@ updated:      2026-10-02, audit against the AUDIT.md of 2026-09-29: stage stays 
 
 # Contented Livestock — status
 
+## French review by Virginie — 2026-10-02: not validated, corrections applied
+
+Requested corrections, all applied in `Languages/French` (Keyed and `NeedDef/Needs_Contentment.xml`): `Tip.Rate` now
+"Production de lait, de laine ou d'œufs à {0} du rythme habituel."; `Settings.Intro` drops the "nourri" and "se remplissent"
+images ("dépend de la façon dont on les garde", "produisent du lait, de la laine et des œufs"); `Settings.Floor`
+"La production s'arrête sous {0} %."; `MinRateTip` "en proportion du rythme"; `SpeedTip` "La vitesse à laquelle le
+bien-être peut évoluer en une journée."; `TemperatureTip` "Évaluée par rapport à la plage de confort…"; need description
+"Le degré de bien-être de cet animal." The same "se remplit" image in the need description was reworded to match
+("produit du lait, de la laine ou des œufs"), not asked for. No gender switch needed (owner). `FRENCH_REVIEW.md`
+regenerated; 35 of 35 out-of-game tests pass. `translation_fr` is `unchecked` until she reviews the changed texts again.
+
 ## Workflow audit — 2026-10-02
 
 **`done` confirmed, `tested` not reached.** Revision audited: `b81970a589f8387b992d7029daa9131586fca06b`, working
