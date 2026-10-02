@@ -35,6 +35,23 @@ an initial or a final pass runs everything above. A pass that skips a scenario b
 that scenario: pass 1 skips the features that need a companion staged by another map, and those are covered
 by passes 3 to 7.
 
+## Manual scenarios
+
+Written 2026-10-02 for the `tested` gate ("no manual test left to validate"). Everything the sheet
+`docs/MANUAL-REVIEW.md` lists is either asserted by a Pickle scenario (the captures are only read afterwards) or
+listed here with its reason. Only the rows below need a person at a keyboard, and none blocks `tested`.
+
+| # | Precondition | Action | Expected | Status |
+| --- | --- | --- | --- | --- |
+| M1 | Mod enabled, a colony loaded | Options, Mod options, pick Contented Livestock | The same dialog as the shortcut opens, values equal | Not automated: Pickle opens the same `Dialog_ModSettings` directly. Owner check, one minute |
+| M2 | Screen under 1080 lines | Open the dialog | Every control reachable by scrolling | Not applicable to the validation: the dialog is checked at 1920 x 1080 |
+| M3 | A muffalo offered by a trader | Buy it through the trade dialog | It arrives with a Contentment bar, no error in the log | Owner check: the faction change is asserted (scenario 2), the dialog itself is not driven |
+| M4 | Scenario 10 film | Watch `film.webm` | No flicker, the cow behaves normally while halted | Owner check: smoothness is not machine-readable |
+| M5 | Scenarios 4 captures | Look at the two bar pictures | Well fed against not fed reads at a glance | Owner check: a design judgement |
+| M6 | Scenario 15 | Reset confirmation and slider caps | Asserted (cancel keeps values, confirm restores the eleven defaults, both ends and clamps) | Automated and green; the captures need only a look |
+
+M1, M3, M4 and M5 are optional spot checks; M2 is not applicable. None is a validation the gate waits on.
+
 ## Proofs to keep after a pass
 
 Evidence stays on disk in `Tests/Pickle/evidence/` (ignored by git, shared disk), one text line per run in
