@@ -3,8 +3,7 @@
   "titleSize": 54,
   "titleParts": [
     { "text": "Contented", "scale": 1 },
-    { "break": true },
-    { "text": "Livestock", "scale": 1 }
+    { "text": "Livestock", "scale": 1, "breakBefore": true }
   ],
   "suffix": "",
   "tag": "",
@@ -37,6 +36,7 @@
     "veil": "radial",
     "veilSize": 275,
     "veilLeft": -55,
-    "veilBottom": -61
+    "veilBottom": -61,
+    "translate": "-5%, 5%"
   }
 }
