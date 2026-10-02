@@ -29,7 +29,10 @@ Feature: RIMMSQOL reveals and hides the Contented Livestock shortcut
     And the main bar's button "Nelim_ContentedLivestockSettings" is activated
     Then Contented Livestock sees its own settings dialog open
     And no errors were logged
-    When I close all dialogs
+    When Nelim's Pickle Tools: screenshot mode is enabled around the open windows
+    And I take a screenshot "settings opened from the world view, no map current"
+    And Nelim's Pickle Tools: screenshot mode is disabled
+    And I close all dialogs
     And Contented Livestock returns to the map
 
   Scenario: RIMMSQOL hides and forgets the shortcut cleanly
