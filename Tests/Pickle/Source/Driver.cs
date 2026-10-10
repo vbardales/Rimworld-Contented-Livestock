@@ -35,9 +35,13 @@ namespace ContentedLivestock.PickleSteps
         public static Pawn PawnNamed(PickleContext ctx, string name)
         {
             IReadOnlyList<Pawn> pawns = Map(ctx).mapPawns.AllPawnsSpawned;
-            var pawn = pawns.FirstOrDefault(p =>
-                (p.Name is NameSingle single && single.Name == name) || p.LabelShort == name);
-            ctx.Require(pawn != null, $"no spawned pawn named '{name}'");
+            Func<Pawn, bool> named = p =>
+                (p.Name is NameSingle single && single.Name == name) || p.LabelShort == name;
+            var pawn = pawns.FirstOrDefault(named)
+                // A trader's goods are carried in its inventory, unspawned, until the colony buys them.
+                ?? pawns.SelectMany(p => p.inventory?.innerContainer ?? Enumerable.Empty<Thing>())
+                    .OfType<Pawn>().FirstOrDefault(named);
+            ctx.Require(pawn != null, $"no spawned or carried pawn named '{name}'");
             return pawn;
         }
 
