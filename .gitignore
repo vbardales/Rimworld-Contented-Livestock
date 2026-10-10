@@ -1,6 +1,6 @@
 # Build intermediates, kept out of Mod/: the Workshop uploader sends that folder as it is,
 # with no filtering, so a publicised Assembly-CSharp.dll left inside it would be redistributed.
-.build/
+build/
 Source/obj/
 Source/bin/
 

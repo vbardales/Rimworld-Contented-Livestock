@@ -10,7 +10,7 @@ The existing 35-test PowerShell suite owns pure calculations, normalization, sca
 round-trips, XML, dependency metadata and static localization coverage. Pickle is limited to what
 needs a running game: startup without logged errors, values actually loaded into the live mod,
 the real `Dialog_ModSettings`, active-language resources, MainButtons behavior and RIMMSQOL.
-The longer animal-production matrix remains documented in `_tools/FUNCTIONAL-SCENARIOS.md` for
+The longer animal-production matrix remains documented in `scripts/FUNCTIONAL-SCENARIOS.md` for
 `done -> tested`; it is not duplicated here merely to increase the scenario count.
 
 ## Pass matrix

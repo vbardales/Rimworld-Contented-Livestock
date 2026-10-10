@@ -110,7 +110,7 @@ Test-Case 'Adjustment speed changes the real interval step without overshooting'
 $scribe = Get-GameType 'Verse.Scribe'
 $saver = $scribe.GetField('saver', $ALL).GetValue($null)
 $loader = $scribe.GetField('loader', $ALL).GetValue($null)
-$settingsScratch = Join-Path $ModPath '.build/settings-tests'
+$settingsScratch = Join-Path $ModPath 'build/settings-tests'
 $null = New-Item -ItemType Directory -Path $settingsScratch -Force
 
 function Read-TestSettings([string]$path) {

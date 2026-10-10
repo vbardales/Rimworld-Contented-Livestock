@@ -7,7 +7,7 @@ after a run: `docs/MANUAL-REVIEW.md`.
 
 ## Out of the game
 
-`powershell -ExecutionPolicy Bypass -File _tools/Run-Functional-Tests.ps1`: 35 tests, no game launched (contracts
+`powershell -ExecutionPolicy Bypass -File scripts/Run-Functional-Tests.ps1`: 35 tests, no game launched (contracts
 of the vanilla classes the patches hang off, settings, curves, Scribe, XML, translations). Run after every change
 to `Source/` or `Mod/`.
 

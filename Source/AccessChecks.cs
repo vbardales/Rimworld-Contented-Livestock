@@ -9,7 +9,7 @@
 // the patches applied, and every milkable animal threw FieldAccessException on its first tick
 // with the whole scaling half of the mod dead behind it.
 //
-// _tools/Run-Functional-Tests.ps1 catches this by performing the access rather than by reading
+// scripts/Run-Functional-Tests.ps1 catches this by performing the access rather than by reading
 // metadata, which is how it was found without launching the game.
 
 [assembly: System.Runtime.CompilerServices.IgnoresAccessChecksTo("Assembly-CSharp")]
