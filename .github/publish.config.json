@@ -1,5 +1,5 @@
 {
-  "templateStamp": "82de20b8aa50",
+  "templateStamp": "7fb8f006c206",
   "workshopId": "3806136625",
   "packageId": "nelim.contentedlivestock",
   "releaseTitle": "Contented Livestock {version}",
@@ -8,8 +8,11 @@
   ],
   "forbidPaths": [],
   "previewFile": "About/Preview.png",
-  "galleryDir": "Art/WorkshopScreenshots",
+  "galleryDir": "Art/Gallery",
   "aboutFromDescription": true,
+  "build": {
+    "project": "Source/ContentedLivestock.csproj"
+  },
   "description": {
     "file": "PUBLICATION.md",
     "format": "markdown",
