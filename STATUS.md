@@ -59,8 +59,7 @@ Checked directly, not from this file:
   `.ico`, no `.dds`, no `desktop.ini` is tracked. The old `stage` field is removed (retired 2026-10-09).
 - **Tests (7.b, 7.c).** `scripts/Run-Functional-Tests.ps1`: 35 of 35 passed on 2026-10-10, before and after the move
   of `_tools/` to `scripts/` (XML parse, key parity and parameters in EN and FR included).
-- **Scenarios (7.a).** The 18 manual scenarios are in `scripts/FUNCTIONAL-SCENARIOS.md`. AUDIT.md names the file
-  `TEST_SCENARIOS.md`; the content is what it asks for, the name is a recommendation below, not a blocker.
+- **Scenarios (7.a).** The 18 manual scenarios are in `scripts/TEST_SCENARIOS.md` (the name AUDIT.md 7.a gives).
 - **Pickle suites (7.d).** `Tests/Pickle/` carries 24 scenarios, written; `TESTING.md` declares the passes.
 - **Translations (7.g).** `translation_fr: complete` rests on Virginie's review of 2026-10-02 (revision `dadebc2`, 7
   corrections applied). No agreement with a pawn's gender exists in the texts, so no `{PAWN_gender}` switch applies.
@@ -83,9 +82,7 @@ Next transition, strictly (AUDIT.md section 8): one initial Pickle ticket that p
 scenario alone; the conditional scenarios on their passes; the in-game settings and the EN and FR interface; the
 remaining manual validations; the code review (8.m); `tested_on`.
 
-Recommendations, not blockers: rename `scripts/FUNCTIONAL-SCENARIOS.md` to `TEST_SCENARIOS.md` if the owner wants the
-protocol's name (it is cited in README, TESTING, PUBLICATION and MANUAL-REVIEW); bring `ModIcon.png` under 30 KB if she
-wants the band respected (it was 32.5 KB before, also above).
+Recommendation, not a blocker: bring `ModIcon.png` under 30 KB if the owner wants the band respected (it was 32.5 KB before, also above). The scenario file is `scripts/TEST_SCENARIOS.md` since 2026-10-11 (AUDIT.md 7.a name, asked by the Audit workflow session).
 
 ## Settings audit
 

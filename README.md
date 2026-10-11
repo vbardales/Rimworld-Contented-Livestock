@@ -165,7 +165,7 @@ touches, minus those reached from a subclass of their own declaring type, which 
 That is how a third one turned up — `Pawn_NeedsTracker.pawn`, private, read by the postfix that
 grants the need at all, and with no instance to build it could never have been caught by trying.
 
-[`scripts/FUNCTIONAL-SCENARIOS.md`](scripts/FUNCTIONAL-SCENARIOS.md) is the other half: eighteen
+[`scripts/TEST_SCENARIOS.md`](scripts/TEST_SCENARIOS.md) is the other half: eighteen
 scenarios to play, one thing to watch in each, and what a failure looks like in `Player.log`. No
 amount of reflection can tell you whether a well-kept cow fills faster than a neglected one.
 

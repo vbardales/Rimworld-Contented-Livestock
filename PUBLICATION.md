@@ -15,7 +15,7 @@ sent, posted or tagged.
 
 | Blocker | State |
 | --- | --- |
-| Manual scenarios in `scripts/FUNCTIONAL-SCENARIOS.md` | 4 of 18 complete, 1 partial, 12 unplayed, 1 out of scope (14). Method and progress: `docs/MANUAL-REVIEW.md` |
+| Manual scenarios in `scripts/TEST_SCENARIOS.md` | 4 of 18 complete, 1 partial, 12 unplayed, 1 out of scope (14). Method and progress: `docs/MANUAL-REVIEW.md` |
 | Pickle passes against the current revision | `runtime-evidence` passed 17 of 24, `avec-rimmsqol` 6 of 6, `runtime-film` 1 of 1, 0 failed: every conditional scenario has run |
 | Presentation pictures | six in `Art/Gallery/`: `0-preview.png` (owner rule, a byte-identical copy of `Mod/About/Preview.png`, itself carrying the transparent ModIcon in the bottom-left corner, tilted +15deg), four JPEGs accepted 2026-09-25 and a fifth (Grass and Kibble bars) on 2026-09-28; the upload to the Steam page is manual |
 | Publication workflow | generated 2026-09-24 (`.github/`), 72 of 72 script tests pass; no dry-run has run, see section 6 |

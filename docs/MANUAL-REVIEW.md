@@ -1,6 +1,6 @@
 # Manual review sheet
 
-The 12 scenarios of `scripts/FUNCTIONAL-SCENARIOS.md` that no one has played by hand (the 13th, number 14,
+The 12 scenarios of `scripts/TEST_SCENARIOS.md` that no one has played by hand (the 13th, number 14,
 is out of scope: backward compatibility of saves is not handled). Method, agreed
 2026-09-24: **Claude produces the media (a capture or a film) with Pickle and judges everything it can read or
 assert.** **Rule of 2026-09-25 (Virginie): she validates only what Claude cannot validate.** So Claude gives its own
