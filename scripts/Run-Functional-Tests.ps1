@@ -73,36 +73,18 @@ $ErrorActionPreference = 'Stop'
 
 # ---------------------------------------------------------------- assembly resolution
 
-# Same handler as scripts/Check-XmlFields.ps1 in the monorepo, and it carries the same guard:
-# an unresolvable name asked for twice recurses to a stack overflow rather than to an error.
-# One probe directory is specific to this mod: HarmonyLib is NOT in the game's Managed
-# folder in 1.6. Resolve the provider declared in About.xml, not the build's NuGet reference.
+# The resolver, the Assembly-CSharp type load and the type index are the shared library of the protocols
+# repository (scripts/lib/GameReflection.ps1, owner rule of 2026-10-11): the tests below stay here, they are
+# this mod's own hand-offs to the game. One probe directory is specific to this mod: HarmonyLib is NOT in the
+# game's Managed folder in 1.6. Resolve the provider declared in About.xml, not the build's NuGet reference.
 # Use the real runtime provider. A NuGet fallback would hide a missing dependency.
 if (-not (Test-Path (Join-Path $HarmonyPath '0Harmony.dll'))) {
     throw 'Install Harmony for RimWorld 1.6, or pass -HarmonyPath to its active Assemblies folder.'
 }
-$probeDirs = @($Managed, $HarmonyPath)
-$script:probed = @{}
-$script:asmResolver = [System.ResolveEventHandler]{
-    param($sender, $e)
-    if ($null -eq $script:probed) { return $null }
-    $short = $e.Name.Split(',')[0]
-    if ($script:probed.ContainsKey($short)) { return $null }
-    $script:probed[$short] = $true
-    foreach ($d in $probeDirs) {
-        $p = Join-Path $d "$short.dll"
-        if (Test-Path $p) { return [System.Reflection.Assembly]::LoadFrom($p) }
-    }
-    return $null
-}
-[System.AppDomain]::CurrentDomain.add_AssemblyResolve($script:asmResolver)
-
-function Get-AssemblyTypes([string]$path) {
-    $a = [System.Reflection.Assembly]::LoadFrom($path)
-    try     { return $a.GetTypes() }
-    catch [System.Reflection.ReflectionTypeLoadException] { return $_.Exception.Types | Where-Object { $_ } }
-    catch   { return $_.Exception.InnerException.Types | Where-Object { $_ } }
-}
+$gameReflection = Join-Path $PSScriptRoot '..\..\scripts\lib\GameReflection.ps1'
+if (-not (Test-Path $gameReflection)) { throw "scripts/lib/GameReflection.ps1 not found at ${gameReflection}, this mod must sit beside the protocols checkout" }
+. $gameReflection
+Initialize-GameReflection -Managed $Managed -ExtraDirs @($HarmonyPath)
 
 $gameDll = Join-Path $Managed 'Assembly-CSharp.dll'
 $modDll  = Join-Path $ModPath 'Mod\Assemblies\ContentedLivestock.dll'
@@ -114,8 +96,7 @@ $gameTypes = Get-AssemblyTypes $gameDll
 $modAsm    = [System.Reflection.Assembly]::LoadFrom($modDll)
 $modTypes  = Get-AssemblyTypes $modDll
 
-$byName = @{}
-foreach ($t in $gameTypes) { if ($t.FullName) { $byName[$t.FullName] = $t } }
+$byName = New-TypeIndex $gameTypes
 
 $ALL = [System.Reflection.BindingFlags]'Public,NonPublic,Instance,Static'
 $DECL = [System.Reflection.BindingFlags]'Public,NonPublic,Instance,Static,DeclaredOnly'
@@ -796,7 +777,7 @@ Test-Case 'About metadata identifies this repository and includes GitHub in its 
 
 . (Join-Path $PSScriptRoot 'Settings-Tests.ps1')
 
-[System.AppDomain]::CurrentDomain.remove_AssemblyResolve($script:asmResolver)
+Remove-GameReflection
 
 Write-Host ''
 if ($script:failed -eq 0) {
