@@ -40,6 +40,8 @@ namespace ContentedLivestock.PickleSteps
             var traderKind = DefDatabase<TraderKindDef>.AllDefs.FirstOrDefault(t =>
                 t.tradeCurrency == TradeCurrency.Silver && t.WillTrade(muffalo.def));
             ctx.Require(traderKind != null, "no silver TraderKindDef trades a muffalo");
+            // The tracker itself is null on a pawn built outside a trader arrival.
+            if (trader.trader == null) trader.trader = new Pawn_TraderTracker(trader);
             trader.trader.traderKind = traderKind;
             if (muffalo.Spawned) muffalo.DeSpawn();
             ctx.Require(trader.inventory.innerContainer.TryAdd(muffalo),
