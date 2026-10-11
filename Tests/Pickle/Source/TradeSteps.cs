@@ -35,6 +35,12 @@ namespace ContentedLivestock.PickleSteps
             var cell = CellFinder.RandomClosewalkCellNear(map.Center, map, 12);
             GenSpawn.Spawn(trader, cell, map);
             trader.mindState.wantsToTradeWithColony = true;
+            // A generated pawn has no TraderKindDef: without one CanTradeNow dereferences null. Pick a silver
+            // trader whose stock groups include a muffalo, as a real caravan would carry.
+            var traderKind = DefDatabase<TraderKindDef>.AllDefs.FirstOrDefault(t =>
+                t.tradeCurrency == TradeCurrency.Silver && t.WillTrade(muffalo.def));
+            ctx.Require(traderKind != null, "no silver TraderKindDef trades a muffalo");
+            trader.trader.traderKind = traderKind;
             if (muffalo.Spawned) muffalo.DeSpawn();
             ctx.Require(trader.inventory.innerContainer.TryAdd(muffalo),
                 "the muffalo could not be put in the trader's inventory");
