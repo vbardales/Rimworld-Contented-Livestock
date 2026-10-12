@@ -73,7 +73,7 @@ namespace ContentedLivestock.PickleSteps
         {
             var line = Line(muffaloName);
             ctx.Require(line != null, $"the trade deal has no line for the muffalo {muffaloName}");
-            line.ForceToDestination(1);
+            line.ForceToSource(1);
             bool traded;
             var ok = TradeSession.deal.TryExecute(out traded);
             ctx.Assert(ok && traded, $"the deal was not executed (executed={ok}, traded={traded})");
