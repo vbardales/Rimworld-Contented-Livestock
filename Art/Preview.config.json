@@ -23,11 +23,11 @@
   "backgroundPosition": "center",
   "backgroundSize": "cover",
   "echo": {
-    "file": "echo.png",
+    "file": "echo-source.png",
     "preSized": true,
     "color": "var(--accent)",
     "width": 200,
-    "height": 164,
+    "height": 133,
     "opacity": 1,
     "veil": false,
     "panelTop": 3,
