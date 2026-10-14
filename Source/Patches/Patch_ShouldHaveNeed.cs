@@ -23,7 +23,7 @@ namespace ContentedLivestock
         public static void Postfix(Pawn_NeedsTracker __instance, NeedDef nd, ref bool __result)
         {
             if (nd != ContentedLivestockDefOf.Nelim_Contentment) return;
-            __result = Contentment.AppliesTo(__instance.pawn);
+            __result = __result && Contentment.AppliesTo(__instance.pawn);
         }
     }
 

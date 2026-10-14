@@ -1,5 +1,6 @@
 using HarmonyLib;
 using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace ContentedLivestock
@@ -40,7 +41,7 @@ namespace ContentedLivestock
             float factor = Contentment.RateFactor(pawn);
             if (factor == 1f) return;
 
-            __instance.fullness = __state + delta * factor;
+            __instance.fullness = Mathf.Min(1f, __state + delta * factor);
         }
     }
 
@@ -71,7 +72,7 @@ namespace ContentedLivestock
             float factor = Contentment.RateFactor(pawn);
             if (factor == 1f) return;
 
-            __instance.eggProgress = __state + delta * factor;
+            __instance.eggProgress = Mathf.Min(1f, __state + delta * factor);
         }
     }
 }
