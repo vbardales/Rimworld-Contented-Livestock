@@ -181,7 +181,9 @@ namespace ContentedLivestock.PickleSteps
         public void WoundWithCut(PickleContext ctx, string name)
         {
             var pawn = Driver.PawnNamed(ctx, name);
-            pawn.TakeDamage(new DamageInfo(DamageDefOf.Cut, 10f));
+            // A fixed part: a random one sometimes bleeds nothing, which made the step flaky.
+            var torso = pawn.RaceProps.body.corePart;
+            pawn.TakeDamage(new DamageInfo(DamageDefOf.Cut, 10f, 0f, -1f, null, torso));
             ctx.Assert(pawn.health.hediffSet.PainTotal > 0f, $"{name} has no pain after the cut");
             ctx.Assert(pawn.health.hediffSet.BleedRateTotal > 0f, $"{name} has no bleeding after the cut");
         }
