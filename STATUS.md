@@ -20,7 +20,7 @@ dependencies: "brrainz.harmony (required); RIMMSQOL optional, Pickle integration
 showcase:     complete
 tested_on:
 workshop:     "3806136625 (0.1.0; visibility and subscription test unverified)"
-automated_tests: 35 of 35 passed (rerun 2026-10-17 on 5775be9 against the shipped DLL C105BF9A830D66C7, after the removal of the slider default tick; before it, 2026-10-14 on 3655b90, DLL D2E97D352AE24E64); Tests/Pickle/Check-Steps.ps1 could not run (Pickle's CucumberExpressions.dll not found under the Windows Workshop folder), so the step expressions are unverified, not failing
+automated_tests: 35 of 35 passed (rerun 2026-10-17 after the French text corrections, on 1218fe6, `-HarmonyPath` the Workshop Harmony 1.6 Assemblies folder, DLL unchanged C105BF9A830D66C7; before, 2026-10-17 on 5775be9 against the shipped DLL C105BF9A830D66C7, after the removal of the slider default tick; before it, 2026-10-14 on 3655b90, DLL D2E97D352AE24E64); Tests/Pickle/Check-Steps.ps1 could not run (Pickle's CucumberExpressions.dll not found under the Windows Workshop folder), so the step expressions are unverified, not failing
 pickle_scenarios: 51 defined; on the current DLL only the initial pass of 2026-10-10 (no optional mods, English, `-DepMap` omitted by mistake): 30 passed, 1 failed (scenario 02 trade, fixed, then green in replay 3 on 77ba6ef, 1 of 1, both captures opened), 20 skipped for missing companions (docs/runs/2026-10-10.md); older results: scenario 10 corrected rerun passed 1/1 (2026-09-24), feature 03 avec-rimmsqol 4 of 4 (2026-09-30, older DLL), 6 intended skips in minimal passes (2026-09-22)
 manual_scenarios: 18 documented; 4 completed with reviewed media (0, 1, 6, 13); rule of 2026-09-25 (owner): she validates only what Claude cannot, so Claude's own verdict counts for what it can read. Validated by Claude on 2026-09-25 from opened captures: 3, 7, 9, 10, 11 (cow and sheep), 12, 16, and 4 and 15 for their machine-readable content; left for her eye: the reset confirmation window and slider caps of 15, and the four Workshop pictures (1 accepted, 4 sent); rerun done since: 5, 11 (hen), 15 (keyed clicks); 8 validated 2026-09-28 (growth staged: Desert tile); 14 out of scope. Table in docs/MANUAL-REVIEW.md
 manual_visual_evidence: on disk, `Tests/Pickle/evidence/`, about 20 MB after the cut of 2026-10-02 (what stays and why: docs/runs/README.md "What to keep"). Nothing of this is in git.
@@ -42,7 +42,7 @@ updated:      2026-10-10, audit against the AUDIT.md of 2026-10-10: done becomes
 echo_review_sha: 52dc06db37ac2d4bdb7f82062f87fa71d9d8c9c2
 social_preview_sha256: c2b2072ac4411e541d4030d81425085cee2b5b92a6c0c243ca5bb5ec875254cb
 code_review_sha: 5775be9648fbb9af076c1412151b09046c88b7c3
-protocols_read_sha: 78bf85cc96d564b99ea1a0e122ba9beb10d77268
+protocols_read_sha: c283fedfcc80166d175245f9553ab4095716c1fa
 ---
 # Contented Livestock: status
 
