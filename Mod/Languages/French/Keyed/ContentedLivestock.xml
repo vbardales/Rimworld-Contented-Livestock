@@ -6,7 +6,7 @@
 
   <!-- Infobulle du besoin -->
   <ContentedLivestock.Tip.Rate>Production de lait, de laine ou d'œufs à {0} du rythme habituel.</ContentedLivestock.Tip.Rate>
-  <ContentedLivestock.Tip.Halted>Trop mal en point pour produire. La production est gelée tant que les conditions ne s'améliorent pas.</ContentedLivestock.Tip.Halted>
+  <ContentedLivestock.Tip.Halted>Trop malheureux pour produire. La production est gelée tant que les conditions ne s'améliorent pas.</ContentedLivestock.Tip.Halted>
   <ContentedLivestock.Tip.Feed>Dernier repas : {0}</ContentedLivestock.Tip.Feed>
   <ContentedLivestock.Tip.Space>Pâture et espace : {0}</ContentedLivestock.Tip.Space>
   <ContentedLivestock.Tip.Temperature>Température : {0}</ContentedLivestock.Tip.Temperature>
@@ -30,7 +30,7 @@
 
   <ContentedLivestock.Settings.InputsHeader>Ce qui rend un animal content</ContentedLivestock.Settings.InputsHeader>
   <ContentedLivestock.Settings.Feed>Nourriture</ContentedLivestock.Settings.Feed>
-  <ContentedLivestock.Settings.FeedTip>Brouter une plante vivante est ce qu'il y a de mieux, puis les produits crus et la viande, puis le foin, puis les croquettes. Le souvenir du dernier repas s'efface en deux jours.</ContentedLivestock.Settings.FeedTip>
+  <ContentedLivestock.Settings.FeedTip>Brouter une plante vivante est ce qu'il y a de mieux, puis les végétaux crus et la viande, puis le foin, puis les croquettes. Le souvenir du dernier repas s'efface en deux jours.</ContentedLivestock.Settings.FeedTip>
   <ContentedLivestock.Settings.Space>Pâture et espace</ContentedLivestock.Settings.Space>
   <ContentedLivestock.Settings.SpaceTip>Les animaux à corde sont jugés sur leur enclos : la pâture repousse-t-elle plus vite que le troupeau ne la broute ? C'est le chiffre que la borne d'enclos affiche déjà. Les autres sont jugés sur l'espace au sol par animal dans leur pièce.</ContentedLivestock.Settings.SpaceTip>
   <ContentedLivestock.Settings.Temperature>Température</ContentedLivestock.Settings.Temperature>

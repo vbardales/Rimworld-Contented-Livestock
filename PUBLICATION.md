@@ -277,7 +277,7 @@ publication. **Before the `publish` is dispatched, nothing of this is skipped:**
    (`...-088f`), scenario 5 (`...-69e3`), scenario 8 (`...-d762`) and presentation picture 1 (`...-29ec`).
    Those failures were faults of the test steps, fixed and resubmitted; until each has come back green they
    count as red.
-2. **The Workshop gallery** (four pictures, section 2) and **the owner's manual validations** (the verdicts
+2. **The Workshop gallery** (six pictures, section 2) and **the owner's manual validations** (the verdicts
    on `docs/MANUAL-REVIEW.md`).
 3. **The guard rails, unchanged:** dry-run of the exact commit first, `publish` with the full SHA, approval of
    `steam-production` by Virginie alone.
