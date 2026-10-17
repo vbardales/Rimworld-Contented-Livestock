@@ -32,7 +32,7 @@
   <ContentedLivestock.Settings.Feed>Nourriture</ContentedLivestock.Settings.Feed>
   <ContentedLivestock.Settings.FeedTip>Brouter une plante vivante est ce qu'il y a de mieux, puis les végétaux crus et la viande, puis le foin, puis les croquettes. Le souvenir du dernier repas s'efface en deux jours.</ContentedLivestock.Settings.FeedTip>
   <ContentedLivestock.Settings.Space>Pâture et espace</ContentedLivestock.Settings.Space>
-  <ContentedLivestock.Settings.SpaceTip>Les animaux à corde sont jugés sur leur enclos : la pâture repousse-t-elle plus vite que le troupeau ne la broute ? C'est le chiffre que la borne d'enclos affiche déjà. Les autres sont jugés sur l'espace au sol par animal dans leur pièce.</ContentedLivestock.Settings.SpaceTip>
+  <ContentedLivestock.Settings.SpaceTip>Les animaux attachés sont jugés sur leur enclos : la pâture repousse-t-elle plus vite que le troupeau ne la broute ? C'est le chiffre que la borne d'enclos affiche déjà. Les autres sont jugés sur l'espace au sol par animal dans leur pièce.</ContentedLivestock.Settings.SpaceTip>
   <ContentedLivestock.Settings.Temperature>Température</ContentedLivestock.Settings.Temperature>
   <ContentedLivestock.Settings.TemperatureTip>Évaluée par rapport à la plage de confort propre à chaque animal : une étable chauffée compte pour une poule, pas pour un husky.</ContentedLivestock.Settings.TemperatureTip>
   <ContentedLivestock.Settings.Health>Santé</ContentedLivestock.Settings.Health>
