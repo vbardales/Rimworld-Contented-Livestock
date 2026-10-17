@@ -34,7 +34,7 @@ Media live on disk, ignored by git, under `Tests/Pickle/evidence/`; the paths ar
 | 7 | Company | 3 captures | **validated**: Company -10, nothing, +10 | nothing |
 | 12 | Unfertilised hen | 2 captures | **validated**: 16% against 14% from 10, the Contentment bar only on the first | nothing |
 | 11 | Harvest and laying reset | cow, sheep and hen captures | **validated** (2 of 3 in `…-49a5`, the hen in `…-09ac`): fullness back to 0.01% and 0%, same yield at 100 and 30 percent, the hen lays an egg and reads 0% egg progress, then rises slowly over an hour | nothing |
-| 15 | Settings, boundaries, reset | 8 captures | **validated**: defaults, both slider ends, plateau held at 55, eleven values kept, reset cancelled then confirmed; the buttons are clicked by translation key since `…-215f`, which passed; **seen 2026-09-28**: the grey default tick shows on every slider's track when the knob is away from it | nothing |
+| 15 | Settings, boundaries, reset | 8 captures | **validated**: defaults, both slider ends, plateau held at 55, eleven values kept, reset cancelled then confirmed; the buttons are clicked by translation key since `…-215f`, which passed; the grey default tick of 2026-09-27 was removed on 2026-10-17 (owner: it reads as odd, sliders stay vanilla); slider caps and reset window read in the capture of 2026-10-14 | nothing |
 | 16 | Each setting's effect | 12 captures | **validated**: each input adds and removes its line, floor and maximum, speed of change; the tip wording was reworded at her request | nothing |
 | 4 | Feed and its fading memory | 9 captures | **validated**: grass +25, hay none, kibble -15; the meal fades +25, +19, +6, gone at 48 hours; the two days are simulated | the two bar pictures (well fed against not): does it read at a glance |
 | 5 | Temperature per animal | 3 captures | **validated**: hen -12% in a cold snap where the husky reads +5%, hen +5% again after the snap ends | nothing |
@@ -246,8 +246,8 @@ laying job is what puts it on the map): the step now places it. The hen's captur
 ## 15. Primary settings, defaults, boundaries and reset
 
 **Status: ran 2026-09-25, request `…-67a2`, passed 4 of 4. Owner verdict 2026-09-27: the reset confirmation window
-and the slider caps are accepted as they are; a grey tick mark now shows each slider's shipped default, still to
-see in a capture.**
+and the slider caps are accepted as they are; the grey tick mark added on 2026-09-27 for each slider.s shipped default was removed on 2026-10-17;
+no capture owed for it.**
 
 **Media.** `2026-09-24/scenario-15/`, eight JPEGs, all opened at full size by Claude, all of the mod's own settings
 window over the test colony: the shipped defaults; every slider at its low end; every slider at its high end;
