@@ -6,7 +6,7 @@
 
   <!-- Infobulle du besoin -->
   <ContentedLivestock.Tip.Rate>Production de lait, de laine ou d'œufs à {0} du rythme habituel.</ContentedLivestock.Tip.Rate>
-  <ContentedLivestock.Tip.Halted>Trop malheureux pour produire. La production est gelée tant que les conditions ne s'améliorent pas.</ContentedLivestock.Tip.Halted>
+  <ContentedLivestock.Tip.Halted>Bien-être insuffisant pour produire. La production est interrompue tant que les conditions ne s'améliorent pas.</ContentedLivestock.Tip.Halted>
   <ContentedLivestock.Tip.Feed>Dernier repas : {0}</ContentedLivestock.Tip.Feed>
   <ContentedLivestock.Tip.Space>Pâture et espace : {0}</ContentedLivestock.Tip.Space>
   <ContentedLivestock.Tip.Temperature>Température : {0}</ContentedLivestock.Tip.Temperature>
@@ -18,7 +18,7 @@
 
   <ContentedLivestock.Settings.CurveHeader>Ce que vaut le bien-être</ContentedLivestock.Settings.CurveHeader>
   <ContentedLivestock.Settings.Floor>La production s'arrête sous {0} %.</ContentedLivestock.Settings.Floor>
-  <ContentedLivestock.Settings.FloorTip>Sous ce niveau, l'animal cesse complètement de se remplir. Il garde ce qu'il avait déjà accumulé. À 0 %, la production ne s'arrête jamais.</ContentedLivestock.Settings.FloorTip>
+  <ContentedLivestock.Settings.FloorTip>Sous ce niveau, la production s'arrête complètement. Les progrès déjà accumulés sont conservés. À 0 %, elle ne s'arrête jamais.</ContentedLivestock.Settings.FloorTip>
   <ContentedLivestock.Settings.Plateau>Rythme normal atteint à : {0} %</ContentedLivestock.Settings.Plateau>
   <ContentedLivestock.Settings.PlateauTip>À ce niveau, l'animal se remplit exactement au rythme du jeu de base. En dessous, le rythme descend jusqu'au seuil d'arrêt ; au-dessus, il monte jusqu'au maximum.</ContentedLivestock.Settings.PlateauTip>
   <ContentedLivestock.Settings.MinRate>Rythme le plus lent : {0} %</ContentedLivestock.Settings.MinRate>
