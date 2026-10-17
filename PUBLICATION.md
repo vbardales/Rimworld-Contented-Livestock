@@ -287,6 +287,9 @@ publication. **Before the `publish` is dispatched, nothing of this is skipped:**
    The fix is then published as a new version, through the same gates, and the item is made public again by
    hand. This is a visibility rollback, not the version rollback described in `AUDIT.md`: the commit to fall
    back on, if a version is ever wanted, is the last one whose out-of-game tests and passes were green.
+   In order of use: the visibility rollback comes first, at once and by hand, whatever the cause. The
+   "rollback published as a new version" below is only for the case where a corrected or reverted version is
+   wanted on the page, and it goes through the same gates.
 **What is lifted:** waiting for the non-regression pass, that is the replay of the rest of the suite (the
 scenarios that were never red, and the whole suite on the final build) and of the game passes still queued.
 They run right after the publication, as small tickets, and their verdict goes in `STATUS.md` and
