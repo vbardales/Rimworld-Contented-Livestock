@@ -35,3 +35,5 @@ Tests/Manual/evidence/
 
 # Reproducible Preview diagnostics generated locally by the shared renderer.
 Art/.render/
+Tests/Pickle/Inbox/
+Tests/Pickle/Parked/
