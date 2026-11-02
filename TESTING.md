@@ -11,7 +11,7 @@ after a run: `docs/MANUAL-REVIEW.md`.
 of the vanilla classes the patches hang off, settings, curves, Scribe, XML, translations). Run after every change
 to `Source/` or `Mod/`.
 
-`Tests/Pickle/Check-Steps.ps1`: compiles every local step expression and rejects duplicate or unused ones.
+`powershell -NoProfile -ExecutionPolicy Bypass -File ../scripts/Check-Steps.ps1 -Mod ContentedLivestock` (shared script of the protocols root): compiles every local step expression, rejects duplicates, warns on unused ones.
 
 ## In the game: the passes
 

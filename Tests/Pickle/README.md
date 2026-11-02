@@ -57,9 +57,10 @@ the `@review` captures belong to `done -> tested`, not to this suite-writing gat
 
 ```powershell
 dotnet build Tests/Pickle/Source/ContentedLivestock.PickleSteps.csproj -c Release
-powershell.exe -ExecutionPolicy Bypass -File Tests/Pickle/Check-Steps.ps1
+powershell.exe -ExecutionPolicy Bypass -File ../scripts/Check-Steps.ps1 -Mod ContentedLivestock
 ```
 
 The build output is `Tests/Pickle/Mod/Pickle/Assemblies/ContentedLivestock.PickleSteps.dll`.
-`Check-Steps.ps1` compiles each local Cucumber expression with Pickle's own expression engine,
-rejects duplicate or unused local patterns, and lists lines delegated to Pickle or shared tools.
+The shared `scripts/Check-Steps.ps1` of the protocols root compiles each local Cucumber expression with Pickle's
+own expression engine, rejects duplicate patterns, warns on unused ones and checks that every step line resolves to
+exactly one expression.
