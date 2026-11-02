@@ -92,13 +92,13 @@ creates every item: RimWorld never calls `SetItemVisibility`, so going public is
 
 ### Testing
 
-- `_tools/Run-Functional-Tests.ps1`, thirty-five tests in seconds with no game launched, asking
+- `Tests/Run-Functional-Tests.ps1`, thirty-three tests in seconds (two checks moved to the shared `Check-HarmonyContract.ps1`: patch targets resolve, non-public access is waived) with no game launched, asking
   whether the vanilla members this mod patches still behave as it assumes. It is what found the
   bug above, and a widening of it later turned up a third non-public member on the same footing,
-  `Pawn_NeedsTracker.pawn`, read by the postfix that grants the need at all. Twelve of them have
+  `Pawn_NeedsTracker.pawn`, read by the postfix that grants the need at all. Ten of them have
   been seen to fail under a deliberate fault; the file says which five have not, and why they
   cannot be.
-- `_tools/Settings-Tests.ps1`, covering defaults, bounds, persistence and the shortcut contract.
+- `Tests/Settings-Tests.ps1`, covering defaults, bounds, persistence and the shortcut contract.
 - `Tests/Pickle/`, twenty-four Gherkin scenarios across fifteen features, for what only a running
   game can show.
 - `_tools/FUNCTIONAL-SCENARIOS.md`, eighteen scenarios to play by hand, with what to watch and

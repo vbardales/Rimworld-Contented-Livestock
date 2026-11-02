@@ -7,9 +7,15 @@ after a run: `docs/MANUAL-REVIEW.md`.
 
 ## Out of the game
 
-`powershell -ExecutionPolicy Bypass -File Tests/Run-Functional-Tests.ps1`: 35 tests, no game launched (contracts
-of the vanilla classes the patches hang off, settings, curves, Scribe, XML, translations). Run after every change
-to `Source/` or `Mod/`.
+Two commands, run after every change to `Source/` or `Mod/`, no game launched:
+
+- `powershell -NoProfile -ExecutionPolicy Bypass -File Tests/Run-Functional-Tests.ps1`: 33 tests (contracts of the
+  vanilla classes the patches hang off, injected parameters, settings, curves, Scribe, XML, translations).
+- `powershell -NoProfile -ExecutionPolicy Bypass -File ../scripts/Check-HarmonyContract.ps1 -ModRoot . -MinPatches 4`
+  (shared script of the protocols root): 6 checks on the shipped DLL, among them two checks that used to be tests
+  of the 35 (every `[HarmonyPatch]` names a method the game has; every non-public game member the mod touches is
+  covered by `IgnoresAccessChecksTo`). Total unchanged in substance: 35 tests before 2026-11-02, 33 here plus those
+  shared checks.
 
 `powershell -NoProfile -ExecutionPolicy Bypass -File ../scripts/Check-Steps.ps1 -Mod ContentedLivestock` (shared script of the protocols root): compiles every local step expression, rejects duplicates, warns on unused ones.
 

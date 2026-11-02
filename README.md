@@ -143,11 +143,11 @@ Two halves, because they answer different questions.
 powershell -ExecutionPolicy Bypass -File Tests/Run-Functional-Tests.ps1
 ```
 
-Thirty-five tests, no game launched. The original contract checks ask whether the vanilla classes this mod hangs
+Thirty-three tests, no game launched, plus the shared `scripts/Check-HarmonyContract.ps1` (see `TESTING.md`). The original contract checks ask whether the vanilla classes this mod hangs
 itself off still do what it hangs itself off them for: that `CompTick` is declared once and
 overridden by no subclass, that it is still what stores into `fullness`, that `Thing.Ingested` is
-still the non-virtual funnel, that every `[HarmonyPatch]` still resolves, and that the patches can
-really touch the fields they wrap. Twelve of the original seventeen have been seen to fail under a
+still the non-virtual funnel, and that the patches can
+really touch the fields they wrap (the check that every `[HarmonyPatch]` still resolves moved to the shared script). Ten of the original fifteen have been seen to fail under a
 deliberate fault; the five that assert facts about the game's own assembly cannot be, and the file
 says which are which rather than glossing it. Four additional checks validate shipped XML, NeedDef fields and scalar types, DefInjected targets, and the GitHub metadata; these four have not been mutation-tested.
 

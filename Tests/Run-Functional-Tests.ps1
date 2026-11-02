@@ -24,19 +24,22 @@
     construction     the mod's own classes with no Unity state - the settings, the static rules
                      class - really are instantiated and called here.
 
-  Thirty-five tests, including the settings gate added in Settings-Tests.ps1:
+  Thirty-three tests, including the settings gate added in Settings-Tests.ps1. Two checks left this file on
+  2026-11-02 for the shared scripts/Check-HarmonyContract.ps1, which does them for any mod: that every
+  [HarmonyPatch] names a method the game has (its check 4), and that every non-public game member the mod
+  touches is covered by IgnoresAccessChecksTo (its checks 2 and 3). Run both, see TESTING.md.
 
     The hooks         why CompTick and Thing.Ingested were the only possible targets, and whether
                       that is still true of 1.6
-    The patches       every [HarmonyPatch] in the assembly resolved against the game, parameters
-                      included, plus the access rights the publicised build needs at runtime
+    The patches       injected parameters against the resolved targets, and the real access of the
+                      two comps the publicised build touches at runtime
     The mod's code    the settings and the neutral-value rule, instantiated and called
     Defs and text     the need's def, its DefOf, and every translation key the code asks for
     Settings          actual numeric logic, scalar Scribe round-trips, XML/IL access contracts
 
   Exit code 0 when everything passes, 1 otherwise. About ten seconds.
 
-  TWELVE OF THE SEVENTEEN HAVE BEEN SEEN TO FAIL, one fault at a time in a copy of the mod in a
+  TEN OF THE FIFTEEN HAVE BEEN SEEN TO FAIL, one fault at a time in a copy of the mod in a
   scratch directory, never in the real files. The other five assert facts about the game's own
   assembly and cannot be made to fail without rewriting it. Both lists are at the bottom of this
   file, and the distinction is kept rather than glossed: a test never seen red is a test that has
@@ -280,28 +283,21 @@ Group 'Every patch still lands on something'
 $patchAttr = 'HarmonyLib.HarmonyPatch'
 $script:patchedTargets = @()
 
-Test-Case 'Every [HarmonyPatch] in the assembly names a method the game still has' {
-    $problems = @()
+# Resolution of each target (does the method exist, is there at least one patch) is the shared
+# scripts/Check-HarmonyContract.ps1, check 4 and -MinPatches. What stays here is the list of resolved
+# targets that the parameter test below needs.
+& {
     foreach ($t in $modTypes) {
         foreach ($a in $t.GetCustomAttributesData()) {
             if ($a.AttributeType.FullName -ne $patchAttr) { continue }
             $args = @($a.ConstructorArguments)
             if ($args.Count -lt 2) { continue }
-
             $targetType = [Type]$args[0].Value
-            $methodName = [string]$args[1].Value
-            if ($null -eq $targetType) { $problems += "$($t.Name): patches a type that no longer resolves"; continue }
-
-            $m = $targetType.GetMethod($methodName, $ALL)
-            if ($null -eq $m) {
-                $problems += "$($t.Name): $($targetType.Name).$methodName does not exist any more"
-            } else {
-                $script:patchedTargets += ,@($t, $targetType, $m)
-            }
+            if ($null -eq $targetType) { continue }
+            $m = $targetType.GetMethod([string]$args[1].Value, $ALL)
+            if ($null -ne $m) { $script:patchedTargets += ,@($t, $targetType, $m) }
         }
     }
-    if ($script:patchedTargets.Count -eq 0) { $problems += 'no HarmonyPatch attribute found at all' }
-    if ($problems.Count -gt 0) { return ($problems -join "`n") }
 }
 
 # Harmony matches injected parameters by name and checks their types at patch time. A __instance
@@ -382,75 +378,6 @@ this kind throws on its first tick and the whole scaling half of the mod is dead
     }
 
     if ($problems.Count -gt 0) { return ($problems -join "`n") }
-}
-
-# The test above performs the access, which is the strongest evidence there is, but it can only do
-# it where an instance can be built - two comps. This one asks the wider question by reading the
-# mod's whole IL: which members of the game does it touch that are not public, and is the waiver
-# that makes those legal actually declared?
-#
-# Written after the first version of this file hardcoded two fields and would have missed a third.
-# Pawn_NeedsTracker.pawn is private and is read by the ShouldHaveNeed postfix, which is the path
-# that grants the need at all - so the fault that shipped once was wider than it first looked.
-#
-# Four other non-public members come up and are deliberately NOT faults: Need.pawn,
-# Need.threshPercents, Need.IsFrozen and the ModSettings constructor are protected, and reached
-# from a class that derives from their own. That is legal C# with no waiver of any kind, so the
-# scan excludes an access whose own type is a subclass of the declaring one. Without that rule the
-# test would cry wolf on every well-formed Need subclass in existence.
-Test-Case 'Every non-public game member the mod touches is covered by the waiver' {
-    $fieldOps  = @{ 0x7B=1; 0x7C=1; 0x7D=1; 0x7E=1; 0x7F=1; 0x80=1 }
-    $methodOps = @{ 0x28=1; 0x6F=1; 0x73=1 }
-
-    $atRisk = @{}
-    foreach ($t in $modTypes) {
-        $members = @($t.GetMethods($DECL)) + @($t.GetConstructors($DECL))
-        foreach ($meth in $members) {
-            $body = $null
-            try { $body = $meth.GetMethodBody() } catch { }
-            if ($null -eq $body) { continue }
-            $il = $body.GetILAsByteArray()
-            if ($null -eq $il) { continue }
-
-            for ($i = 0; $i -lt $il.Length - 4; $i++) {
-                $op = [int]$il[$i]
-                $isField = $fieldOps.ContainsKey($op)
-                if (-not ($isField -or $methodOps.ContainsKey($op))) { continue }
-                $tok = [BitConverter]::ToInt32($il, $i + 1)
-
-                $member = $null
-                try {
-                    if ($isField) { $member = $meth.Module.ResolveField($tok) }
-                    else { $member = $meth.Module.ResolveMethod($tok) }
-                } catch { continue }
-                if ($null -eq $member -or $null -eq $member.DeclaringType) { continue }
-                if ($member.DeclaringType.Assembly.GetName().Name -ne 'Assembly-CSharp') { continue }
-                if ($member.IsPublic) { continue }
-
-                # protected, reached from a subclass through `this`: legal, no waiver involved
-                if ($member.DeclaringType.IsAssignableFrom($t)) { continue }
-
-                $atRisk['{0}.{1}' -f $member.DeclaringType.FullName, $member.Name] = $t.Name
-            }
-        }
-    }
-
-    if ($atRisk.Count -eq 0) { return }
-
-    $waived = $false
-    foreach ($a in [System.Reflection.CustomAttributeData]::GetCustomAttributes($modAsm)) {
-        if ($a.AttributeType.Name -notlike 'IgnoresAccessChecksTo*') { continue }
-        foreach ($arg in $a.ConstructorArguments) {
-            if ([string]$arg.Value -eq 'Assembly-CSharp') { $waived = $true }
-        }
-    }
-
-    if (-not $waived) {
-        $lines = foreach ($k in ($atRisk.Keys | Sort-Object)) { "  $k  (from $($atRisk[$k]))" }
-        return ("the mod touches these non-public members of the game:`n" + ($lines -join "`n") + "`n
-and its assembly declares no IgnoresAccessChecksTo(`"Assembly-CSharp`"). Each of them throws
-FieldAccessException or MethodAccessException the first time it is reached.")
-    }
 }
 
 # The reason the need cannot be restricted by its def alone, stated as a fact about NeedDef rather
@@ -792,12 +719,12 @@ if ($script:failed -eq 0) {
 <#
   SEEN TO FAIL
 
-  Twelve tests, each woken by one fault applied on its own to a copy of the mod in a scratch
+  Twelve tests when the file held them, ten left here, each woken by one fault applied on its own to a copy of the mod in a scratch
   directory, never to the real files. The test named is the one that went red.
 
     the access waiver removed             The patches can really touch the fields they wrap
-                                          Every non-public game member ... covered by the waiver
-    a patched method misspelt             Every [HarmonyPatch] ... names a method the game still has
+                                          (the wider waiver scan and the misspelt-method test moved to
+                                          Check-HarmonyContract on 2026-11-02, mutations not replayed there)
     __state typed double in a prefix      Injected parameters agree ...
     __result typed int                    Injected parameters agree ...
     maxRateFactor lowered to 0.9          The documented curve is the shipped default ...
@@ -838,7 +765,6 @@ if ($script:failed -eq 0) {
       access test names CompMilkable and CompEggLayer because those are the two that can be
       instantiated here; scanning the whole assembly afterwards turned up a THIRD non-public
       member with no instance to build - Pawn_NeedsTracker.pawn, private, read by the postfix
-      that grants the need at all. Hence the wider test beside it, which enumerates rather than
-      lists. It also has to exclude the four protected members reached from their own subclasses,
-      Need.pawn among them: those need no waiver and would otherwise be four false alarms.
+      that grants the need at all. Hence a wider scan that enumerates rather than lists, now the
+      shared Check-HarmonyContract (it excludes the protected members reached from their own subclasses).
 #>
