@@ -1,50 +1,29 @@
 {
-  "title": "Contented Livestock",
-  "titleSize": 54,
-  "titleParts": [
-    {
-      "text": "Contented",
-      "scale": 1
-    },
-    {
-      "text": "Livestock",
-      "scale": 1,
-      "breakBefore": true
-    }
-  ],
-  "suffix": "",
-  "tag": "",
-  "copyLines": [
-    "How you keep an animal decides what it gives you."
-  ],
-  "layout": "panel",
-  "panelAnchor": "top-left",
+  "panel": {
+    "title": "Contented Livestock",
+    "titleSize": 54,
+    "titleParts": [
+      {
+        "text": "Contented",
+        "scale": 1
+      },
+      {
+        "text": "Livestock",
+        "scale": 1,
+        "breakBefore": true
+      }
+    ],
+    "copyLines": [
+      "How you keep an animal decides what it gives you."
+    ]
+  },
   "backgroundFile": "Preview-source.png",
-  "backgroundPosition": "center",
-  "backgroundSize": "cover",
   "echo": {
     "file": "echo-source.png",
-    "preSized": true,
-    "color": "var(--accent)",
-    "width": 200,
-    "height": 133,
-    "opacity": 1,
-    "veil": false,
-    "panelTop": 3,
-    "panelRight": -1,
-    "panelWidth": 38,
-    "flipX": true
+    "color": "var(--accent)"
   },
   "iconBadge": {
-    "file": "ModIcon-source.png",
-    "corner": "bottom-left",
-    "width": 180,
-    "outline": false,
-    "veil": "radial",
-    "veilSize": 275,
-    "veilLeft": -55,
-    "veilBottom": -61,
-    "translate": "-12.5%, 12.5%"
+    "file": "ModIcon-source.png"
   },
   "palette": {
     "veil": "#242838",
