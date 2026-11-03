@@ -15,14 +15,13 @@
     ],
     "copyLines": [
       "How you keep an animal decides what it gives you."
-    ],
-    "panelAnchor": "bottom-right"
+    ]
   },
   "backgroundFile": "Preview-source.png",
   "echo": {
     "file": "echo-source.png"
   },
-  "iconBadge": {
+  "icon": {
     "file": "ModIcon-source.png",
     "corner": "top-left"
   },
