@@ -9,7 +9,7 @@ after a run: `docs/MANUAL-REVIEW.md`.
 
 Two commands, run after every change to `Source/` or `Mod/`, no game launched:
 
-- `powershell -NoProfile -ExecutionPolicy Bypass -File Tests/Run-Functional-Tests.ps1`: 33 tests (contracts of the
+- `powershell -NoProfile -ExecutionPolicy Bypass -File Tests/Run-Functional-Tests.ps1`: 22 checks (contracts of the
   vanilla classes the patches hang off, injected parameters, settings, curves, Scribe, XML, translations).
 - `powershell -NoProfile -ExecutionPolicy Bypass -File ../scripts/Check-HarmonyContract.ps1 -ModRoot . -MinPatches 4`
   (shared script of the protocols root): 6 checks on the shipped DLL, among them two checks that used to be tests
@@ -89,7 +89,7 @@ The tip in the review captures is a message box opened by the test, not the game
 ## Functional scenarios (AUDIT.md 7.a, single source)
 
 
-`Tests/Run-Functional-Tests.ps1` answers "do classes this mod leans on still do what it leans on them for". Cannot answer "does mod do what it says" — needs map, clock, animal. Scenarios below do, each with single thing to watch, single way of being wrong.
+`Tests/Rule-OwnValues.ps1` answers "do classes this mod leans on still do what it leans on them for". Cannot answer "does mod do what it says" — needs map, clock, animal. Scenarios below do, each with single thing to watch, single way of being wrong.
 
 Mod never run in game. Until scenario 0 passes, nothing below worth playing.
 

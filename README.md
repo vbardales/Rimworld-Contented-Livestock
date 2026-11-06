@@ -140,10 +140,10 @@ special case, it is the neutral value. Backward compatibility of saves is not ha
 Two halves, because they answer different questions.
 
 ```bash
-powershell -ExecutionPolicy Bypass -File Tests/Run-Functional-Tests.ps1
+powershell -ExecutionPolicy Bypass -File Tests/Rule-OwnValues.ps1
 ```
 
-Thirty-three tests, no game launched, plus the shared `scripts/Check-HarmonyContract.ps1` (see `TESTING.md`). The original contract checks ask whether the vanilla classes this mod hangs
+Twenty-two own checks, no game launched, plus the shared `scripts/Check-HarmonyContract.ps1` (see `TESTING.md`). The original contract checks ask whether the vanilla classes this mod hangs
 itself off still do what it hangs itself off them for: that `CompTick` is declared once and
 overridden by no subclass, that it is still what stores into `fullness`, that `Thing.Ingested` is
 still the non-virtual funnel, and that the patches can
