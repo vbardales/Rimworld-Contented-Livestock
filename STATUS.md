@@ -46,7 +46,7 @@ updated:      2026-10-10, audit against the AUDIT.md of 2026-10-10: done becomes
 echo_review_sha: c1ea64fc52a95f0771d2842a1073cc3c64eb0338
 social_preview_sha256: 73254f46f75d151ad84884a4b5120e65e60fd426a0a83967771e7b5385d96f52
 code_review_sha: 867d8b730b30ab76f7013507aa39cd4a9cf81e15
-protocols_read_sha: 5300f94f4037eb8ae2de438dfb9f22ec530edfe3
+protocols_read_sha: 4efde0ab867ce4597e5df67ba847746cb940d010
 ---
 # Contented Livestock: status
 
