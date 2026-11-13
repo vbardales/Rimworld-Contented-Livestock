@@ -2,7 +2,7 @@
 <LanguageData>
 
   <ContentedLivestock.Settings.Category>Contented Livestock</ContentedLivestock.Settings.Category>
-  <ContentedLivestock.Settings.Scope>Les réglages sont globaux et enregistrés à la fermeture de cette fenêtre. Les changements s'appliquent à la reprise du jeu ; le bien-être évolue ensuite progressivement. La fermeture actualise aussi l'éligibilité des animaux et invalide les observations de pâture et de compagnie mises en cache. RIMMSQoL (RIM-GMCJ) et les outils compatibles peuvent afficher un raccourci dans la barre principale vers cette même page ; il est masqué par défaut.</ContentedLivestock.Settings.Scope>
+  <ContentedLivestock.Settings.Scope>Les réglages sont globaux et enregistrés à la fermeture de cette fenêtre. Les changements s'appliquent à la reprise du jeu ; le bien-être évolue ensuite progressivement. La fermeture actualise aussi l'éligibilité des animaux et invalide les observations de pâture et de compagnie mises en cache. RIMMSqol (RIM-GMCJ) et les outils compatibles peuvent afficher un raccourci dans la barre principale vers cette même page ; il est masqué par défaut.</ContentedLivestock.Settings.Scope>
 
   <!-- Infobulle du besoin -->
   <ContentedLivestock.Tip.Rate>Production de lait, de laine ou d'œufs à {0} du rythme habituel.</ContentedLivestock.Tip.Rate>
