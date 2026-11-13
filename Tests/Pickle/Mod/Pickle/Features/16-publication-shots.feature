@@ -21,7 +21,7 @@
 #
 # Animal names must not exist in the fixture: the steps take the first pawn of that name. The zen
 # meadow already has a macaw called "Clover", which is why the cows are not.
-@review @requires:nelim.pickletools.screenshotstudio @requires:nelim.pickletools.screenshotmode
+@review @requires:nelim.pickletools.screenshotstudio @requires:nelim.pickletools.screenshotmode @requires:nelim.pickletools.clickdiagnostics @requires:nelim.pickletools.coatsteps @requires:nelim.pickletools.stagedecor
 Feature: Workshop pictures
 
   Background:

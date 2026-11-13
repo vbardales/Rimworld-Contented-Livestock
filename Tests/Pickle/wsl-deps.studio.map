@@ -7,3 +7,4 @@ nelim.pickletools.screenshotstudio path:PickleTools/ScreenshotStudio/Mod
 nelim.pickletools.screenshotmode   path:PickleTools/ScreenshotMode/Mod
 nelim.pickletools.stagedecor path:PickleTools/StageDecor/Mod
 nelim.pickletools.coatsteps path:PickleTools/CoatSteps/Mod
+nelim.pickletools.clickdiagnostics path:PickleTools/ClickDiagnostics/Mod
