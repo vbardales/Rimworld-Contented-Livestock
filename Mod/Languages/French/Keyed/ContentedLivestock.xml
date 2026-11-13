@@ -24,7 +24,7 @@
   <ContentedLivestock.Settings.MinRate>Rythme le plus lent : {0} %</ContentedLivestock.Settings.MinRate>
   <ContentedLivestock.Settings.MinRateTip>Le rythme juste au-dessus du seuil d'arrêt, en proportion du rythme du jeu de base.</ContentedLivestock.Settings.MinRateTip>
   <ContentedLivestock.Settings.MaxRate>Rythme le plus rapide : {0} %</ContentedLivestock.Settings.MaxRate>
-  <ContentedLivestock.Settings.MaxRateTip>Le rythme au bien-être maximal. À 100 %, le mod ne fait plus que pénaliser, sans jamais récompenser.</ContentedLivestock.Settings.MaxRateTip>
+  <ContentedLivestock.Settings.MaxRateTip>Le rythme lorsque le bien-être est maximal. À 100 %, le mod ne fait plus que pénaliser, sans jamais récompenser.</ContentedLivestock.Settings.MaxRateTip>
   <ContentedLivestock.Settings.Speed>Vitesse d'évolution : {0} %</ContentedLivestock.Settings.Speed>
   <ContentedLivestock.Settings.SpeedTip>La vitesse à laquelle le bien-être peut évoluer en une journée. À 100 %, un animal met une journée entière pour passer du pire au meilleur, ou l'inverse.</ContentedLivestock.Settings.SpeedTip>
 
