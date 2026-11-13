@@ -9,13 +9,14 @@ packageId:    nelim.contentedlivestock
 repo:         Rimworld-Contented-Livestock
 visibility:   public
 detached:     yes
-workflow_stage: playTests[1.0.0]
+workflow_stage: writeTests[1.0.0]
 audit_revision: 5fbc56736e3477a3f5a8b1600e3a7427749ff80d
 audit_date: 2026-10-10
 licence:      original
 license_spdx: MIT
 licence_at:   an original creation, MIT with no reservation. Nothing is reused from another mod - no code, no def, no texture, no sound - and the `LICENSE` is a bare MIT with no scope section, so the showcase images fall under it too. The mechanic is Stardew Valley's, credited in ATTRIBUTION.md and reused from none of its lines.
 upstream_mod_remotes: N/A
+workshop_required_items: "n/a, not released yet (prepublication 0.1.0 only, owner decision 2026-11-10: we will see at 1.0.0)"
 dependencies: "brrainz.harmony (required); RIMMSQOL optional, Pickle integration and restart persistence passed"
 showcase:     complete
 tested_on:    "RimWorld 1.6.4871 rev600, Harmony 2.4.2.0, initial pass 2026-11-13 on 64ad171 (DLL unchanged since C105BF9A830D66C7); RIMMSQOL restart chain 05, 06, 07 green 2026-11-13 (8e5a)"
@@ -25,6 +26,7 @@ pickle_scenarios: 51 defined; on the current DLL only the initial pass of 2026-1
 manual_scenarios: 18 documented; 4 completed with reviewed media (0, 1, 6, 13); rule of 2026-09-25 (owner): she validates only what Claude cannot, so Claude's own verdict counts for what it can read. Validated by Claude on 2026-09-25 from opened captures: 3, 7, 9, 10, 11 (cow and sheep), 12, 16, and 4 and 15 for their machine-readable content; left for her eye: the reset confirmation window and slider caps of 15, and the four Workshop pictures (1 accepted, 4 sent); rerun done since: 5, 11 (hen), 15 (keyed clicks); 8 validated 2026-09-28 (growth staged: Desert tile); 14 out of scope. Table in docs/MANUAL-REVIEW.md
 manual_visual_evidence: none kept on disk (2026-10-18, owner rule: Tests/Pickle/Evidence/ holds minified proofs only, under 2 MB; runs land in Tests/Pickle/Inbox/). History is one line per run in docs/runs/. Nothing of this is in git.
 remaining:
+  - "audit replay 2026-11-13 (ledger .replays/ContentedLivestock-20261113.tsv, Check-Replay OK, 57 rows, 49 done, 7 n/a, 1 open): first open 7.d. `Check-Steps.ps1` exit 1: `16-publication-shots.feature` uses steps of ClickDiagnostics, CoatSteps and StageDecor with no `@requires` for them, and no `wsl-deps.*.map` stages `nelim.pickletools.clickdiagnostics` (the studio map has coatsteps and stagedecor only). Fix in Tests/Pickle (three `@requires` tags on feature 16, one map line, check with Check-Steps), then replay to return to playTests. Replay never touches Tests/. Fixed in place by the replay: `.gitattributes` created (1.f), `workshop_required_items` added as n/a not released yet (4.g). Above 7.d everything is done with a proof. Beyond the stop, still owed in playTests: 8.d captures opened (none of the 2026-11-13 runs opened), 8.l one line per run since 2026-10-17 in Docs/runs, 8.m code_review_sha (diff 867d8b7..HEAD read by an Opus sub-agent: no defect, text only plus Preview.png)."
   - "French text changed 2026-11-13 (e2fb285, text only, DLL unchanged): `Settings.ConfirmReset` and `Nelim_ContentedLivestockSettings.description` now cite `Contented Livestock (Bétail épanoui)` (title decided by Virginie 2026-11-13, Audit registry, Docs/review-names.md). Not read in game. RIMMSQOL in `Settings.Scope`: name decision pending with Virginie (my proposal: keep as is). Ticket 94ca stages the tree at its run, so it carries this text."
   - "5c2c result (2026-11-13, read from summary.json, folder deleted): `-Filter 02-settings-and-language -Language French`, 3 of 3 passed, `exitReason: passed`, incl. `every keyed text is loaded for this language` (step fix works) on the tree with the RIMMSQoL (RIM-GMCJ) French text. French settings pages green on this DLL.
   - "French settings result (2026-11-13, read, folder deleted): ticket 6d3b (azure) 6 of 7 passed incl. scenario 15 French reset confirmation; red: `every keyed text is loaded for this language` (feature 02), `only 0 English keys start with 'ContentedLivestock.', expected at least 36`: the step counts English fallback keys and a French pass had not loaded them (step unchanged since 2026-09-22, passed in French 2026-10-17 on an older game build; the 1.6.4871 build changed that). Not a mod fault. Fixed in the Pickle step (`LanguageSteps.cs` loads the English fallback when empty), steps DLL rebuilt and committed. Refiled alone: ticket 20261113-201907-523-5c2c (`-Filter 02-settings-and-language -Language French`), evidence Tests/Pickle/Inbox/french-keyed. Check the Inbox before waiting. The Settings.Scope French text (RIMMSQoL (RIM-GMCJ)) is on the tree it stages."
@@ -50,11 +52,11 @@ remaining:
   - "prepared, not released (PUBLICATION.md): section 1 holds the full Steam description in BBCode, the dependency and content-box answers and three thanks drafts under 1000 characters. Publication goes through the CI (workflow generated 2026-09-24, 48 of 48 script tests passed, version 1.0.0). CHANGELOG.md keeps `## Unreleased` until the dry-run commit. Needs the tested gate, a presentation picture to redo (the cow with its tip: a stray tooltip, scene fixed, rerun owed), the owner's review of PUBLICATION.md and CHANGELOG.md for the 1.0 line, and a yes for the tag and the GitHub release. Not before shootGallery."
   - "unverified: `tested_on` stays empty until a green in-game pass records the game and integration versions."
 session:      72f45cb8-7e45-4dea-bfa8-11aee1b7b75b
-updated:      2026-10-10, audit against the AUDIT.md of 2026-10-10: done becomes playTests[1.0.0], _tools/ moved to scripts/, journal moved to docs/runs/, icon derivatives and Preview regenerated, FRENCH_REVIEW.md regenerated by the shared script
+updated:      2026-11-13, audit replay from zero: first open 7.d (Check-Steps exit 1), stage back to writeTests[1.0.0]; .gitattributes and workshop_required_items added in place
 echo_review_sha: c1ea64fc52a95f0771d2842a1073cc3c64eb0338
 social_preview_sha256: 73254f46f75d151ad84884a4b5120e65e60fd426a0a83967771e7b5385d96f52
 code_review_sha: 867d8b730b30ab76f7013507aa39cd4a9cf81e15
-protocols_read_sha: 80d05a395e1803f96a90bcf05cffca22c0210641
+protocols_read_sha: e4c9afffdd67faa80688c7f2aa9ad78ee01b949a
 ---
 # Contented Livestock: status
 
