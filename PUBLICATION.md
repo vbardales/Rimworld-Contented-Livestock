@@ -18,7 +18,7 @@ sent, posted or tagged.
 | Manual scenarios in `TESTING.md` | 4 of 18 complete, 1 partial, 12 unplayed, 1 out of scope (14). Method and progress: `docs/MANUAL-REVIEW.md` |
 | Pickle passes against the current revision | `runtime-evidence` passed 17 of 24, `avec-rimmsqol` 6 of 6, `runtime-film` 1 of 1, 0 failed: every conditional scenario has run |
 | Presentation pictures | six in `Art/Gallery/`: `0-preview.png` (owner rule, a byte-identical copy of `Mod/About/Preview.png`, itself carrying the transparent ModIcon in the bottom-left corner, tilted +15deg), four JPEGs accepted 2026-09-25 and a fifth (Grass and Kibble bars) on 2026-09-28; the upload to the Steam page is manual |
-| Publication workflow | generated 2026-09-24 (`.github/`), 72 of 72 script tests pass; no dry-run has run, see section 6 |
+| Publication workflow | generated 2026-09-24 (72 script tests), regenerated 2026-09-25 (`.github/`), 57 of 57 script tests pass; no dry-run has run, see section 6 |
 | Tag and GitHub release | created by the CI after a successful upload, never by hand |
 | Item tested by subscribing to it, then made public by hand | not done |
 
@@ -49,7 +49,7 @@ The page created for 0.1.0 carries the older text: it has the promise about save
 and has no licence line. The first publish with the description option corrects all three.
 
 ```markdown
-A cow in RimWorld gives the same fourteen milk whether it spends its life on good grass or in a concrete corridor. This mod makes how you keep an animal decide what it gives you.
+A cow in RimWorld produces the same fourteen units of milk whether it spends its life on good grass or in a concrete corridor. This mod makes how you keep an animal decide what it gives you.
 
 ## WHAT IT ADDS
 
@@ -105,7 +105,7 @@ This mod was written with Claude Code (Anthropic) and OpenAI Codex under human d
 
 ConcernedApe, whose farm animals in Stardew Valley refuse to give anything at all when they are unhappy, and give their best when they have been let out on fresh grass. The idea is his; none of his work is here.
 
-Andreas Pardeike, for [Harmony](https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077), which every patch of this mod stands on. The author of [RIMMSQOL](https://steamcommunity.com/sharedfiles/filedetails/?id=1084452457), the tool the optional settings shortcut was built to be revealed by, and which the tests exercised. The tests also ran on [Pickle](https://steamcommunity.com/sharedfiles/filedetails/?id=3791648678), [RimLogging](https://steamcommunity.com/sharedfiles/filedetails/?id=3733484696) and [Nelim's Pickle Tools](https://steamcommunity.com/sharedfiles/filedetails/?id=3806142401): development only, never a dependency of this mod.
+Andreas Pardeike, for [Harmony](https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077), which every patch of this mod stands on. The author of [RIMMSQOL](https://steamcommunity.com/sharedfiles/filedetails/?id=1084452457), whose tool can reveal the optional settings shortcut and which the tests exercised. The tests also ran on [Pickle](https://steamcommunity.com/sharedfiles/filedetails/?id=3791648678), [RimLogging](https://steamcommunity.com/sharedfiles/filedetails/?id=3733484696) and [Nelim's Pickle Tools](https://steamcommunity.com/sharedfiles/filedetails/?id=3806142401): development only, never a dependency of this mod.
 
 [Source code on GitHub](https://github.com/vbardales/Rimworld-Contented-Livestock)
 ```
