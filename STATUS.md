@@ -95,6 +95,20 @@ scenario alone; conditional scenarios on their passes; in-game settings and EN a
 
 Recommendations, not blockers: replace em dashes of player-facing strings in `Mod/Languages/*/Keyed/ContentedLivestock.xml` at next text change, with her review; bring `ModIcon.png` under 30 KB if owner want band respected (was 32.5 KB before, also above). Scenario file is `TESTING.md` since 2026-10-11 (AUDIT.md 7.a name, asked by Audit workflow session).
 
+## Ecosystem
+
+Refresh of 2026-11-13 (AUDIT 1.a and 8.0), done by PiI on the Steam Workshop through Chrome (searches `Contented Livestock`, `happy animals livestock mood`, `Stardew animals`) plus one local corpus scan, full study in `docs/inventory/ecosystem-steam/ContentedLivestock.md` of the protocols repository (commit 3975801). Original creation, no upstream, no original id to search.
+
+| Workshop id | Title | Type | Found by |
+|---|---|---|---|
+| 2960610215 | Livestock Traders | same subject area only, no overlap | Steam |
+| 3556058978 | FEB's Biopunk Livestock | same subject area only, no overlap | Steam |
+| 1700683323 | Vanilla Animals Expanded - Livestock | same subject area only, no overlap | Steam |
+| 2581603685 | Mood Matters | same subject area only, no overlap | Steam |
+| 2680751877 | Caravan Mood Buff | same subject area only, no overlap | Steam |
+
+Verdict: no duplicate, no fork, no replacement, no mod that patches, retextures, translates or cites 3806136625; corpus scan of the two defNames and two labels returned no hit. None gives animals a contentment level from care. The mod goes on. Nothing subscribed.
+
 ## Settings audit
 
 Complete for technical gate (2026-09-13, rechecked by automated tests 2026-10-10). Eleven useful settings, in
