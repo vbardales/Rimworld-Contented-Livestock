@@ -1,10 +1,44 @@
 # Presentation pass for the Workshop screenshots in 16-publication-shots.feature.
 #
-# It stages the reusable, all-DLC zen-meadow fixture. Kept apart from every functional set on purpose:
-# store-page pictures should show Contented Livestock alone, and no functional scenario is allowed to
-# acquire a scenic-fixture dependency by accident.
+# It stages the Sanctuary save (Nelims-tribe-decor-mods-z3) with the mods that save needs, the same set as
+# SanctuaryBacklot's wsl-deps.sanctuary.map, plus ScreenshotMode and SanctuaryBacklot (the named places). Kept apart from every functional set on
+# purpose: store-page pictures should show Contented Livestock in the Sanctuary, and no functional scenario
+# is allowed to acquire a scenic-fixture dependency by accident.
 nelim.pickletools.screenshotstudio path:PickleTools/ScreenshotStudio/Mod
-nelim.pickletools.screenshotmode   path:PickleTools/ScreenshotMode/Mod
+nelim.pickletools.camerazoom path:PickleTools/CameraZoom/Mod
 nelim.pickletools.stagedecor path:PickleTools/StageDecor/Mod
 nelim.pickletools.coatsteps path:PickleTools/CoatSteps/Mod
+nelim.pickletools.clearscreen path:PickleTools/ClearScreen/Mod
+nelim.pickletools.research path:PickleTools/ResearchSteps/Mod
+nelim.pickletools.colonistrace path:PickleTools/ColonistRace/Mod
 nelim.pickletools.clickdiagnostics path:PickleTools/ClickDiagnostics/Mod
+nelim.pickletools   path:PickleTools/Tests/Pickle/StandaloneBase/Mod
+brrainz.harmony 2009463077
+OskarPotocki.VanillaFactionsExpanded.Core 2023507013
+VanillaExpanded.VAPPE 1814987817
+VanillaExpanded.VHE 1888705256
+Mlie.FashionRIMsta 3592569869
+homebrew.fairycoreapparel2 3812924898
+tiagocc0.FemaleBodyVariants 3798082132
+tiagocc0.FemaleApparelVariants 3799726535
+wdi.realistic.bodies 3527486510
+ab.vplrf 2986402536
+nelim.venustouch.waistlines path:VenusTouchWaistlines/Mod
+Nals.FacialAnimation 1635901197
+nals.facialanimationexperimentals 2581693737
+VanillaExpanded.VTEXE.FacialAnims 2816938779
+Newton.AKNExtras.FacialAnimations 2889716301
+lucius.eyegenes3 3745223213
+astryl.FacialAnimationPerformancePatch 3790129900
+vk.addeyes.EX 3694711465
+sd.fa.movingvanillaeyes 3753978140
+SleepyFrieren.beautygenefa 3685072616
+ria.cuterkidsforfacialanimation 3807706870
+Moshii.NLFA.InitFix 3609895011
+ccj.nlfaloadfix 3721489042
+lordfelix.HatHairControl 3760821540
+rooboid.hdhair.continued 3559870636
+VanillaExpanded.VHE 1888705256
+akairo.LetsHaveaCat 3682940618
+nelim.pickletools.screenshotmode   path:PickleTools/ScreenshotMode/Mod
+nelim.sanctuarybacklot path:SanctuaryBacklot/Mod
