@@ -19,9 +19,12 @@
 # under the pointer, so the second run still showed her name. She is now sent far from the clearing first.
 # Scenes 2 and 3 had no pawn under the pointer and need no change.
 #
+# The save holds one colonist, Nelim (SanctuaryBacklot, "Qui une galerie peut utiliser"): she is the pawn sent away from the clearing
+# (the earlier lines call her Miel, who is not in the save). The cows keep the vanilla coat: no loaded mod gives Cow alternate coats.
+#
 # Animal names must not exist in the save: the steps take the first pawn of that name. The Sanctuary has none called
 # Daisy, Buttercup or Thistle.
-@review @requires:nelim.sanctuarybacklot @requires:nelim.pickletools.screenshotstudio @requires:nelim.pickletools.screenshotmode @requires:nelim.pickletools.clickdiagnostics @requires:nelim.pickletools.coatsteps @requires:nelim.pickletools.stagedecor
+@review @requires:nelim.sanctuarybacklot @requires:nelim.pickletools.screenshotstudio @requires:nelim.pickletools.screenshotmode @requires:nelim.pickletools.clickdiagnostics @requires:nelim.pickletools.stagedecor
 Feature: Workshop pictures
 
   Background:
@@ -33,9 +36,8 @@ Feature: Workshop pictures
     And Contented Livestock restores its default settings
 
   Scenario: a cow with its contentment bar and the live tip
-    Given Contented Livestock sends the colonist "Miel" to x 97 and z 152
+    Given Contented Livestock sends the colonist "Nelim" to x 97 and z 152
     And Contented Livestock spawns the player animal "Daisy" as "Cow" near x 195 and z 152
-    And Nelim's Pickle Tools: the animal "Daisy" is given coat 1
     And Nelim's Pickle Tools: I place the decor "TorchLamp" at (192, 154)
     And Nelim's Pickle Tools: the decor "TorchLamp" at (192, 154) is lit
     And Nelim's Pickle Tools: I place the decor "PlantPot" at (198, 154)
@@ -55,8 +57,6 @@ Feature: Workshop pictures
   Scenario: two cows after the same two hours, one kept well and one badly
     Given Contented Livestock spawns the player animal "Buttercup" as "Cow" near x 195 and z 152
     And Contented Livestock spawns the player animal "Thistle" as "Cow" near x 195 and z 152
-    And Nelim's Pickle Tools: the animal "Buttercup" is given coat -1
-    And Nelim's Pickle Tools: the animal "Thistle" is given coat 2
     And Nelim's Pickle Tools: I place the decor "TorchLamp" at (192, 154)
     And Nelim's Pickle Tools: the decor "TorchLamp" at (192, 154) is lit
     And Nelim's Pickle Tools: I place the decor "PlantPot" at (198, 154)
@@ -82,7 +82,7 @@ Feature: Workshop pictures
     When Nelim's Pickle Tools: the decor is removed
 
   Scenario: the settings page over the clearing, with a cow's contentment bar beside it
-    Given Contented Livestock sends the colonist "Miel" to x 97 and z 152
+    Given Contented Livestock sends the colonist "Nelim" to x 97 and z 152
     And Contented Livestock spawns the player animal "Daisy" as "Cow" near x 195 and z 152
     And Contented Livestock records that "Daisy" ate "RawCorn"
     When Contented Livestock sets "Daisy" to 72 percent contentment
