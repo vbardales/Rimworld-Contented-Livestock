@@ -9,7 +9,7 @@ packageId:    nelim.contentedlivestock
 repo:         Rimworld-Contented-Livestock
 visibility:   public
 detached:     yes
-workflow_stage: playTests[1.0.0]
+workflow_stage: shootGallery[1.0.0]
 audit_revision: 5fbc56736e3477a3f5a8b1600e3a7427749ff80d
 audit_date: 2026-10-10
 licence:      original
@@ -57,7 +57,7 @@ updated:      2026-11-13, audit replay: 7.d fixed in Tests/Pickle, stage back to
 echo_review_sha: c1ea64fc52a95f0771d2842a1073cc3c64eb0338
 social_preview_sha256: 73254f46f75d151ad84884a4b5120e65e60fd426a0a83967771e7b5385d96f52
 code_review_sha: e26a51c0ea2e7f175b8180173155252f199c275a
-protocols_read_sha: dddcca85e672b664998fb0d8101c917de095eadd
+protocols_read_sha: 1fa8659d18ca2adf12fb05a80946271dc5d14fc0
 ---
 # Contented Livestock: status
 
