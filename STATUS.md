@@ -139,6 +139,28 @@ Required: `brrainz.harmony`. Optional integration: RIMMSQOL (reveal hidden short
 `avec-rimmsqol` pass. Pickle and companions development only. Mod add no animal, patch no other mod, so
 four animal integrations of `ANIMALS.md` not apply. No DLC dependency.
 
+## NSB
+
+Sync 2026-11-15. NSB changed since 2026-11-05 (decor, batches 5l and 5m, fixture z3, Beauty2 mouth patch): nothing the mod uses moved. Feature 16 loads `Nelims-tribe-decor-mods-z3` and frames Nelim's Sanctuary `bare-clearing` (still item 2 of GALERIE-ORDRE.md). NPT added a step that hides the main bar, the speed controls and the mouse-over readout (no description yet): not used, the Needs pane and the tip are the subject and the six gallery pictures are final.
+
+Places read: 2026-11-15 Tribe read: 2026-11-15 Steps read: 2026-11-15
+
+| Place | Shots | Changes for the gallery | Last read |
+|---|---|---|---|
+| bare-clearing (195, 152) | 1 to 4 | TorchLamp (192, 154) lit, PlantPots (198, 154) and (192, 150), removed at the end | 2026-11-15 |
+
+| Colonist | Shots | Outfit | Last read | Exceptions |
+|---|---|---|---|---|
+| Nelim (in the save) | 1 to 4, off screen or sent to x 97 | none shown | 2026-11-15 | none |
+
+| Animal | Shots | Outfit | Last read | Exceptions |
+|---|---|---|---|---|
+| Daisy, Buttercup, Thistle (anonymous Cow, named by the scenario) | 1 to 4 | none | 2026-11-15 (SANCTUAIRE-LIEUX: anonymous fauna, Vache 4, is decor) | none, no NSB name used |
+
+| Animal the mod includes | Shots |
+|---|---|
+| none: the mod adds a need to existing livestock, no animal | n/a |
+
 ## Publication state
 
 `PublishedFileId.txt` hold item 3806136625 (0.1.0, prepublished 2026-09-23, private). `CHANGELOG.md` keep
