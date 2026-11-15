@@ -1,10 +1,10 @@
 # Shooting plan, written 2026-11-15 (shotlist, director pass by an Opus sub-agent, kept: Nelim in frame, more pots, wider opener).
 # Story: one afternoon at Nelim's clearing in her Sanctuary: she keeps cows, and how a cow is kept shows in how fast it fills.
 # Time: the save's own hour, permanent summer, each scene reloads the save; scene 2 lets two game hours pass (5,000 ticks).
-#   1. cow-with-contentment-and-tip (opener, medium-wide): Nelim's Sanctuary bare-clearing at x 195 and z 152, clear, about 30 ticks after setup. Daisy at 72 percent, standing right of centre and low, Nelim beside her at x 196 and z 153 in her saved outfit (pants and corset, smile kept from the save), TorchLamp (192, 154) lit, PlantPot (198, 154), PlantPot (192, 150), PlantPot (190, 152) in an arc behind. Live tip top left, mouse parked bottom right. Just before: Nelim came to check the cow; just after: she reads the bar. Gesture: no step makes a cow act, the cow stays wandering, the pause is Nelim at her side. Reads in the image: this cow is at 72 percent and fills at 112 percent of the usual rate. Subtitle: Contentment: how settled a cow is, and how fast it fills.
-#   2. two-cows-after-two-hours (medium, a pair read together): same clearing, near x 185 and z 152, two game hours later. Buttercup at 100 percent and Thistle at 30 percent, Nelim sent to x 188 and z 153 so she stays near, TorchLamp (192, 154) lit, PlantPot (198, 154), PlantPot (190, 150). Capture one selects Buttercup (milk 11 percent), capture two selects Thistle (milk 4.7 percent), the camera 3 cells right of the cow so the map edge stays out. Just after: the keeper compares the two. Reads in the image: same two hours, one cow filled more than twice as much. Subtitle: Same two hours, one well kept cow, one neglected.
+#   1. cow-with-contentment-and-tip (opener, medium-wide): Nelim's Sanctuary bare-clearing at x 195 and z 152, clear, midday on the save clock, about 30 ticks after setup. Daisy at 72 percent, seen from the front (faces South, held), right of centre and low, Nelim caught mid-stride walking in from x 190 and z 153 to x 196 and z 153, in her saved outfit (yellow tunic, dark brown hair as in the 2026-11-15 captures, apparel unchanged) with her canon smirk mouth, TorchLamp (192, 154) lit, PlantPot (198, 154), PlantPot (192, 150), PlantPot (190, 152) in an arc behind. Live tip top left, mouse parked bottom right. Just before: Nelim came to check the cow; just after: she reads the bar. Gesture: Nelim forced to walk, the game advanced 40 ticks then paused, so she is mid-step. Reads in the image: this cow is at 72 percent and fills at 112 percent of the usual rate. Subtitle: Contentment: how settled a cow is, and how fast it fills.
+#   2. two-cows-after-two-hours (medium, a pair read together): same clearing, near x 185 and z 152, two game hours later. Buttercup at 100 percent and Thistle at 30 percent, both cows face South, Nelim sent to x 190 and z 153 then forced to walk toward the cows, caught mid-step, TorchLamp (192, 154) lit, PlantPot (198, 154), PlantPot (190, 150), PlantPot (194, 156), PlantPot (196, 150). Capture one selects Buttercup (milk 11 percent), capture two selects Thistle (milk 4.7 percent), the camera 3 cells right of the cow, midday on the save clock so the map edge stays out. Just after: the keeper compares the two. Reads in the image: same two hours, one cow filled more than twice as much. Subtitle: Same two hours, one well kept cow, one neglected.
 #   3. interface window, set aside: the settings page over the clearing with Daisy's contentment bar beside it (no subtitle).
-# Weak points assumed: no animal facing the camera (a cow cannot be turned by a step), cows wander instead of acting, Nelim keeps her saved outfit (no wardrobe step in the studio map), the hot-weather alert shows in scene 2.
+# Weak points assumed: Nelim keeps her saved outfit (no wardrobe step in the studio map), the hot-weather alert shows in scene 2.
 #
 # Pictures meant for the Workshop page and for nothing else. What they assert is only that the picture
 # says what its caption will say: the rates are checked before the wait, and the two cows are checked
@@ -48,7 +48,7 @@ Feature: Workshop pictures
     And Contented Livestock restores its default settings
 
   Scenario: a cow with its contentment bar and the live tip
-    Given Contented Livestock sends the colonist "Nelim" to x 196 and z 153
+    Given Contented Livestock sends the colonist "Nelim" to x 190 and z 153
     And Contented Livestock spawns the player animal "Daisy" as "Cow" near x 195 and z 152
     And Nelim's Pickle Tools: I place the decor "TorchLamp" at (192, 154)
     And Nelim's Pickle Tools: the decor "TorchLamp" at (192, 154) is lit
@@ -58,6 +58,10 @@ Feature: Workshop pictures
     And Contented Livestock records that "Daisy" ate "RawCorn"
     When Contented Livestock sets "Daisy" to 72 percent contentment
     Then Contented Livestock production factor for "Daisy" is 112 percent
+    When Nelim's Pickle Tools: the animal "Daisy" faces South
+    And Nelim's Pickle Tools: "Nelim" is forced to walk to (196, 153)
+    And Nelim's Pickle Tools: the game is advanced by 40 ticks
+    And game speed is paused
     When Contented Livestock dismisses every letter
     And Nelim's Sanctuary: I frame the sanctuary "bare-clearing"
     And Contented Livestock selects animal "Daisy" for visual evidence, shown -3 cells left and -2 cells up
@@ -68,13 +72,17 @@ Feature: Workshop pictures
     When Nelim's Pickle Tools: the decor is removed
 
   Scenario: two cows after the same two hours, one kept well and one badly
-    Given Contented Livestock sends the colonist "Nelim" to x 188 and z 153
+    Given Contented Livestock sends the colonist "Nelim" to x 190 and z 153
     And Contented Livestock spawns the player animal "Buttercup" as "Cow" near x 185 and z 152
     And Contented Livestock spawns the player animal "Thistle" as "Cow" near x 185 and z 152
+    And Nelim's Pickle Tools: the animal "Buttercup" faces South
+    And Nelim's Pickle Tools: the animal "Thistle" faces South
     And Nelim's Pickle Tools: I place the decor "TorchLamp" at (192, 154)
     And Nelim's Pickle Tools: the decor "TorchLamp" at (192, 154) is lit
     And Nelim's Pickle Tools: I place the decor "PlantPot" at (198, 154)
     And Nelim's Pickle Tools: I place the decor "PlantPot" at (190, 150)
+    And Nelim's Pickle Tools: I place the decor "PlantPot" at (194, 156)
+    And Nelim's Pickle Tools: I place the decor "PlantPot" at (196, 150)
     When Contented Livestock sets "Buttercup" to 100 percent contentment
     And Contented Livestock sets "Thistle" to 30 percent contentment
     Then Contented Livestock production factor for "Buttercup" is 140 percent
@@ -84,6 +92,9 @@ Feature: Workshop pictures
     And Contented Livestock waits one game hour
     And Contented Livestock waits one game hour
     Then Contented Livestock milk gained by "Buttercup" exceeds the milk gained by "Thistle"
+    When Nelim's Pickle Tools: "Nelim" is forced to walk to (186, 153)
+    And Nelim's Pickle Tools: the game is advanced by 40 ticks
+    And game speed is paused
     When Contented Livestock dismisses every letter
     And Nelim's Sanctuary: I frame the sanctuary "bare-clearing"
     And Contented Livestock selects animal "Buttercup" for visual evidence, shown -3 cells left and 0 cells up
