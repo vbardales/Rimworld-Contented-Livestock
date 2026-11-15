@@ -18,6 +18,10 @@
 # Surveyor") floating beside the cow. Off-centre was not enough: the clearing is near where she works and she may walk
 # under the pointer, so the second run still showed her name. She is now sent far from the clearing first.
 # Scenes 2 and 3 had no pawn under the pointer and need no change.
+# Framing fix after run efda (green, captures read 2026-11-14): in picture 1 the cow sat behind the tip, so the
+# negative offsets now put her right of and below the centre; in picture 3 the cow stood at the map edge beside
+# the void, so the two cows are spawned at x 185 and shown right of the centre; Nelim, who had roped Buttercup
+# in picture 2, is sent away as in scene 1.
 #
 # The save holds one colonist, Nelim (SanctuaryBacklot, "Qui une galerie peut utiliser"): she is the pawn sent away from the clearing
 # (the earlier lines call her Miel, who is not in the save). The cows keep the vanilla coat: no loaded mod gives Cow alternate coats.
@@ -47,7 +51,7 @@ Feature: Workshop pictures
     Then Contented Livestock production factor for "Daisy" is 112 percent
     When Contented Livestock dismisses every letter
     And Nelim's Sanctuary: I frame the sanctuary "bare-clearing"
-    And Contented Livestock selects animal "Daisy" for visual evidence, shown 3 cells left and 4 cells up
+    And Contented Livestock selects animal "Daisy" for visual evidence, shown -3 cells left and -2 cells up
     And Contented Livestock opens the live contentment tip for "Daisy" at the top left
     And I wait 30 ticks
     And Nelim's Pickle Tools: I move the mouse to (1800, 1000)
@@ -55,8 +59,9 @@ Feature: Workshop pictures
     When Nelim's Pickle Tools: the decor is removed
 
   Scenario: two cows after the same two hours, one kept well and one badly
-    Given Contented Livestock spawns the player animal "Buttercup" as "Cow" near x 195 and z 152
-    And Contented Livestock spawns the player animal "Thistle" as "Cow" near x 195 and z 152
+    Given Contented Livestock sends the colonist "Nelim" to x 97 and z 152
+    And Contented Livestock spawns the player animal "Buttercup" as "Cow" near x 185 and z 152
+    And Contented Livestock spawns the player animal "Thistle" as "Cow" near x 185 and z 152
     And Nelim's Pickle Tools: I place the decor "TorchLamp" at (192, 154)
     And Nelim's Pickle Tools: the decor "TorchLamp" at (192, 154) is lit
     And Nelim's Pickle Tools: I place the decor "PlantPot" at (198, 154)
@@ -71,11 +76,11 @@ Feature: Workshop pictures
     Then Contented Livestock milk gained by "Buttercup" exceeds the milk gained by "Thistle"
     When Contented Livestock dismisses every letter
     And Nelim's Sanctuary: I frame the sanctuary "bare-clearing"
-    And Contented Livestock selects animal "Buttercup" for visual evidence
+    And Contented Livestock selects animal "Buttercup" for visual evidence, shown -3 cells left and 0 cells up
     And I wait 30 ticks
     And Nelim's Pickle Tools: I move the mouse to (1800, 1000)
     Then I take a screenshot "publication 2 - the well kept cow after two hours"
-    When Contented Livestock selects animal "Thistle" for visual evidence
+    When Contented Livestock selects animal "Thistle" for visual evidence, shown -3 cells left and 0 cells up
     And I wait 30 ticks
     And Nelim's Pickle Tools: I move the mouse to (1800, 1000)
     Then I take a screenshot "publication 3 - the badly kept cow after the same two hours"
