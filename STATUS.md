@@ -161,6 +161,10 @@ Places read: 2026-11-15 Tribe read: 2026-11-15 Steps read: 2026-11-15
 |---|---|
 | none: the mod adds a need to existing livestock, no animal | n/a |
 
+## Shotlist
+
+Written 2026-11-15 in the header of `16-publication-shots.feature` (3 scenes: opener, pair, settings window set aside), Opus director pass kept: Nelim in frame, more pots, wider opener; rejected: dusk lamp (permanent summer), turning a cow, waiting for a gesture. Check-ShotlistVsScenario OK, Check-Steps OK. No capture yet for this plan (the 2026-09 gallery pictures belong to the old scenes: stale). Plan score by `score-gallery`: S1 2.0, S2 1.5, mean 1.75, k weak (no tight shot, no closer). Weak: a (hour not numeric), c (no cow seen from the front), d (saved outfit, no named colours), e (cows wander, no gesture obtained), j (cow and bar small at 268 px), S2 b (lamp and two pots). No ticket filed: gate 1 (5 on each scene) not reached; the director pass cannot fix c and e with the existing steps (ask NPT for a step that makes an animal walk toward or face a cell). Gallery pictures 1 to 5 in `Art/Gallery/` stay until a scene is replayed.
+
 ## Publication state
 
 `PublishedFileId.txt` hold item 3806136625 (0.1.0, prepublished 2026-09-23, private). `CHANGELOG.md` keep
