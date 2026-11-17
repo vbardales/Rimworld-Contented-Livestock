@@ -118,6 +118,19 @@ namespace ContentedLivestock.PickleSteps
             InspectPaneUtility.OpenTab(typeof(ITab_Pawn_Needs));
         }
 
+        /// <summary>
+        /// Selects the animal and opens its Needs tab, leaving the camera where the framing step put it.
+        /// The two steps above jump the camera onto the animal, which undoes a framing made for a scene.
+        /// </summary>
+        [When("Contented Livestock selects animal {string} for visual evidence, camera kept")]
+        public void SelectForEvidenceCameraKept(PickleContext ctx, string name)
+        {
+            var pawn = Driver.PawnNamed(ctx, name);
+            Find.Selector.ClearSelection();
+            Find.Selector.Select(pawn);
+            InspectPaneUtility.OpenTab(typeof(ITab_Pawn_Needs));
+        }
+
         [Then("Contented Livestock animal {string} has the contentment need")]
         public void HasNeed(PickleContext ctx, string name)
         {

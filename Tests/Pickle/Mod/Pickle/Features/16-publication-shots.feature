@@ -39,7 +39,7 @@
 #
 # Animal names must not exist in the save: the steps take the first pawn of that name. The Sanctuary has none called
 # Daisy, Buttercup or Thistle.
-@review @requires:nelim.sanctuarybacklot @requires:nelim.pickletools.screenshotstudio @requires:nelim.pickletools.screenshotmode @requires:nelim.pickletools.clickdiagnostics @requires:nelim.pickletools.stagedecor @requires:nelim.pickletools.coatsteps @requires:nelim.pickletools.colonistrace
+@review @requires:nelim.sanctuarybacklot @requires:nelim.pickletools.screenshotstudio @requires:nelim.pickletools.screenshotmode @requires:nelim.pickletools.clickdiagnostics @requires:nelim.pickletools.stagedecor @requires:nelim.pickletools.coatsteps @requires:nelim.pickletools.colonistrace @requires:nelim.pickletools.camerazoom @requires:nelim.pickletools.interfacescale
 Feature: Workshop pictures
 
   Background:
@@ -81,7 +81,7 @@ Feature: Workshop pictures
     And game speed is paused
     When Contented Livestock dismisses every letter
     And Nelim's Sanctuary: I frame the sanctuary "bare-clearing"
-    And Contented Livestock selects animal "Daisy" for visual evidence, shown -3 cells left and -2 cells up
+    And Contented Livestock selects animal "Daisy" for visual evidence, camera kept
     And I wait 30 ticks
     And Nelim's Pickle Tools: I move the mouse to (700, 20)
     Then I take a screenshot "publication 1 - nelim meets her three cows"
@@ -90,9 +90,9 @@ Feature: Workshop pictures
   Scenario: two cows after the same two hours, one kept well and one badly
     Given I set the hour to 10
     And Nelim's Pickle Tools: the interface scale is 200 percent
-    And Contented Livestock sends the colonist "Nelim" to x 190 and z 153
-    And Contented Livestock spawns the player animal "Buttercup" as "Cow" near x 185 and z 152
-    And Contented Livestock spawns the player animal "Thistle" as "Cow" near x 185 and z 152
+    And Contented Livestock sends the colonist "Nelim" to x 199 and z 153
+    And Contented Livestock spawns the player animal "Buttercup" as "Cow" near x 195 and z 152
+    And Contented Livestock spawns the player animal "Thistle" as "Cow" near x 192 and z 152
     And Nelim's Pickle Tools: the animal "Buttercup" faces South
     And Nelim's Pickle Tools: the animal "Thistle" faces East
     And Nelim's Pickle Tools: I place the decor "TorchLamp" at (192, 154)
@@ -114,16 +114,16 @@ Feature: Workshop pictures
     And Contented Livestock waits one game hour
     And Contented Livestock waits one game hour
     Then Contented Livestock milk gained by "Buttercup" exceeds the milk gained by "Thistle"
-    When Nelim's Pickle Tools: "Nelim" is forced to walk to (186, 153)
+    When Nelim's Pickle Tools: "Nelim" is forced to walk to (197, 153)
     And Nelim's Pickle Tools: the game is advanced by 40 ticks
     And game speed is paused
     When Contented Livestock dismisses every letter
     And Nelim's Sanctuary: I frame the sanctuary "bare-clearing"
-    And Contented Livestock selects animal "Buttercup" for visual evidence, shown -3 cells left and 0 cells up
+    And Contented Livestock selects animal "Buttercup" for visual evidence, camera kept
     And I wait 30 ticks
     And Nelim's Pickle Tools: I move the mouse to (700, 20)
     Then I take a screenshot "publication 2 - buttercup full of milk after two hours"
-    When Contented Livestock selects animal "Thistle" for visual evidence, shown -3 cells left and 0 cells up
+    When Contented Livestock selects animal "Thistle" for visual evidence, camera kept
     And I wait 30 ticks
     And Nelim's Pickle Tools: I move the mouse to (700, 20)
     Then I take a screenshot "publication 3 - thistle lagging behind after the same two hours"
@@ -153,7 +153,7 @@ Feature: Workshop pictures
     And game speed is paused
     When Contented Livestock dismisses every letter
     And Nelim's Pickle Tools: the camera frames the head of "Buttercup" and "Nelim" at root size 9
-    And Contented Livestock selects animal "Buttercup" for visual evidence
+    And Contented Livestock selects animal "Buttercup" for visual evidence, camera kept
     And I wait 30 ticks
     And Nelim's Pickle Tools: I move the mouse to (700, 20)
     Then I take a screenshot "publication 4 - buttercup up close with her keeper"
@@ -189,7 +189,7 @@ Feature: Workshop pictures
     And game speed is paused
     When Contented Livestock dismisses every letter
     And Nelim's Pickle Tools: I frame the area centred on (193, 152) at root size 18
-    And Contented Livestock selects animal "Thistle" for visual evidence, shown -2 cells left and -1 cells up
+    And Contented Livestock selects animal "Thistle" for visual evidence, camera kept
     And I wait 30 ticks
     And Nelim's Pickle Tools: I move the mouse to (700, 20)
     Then I take a screenshot "publication 5 - thistle back on her feet at the end of the day"
