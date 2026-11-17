@@ -145,7 +145,7 @@ four animal integrations of `ANIMALS.md` not apply. No DLC dependency.
 
 ## NSB
 
-Sync 2026-11-15. NSB changed since 2026-11-05 (decor, batches 5l and 5m, fixture z3, Beauty2 mouth patch): nothing the mod uses moved. Feature 16 loads `Nelims-tribe-decor-mods-z3` and frames Nelim's Sanctuary `bare-clearing` (still item 2 of GALERIE-ORDRE.md). NPT added a step that hides the main bar, the speed controls and the mouse-over readout (no description yet): not used, the Needs pane and the tip are the subject and the six gallery pictures are final.
+Sync check 2026-11-17: NSB changed since 2026-11-15 only in VTW body-type tests and notes (Nelim is Female, VTW row, not shown in our shots), a seed path note for AB, the Roster.xlsx and the Beauty2 mouth values; no place, colonist or animal sheet the mod uses moved, so the read dates below stay (only opened files get a new date). NPT: nothing since 2026-11-16. No owner question, no included animal (the mod adds none). Earlier sync 2026-11-15: NSB changed since 2026-11-05 (decor, batches 5l and 5m, fixture z3, Beauty2 mouth patch): nothing the mod uses moved. Feature 16 loads `Nelims-tribe-decor-mods-z3` and frames Nelim's Sanctuary `bare-clearing` (still item 2 of GALERIE-ORDRE.md). NPT added a step that hides the main bar, the speed controls and the mouse-over readout (no description yet): not used, the Needs pane and the tip are the subject and the six gallery pictures are final.
 
 Places read: 2026-11-15 Tribe read: 2026-11-15 Steps read: 2026-11-17 (NPT since 2026-11-15: one step, Beauty2 mouth vertical offset DY, b6dec3e: not used, cows and Nelim keep the default mouth)
 
