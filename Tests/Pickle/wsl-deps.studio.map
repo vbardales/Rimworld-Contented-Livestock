@@ -9,6 +9,7 @@ nelim.pickletools.camerazoom path:PickleTools/CameraZoom/Mod
 nelim.pickletools.stagedecor path:PickleTools/StageDecor/Mod
 nelim.pickletools.coatsteps path:PickleTools/CoatSteps/Mod
 nelim.pickletools.clearscreen path:PickleTools/ClearScreen/Mod
+nelim.pickletools.interfacescale path:PickleTools/InterfaceScale/Mod
 nelim.pickletools.research path:PickleTools/ResearchSteps/Mod
 nelim.pickletools.colonistrace path:PickleTools/ColonistRace/Mod
 nelim.pickletools.clickdiagnostics path:PickleTools/ClickDiagnostics/Mod
