@@ -36,7 +36,7 @@
 #
 # Animal names must not exist in the save: the steps take the first pawn of that name. The Sanctuary has none called
 # Daisy, Buttercup or Thistle.
-@review @requires:nelim.sanctuarybacklot @requires:nelim.pickletools.screenshotstudio @requires:nelim.pickletools.screenshotmode @requires:nelim.pickletools.clickdiagnostics @requires:nelim.pickletools.stagedecor
+@review @requires:nelim.sanctuarybacklot @requires:nelim.pickletools.screenshotstudio @requires:nelim.pickletools.screenshotmode @requires:nelim.pickletools.clickdiagnostics @requires:nelim.pickletools.stagedecor @requires:nelim.pickletools.coatsteps @requires:nelim.pickletools.colonistrace
 Feature: Workshop pictures
 
   Background:
