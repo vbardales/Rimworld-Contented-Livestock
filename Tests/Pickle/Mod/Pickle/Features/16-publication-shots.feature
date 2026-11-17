@@ -83,7 +83,7 @@ Feature: Workshop pictures
     And Nelim's Sanctuary: I frame the sanctuary "bare-clearing"
     And Contented Livestock selects animal "Daisy" for visual evidence, shown -3 cells left and -2 cells up
     And I wait 30 ticks
-    And Nelim's Pickle Tools: I move the mouse to (1800, 1000)
+    And Nelim's Pickle Tools: I move the mouse to (700, 20)
     Then I take a screenshot "publication 1 - nelim meets her three cows"
     When Nelim's Pickle Tools: the decor is removed
 
@@ -121,11 +121,11 @@ Feature: Workshop pictures
     And Nelim's Sanctuary: I frame the sanctuary "bare-clearing"
     And Contented Livestock selects animal "Buttercup" for visual evidence, shown -3 cells left and 0 cells up
     And I wait 30 ticks
-    And Nelim's Pickle Tools: I move the mouse to (1800, 1000)
+    And Nelim's Pickle Tools: I move the mouse to (700, 20)
     Then I take a screenshot "publication 2 - buttercup full of milk after two hours"
     When Contented Livestock selects animal "Thistle" for visual evidence, shown -3 cells left and 0 cells up
     And I wait 30 ticks
-    And Nelim's Pickle Tools: I move the mouse to (1800, 1000)
+    And Nelim's Pickle Tools: I move the mouse to (700, 20)
     Then I take a screenshot "publication 3 - thistle lagging behind after the same two hours"
     When Nelim's Pickle Tools: the decor is removed
 
@@ -155,7 +155,7 @@ Feature: Workshop pictures
     And Nelim's Pickle Tools: the camera frames the head of "Buttercup" and "Nelim" at root size 9
     And Contented Livestock selects animal "Buttercup" for visual evidence
     And I wait 30 ticks
-    And Nelim's Pickle Tools: I move the mouse to (1800, 1000)
+    And Nelim's Pickle Tools: I move the mouse to (700, 20)
     Then I take a screenshot "publication 4 - buttercup up close with her keeper"
     When Nelim's Pickle Tools: the decor is removed
 
@@ -191,7 +191,7 @@ Feature: Workshop pictures
     And Nelim's Pickle Tools: I frame the area centred on (193, 152) at root size 18
     And Contented Livestock selects animal "Thistle" for visual evidence, shown -2 cells left and -1 cells up
     And I wait 30 ticks
-    And Nelim's Pickle Tools: I move the mouse to (1800, 1000)
+    And Nelim's Pickle Tools: I move the mouse to (700, 20)
     Then I take a screenshot "publication 5 - thistle back on her feet at the end of the day"
     When Nelim's Pickle Tools: the decor is removed
 
