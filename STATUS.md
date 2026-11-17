@@ -101,17 +101,20 @@ Recommendations, not blockers: replace em dashes of player-facing strings in `Mo
 
 ## Ecosystem
 
-Refresh of 2026-11-13 (AUDIT 1.a and 8.0), done by PiI on the Steam Workshop through Chrome (searches `Contented Livestock`, `happy animals livestock mood`, `Stardew animals`) plus one local corpus scan, full study in `docs/inventory/ecosystem-steam/ContentedLivestock.md` of the protocols repository (commit 3975801). Original creation, no upstream, no original id to search.
+Refresh of 2026-11-17 (AUDIT 1.a and 8.0, redone from scratch by PiI on the owner's order): 24 Steam queries through Chrome (219 items) plus one corpus scan of contentment and animal mood defNames, full study in `docs/inventory/ecosystem-steam/ContentedLivestock.md` of the protocols repository (commit 615b066). Original creation, no upstream, no original id to search.
 
 | Workshop id | Title | Type | Found by |
 |---|---|---|---|
-| 2960610215 | Livestock Traders | same subject area only, no overlap | Steam |
-| 3556058978 | FEB's Biopunk Livestock | same subject area only, no overlap | Steam |
-| 1700683323 | Vanilla Animals Expanded - Livestock | same subject area only, no overlap | Steam |
-| 2581603685 | Mood Matters | same subject area only, no overlap | Steam |
-| 2680751877 | Caravan Mood Buff | same subject area only, no overlap | Steam |
+| 2960610215 | Livestock Traders | linked, same subject area, no overlap | Steam |
+| 3556058978 | FEB's Biopunk Livestock | linked, no overlap | Steam |
+| 1700683323 | Vanilla Animals Expanded - Livestock | linked, dead 1.0 pack | Steam |
+| 2581603685 | Mood Matters | linked, pawn mood only | Steam |
+| 2680751877 | Caravan Mood Buff | linked, pawn mood only | Steam |
+| 3735168948 | Extended Husbandry | linked, growth drugs and implants, no need | Steam |
+| 3768408159 | Caravan Husbandry | linked, husbandry in caravans | Steam |
+| 2900645347 | Vanilla Outposts Expanded Expanded: Ranch (Continued) | linked, ranch outpost | Steam |
 
-Verdict: no duplicate, no fork, no replacement, no mod that patches, retextures, translates or cites 3806136625; corpus scan of the two defNames and two labels returned no hit. None gives animals a contentment level from care. The mod goes on. Nothing subscribed.
+Verdict: no duplicate, no fork, no replacement, no mod that patches, retextures, translates or cites 3806136625; nobody else ties production to animal care. The mod goes on. Nothing subscribed.
 
 ## Settings audit
 
