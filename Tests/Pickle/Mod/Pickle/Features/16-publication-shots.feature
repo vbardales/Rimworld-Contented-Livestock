@@ -76,8 +76,9 @@ Feature: Workshop pictures
     When Nelim's Pickle Tools: the animal "Daisy" stands at (196, 152) facing South
     And Nelim's Pickle Tools: the animal "Buttercup" stands at (198, 152) facing East
     And Nelim's Pickle Tools: the animal "Thistle" stands at (193, 151) facing North
+    And Nelim's Pickle Tools: "Nelim" stands at (193, 153) facing East
     And Nelim's Pickle Tools: "Nelim" is forced to walk to (194, 153)
-    And Nelim's Pickle Tools: the game is advanced by 40 ticks
+    And Nelim's Pickle Tools: the game is advanced by 12 ticks
     And game speed is paused
     When Contented Livestock dismisses every letter
     And Nelim's Sanctuary: I frame the sanctuary "bare-clearing"
@@ -113,9 +114,9 @@ Feature: Workshop pictures
     Then Contented Livestock milk gained by "Buttercup" exceeds the milk gained by "Thistle"
     When Nelim's Pickle Tools: the animal "Buttercup" stands at (197, 152) facing South
     And Nelim's Pickle Tools: the animal "Thistle" stands at (194, 152) facing East
-    And Contented Livestock sends the colonist "Nelim" to x 200 and z 154
-    And Nelim's Pickle Tools: "Nelim" is forced to walk to (199, 153)
-    And Nelim's Pickle Tools: the game is advanced by 40 ticks
+    And Nelim's Pickle Tools: "Nelim" stands at (199, 153) facing West
+    And Nelim's Pickle Tools: "Nelim" is forced to walk to (198, 153)
+    And Nelim's Pickle Tools: the game is advanced by 12 ticks
     And game speed is paused
     When Contented Livestock dismisses every letter
     And Nelim's Sanctuary: I frame the sanctuary "bare-clearing"
@@ -147,9 +148,9 @@ Feature: Workshop pictures
     And Contented Livestock waits one game hour
     And Contented Livestock waits one game hour
     When Nelim's Pickle Tools: the animal "Buttercup" stands at (186, 152) facing South
-    And Contented Livestock sends the colonist "Nelim" to x 191 and z 153
+    And Nelim's Pickle Tools: "Nelim" stands at (188, 153) facing West
     And Nelim's Pickle Tools: "Nelim" is forced to walk to (187, 153)
-    And Nelim's Pickle Tools: the game is advanced by 30 ticks
+    And Nelim's Pickle Tools: the game is advanced by 12 ticks
     And game speed is paused
     When Contented Livestock dismisses every letter
     And Nelim's Pickle Tools: the camera frames the head of "Buttercup" and "Nelim" at root size 9
@@ -183,9 +184,9 @@ Feature: Workshop pictures
     When Nelim's Pickle Tools: the animal "Thistle" stands at (194, 152) facing East
     And Nelim's Pickle Tools: the animal "Daisy" stands at (197, 152) facing South
     And Nelim's Pickle Tools: the animal "Buttercup" stands at (191, 154) facing North
-    And Contented Livestock sends the colonist "Nelim" to x 195 and z 154
+    And Nelim's Pickle Tools: "Nelim" stands at (192, 153) facing West
     And Nelim's Pickle Tools: "Nelim" is forced to walk to (190, 153)
-    And Nelim's Pickle Tools: the game is advanced by 40 ticks
+    And Nelim's Pickle Tools: the game is advanced by 12 ticks
     And game speed is paused
     When Contented Livestock dismisses every letter
     And Nelim's Pickle Tools: I frame the area centred on (193, 152) at root size 9
