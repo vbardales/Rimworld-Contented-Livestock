@@ -51,7 +51,7 @@ updated:      2026-11-17, shotlist rewritten, plan 5.0 on every scene, stage sho
 echo_review_sha: c1ea64fc52a95f0771d2842a1073cc3c64eb0338
 social_preview_sha256: 73254f46f75d151ad84884a4b5120e65e60fd426a0a83967771e7b5385d96f52
 code_review_sha: e26a51c0ea2e7f175b8180173155252f199c275a
-protocols_read_sha: 9338d8dcb0ab58bd06f914cc97073e4eb6c611c9
+protocols_read_sha: b58eb97505b7e92ad5b0d3c9bdbc011b76053159
 ---
 # Contented Livestock: status
 
