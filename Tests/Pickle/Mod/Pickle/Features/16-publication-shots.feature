@@ -83,6 +83,15 @@ Feature: Workshop pictures
     And Nelim's Pickle Tools: the plants from (199, 154) to (199, 154) are fully grown
     And Nelim's Pickle Tools: the plants from (200, 150) to (200, 150) are fully grown
     And Nelim's Pickle Tools: the plants from (196, 150) to (196, 150) are fully grown
+    And Nelim's Pickle Tools: I place the decor "Plant_Daylily" at (193, 151)
+    And Nelim's Pickle Tools: I place the decor "Plant_Daylily" at (195, 153)
+    And Nelim's Pickle Tools: I place the decor "Plant_YellowTallGrass" at (194, 151)
+    And Nelim's Pickle Tools: I place the decor "Plant_YellowTallGrass" at (198, 153)
+    And Nelim's Pickle Tools: I place the decor "Plant_YellowTallGrass" at (193, 154)
+    And Nelim's Pickle Tools: the plants from (193, 151) to (194, 151) are fully grown
+    And Nelim's Pickle Tools: the plants from (195, 153) to (195, 153) are fully grown
+    And Nelim's Pickle Tools: the plants from (198, 153) to (198, 153) are fully grown
+    And Nelim's Pickle Tools: the plants from (193, 154) to (193, 154) are fully grown
     And Contented Livestock spawns the player animal "Daisy" as "Cow" near x 195 and z 152
     And Contented Livestock spawns the player animal "Buttercup" as "Cow" near x 197 and z 152
     And Contented Livestock spawns the player animal "Thistle" as "Cow" near x 195 and z 151
@@ -136,6 +145,14 @@ Feature: Workshop pictures
     And Nelim's Pickle Tools: the plants from (198, 150) to (198, 150) are fully grown
     And Nelim's Pickle Tools: the plants from (193, 155) to (193, 155) are fully grown
     And Nelim's Pickle Tools: the plants from (200, 150) to (200, 150) are fully grown
+    And Nelim's Pickle Tools: I place the decor "Plant_Daylily" at (190, 153)
+    And Nelim's Pickle Tools: I place the decor "Plant_Daylily" at (192, 151)
+    And Nelim's Pickle Tools: I place the decor "Plant_YellowTallGrass" at (191, 152)
+    And Nelim's Pickle Tools: I place the decor "Plant_YellowTallGrass" at (193, 151)
+    And Nelim's Pickle Tools: the plants from (190, 153) to (190, 153) are fully grown
+    And Nelim's Pickle Tools: the plants from (192, 151) to (192, 151) are fully grown
+    And Nelim's Pickle Tools: the plants from (191, 152) to (191, 152) are fully grown
+    And Nelim's Pickle Tools: the plants from (193, 151) to (193, 151) are fully grown
     And Contented Livestock spawns the player animal "Buttercup" as "Cow" near x 195 and z 152
     And Contented Livestock spawns the player animal "Thistle" as "Cow" near x 192 and z 152
     When Contented Livestock sets "Buttercup" to 100 percent contentment
