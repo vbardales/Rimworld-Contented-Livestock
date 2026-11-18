@@ -1,10 +1,11 @@
 # Shooting plan, rewritten 2026-11-17 (shotlist; Opus director pass kept: opener at hour 10, diptych with its own subtitles, Thistle west of the pots, hours 10, 12, 15, 18, Thistle recovered in the closing image; refused: a standing pose at close range).
 # Story: one day at Nelim's clearing in her Sanctuary, morning to evening: she meets her three cows at 10, compares two of them at noon, looks closely at the well-kept one at 15, and goes home at 18 with Thistle back on her feet. How a cow is kept shows in how fast it fills.
 # Time: each scene reloads the save, sets its own hour (10, 12, 15, 18) and, from scene 2 on, lets two game hours pass (5,000 ticks) so the milk gained is real. Permanent summer, clear sky.
+# Refile 2026-11-18 (score-gallery REDO, ground bare and Learning helper in every shot): StrawMatting laid under each frame (Cat, vanilla, removed with the decor), `the learning helper is hidden`, bared-floor steps dropped, close-up camera centre (185, 153).
 # Decor, shared by the four scenes and removed after each: TorchLamp (192, 154) lit, PlantPots, fully grown Plant_Daylily and Plant_YellowTallGrass (straw) so no cell of the frame is bare ground.
 #   1. nelim-meets-her-cows (opener, wide, UI scale 200): Nelim's Sanctuary bare-clearing at x 195 and z 152, hour 10, clear, about 70 ticks after setup. Three cows read three ways: Daisy (72 percent, selected) seen from the front (faces South, held) right of centre and low, Buttercup in profile (faces East) beside her, Thistle from behind (faces North) on the left edge; Nelim caught mid-stride walking in from x 190 to x 194 and z 153 (yellow tunic, dark brown hair, saved outfit, canon smirk mouth kept as the 2026-11-15 captures show), one step from Daisy and her head toward her. Foreground: PlantPot (190, 152) and a tuft of Plant_YellowTallGrass (196, 156) and (197, 156) at the lower edge; background: TorchLamp (192, 154) lit, PlantPot (198, 154), (192, 150) and (200, 152), Plant_Daylily (199, 152) and (191, 156) fully grown. No live tip (Needs pane only, the Contentment bar is a stripe at 268 px at UI scale 200), mouse parked bottom right. Just before: Nelim saw the herd from the path; just after: she reads Daisy's bar. Gesture: Nelim forced to walk, the game advanced 40 ticks then paused, so she is mid-step. Reads in the image: Nelim arrives at three cows and one of them shows Contentment 72 percent. Subtitle: Nelim meets her three cows, and Daisy is settled.
 #   2. buttercup-and-thistle (medium, a diptych of two captures, same camera, hour and poses, only the selection changes, UI scale 200): same clearing, hour 12, two game hours after the setup at 10. Buttercup at 100 percent faces South and Thistle at 30 percent faces East (profile), both spawned near x 185 and z 152, Thistle the westmost cow, away from the torch and the pots (the cause of her 30 percent is the cold corner). Nelim (same yellow tunic, dark brown hair and canon smirk mouth as scene 1) sent to x 190 and z 153 then forced to walk toward them to x 186, caught mid-step. Decor as above with PlantPot (194, 156) and (196, 150) added. Capture one selects Buttercup (milk 11 percent, bar full), capture two selects Thistle (milk 4.7 percent, bar a third); the camera 3 cells right of the cows so the map edge stays out. UI scale 200 so the Contentment bar is a long stripe, full then short, at 268 px. Just after: the keeper compares the two. The hot-weather alert shows, accepted. Reads in the image: same two hours, one cow filled twice as much and her bar is full, the other's is short. Subtitles: Two hours later, Buttercup is full of milk. / Two hours later, Thistle is lagging behind.
-#   3. buttercup-up-close (close, UI scale 200, Needs pane only, no tip): hour 15 (set 13, two game hours pass), same clearing. The camera is centred on (184, 153) at root size 3 (a real close-up, 180 px a cell), so the pair stands right of the Needs pane; Buttercup (100 percent, faces South, seen from the front) at (186, 153) selected, her Needs pane bottom left with the full Contentment bar and Milk fullness in the info card; Nelim (same yellow tunic and dark brown hair as scene 1, canon smirk mouth, pleased) forced to walk to x 187 and z 153 then held in place, beside her, her head toward the cow. Decor within the close frame: PlantPot (189, 152) and (185, 151), Plant_Daylily (188, 155), (188, 151) and (184, 151), Plant_YellowTallGrass (186, 155), (184, 154), (185, 154), (183, 153) and (189, 154) at the cow's feet; the torch is out of the frame. Just before: Nelim crossed the clearing to her; just after: she strokes her. Reads in the image: a content cow, full bar, her keeper beside her. Subtitle: Buttercup is content, so her milk fills at 140 percent of the usual rate. This is the thumbnail picture of the series (bar readable at 268 px).
+#   3. buttercup-up-close (close, UI scale 200, Needs pane only, no tip): hour 15 (set 13, two game hours pass), same clearing. The camera is centred on (185, 153) at root size 3 (a real close-up, 180 px a cell), so the pair stands right of the Needs pane; Buttercup (100 percent, faces South, seen from the front) at (186, 153) selected, her Needs pane bottom left with the full Contentment bar and Milk fullness in the info card; Nelim (same yellow tunic and dark brown hair as scene 1, canon smirk mouth, pleased) forced to walk to x 187 and z 153 then held in place, beside her, her head toward the cow. Decor within the close frame: PlantPot (189, 152) and (185, 151), Plant_Daylily (188, 155), (188, 151) and (184, 151), Plant_YellowTallGrass (186, 155), (184, 154), (185, 154), (183, 153) and (189, 154) at the cow's feet; the torch is out of the frame. Just before: Nelim crossed the clearing to her; just after: she strokes her. Reads in the image: a content cow, full bar, her keeper beside her. Subtitle: Buttercup is content, so her milk fills at 140 percent of the usual rate. This is the thumbnail picture of the series (bar readable at 268 px).
 #   4. thistle-back-on-her-feet (closing, wide, UI scale 200, Needs pane only): hour 18 (set 16, two game hours pass), late light, the TorchLamp now the visible light of the frame. Camera "I frame the area centred on (193, 152) at root size 6", a wider and higher angle than scene 1. Thistle at 60 percent selected (shown 2 cells right and 1 cell up), faces East in profile; Daisy faces South, Buttercup faces North from behind; the pots moved to (196, 154), (190, 151), (194, 150), (200, 154) with Plant_Daylily (198, 152) and Plant_YellowTallGrass (195, 157) so the evening differs from the morning. Nelim sent to x 194 then forced to walk west to x 190 toward the torch, seen walking away, mid-step (same yellow tunic, dark brown hair and canon smirk mouth as scene 1: the day is the same). Just before: she checked all three; just after: she goes home. UI scale 200 so the bar is a stripe at 268 px. Reads in the image: at the end of the day the herd is settled and Thistle is no longer short. Subtitle: By evening Thistle is back to 60 percent, and Nelim heads home.
 #   5. interface window, set aside: the settings page over the clearing with Daisy's contentment bar beside it (no subtitle), last, outside the story.
 # Weak points assumed: the UI scale step has not been played with these scenes, the Needs pane at 200 percent may crowd the cows, the hot-weather alert shows in scene 2, a recovered Thistle at 60 percent is staged like the other states. Owner choice 2026-11-17: no live tip in the opener, UI scale 200 in all four scenes (the tip text stays in the settings scene).
@@ -53,6 +54,8 @@ Feature: Workshop pictures
   Scenario: Nelim meets her three cows, one of them with its contentment bar and the live tip
     Given I set the hour to 10
     And Nelim's Pickle Tools: the interface scale is 200 percent
+    And Nelim's Pickle Tools: the learning helper is hidden
+    And Nelim's Pickle Tools: I lay the floor "StrawMatting" from (184, 147) to (203, 159)
     And Contented Livestock sends the colonist "Nelim" to x 190 and z 153
     And Nelim's Pickle Tools: I place the decor "TorchLamp" at (192, 154)
     And Nelim's Pickle Tools: the decor "TorchLamp" at (192, 154) is lit
@@ -105,6 +108,8 @@ Feature: Workshop pictures
   Scenario: two cows after the same two hours, one kept well and one badly
     Given I set the hour to 10
     And Nelim's Pickle Tools: the interface scale is 200 percent
+    And Nelim's Pickle Tools: the learning helper is hidden
+    And Nelim's Pickle Tools: I lay the floor "StrawMatting" from (184, 147) to (203, 159)
     And Nelim's Pickle Tools: I place the decor "TorchLamp" at (192, 154)
     And Nelim's Pickle Tools: the decor "TorchLamp" at (192, 154) is lit
     And Nelim's Pickle Tools: I place the decor "PlantPot" at (198, 154)
@@ -166,7 +171,8 @@ Feature: Workshop pictures
   Scenario: Buttercup up close, content, with her keeper beside her
     Given I set the hour to 13
     And Nelim's Pickle Tools: the interface scale is 200 percent
-    And Nelim's Sanctuary: the floor of the sanctuary "bare-clearing" is bared
+    And Nelim's Pickle Tools: the learning helper is hidden
+    And Nelim's Pickle Tools: I lay the floor "StrawMatting" from (179, 149) to (192, 159)
     And Nelim's Pickle Tools: I place the decor "PlantPot" at (189, 152)
     And Nelim's Pickle Tools: I place the decor "PlantPot" at (185, 151)
     And Nelim's Pickle Tools: I place the decor "Plant_Daylily" at (188, 155)
@@ -198,7 +204,7 @@ Feature: Workshop pictures
     And Nelim's Pickle Tools: "Nelim" waits in place
     And game speed is paused
     When Contented Livestock dismisses every letter
-    And Nelim's Pickle Tools: I frame the area centred on (184, 153) at root size 3
+    And Nelim's Pickle Tools: I frame the area centred on (185, 153) at root size 3
     And Contented Livestock selects animal "Buttercup" for visual evidence, camera kept
     And I wait 30 ticks
     And Nelim's Pickle Tools: I move the mouse to (700, 20)
@@ -208,7 +214,8 @@ Feature: Workshop pictures
   Scenario: at the end of the day Thistle is back on her feet and Nelim heads home
     Given I set the hour to 16
     And Nelim's Pickle Tools: the interface scale is 200 percent
-    And Nelim's Sanctuary: the floor of the sanctuary "bare-clearing" is bared
+    And Nelim's Pickle Tools: the learning helper is hidden
+    And Nelim's Pickle Tools: I lay the floor "StrawMatting" from (184, 146) to (204, 160)
     And Nelim's Pickle Tools: I place the decor "TorchLamp" at (192, 154)
     And Nelim's Pickle Tools: the decor "TorchLamp" at (192, 154) is lit
     And Nelim's Pickle Tools: I place the decor "PlantPot" at (196, 154)
