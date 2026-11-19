@@ -57,6 +57,7 @@ Feature: Workshop pictures
     And Nelim's Pickle Tools: the learning helper is hidden
     And Nelim's Pickle Tools: I lay the floor "StrawMatting" from (184, 147) to (203, 159)
     And Contented Livestock sends the colonist "Nelim" to x 190 and z 153
+    And Nelim's Pickle Tools: "Nelim" stands at (190, 153) facing East
     And Nelim's Pickle Tools: I place the decor "TorchLamp" at (192, 154)
     And Nelim's Pickle Tools: the decor "TorchLamp" at (192, 154) is lit
     And Nelim's Pickle Tools: I place the decor "PlantPot" at (190, 152)
@@ -174,7 +175,7 @@ Feature: Workshop pictures
     And Nelim's Pickle Tools: "Nelim" waits in place
     And game speed is paused
     When Contented Livestock dismisses every letter
-    And Nelim's Sanctuary: I frame the sanctuary "bare-clearing"
+    And Nelim's Pickle Tools: I frame the area centred on (195, 152) at root size 4
     And Contented Livestock selects animal "Buttercup" for visual evidence, camera kept
     And I wait 30 ticks
     And Nelim's Pickle Tools: I move the mouse to (700, 20)
