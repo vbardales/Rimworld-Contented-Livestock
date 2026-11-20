@@ -51,7 +51,7 @@ remaining:
   - "unverified: `tested_on` stays empty until a green in-game pass records the game and integration versions."
 session:      72f45cb8-7e45-4dea-bfa8-11aee1b7b75b
 ecosystem_line: 1.0
-updated:      2026-11-20, gallery complete 0 to 6, audit replay, stage unchanged shootGallery[1.0.0], first open 9.f (owner oui on the gallery)
+updated:      2026-11-20, owner refused gallery 1 to 6 (no trousers, smile misplaced, wrong hairstyle, red face), captures deleted, 5 refile tickets queued, stage shootGallery[1.0.0]
 echo_review_sha: c1ea64fc52a95f0771d2842a1073cc3c64eb0338
 social_preview_sha256: 73254f46f75d151ad84884a4b5120e65e60fd426a0a83967771e7b5385d96f52
 code_review_sha: e26a51c0ea2e7f175b8180173155252f199c275a
@@ -193,7 +193,7 @@ Session verdicts by `score-gallery` (image / adequacy / understanding / decorati
 | 5 | `5-thistle-back-on-her-feet.jpg` | closing, 18h, tooltip minor | candidate 4.5 / 4.5 / 4 / 4.5 | yes |
 | 6 | `6-settings-page.jpg` | interface window on the bamboo backdrop, cropped 1416 x 1080 with the cow pane | accepted by the session | none (interface) |
 
-Owner gate: `gallery_validated_sha` absent, waits her oui on the whole gallery (AUDIT 9.f).
+Owner refusal 2026-11-20: images 1 to 6 refused (Nelim: no trousers, smile placement, wrong hairstyle, red face). Captures deleted (REDO), look block added to every scene (Roo_HD_Hair_Highpony, Almond skin, Apparel_Pants then shirt, face kit). Tickets 7063, 9f47, 1574, c4d3, b6b6 queued. `gallery_validated_sha` absent; waits her oui after the redo (AUDIT 9.f).
 
 ## Publication state
 
