@@ -111,6 +111,19 @@ Andreas Pardeike, for [Harmony](https://steamcommunity.com/sharedfiles/filedetai
 ```
 ## 2. Pictures, in the order to upload
 
+### Gallery subtitles (2026-11-20, new plan: `16-publication-shots.feature`)
+
+The pictures below replace the six of 2026-09 described further down (kept as history). Clean originals in `Art/Gallery-clean/`, subtitled copies in `Art/Gallery/` (burned with `Add-Subtitle.ps1`). The settings window (6) is an interface capture: no subtitle, not yet rated.
+
+| index | file | line |
+|---|---|---|
+| 1 | `1-nelim-meets-her-three-cows.jpg` | Nelim meets her three cows at the start of the day. |
+| 2 | `2-buttercup-full-of-milk.jpg` | Two hours on, Buttercup, well kept, is already full of milk. |
+| 3 | `3-thistle-lagging-behind.jpg` | After the same two hours, Thistle lags behind. |
+| 4 | `4-buttercup-up-close.jpg` | Up close, a content cow with her keeper beside her. |
+| 5 | `5-thistle-back-on-her-feet.jpg` | By evening, Thistle is back on her feet. |
+
+
 The CI sends only the header image (`Mod/About/Preview.png`, when its option is on). The gallery is a manual
 step on the Steam page, in this order. Run the scenes by submitting a request to TicketDispatcher, not by
 launching anything (`Rimworld-Ticket-Dispatcher/docs/WELCOME.md`); to redo one picture, filter on its
