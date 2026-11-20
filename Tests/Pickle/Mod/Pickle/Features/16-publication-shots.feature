@@ -1,4 +1,5 @@
 # Shooting plan, rewritten 2026-11-17 (shotlist; Opus director pass kept: opener at hour 10, diptych with its own subtitles, Thistle west of the pots, hours 10, 12, 15, 18, Thistle recovered in the closing image; refused: a standing pose at close range).
+# Nelim look refile 2026-11-20 (owner refused 1 to 6: no trousers, smile misplaced, wrong hairstyle, red face): before each capture a look block gives Nelim Roo_HD_Hair_Highpony, Almond skin rgb (207, 171, 121), Apparel_Pants brown (101, 67, 33) put on FIRST then Apparel_BasicShirt emerald (31, 122, 92), the face kit smile, canon smirk mouth, brows, lids, eyeballs, face held neutral, expression normal+moodCheerful (steps of the validated daily look, sanctuary-looks.feature).
 # Story: one day at Nelim's clearing in her Sanctuary, morning to evening: she meets her three cows at 10, compares two of them at noon, looks closely at the well-kept one at 15, and goes home at 18 with Thistle back on her feet. How a cow is kept shows in how fast it fills.
 # Time: each scene reloads the save, sets its own hour (10, 12, 15, 18) and, from scene 2 on, lets two game hours pass (5,000 ticks) so the milk gained is real. Permanent summer, clear sky. Scenes 3 and 4 (shots 4 and 5) set the date with `the date is set to day 37 of the year at hour H` (8th of Septober, 2026-11-20) so the date readout matches shots 1 to 3, and hold the map at 20 degrees so no heat alert shows.
 # Refile 2026-11-18 (score-gallery REDO, ground bare and Learning helper in every shot): StrawMatting laid under each frame (Cat, vanilla, removed with the decor), `the learning helper is hidden`, bared-floor steps dropped, close-up camera centre (185, 153).
@@ -107,6 +108,18 @@ Feature: Workshop pictures
     And Nelim's Pickle Tools: the game is advanced by 12 ticks
     And Nelim's Pickle Tools: "Nelim" waits in place
     And game speed is paused
+    And Nelim's Pickle Tools: "Nelim" has the gene "Eyes_DarkBrown"
+    And Nelim's Pickle Tools: "Nelim" hairstyle is "Roo_HD_Hair_Highpony"
+    And Nelim's Pickle Tools: "Nelim" skin colour is rgb (207, 171, 121)
+    And Nelim's Pickle Tools: "Nelim" wears "Apparel_Pants" dyed rgb (101, 67, 33)
+    And Nelim's Pickle Tools: "Nelim" wears "Apparel_BasicShirt" dyed rgb (31, 122, 92)
+    And Nelim's Pickle Tools: "Nelim" face kit is "smile"
+    And Nelim's Pickle Tools: "Nelim" mouth is "MouthLipsSmirk"
+    And Nelim's Pickle Tools: "Nelim" brows are "BrowNormal"
+    And Nelim's Pickle Tools: "Nelim" lids are "LidCheerful"
+    And Nelim's Pickle Tools: "Nelim" eyeballs are "Swift"
+    And Nelim's Pickle Tools: "Nelim" face is held neutral
+    And Nelim's Pickle Tools: "Nelim" facial expression is "normal+moodCheerful"
     When Contented Livestock dismisses every letter
     And Nelim's Sanctuary: I frame the sanctuary "bare-clearing"
     And Contented Livestock selects animal "Daisy" for visual evidence, camera kept
@@ -174,6 +187,18 @@ Feature: Workshop pictures
     And Nelim's Pickle Tools: the game is advanced by 12 ticks
     And Nelim's Pickle Tools: "Nelim" waits in place
     And game speed is paused
+    And Nelim's Pickle Tools: "Nelim" has the gene "Eyes_DarkBrown"
+    And Nelim's Pickle Tools: "Nelim" hairstyle is "Roo_HD_Hair_Highpony"
+    And Nelim's Pickle Tools: "Nelim" skin colour is rgb (207, 171, 121)
+    And Nelim's Pickle Tools: "Nelim" wears "Apparel_Pants" dyed rgb (101, 67, 33)
+    And Nelim's Pickle Tools: "Nelim" wears "Apparel_BasicShirt" dyed rgb (31, 122, 92)
+    And Nelim's Pickle Tools: "Nelim" face kit is "smile"
+    And Nelim's Pickle Tools: "Nelim" mouth is "MouthLipsSmirk"
+    And Nelim's Pickle Tools: "Nelim" brows are "BrowNormal"
+    And Nelim's Pickle Tools: "Nelim" lids are "LidCheerful"
+    And Nelim's Pickle Tools: "Nelim" eyeballs are "Swift"
+    And Nelim's Pickle Tools: "Nelim" face is held neutral
+    And Nelim's Pickle Tools: "Nelim" facial expression is "normal+moodCheerful"
     When Contented Livestock dismisses every letter
     And Nelim's Pickle Tools: I frame the area centred on (195, 152) at root size 4
     And Contented Livestock selects animal "Buttercup" for visual evidence, camera kept
@@ -223,6 +248,18 @@ Feature: Workshop pictures
     And Nelim's Pickle Tools: "Nelim" waits in place
     And Nelim's Pickle Tools: the animal "Buttercup" stands at (186, 153) facing South
     And game speed is paused
+    And Nelim's Pickle Tools: "Nelim" has the gene "Eyes_DarkBrown"
+    And Nelim's Pickle Tools: "Nelim" hairstyle is "Roo_HD_Hair_Highpony"
+    And Nelim's Pickle Tools: "Nelim" skin colour is rgb (207, 171, 121)
+    And Nelim's Pickle Tools: "Nelim" wears "Apparel_Pants" dyed rgb (101, 67, 33)
+    And Nelim's Pickle Tools: "Nelim" wears "Apparel_BasicShirt" dyed rgb (31, 122, 92)
+    And Nelim's Pickle Tools: "Nelim" face kit is "smile"
+    And Nelim's Pickle Tools: "Nelim" mouth is "MouthLipsSmirk"
+    And Nelim's Pickle Tools: "Nelim" brows are "BrowNormal"
+    And Nelim's Pickle Tools: "Nelim" lids are "LidCheerful"
+    And Nelim's Pickle Tools: "Nelim" eyeballs are "Swift"
+    And Nelim's Pickle Tools: "Nelim" face is held neutral
+    And Nelim's Pickle Tools: "Nelim" facial expression is "normal+moodCheerful"
     When Contented Livestock dismisses every letter
     And Nelim's Pickle Tools: I frame the area centred on (185, 153) at root size 3
     And Contented Livestock selects animal "Buttercup" for visual evidence, camera kept
@@ -265,6 +302,18 @@ Feature: Workshop pictures
     And Nelim's Pickle Tools: "Nelim" is forced to walk to (190, 153)
     And Nelim's Pickle Tools: the game is advanced by 12 ticks
     And game speed is paused
+    And Nelim's Pickle Tools: "Nelim" has the gene "Eyes_DarkBrown"
+    And Nelim's Pickle Tools: "Nelim" hairstyle is "Roo_HD_Hair_Highpony"
+    And Nelim's Pickle Tools: "Nelim" skin colour is rgb (207, 171, 121)
+    And Nelim's Pickle Tools: "Nelim" wears "Apparel_Pants" dyed rgb (101, 67, 33)
+    And Nelim's Pickle Tools: "Nelim" wears "Apparel_BasicShirt" dyed rgb (31, 122, 92)
+    And Nelim's Pickle Tools: "Nelim" face kit is "smile"
+    And Nelim's Pickle Tools: "Nelim" mouth is "MouthLipsSmirk"
+    And Nelim's Pickle Tools: "Nelim" brows are "BrowNormal"
+    And Nelim's Pickle Tools: "Nelim" lids are "LidCheerful"
+    And Nelim's Pickle Tools: "Nelim" eyeballs are "Swift"
+    And Nelim's Pickle Tools: "Nelim" face is held neutral
+    And Nelim's Pickle Tools: "Nelim" facial expression is "normal+moodCheerful"
     When Contented Livestock dismisses every letter
     And Nelim's Pickle Tools: I frame the area centred on (194, 152) at root size 4
     And Contented Livestock selects animal "Thistle" for visual evidence, camera kept
@@ -281,6 +330,18 @@ Feature: Workshop pictures
     And Contented Livestock spawns the player animal "Daisy" as "Cow" near x 195 and z 152
     And Contented Livestock records that "Daisy" ate "RawCorn"
     When Contented Livestock sets "Daisy" to 72 percent contentment
+    And Nelim's Pickle Tools: "Nelim" has the gene "Eyes_DarkBrown"
+    And Nelim's Pickle Tools: "Nelim" hairstyle is "Roo_HD_Hair_Highpony"
+    And Nelim's Pickle Tools: "Nelim" skin colour is rgb (207, 171, 121)
+    And Nelim's Pickle Tools: "Nelim" wears "Apparel_Pants" dyed rgb (101, 67, 33)
+    And Nelim's Pickle Tools: "Nelim" wears "Apparel_BasicShirt" dyed rgb (31, 122, 92)
+    And Nelim's Pickle Tools: "Nelim" face kit is "smile"
+    And Nelim's Pickle Tools: "Nelim" mouth is "MouthLipsSmirk"
+    And Nelim's Pickle Tools: "Nelim" brows are "BrowNormal"
+    And Nelim's Pickle Tools: "Nelim" lids are "LidCheerful"
+    And Nelim's Pickle Tools: "Nelim" eyeballs are "Swift"
+    And Nelim's Pickle Tools: "Nelim" face is held neutral
+    And Nelim's Pickle Tools: "Nelim" facial expression is "normal+moodCheerful"
     And Contented Livestock dismisses every letter
     And Nelim's Sanctuary: I frame the sanctuary "window-backdrop-for-height"
     And Contented Livestock selects animal "Daisy" for visual evidence, camera kept
