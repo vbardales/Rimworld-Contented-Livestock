@@ -54,7 +54,7 @@ updated:      2026-11-19, ecosystem DELTA landed (nothing new), ecosystem_line 1
 echo_review_sha: c1ea64fc52a95f0771d2842a1073cc3c64eb0338
 social_preview_sha256: 73254f46f75d151ad84884a4b5120e65e60fd426a0a83967771e7b5385d96f52
 code_review_sha: e26a51c0ea2e7f175b8180173155252f199c275a
-protocols_read_sha: ea648c4cf17b534e70d252d3f18e9fe57d4a8e2d
+protocols_read_sha: 9df075039c4b6cad38c1712f690172bd481b083f
 ---
 # Contented Livestock: status
 
