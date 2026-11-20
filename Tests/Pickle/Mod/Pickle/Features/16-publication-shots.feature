@@ -278,12 +278,12 @@ Feature: Workshop pictures
     And Nelim's Pickle Tools: the temperature of the map is 20 degrees
     And Nelim's Pickle Tools: the learning helper is hidden
     And Contented Livestock sends the colonist "Nelim" to x 97 and z 152
-    And Contented Livestock spawns the player animal "Daisy" as "Cow" near x 90 and z 140
+    And Contented Livestock spawns the player animal "Daisy" as "Cow" near x 195 and z 152
     And Contented Livestock records that "Daisy" ate "RawCorn"
     When Contented Livestock sets "Daisy" to 72 percent contentment
     And Contented Livestock dismisses every letter
     And Nelim's Sanctuary: I frame the sanctuary "window-backdrop-for-height"
-    And Contented Livestock selects animal "Daisy" for visual evidence, shown 12 cells left and 2 cells up
+    And Contented Livestock selects animal "Daisy" for visual evidence, camera kept
     And I open the Contented Livestock settings dialog
     Then Contented Livestock sees its own settings dialog open
     When Contented Livestock lets the settings dialog draw
