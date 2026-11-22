@@ -113,7 +113,7 @@ Andreas Pardeike, for [Harmony](https://steamcommunity.com/sharedfiles/filedetai
 
 ### Gallery subtitles (2026-11-20, new plan: `16-publication-shots.feature`)
 
-The pictures below replace the six of 2026-09 described further down (kept as history). Clean originals in `Art/Gallery-clean/`, subtitled copies in `Art/Gallery/` (burned with `Add-Subtitle.ps1`). The settings window (6) is an interface capture: no subtitle, not yet rated.
+The pictures below replace the six of 2026-09 described further down (kept as history). Clean originals in `Art/Gallery-clean/`, subtitled copies in `Art/Gallery/` (burned with `Add-Subtitle.ps1`). The settings window (6) is an interface capture: no subtitle, accepted by the session 2026-11-22 (`6-settings-page.jpg`).
 
 | index | file | line |
 |---|---|---|
