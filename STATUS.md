@@ -59,7 +59,7 @@ updated:      2026-11-22, audit replay second pass after the refusal (first open
 echo_review_sha: c1ea64fc52a95f0771d2842a1073cc3c64eb0338
 social_preview_sha256: 73254f46f75d151ad84884a4b5120e65e60fd426a0a83967771e7b5385d96f52
 code_review_sha: e26a51c0ea2e7f175b8180173155252f199c275a
-protocols_read_sha: bb9c3165c0da28fdb70b370a79c2a695c9fb874f
+protocols_read_sha: bf98fb75fbf9176ef5d4d97359edaf48c12cd8a1
 ---
 # Contented Livestock: status
 
