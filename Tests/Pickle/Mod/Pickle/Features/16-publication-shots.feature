@@ -8,7 +8,8 @@
 #   2. buttercup-and-thistle (medium, a diptych of two captures, same camera, hour and poses, only the selection changes, UI scale 200): same clearing, hour 12, two game hours after the setup at 10. Buttercup at 100 percent faces South and Thistle at 30 percent faces East (profile), both spawned near x 185 and z 152, Thistle the westmost cow, away from the torch and the pots (the cause of her 30 percent is the cold corner). Nelim (same yellow tunic, dark brown hair and canon smirk mouth as scene 1) sent to x 190 and z 153 then forced to walk toward them to x 186, caught mid-step. Decor as above with PlantPot (194, 156) and (196, 150) added. Capture one selects Buttercup (milk 11 percent, bar full), capture two selects Thistle (milk 4.7 percent, bar a third); the camera 3 cells right of the cows so the map edge stays out. UI scale 200 so the Contentment bar is a long stripe, full then short, at 268 px. Just after: the keeper compares the two. The hot-weather alert shows, accepted. Reads in the image: same two hours, one cow filled twice as much and her bar is full, the other's is short. Subtitles: Two hours later, Buttercup is full of milk. / Two hours later, Thistle is lagging behind.
 #   3. buttercup-up-close (close, UI scale 200, Needs pane only, no tip): hour 15 (set 13, two game hours pass), same clearing. The camera is centred on (185, 153) at root size 3 (a real close-up, 180 px a cell), so the pair stands right of the Needs pane; Buttercup (100 percent, faces South, seen from the front) at (186, 153) selected, her Needs pane bottom left with the full Contentment bar and Milk fullness in the info card; Nelim (same yellow tunic and dark brown hair as scene 1, canon smirk mouth, pleased) forced to walk to x 187 and z 153 then held in place, beside her, her head toward the cow. Decor within the close frame: PlantPot (189, 152) and (185, 151), Plant_Daylily (188, 155), (188, 151) and (184, 151), Plant_YellowTallGrass (186, 155), (184, 154), (185, 154), (183, 153) and (189, 154) at the cow's feet; the torch is out of the frame. Just before: Nelim crossed the clearing to her; just after: she strokes her. Reads in the image: a content cow, full bar, her keeper beside her. Subtitle: Buttercup is content, so her milk fills at 140 percent of the usual rate. This is the thumbnail picture of the series (bar readable at 268 px).
 #   4. thistle-back-on-her-feet (closing, wide, UI scale 200, Needs pane only): hour 18 (set 16, two game hours pass), late light, the TorchLamp now the visible light of the frame. Camera "I frame the area centred on (194, 152) at root size 4", a wider and higher angle than scene 1. Thistle at 60 percent selected (shown 2 cells right and 1 cell up), faces East in profile; Daisy faces South, Buttercup faces North from behind; the pots moved to (196, 154), (190, 151), (194, 150), (200, 154) with Plant_Daylily (198, 152) and Plant_YellowTallGrass (195, 157) so the evening differs from the morning. Nelim sent to x 194 then forced to walk west to x 190 toward the torch, seen walking away, mid-step (same yellow tunic, dark brown hair and canon smirk mouth as scene 1: the day is the same). Just before: she checked all three; just after: she goes home. UI scale 200 so the bar is a stripe at 268 px. Reads in the image: at the end of the day the herd is settled and Thistle is no longer short. Subtitle: By evening Thistle is back to 60 percent, and Nelim heads home.
-#   5. interface window, set aside: the settings page over the clearing with Daisy's contentment bar beside it (no subtitle), last, outside the story.
+#   5. hen-and-sheep (medium, a diptych of two captures, same camera, hour and poses, only the selection changes, UI scale 200; owner OK 2026-11-23 to show eggs and wool and the frozen production): same clearing, hour 12 (date set to day 37), Nelim sent away, the tip shows in the first capture only. Clover the hen at 10 percent faces East (profile), selected, her Contentment bar short and under the floor of 25 percent, the pointer on the bar so the tip "Too miserable to produce. Production freezes until conditions improve." shows; Fleece the sheep at 100 percent faces South (front), selected in the second capture. Same decor, straw, torch, pots, daylilies. The picture says: a hen too miserable stops laying, a content sheep goes on growing her wool, so the need covers eggs and wool as it covers milk.
+#   6. interface window, set aside: the settings page over the clearing with Daisy's contentment bar beside it (no subtitle), last, outside the story.
 # Weak points assumed: the UI scale step has not been played with these scenes, the Needs pane at 200 percent may crowd the cows, the hot-weather alert shows in scene 2, a recovered Thistle at 60 percent is staged like the other states. Owner choice 2026-11-17: no live tip in the opener, UI scale 200 in all four scenes (the tip text stays in the settings scene).
 #
 # Pictures meant for the Workshop page and for nothing else. What they assert is only that the picture
@@ -329,6 +330,72 @@ Feature: Workshop pictures
     Then I take a screenshot "publication 5 - thistle back on her feet at the end of the day"
     When Nelim's Pickle Tools: the decor is removed
 
+  Scenario: a hen too miserable to lay and a content sheep beside her
+    Given Nelim's Pickle Tools: the date is set to day 37 of the year at hour 12
+    And Nelim's Pickle Tools: the temperature of the map is 20 degrees
+    And Nelim's Pickle Tools: I let 10 ticks pass
+    And Nelim's Pickle Tools: the interface scale is 200 percent
+    And Nelim's Pickle Tools: the learning helper is hidden
+    And Nelim's Pickle Tools: I lay the floor "StrawMatting" from (184, 147) to (203, 159)
+    And Nelim's Pickle Tools: I place the decor "TorchLamp" at (192, 154)
+    And Nelim's Pickle Tools: the decor "TorchLamp" at (192, 154) is lit
+    And Nelim's Pickle Tools: I place the decor "PlantPot" at (198, 154)
+    And Nelim's Pickle Tools: I place the decor "PlantPot" at (190, 150)
+    And Nelim's Pickle Tools: I place the decor "PlantPot" at (194, 156)
+    And Nelim's Pickle Tools: I place the decor "PlantPot" at (196, 150)
+    And Nelim's Pickle Tools: I place the decor "Plant_Daylily" at (199, 152)
+    And Nelim's Pickle Tools: I place the decor "Plant_YellowTallGrass" at (196, 156)
+    And Nelim's Pickle Tools: the plants from (199, 152) to (199, 152) are fully grown
+    And Nelim's Pickle Tools: the plants from (196, 156) to (196, 156) are fully grown
+    And Nelim's Pickle Tools: I place the decor "Plant_Daylily" at (197, 154)
+    And Nelim's Pickle Tools: I place the decor "Plant_Daylily" at (195, 150)
+    And Nelim's Pickle Tools: I place the decor "Plant_Daylily" at (200, 154)
+    And Nelim's Pickle Tools: I place the decor "Plant_YellowTallGrass" at (195, 155)
+    And Nelim's Pickle Tools: I place the decor "Plant_YellowTallGrass" at (199, 155)
+    And Nelim's Pickle Tools: I place the decor "Plant_YellowTallGrass" at (198, 150)
+    And Nelim's Pickle Tools: I place the decor "Plant_YellowTallGrass" at (193, 155)
+    And Nelim's Pickle Tools: I place the decor "Plant_YellowTallGrass" at (200, 150)
+    And Nelim's Pickle Tools: the plants from (197, 154) to (197, 154) are fully grown
+    And Nelim's Pickle Tools: the plants from (195, 150) to (195, 150) are fully grown
+    And Nelim's Pickle Tools: the plants from (200, 154) to (200, 154) are fully grown
+    And Nelim's Pickle Tools: the plants from (195, 155) to (195, 155) are fully grown
+    And Nelim's Pickle Tools: the plants from (199, 155) to (199, 155) are fully grown
+    And Nelim's Pickle Tools: the plants from (198, 150) to (198, 150) are fully grown
+    And Nelim's Pickle Tools: the plants from (193, 155) to (193, 155) are fully grown
+    And Nelim's Pickle Tools: the plants from (200, 150) to (200, 150) are fully grown
+    And Nelim's Pickle Tools: I place the decor "Plant_Daylily" at (190, 153)
+    And Nelim's Pickle Tools: I place the decor "Plant_Daylily" at (192, 151)
+    And Nelim's Pickle Tools: I place the decor "Plant_YellowTallGrass" at (191, 152)
+    And Nelim's Pickle Tools: I place the decor "Plant_YellowTallGrass" at (193, 151)
+    And Nelim's Pickle Tools: the plants from (190, 153) to (190, 153) are fully grown
+    And Nelim's Pickle Tools: the plants from (192, 151) to (192, 151) are fully grown
+    And Nelim's Pickle Tools: the plants from (191, 152) to (191, 152) are fully grown
+    And Nelim's Pickle Tools: the plants from (193, 151) to (193, 151) are fully grown
+    And Contented Livestock the map holds no male "Chicken"
+    And Contented Livestock spawns the player animal "Clover" as "Chicken" near x 194 and z 152
+    And Contented Livestock spawns the player animal "Fleece" as "Sheep" near x 197 and z 152
+    And Contented Livestock sends the colonist "Nelim" to x 97 and z 152
+    When Contented Livestock sets "Clover" to 10 percent contentment
+    And Contented Livestock sets "Fleece" to 100 percent contentment
+    Then Contented Livestock production factor for "Clover" is 0 percent
+    And Contented Livestock production factor for "Fleece" is 140 percent
+    When Nelim's Pickle Tools: the animal "Clover" stands at (194, 152) facing East
+    And Nelim's Pickle Tools: the animal "Fleece" stands at (197, 152) facing South
+    And Contented Livestock sets "Clover" to 10 percent contentment
+    And Contented Livestock sets "Fleece" to 100 percent contentment
+    And game speed is paused
+    And Contented Livestock dismisses every letter
+    And Nelim's Pickle Tools: I frame the area centred on (195, 152) at root size 3
+    And Contented Livestock selects animal "Clover" for visual evidence, camera kept
+    And I wait 30 ticks
+    And Nelim's Pickle Tools: I move the mouse to (200, 570)
+    Then I take a screenshot "publication 6 - a hen too miserable to lay, production frozen"
+    When Contented Livestock selects animal "Fleece" for visual evidence, camera kept
+    And I wait 30 ticks
+    And Nelim's Pickle Tools: I move the mouse to (700, 20)
+    Then I take a screenshot "publication 7 - a content sheep beside her, wool still growing"
+    When Nelim's Pickle Tools: the decor is removed
+
   Scenario: the settings page over the clearing, with a cow's contentment bar beside it
     Given Nelim's Pickle Tools: the date is set to day 37 of the year at hour 12
     And Nelim's Pickle Tools: the temperature of the map is 20 degrees
@@ -357,5 +424,5 @@ Feature: Workshop pictures
     Then Contented Livestock sees its own settings dialog open
     When Contented Livestock lets the settings dialog draw
     And I wait 30 ticks
-    Then I take a screenshot "publication 6 - settings page with the contentment bar"
+    Then I take a screenshot "publication 8 - settings page with the contentment bar"
     When I close all dialogs
