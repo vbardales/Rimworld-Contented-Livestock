@@ -54,6 +54,8 @@ Feature: Workshop pictures
 
   Scenario: Nelim meets her three cows, one of them with its contentment bar and the live tip
     Given I set the hour to 10
+    And Nelim's Pickle Tools: the temperature of the map is 20 degrees
+    And Nelim's Pickle Tools: I let 10 ticks pass
     And Nelim's Pickle Tools: the interface scale is 200 percent
     And Nelim's Pickle Tools: the learning helper is hidden
     And Nelim's Pickle Tools: I lay the floor "StrawMatting" from (184, 147) to (203, 159)
@@ -119,7 +121,8 @@ Feature: Workshop pictures
     And Nelim's Pickle Tools: "Nelim" lids are "LidCheerful"
     And Nelim's Pickle Tools: "Nelim" eyeballs are "Swift"
     And Nelim's Pickle Tools: "Nelim" face is held neutral
-    And Nelim's Pickle Tools: "Nelim" facial expression is "normal+moodCheerful"
+    And Nelim's Pickle Tools: "Nelim" facial expression is "normal"
+    And Nelim's Pickle Tools: the thermal state and thoughts of "Nelim" are logged
     When Contented Livestock dismisses every letter
     And Nelim's Sanctuary: I frame the sanctuary "bare-clearing"
     And Contented Livestock selects animal "Daisy" for visual evidence, camera kept
@@ -130,6 +133,8 @@ Feature: Workshop pictures
 
   Scenario: two cows after the same two hours, one kept well and one badly
     Given I set the hour to 10
+    And Nelim's Pickle Tools: the temperature of the map is 20 degrees
+    And Nelim's Pickle Tools: I let 10 ticks pass
     And Nelim's Pickle Tools: the interface scale is 200 percent
     And Nelim's Pickle Tools: the learning helper is hidden
     And Nelim's Pickle Tools: I lay the floor "StrawMatting" from (184, 147) to (203, 159)
@@ -198,7 +203,7 @@ Feature: Workshop pictures
     And Nelim's Pickle Tools: "Nelim" lids are "LidCheerful"
     And Nelim's Pickle Tools: "Nelim" eyeballs are "Swift"
     And Nelim's Pickle Tools: "Nelim" face is held neutral
-    And Nelim's Pickle Tools: "Nelim" facial expression is "normal+moodCheerful"
+    And Nelim's Pickle Tools: "Nelim" facial expression is "normal"
     When Contented Livestock dismisses every letter
     And Nelim's Pickle Tools: I frame the area centred on (195, 152) at root size 4
     And Contented Livestock selects animal "Buttercup" for visual evidence, camera kept
@@ -214,6 +219,7 @@ Feature: Workshop pictures
   Scenario: Buttercup up close, content, with her keeper beside her
     Given Nelim's Pickle Tools: the date is set to day 37 of the year at hour 13
     And Nelim's Pickle Tools: the temperature of the map is 20 degrees
+    And Nelim's Pickle Tools: I let 10 ticks pass
     And Nelim's Pickle Tools: the interface scale is 200 percent
     And Nelim's Pickle Tools: the learning helper is hidden
     And Nelim's Pickle Tools: I lay the floor "StrawMatting" from (179, 149) to (192, 159)
@@ -259,7 +265,7 @@ Feature: Workshop pictures
     And Nelim's Pickle Tools: "Nelim" lids are "LidCheerful"
     And Nelim's Pickle Tools: "Nelim" eyeballs are "Swift"
     And Nelim's Pickle Tools: "Nelim" face is held neutral
-    And Nelim's Pickle Tools: "Nelim" facial expression is "normal+moodCheerful"
+    And Nelim's Pickle Tools: "Nelim" facial expression is "normal"
     When Contented Livestock dismisses every letter
     And Nelim's Pickle Tools: I frame the area centred on (185, 153) at root size 3
     And Contented Livestock selects animal "Buttercup" for visual evidence, camera kept
@@ -271,6 +277,7 @@ Feature: Workshop pictures
   Scenario: at the end of the day Thistle is back on her feet and Nelim heads home
     Given Nelim's Pickle Tools: the date is set to day 37 of the year at hour 16
     And Nelim's Pickle Tools: the temperature of the map is 20 degrees
+    And Nelim's Pickle Tools: I let 10 ticks pass
     And Nelim's Pickle Tools: the interface scale is 200 percent
     And Nelim's Pickle Tools: the learning helper is hidden
     And Nelim's Pickle Tools: I lay the floor "StrawMatting" from (184, 146) to (204, 160)
@@ -313,7 +320,7 @@ Feature: Workshop pictures
     And Nelim's Pickle Tools: "Nelim" lids are "LidCheerful"
     And Nelim's Pickle Tools: "Nelim" eyeballs are "Swift"
     And Nelim's Pickle Tools: "Nelim" face is held neutral
-    And Nelim's Pickle Tools: "Nelim" facial expression is "normal+moodCheerful"
+    And Nelim's Pickle Tools: "Nelim" facial expression is "normal"
     When Contented Livestock dismisses every letter
     And Nelim's Pickle Tools: I frame the area centred on (194, 152) at root size 4
     And Contented Livestock selects animal "Thistle" for visual evidence, camera kept
@@ -325,6 +332,7 @@ Feature: Workshop pictures
   Scenario: the settings page over the clearing, with a cow's contentment bar beside it
     Given Nelim's Pickle Tools: the date is set to day 37 of the year at hour 12
     And Nelim's Pickle Tools: the temperature of the map is 20 degrees
+    And Nelim's Pickle Tools: I let 10 ticks pass
     And Nelim's Pickle Tools: the learning helper is hidden
     And Contented Livestock sends the colonist "Nelim" to x 97 and z 152
     And Contented Livestock spawns the player animal "Daisy" as "Cow" near x 195 and z 152
@@ -341,7 +349,7 @@ Feature: Workshop pictures
     And Nelim's Pickle Tools: "Nelim" lids are "LidCheerful"
     And Nelim's Pickle Tools: "Nelim" eyeballs are "Swift"
     And Nelim's Pickle Tools: "Nelim" face is held neutral
-    And Nelim's Pickle Tools: "Nelim" facial expression is "normal+moodCheerful"
+    And Nelim's Pickle Tools: "Nelim" facial expression is "normal"
     And Contented Livestock dismisses every letter
     And Nelim's Sanctuary: I frame the sanctuary "window-backdrop-for-height"
     And Contented Livestock selects animal "Daisy" for visual evidence, camera kept
